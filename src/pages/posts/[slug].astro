@@ -1,0 +1,21 @@
+---
+import PostLayout from '../../layouts/PostLayout.astro';
+// Note: Astro content fetching is placeholder — replace with your content adapter if needed
+const slug = Astro.params.slug;
+let post = null;
+try {
+  // Attempt to load markdown file from content folder
+  post = await Astro.resolve(`./../../content/posts/${slug}.md`).catch(() => null);
+} catch(e) {
+  post = null;
+}
+---
+{post ? (
+  <PostLayout frontmatter={post.frontmatter}>
+    <div set:html={post.body} />
+  </PostLayout>
+) : (
+  <main class="container" style="padding:2rem 0;">
+    <article class="card"><h1>Post not found</h1></article>
+  </main>
+)}

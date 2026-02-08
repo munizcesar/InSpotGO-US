@@ -1,0 +1,33 @@
+backend:
+  name: github
+  repo: SEU_USER/InSpotGO-US
+  branch: main
+  base_url: https://inspotgo.com
+  auth_endpoint: /api/auth
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "src/content/posts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Category", name: "category", widget: "select", options: ["Tech", "Home", "Lifestyle"] }
+      - { label: "Featured Image", name: "image", widget: "image" }
+      - { label: "SEO Description", name: "description", widget: "text", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - label: "Products"
+        name: "products"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Product Name", name: "name", widget: "string" }
+          - { label: "Affiliate Link", name: "link", widget: "string" }
+          - { label: "Price (USD)", name: "price", widget: "string" }
+          - { label: "Rating", name: "rating", widget: "string", required: false }
+          - { label: "Product Image", name: "image", widget: "image", required: false }

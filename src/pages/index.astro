@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import TrustBar from '../components/TrustBar.astro';
+import ProductCard from '../components/ProductCard.astro';
+import CookieBanner from '../components/CookieBanner.astro';
+---
+<BaseLayout title="InSpotGO: Smart Product Discovery" description="Curated deals and trusted reviews for US consumers" canonical={Astro.site}>
+  <Header />
+  <main class="container" style="padding:2rem 0;">
+    <div style="background:#fff;padding:2rem;border-radius:8px;margin-bottom:1rem" role="region" aria-label="Hero">
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <div style="color:var(--color-text-muted)">Disclosure: This page contains affiliate links. We may earn a commission if you purchase through our links.</div>
+        <h1>InSpotGO: Smart Product Discovery</h1>
+        <p>Curated deals and trusted reviews for US consumers</p>
+        <div style="display:flex;gap:.75rem;">
+          <a class="cta-primary" href="/posts">View Deals</a>
+          <a class="cta-secondary" href="/editorial-policy">How We Choose</a>
+        </div>
+      </div>
+    </div>
+
+    <TrustBar />
+
+    <section style="margin-top:1.25rem;">
+      <h2>Featured Deals</h2>
+      <div class="grid grid-3" style="margin-top:.75rem;">
+        <ProductCard title="Sample Product A" category="Electronics" price="$129.99" rating="4.6" />
+        <ProductCard title="Sample Product B" category="Home" price="$49.99" rating="4.4" />
+        <ProductCard title="Sample Product C" category="Fitness" price="$79.99" rating="4.7" />
+        <ProductCard title="Sample Product D" category="Tech" price="$199.99" rating="4.8" />
+        <ProductCard title="Sample Product E" category="Kitchen" price="$24.99" rating="4.3" />
+        <ProductCard title="Sample Product F" category="Outdoors" price="$59.99" rating="4.5" />
+      </div>
+    </section>
+
+    <section style="margin-top:2rem;">
+      <h2>Guides</h2>
+      <div class="grid grid-3" style="margin-top:.75rem;">
+        <a class="card" href="/posts/best-budget-smartphones-2026">Best Budget Smartphones 2026</a>
+        <a class="card" href="/posts/top-kitchen-gadgets-2026">Top Kitchen Gadgets 2026</a>
+        <a class="card" href="/posts/fitness-gear-guide-2026">Fitness Gear Guide 2026</a>
+        <a class="card" href="/posts/home-office-essentials-2026">Home Office Essentials 2026</a>
+        <a class="card" href="/posts/outdoor-gear-2026">Outdoor Gear 2026</a>
+        <a class="card" href="/posts/smart-home-basics-2026">Smart Home Basics 2026</a>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <CookieBanner />
+</BaseLayout>

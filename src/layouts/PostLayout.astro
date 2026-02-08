@@ -1,0 +1,22 @@
+---
+import BaseLayout from './BaseLayout.astro';
+const { frontmatter, content } = Astro.props;
+---
+<BaseLayout title={frontmatter.title} description={frontmatter.description} canonical={`${Astro.site || ''}${Astro.url.pathname}`}>
+  <main class="container">
+    <article class="card" itemScope itemType="https://schema.org/Article">
+      <h1 itemProp="headline">{frontmatter.title}</h1>
+      <div style="color:var(--color-text-muted);font-size:.9rem;">{frontmatter.date}</div>
+      <div>
+        <slot />
+      </div>
+    </article>
+  </main>
+  <script type="application/ld+json">{JSON.stringify({
+    "@context":"https://schema.org",
+    "@type":"Article",
+    "headline": frontmatter.title,
+    "datePublished": frontmatter.date,
+    "author": {"@type":"Organization","name":"InSpotGO"}
+  })}</script>
+</BaseLayout>
