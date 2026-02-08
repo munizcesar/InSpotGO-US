@@ -64,11 +64,12 @@ if (Test-Path $cfgFile) {
     Add-Content $cfgFile "`nbase_url: https://$PAGES_DOMAIN"
   }
   git add $cfgFile
-  git commit -m "ci: set Decap CMS base_url to https://$PAGES_DOMAIN" 2>$null || Write-Host 'No changes to commit'
+  git commit -m "ci: set Decap CMS base_url to https://$PAGES_DOMAIN" 2>$null
+  if (-not $?) { Write-Host 'No changes to commit' }
   git push origin $BRANCH
   Write-Host 'Updated config and pushed changes.'
 } else {
-  Write-Warning "$cfgFile not found — skipping update"
+  Write-Warning "$cfgFile not found - skipping update"
 }
 
 Write-Host 'Done. Wait for Pages deploy and then visit https://'
