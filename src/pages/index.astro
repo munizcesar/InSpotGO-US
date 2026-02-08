@@ -9,15 +9,17 @@ import CookieBanner from '../components/CookieBanner.astro';
 <BaseLayout title="InSpotGO: Smart Product Discovery" description="Curated deals and trusted reviews for US consumers" canonical={Astro.site}>
   <Header />
   <main class="container" style="padding:2rem 0;">
-    <div style="background:#fff;padding:2rem;border-radius:8px;margin-bottom:1rem" role="region" aria-label="Hero">
-      <div style="display:flex;flex-direction:column;gap:1rem;">
-        <div style="color:var(--color-text-muted)">Disclosure: This page contains affiliate links. We may earn a commission if you purchase through our links.</div>
-        <h1 style="margin-bottom: 0.5rem;">InSpotGO: Smart Product Discovery</h1>
-        <p style="font-size: 1.25rem; font-weight: 600; color: var(--color-primary); margin-top: 0;">Choose right. Go confident.</p>
-        <p>Curated deals and trusted reviews for US consumers</p>
-        <div style="display:flex;gap:.75rem;">
-          <a class="cta-primary" href="/posts">See Details</a>
-          <a class="cta-secondary" href="/editorial-policy">How We Choose</a>
+    <div style="background:#fff;padding:2rem;border-radius:8px;margin-bottom:1rem;text-align:center;" role="region" aria-label="Hero">
+      <div style="display:flex;flex-direction:column;gap:1rem;align-items:center;">
+        <div style="color:var(--color-text-muted);font-size:0.9rem;">Disclosure: This page contains affiliate links. We may earn a commission if you purchase through our links.</div>
+        <div class="notranslate" style="font-size:1.5rem;font-weight:700;">
+          <span style="color:var(--color-primary);">LOGO</span> <span style="color:var(--color-primary);">InSpot</span><span style="color:var(--color-accent);">GO</span>
+        </div>
+        <p style="font-size: 1.5rem; font-weight: 700; color: var(--color-primary); margin: 0.5rem 0;">Choose right. Go confident.</p>
+        <p style="font-size: 1rem; color: var(--color-text); margin: 0.5rem 0; max-width: 600px;">Independent reviews to help you pick the best product.</p>
+        <div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;">
+          <a class="cta-primary" href="/posts">Browse Reviews</a>
+          <a class="cta-secondary" href="/editorial-policy">Best Picks</a>
         </div>
       </div>
     </div>
