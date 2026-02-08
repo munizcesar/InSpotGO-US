@@ -1,0 +1,8 @@
+name = "inspotgo-us"
+compatibility_date = "2026-02-07"
+
+# Deploy a directory of static assets (the Astro build output)
+assets = { directory = "./dist" }
+
+# When deploying, Wrangler will use CF_ACCOUNT_ID / CLOUDFLARE_ACCOUNT_ID
+# from the environment if present. Do NOT store secrets here.
