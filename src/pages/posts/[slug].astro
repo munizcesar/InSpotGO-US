@@ -9,6 +9,13 @@ try {
 } catch(e) {
   post = null;
 }
+
+export async function getStaticPaths() {
+  // For now, return the example post
+  return [
+    { params: { slug: 'example-post' } }
+  ];
+}
 ---
 {post ? (
   <PostLayout frontmatter={post.frontmatter}>
