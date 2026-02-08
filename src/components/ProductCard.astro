@@ -9,10 +9,10 @@ export interface Props {
 const { title, category = "Category", price = "$99.99", rating = "4.5", link = "https://example.com/go/deal?item=XXXX" } = Astro.props as Props;
 ---
 <article class="card" aria-label={title}>
-  <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+  <div class="card-row">
     <div>
-      <div style="font-size:.85rem;color:var(--color-text-muted)">{category}</div>
-      <h3 style="margin:.35rem 0;">{title}</h3>
+      <div class="card-meta">{category}</div>
+      <h3 class="card-title">{title}</h3>
       <div class="product-price">{price} • {rating} ★</div>
     </div>
     <div>

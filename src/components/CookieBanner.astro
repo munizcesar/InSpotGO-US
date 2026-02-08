@@ -3,12 +3,12 @@ let visible = true;
 ---
 {visible ? (
   <div class="cookie-banner" role="dialog" aria-live="polite">
-    <div style="display:flex;justify-content:space-between;align-items:center;">
+    <div class="cookie-content">
       <div>
         <strong>Cookies</strong>
         <div style="color:var(--color-text-muted)">We use cookies and similar technologies to improve your experience. No personal data is shared.</div>
       </div>
-      <div style="display:flex;gap:.5rem;">
+      <div class="cookie-actions">
         <button class="cta-secondary" on:click={() => visible = false}>Dismiss</button>
       </div>
     </div>
