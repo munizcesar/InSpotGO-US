@@ -32,3 +32,5 @@ Edit `public/admin/config.yml` to replace `SEU_USER/InSpotGO-US` and `base_url`.
 Notes:
 - Admin panel requires deploy and correct OAuth setup.
 - Replace placeholder links and images with real assets.
+
+Update: 2026-02-07
