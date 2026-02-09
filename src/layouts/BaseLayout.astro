@@ -1,46 +1,314 @@
 ---
-import "../styles/global.css";
-const { title = "InSpotGO", description = "Curated deals and trusted reviews for US consumers", canonical = Astro.site || "" } = Astro.props;
+import { SITE, ANALYTICS, AFFILIATES } from '../config';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  article?: boolean;
+  noindex?: boolean;
+}
+
+const {
+  title = SITE.title,
+  description = SITE.description,
+  image = `${SITE.url}/og-image.jpg`,
+  article = false,
+  noindex = false,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, SITE.url);
+const fullTitle = title === SITE.title ? title : `${title} | ${SITE.name}`;
+
+// Check if any affiliate program is enabled
+const hasAffiliateLinks = AFFILIATES.amazon.enabled || AFFILIATES.partnerStack.enabled || AFFILIATES.impact.enabled;
 ---
-<!doctype html>
-<html lang="en-US">
+
+<!DOCTYPE html>
+<html lang={SITE.locale}>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>{title}</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>{fullTitle}</title>
+    <meta name="title" content={fullTitle} />
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <meta property="og:title" content={title} />
+    <link rel="canonical" href={canonicalURL} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={article ? 'article' : 'website'} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonical} />
-    <meta name="twitter:card" content="summary_large_image" />
-    {Astro.props.frontmatter?.cover && (
-      <meta property="og:image" content={Astro.props.frontmatter.cover} />
+    <meta property="og:image" content={image} />
+    <meta property="og:site_name" content={SITE.name} />
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={fullTitle} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={image} />
+    {SITE.social.twitter && <meta name="twitter:site" content={SITE.social.twitter} />}
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    
+    <!-- Sitemap -->
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    
+    <!-- Google Analytics 4 -->
+    {ANALYTICS.enabled && ANALYTICS.measurementId && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS.measurementId}`}></script>
+        <script is:inline define:vars={{ measurementId: ANALYTICS.measurementId }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', measurementId);
+        </script>
+      </>
     )}
-    <script type="application/ld+json">{JSON.stringify({
-      "@context":"https://schema.org",
-      "@type":"Organization",
-      "name":"InSpotGO",
-      "url":"https://inspotgo.com",
-      "logo":"https://inspotgo.com/logo.png",
-      "sameAs":["https://pinterest.com/inspotgo"]
-    })}</script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   </head>
+  
   <body>
-    <slot />
-    <!-- GA4: Uncomment and add your G-XXXXXXX -->
-    <!--
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);} 
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXX');
-    </script>
-    -->
+    <!-- Header/Navigation -->
+    <header class="site-header">
+      <nav class="container">
+        <div class="nav-brand">
+          <a href="/">
+            <strong>{SITE.name}</strong>
+          </a>
+          <p class="tagline">{SITE.tagline}</p>
+        </div>
+        
+        <ul class="nav-menu">
+          <li><a href="/tech">Tech</a></li>
+          <li><a href="/saas">SaaS</a></li>
+          <li><a href="/software">Software</a></li>
+          <li><a href="/guides">Guides</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    
+    <!-- Main Content -->
+    <main>
+      <slot />
+    </main>
+    
+    <!-- Affiliate Disclosure (if enabled) -->
+    {hasAffiliateLinks && (
+      <aside class="affiliate-notice">
+        <div class="container">
+          <p>
+            <strong>Affiliate Disclosure:</strong> {AFFILIATES.amazon.enabled && AFFILIATES.amazon.disclaimer}
+            This site participates in various affiliate programs. We may earn a commission when you click through and make a purchase, at no additional cost to you.
+          </p>
+        </div>
+      </aside>
+    )}
+    
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h3>{SITE.name}</h3>
+            <p>{SITE.tagline}</p>
+            <p>{SITE.description}</p>
+          </div>
+          
+          <div class="footer-col">
+            <h4>Categories</h4>
+            <ul>
+              <li><a href="/tech">Tech Products</a></li>
+              <li><a href="/saas">SaaS & Cloud</a></li>
+              <li><a href="/software">Software</a></li>
+              <li><a href="/guides">Guides</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="/about">About Us</a></li>
+              <li><a href="/contact">Contact</a></li>
+              <li><a href="/legal/editorial-policy">Editorial Policy</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-col">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="/legal/privacy">Privacy Policy</a></li>
+              <li><a href="/legal/terms">Terms of Service</a></li>
+              <li><a href="/legal/affiliate-disclosure">Affiliate Disclosure</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p>&copy; {new Date().getFullYear()} {SITE.name}. All rights reserved.</p>
+          <p>Made with ❤️ for informed decisions</p>
+        </div>
+      </div>
+    </footer>
+    
+    <style>
+      :root {
+        --primary: #2563eb;
+        --secondary: #10b981;
+        --text: #1f2937;
+        --text-light: #6b7280;
+        --bg: #ffffff;
+        --bg-alt: #f9fafb;
+        --border: #e5e7eb;
+      }
+      
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        color: var(--text);
+        background: var(--bg);
+        line-height: 1.6;
+      }
+      
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+      
+      /* Header */
+      .site-header {
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+      
+      .site-header nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .nav-brand a {
+        text-decoration: none;
+        color: var(--primary);
+        font-size: 1.5rem;
+      }
+      
+      .tagline {
+        font-size: 0.875rem;
+        color: var(--text-light);
+      }
+      
+      .nav-menu {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+      
+      .nav-menu a {
+        text-decoration: none;
+        color: var(--text);
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      
+      .nav-menu a:hover {
+        color: var(--primary);
+      }
+      
+      /* Main Content */
+      main {
+        min-height: 60vh;
+        padding: 2rem 0;
+      }
+      
+      /* Affiliate Notice */
+      .affiliate-notice {
+        background: #fef3c7;
+        border-top: 2px solid #f59e0b;
+        padding: 1rem 0;
+        margin-top: 3rem;
+      }
+      
+      .affiliate-notice p {
+        font-size: 0.875rem;
+        color: #92400e;
+      }
+      
+      /* Footer */
+      .site-footer {
+        background: var(--bg-alt);
+        border-top: 1px solid var(--border);
+        padding: 3rem 0 1rem;
+        margin-top: 4rem;
+      }
+      
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+      
+      .footer-col h3, .footer-col h4 {
+        margin-bottom: 1rem;
+        color: var(--text);
+      }
+      
+      .footer-col ul {
+        list-style: none;
+      }
+      
+      .footer-col a {
+        color: var(--text-light);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      
+      .footer-col a:hover {
+        color: var(--primary);
+      }
+      
+      .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border);
+        color: var(--text-light);
+        font-size: 0.875rem;
+      }
+      
+      /* Responsive */
+      @media (max-width: 768px) {
+        .nav-menu {
+          gap: 1rem;
+          font-size: 0.875rem;
+        }
+        
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </body>
 </html>
