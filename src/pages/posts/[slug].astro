@@ -10,11 +10,16 @@ try {
   post = null;
 }
 
+import fs from 'fs';
+import path from 'path';
+
 export async function getStaticPaths() {
-  // For now, return the example post
-  return [
-    { params: { slug: 'example-post' } }
-  ];
+  const postsDir = path.resolve('./src/content/posts');
+  const files = fs.readdirSync(postsDir);
+  const paths = files
+    .filter((file) => file.endsWith('.md'))
+    .map((file) => ({ params: { slug: file.replace(/\.md$/, '') } }));
+  return paths;
 }
 ---
 {post ? (
