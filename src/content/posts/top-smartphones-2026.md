@@ -2,7 +2,6 @@
 title: "Top Smartphones 2026: iPhone 17 Pro, Galaxy S25 Ultra, Pixel 10 Pro, e mais"
 date: 2026-02-08
 category: "Tech"
-cover: "/imagespost/top-smartphones-2026.jpg" # Adicione a imagem correspondente em public/imagespost/
 description: "Comparativo atualizado dos melhores celulares topo de linha de 2026: Apple, Samsung, Google e os dobráveis mais desejados. Veja os diferenciais de cada modelo."
 cover: "https://www.apple.com/v/iphone-17-pro/a/images/overview/hero/hero_static__e6khcva4hkeq_large.jpg" # iPhone 17 Pro (imagem oficial Apple)
 slug: "top-smartphones-2026"

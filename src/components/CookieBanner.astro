@@ -1,28 +1,28 @@
 ---
-import { onMount } from 'astro/jsx-runtime';
-let visible = true;
-
-onMount(() => {
-  if (typeof window !== 'undefined') {
-    visible = localStorage.getItem('cookie-consent') !== 'accepted';
-  }
-});
 ---
-{visible ? (
-  <div class="cookie-banner" role="dialog" aria-live="polite">
-    <div class="cookie-content">
-      <div>
-        <strong>Cookies</strong>
-        <div style="color:var(--color-text-muted)">We use cookies and similar technologies to improve your experience. No personal data is shared.</div>
-      </div>
-      <div class="cookie-actions">
-        <button class="cta-secondary" on:click={() => {
-          visible = false;
-          if (typeof window !== 'undefined') {
-            localStorage.setItem('cookie-consent', 'accepted');
-          }
-        }}>Dismiss</button>
-      </div>
+---
+---
+---
+<div class="cookie-banner" role="dialog" aria-live="polite" id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;width:100%;background:#fff;border-top:1px solid var(--color-border);box-shadow:0 -2px 8px rgba(0,0,0,0.05);z-index:1000;padding:1rem;">
+  <div class="cookie-content" style="display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto;">
+    <div>
+      <strong>Cookies</strong>
+      <div style="color:var(--color-text-muted)">We use cookies and similares para melhorar sua experiência. Nenhum dado pessoal é compartilhado.</div>
+    </div>
+    <div class="cookie-actions">
+      <button class="cta-secondary" id="cookie-dismiss">Fechar</button>
     </div>
   </div>
-) : null}
+</div>
+<script>
+  if (typeof window !== 'undefined') {
+    const consent = localStorage.getItem('cookie-consent');
+    if (consent !== 'accepted') {
+      document.getElementById('cookie-banner').style.display = 'block';
+    }
+    document.getElementById('cookie-dismiss').onclick = function() {
+      localStorage.setItem('cookie-consent', 'accepted');
+      document.getElementById('cookie-banner').style.display = 'none';
+    };
+  }
+</script>
