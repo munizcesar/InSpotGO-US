@@ -1,0 +1,33 @@
+---
+import { SITE_CONFIG } from '../config';
+
+const gaId = SITE_CONFIG.analytics.googleAnalyticsId;
+const isProduction = import.meta.env.PROD;
+---
+
+{isProduction && gaId && gaId !== 'G-XXXXXXXXXX' && (
+  <>
+    <!-- Google tag (gtag.js) -->
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+    <script is:inline define:vars={{ gaId }}>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', gaId, {
+        'anonymize_ip': true,
+        'cookie_flags': 'SameSite=None;Secure'
+      });
+    </script>
+  </>
+)}
+
+<!-- 
+  TODO: Replace placeholder GA ID in src/config.ts
+  
+  To get your Google Analytics 4 Measurement ID:
+  1. Go to https://analytics.google.com/
+  2. Create a new GA4 property (or use existing)
+  3. Add a Web data stream
+  4. Copy the Measurement ID (format: G-XXXXXXXXXX)
+  5. Update SITE_CONFIG.analytics.googleAnalyticsId in src/config.ts
+-->
