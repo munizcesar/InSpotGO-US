@@ -5,8 +5,16 @@ const { frontmatter, content } = Astro.props;
 <BaseLayout title={frontmatter.title} description={frontmatter.description} canonical={`${Astro.site || ''}${Astro.url.pathname}`}>
   <main class="container">
     <article class="card" itemScope itemType="https://schema.org/Article">
+      {frontmatter.cover && (
+        <img src={frontmatter.cover} alt={frontmatter.title} style="width:100%;max-width:600px;display:block;margin:0 auto 1.5rem auto;border-radius:12px;" loading="lazy" />
+      )}
       <h1 itemProp="headline">{frontmatter.title}</h1>
-      <div style="color:var(--color-text-muted);font-size:.9rem;">{frontmatter.date}</div>
+      <div style="color:var(--color-text-muted);font-size:.9rem;">
+        {frontmatter.date}
+        {frontmatter.category && (
+          <span style="background:var(--color-bg);color:var(--color-primary);border-radius:6px;padding:2px 10px;margin-left:1rem;font-size:.85em;font-weight:600;">{frontmatter.category}</span>
+        )}
+      </div>
       <div>
         <slot />
       </div>
