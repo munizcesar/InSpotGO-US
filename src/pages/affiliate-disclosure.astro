@@ -1,18 +1,262 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import { SITE_CONFIG } from '../config';
 ---
-<BaseLayout title="Affiliate Disclosure — InSpotGO">
-  <Header />
-  <main class="container" style="padding:2rem 0;">
-    <article class="card">
-      <h1>Affiliate Disclosure</h1>
-      <p>Some of the links on this site are affiliate links. This means we may earn a commission if you click a link and make a purchase, at no additional cost to you.</p>
-      <p>We strive to be transparent and only recommend products we believe offer value to our readers.</p>
-      <h2>Amazon</h2>
-      <p>As an Amazon Associate I earn from qualifying purchases.</p>
-    </article>
-  </main>
-  <Footer />
+
+<BaseLayout
+  title="Affiliate Disclosure - InSpotGO"
+  description="Learn about InSpotGO's affiliate relationships and how we maintain editorial independence while earning commissions."
+>
+  <div class="container content-page">
+    <h1>Affiliate Disclosure</h1>
+    
+    <p class="last-updated">Last Updated: February 9, 2026</p>
+    
+    <section>
+      <h2>Introduction</h2>
+      <p>
+        InSpotGO ({SITE_CONFIG.url}) is a participant in various affiliate marketing programs. 
+        This means that when you click on certain links on our website and make a purchase, 
+        we may receive a commission at no additional cost to you.
+      </p>
+      <p>
+        This disclosure is provided in accordance with the Federal Trade Commission's (FTC) 
+        <a href="https://www.ftc.gov/legal-library/browse/16-cfr-part-255" target="_blank" rel="noopener">16 CFR Part 255: "Guides Concerning the Use of Endorsements and Testimonials in Advertising."</a>
+      </p>
+    </section>
+    
+    <section>
+      <h2>Affiliate Programs We Participate In</h2>
+      
+      <h3>Amazon Associates Program</h3>
+      <p>
+        {SITE_CONFIG.affiliates.amazon.disclaimer} We are a participant in the Amazon Services LLC 
+        Associates Program, an affiliate advertising program designed to provide a means for sites 
+        to earn advertising fees by advertising and linking to Amazon.com and affiliated sites.
+      </p>
+      
+      <h3>Software and SaaS Affiliate Programs</h3>
+      <p>
+        We participate in affiliate programs offered by various software companies and SaaS providers. 
+        These may include, but are not limited to:
+      </p>
+      <ul>
+        <li>PartnerStack network partners</li>
+        <li>Impact.com network partners</li>
+        <li>ShareASale network partners</li>
+        <li>CJ Affiliate (Commission Junction) network partners</li>
+        <li>Direct affiliate programs with individual software companies</li>
+      </ul>
+    </section>
+    
+    <section>
+      <h2>How Affiliate Links Work</h2>
+      <p>
+        When you click on an affiliate link and make a purchase, the company pays us a commission. 
+        This commission varies by product and program, but typically ranges from 1% to 30% of the 
+        purchase price, depending on the category and specific agreement.
+      </p>
+      <p>
+        <strong>Important:</strong> You never pay more by using our affiliate links. In many cases, 
+        we're able to negotiate exclusive discounts or bonuses for our readers.
+      </p>
+    </section>
+    
+    <section>
+      <h2>Our Editorial Independence</h2>
+      <p>
+        While we earn commissions from affiliate links, our affiliate relationships do not influence 
+        our editorial decisions. Here's our commitment to you:
+      </p>
+      <ul>
+        <li>
+          <strong>Honest Reviews:</strong> We provide unbiased reviews based on research, testing, 
+          and analysis. We highlight both pros and cons of every product.
+        </li>
+        <li>
+          <strong>No Pay-to-Play:</strong> Companies cannot pay for positive reviews or higher 
+          rankings on our site.
+        </li>
+        <li>
+          <strong>User-First Recommendations:</strong> We only recommend products we believe 
+          genuinely benefit our readers, regardless of commission rates.
+        </li>
+        <li>
+          <strong>Transparent Updates:</strong> We regularly update our reviews to reflect new 
+          information, price changes, and better alternatives when they emerge.
+        </li>
+        <li>
+          <strong>Clear Identification:</strong> We clearly mark affiliate links and include 
+          disclosures on pages containing affiliate content.
+        </li>
+      </ul>
+    </section>
+    
+    <section>
+      <h2>Types of Affiliate Compensation</h2>
+      <p>
+        We may receive compensation in the following ways:
+      </p>
+      <ul>
+        <li>
+          <strong>Pay-Per-Sale:</strong> We earn a percentage when you purchase through our links.
+        </li>
+        <li>
+          <strong>Pay-Per-Lead:</strong> We may earn a fee when you sign up for free trials or 
+          provide your information through our links.
+        </li>
+        <li>
+          <strong>Recurring Commissions:</strong> For subscription services, we may earn ongoing 
+          commissions for as long as you remain a customer.
+        </li>
+      </ul>
+    </section>
+    
+    <section>
+      <h2>Sponsored Content</h2>
+      <p>
+        Occasionally, we may publish sponsored content where companies pay us to create content 
+        about their products. All sponsored content is clearly labeled as "Sponsored," "Advertisement," 
+        or "Paid Partnership" at the beginning of the article.
+      </p>
+      <p>
+        Even in sponsored content, we maintain editorial control and only work with companies whose 
+        products we believe could genuinely benefit our audience.
+      </p>
+    </section>
+    
+    <section>
+      <h2>Product Testing and Reviews</h2>
+      <p>
+        When possible, we test products ourselves before reviewing them. In cases where we haven't 
+        personally tested a product, we:
+      </p>
+      <ul>
+        <li>Conduct thorough research from multiple credible sources</li>
+        <li>Analyze user reviews and feedback from verified purchasers</li>
+        <li>Compare specifications and features against competitors</li>
+        <li>Clearly state in our review that we haven't personally tested the product</li>
+      </ul>
+    </section>
+    
+    <section>
+      <h2>Your Support</h2>
+      <p>
+        By using our affiliate links, you help support InSpotGO at no extra cost to you. The 
+        commissions we earn allow us to:
+      </p>
+      <ul>
+        <li>Keep our content free and accessible to everyone</li>
+        <li>Invest in thorough product testing and research</li>
+        <li>Regularly update our content with the latest information</li>
+        <li>Expand our coverage to include more products and categories</li>
+        <li>Maintain and improve our website</li>
+      </ul>
+      <p>
+        We sincerely appreciate your support!
+      </p>
+    </section>
+    
+    <section>
+      <h2>Questions?</h2>
+      <p>
+        If you have any questions about our affiliate relationships or how we operate, please 
+        don't hesitate to contact us at <a href="mailto:{SITE_CONFIG.contact.email}">{SITE_CONFIG.contact.email}</a> 
+        or visit our <a href="/contact">Contact page</a>.
+      </p>
+      <p>
+        For more information about our editorial process, please see our 
+        <a href="/editorial-policy">Editorial Policy</a>.
+      </p>
+    </section>
+    
+    <section class="legal-notice">
+      <h2>Legal Notice</h2>
+      <p>
+        This affiliate disclosure is provided in good faith and for general information purposes only. 
+        {SITE_CONFIG.legalEntity} makes no warranties about the completeness, reliability, or 
+        accuracy of this information.
+      </p>
+    </section>
+  </div>
 </BaseLayout>
+
+<style>
+  .content-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+  }
+  
+  .last-updated {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+  
+  section {
+    margin: 3rem 0;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
+  
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+  
+  ul {
+    margin: 1rem 0;
+    padding-left: 2rem;
+  }
+  
+  li {
+    margin-bottom: 0.75rem;
+    line-height: 1.7;
+  }
+  
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  .legal-notice {
+    background: var(--color-bg-alt);
+    padding: 1.5rem;
+    border-left: 4px solid var(--color-primary);
+    margin-top: 3rem;
+  }
+  
+  .legal-notice p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+  }
+  
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+  }
+</style>

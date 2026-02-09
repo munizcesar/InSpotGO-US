@@ -1,17 +1,244 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import { SITE_CONFIG } from '../config';
 ---
-<BaseLayout title="About — InSpotGO" description="What is InSpotGO and our mission">
-  <Header />
-  <main class="container" style="padding:2rem 0;">
-    <article class="card">
-      <h1>About InSpotGO</h1>
-      <p>InSpotGO is a product discovery platform focused on bringing curated deals and trusted reviews to US consumers. We highlight useful products across categories and provide transparent information to help shoppers decide.</p>
-      <p>Our mission is to help consumers discover high-quality products through independent research, clear disclosures, and regularly updated recommendations.</p>
-      <p>For details about our editorial standards, see the <a href="/editorial-policy">Editorial Policy</a>.</p>
-    </article>
-  </main>
-  <Footer />
+
+<BaseLayout
+  title="About Us - InSpotGO"
+  description="Learn about InSpotGO's mission to help you discover the best tech products, software, and SaaS tools through honest, expert reviews."
+>
+  <div class="container content-page">
+    <h1>About InSpotGO</h1>
+    
+    <div class="intro">
+      <p class="lead">
+        {SITE_CONFIG.slogan}
+      </p>
+    </div>
+    
+    <section>
+      <h2>Our Mission</h2>
+      <p>
+        At InSpotGO, we believe that making informed purchasing decisions shouldn't be complicated. 
+        With countless tech products, software solutions, and SaaS tools available today, finding 
+        the right option for your needs can be overwhelming.
+      </p>
+      <p>
+        That's why we exist. Our mission is to cut through the noise and provide honest, thorough, 
+        and unbiased reviews that help you make confident decisions. Whether you're shopping for 
+        the latest laptop, searching for productivity software, or evaluating SaaS tools for your 
+        business, we've got you covered.
+      </p>
+    </section>
+    
+    <section>
+      <h2>What We Do</h2>
+      <p>InSpotGO specializes in three core areas:</p>
+      <ul>
+        <li>
+          <strong>Tech Product Reviews:</strong> From laptops and smartphones to accessories and 
+          smart home devices, we test and review the latest technology to help you find products 
+          that match your needs and budget.
+        </li>
+        <li>
+          <strong>Software & SaaS Evaluations:</strong> We dive deep into software applications 
+          and SaaS platforms, comparing features, pricing, and user experience to help you choose 
+          the right tools for productivity, creativity, and business growth.
+        </li>
+        <li>
+          <strong>Buying Guides & Comparisons:</strong> Our comprehensive guides break down complex 
+          decisions into simple recommendations, helping you understand what to look for and which 
+          options offer the best value.
+        </li>
+      </ul>
+    </section>
+    
+    <section>
+      <h2>Our Review Process</h2>
+      <p>
+        Every review on InSpotGO follows a rigorous research and evaluation process:
+      </p>
+      <ol>
+        <li>
+          <strong>Research:</strong> We study product specifications, manufacturer claims, and 
+          user feedback from multiple sources.
+        </li>
+        <li>
+          <strong>Testing:</strong> When possible, we test products hands-on to verify performance 
+          and usability claims.
+        </li>
+        <li>
+          <strong>Comparison:</strong> We compare products against competitors to provide context 
+          and identify the best options in each category.
+        </li>
+        <li>
+          <strong>Analysis:</strong> We evaluate pros, cons, and value to give you a complete picture.
+        </li>
+        <li>
+          <strong>Updates:</strong> We regularly update reviews to reflect new versions, price changes, 
+          and emerging alternatives.
+        </li>
+      </ol>
+    </section>
+    
+    <section>
+      <h2>Our Values</h2>
+      <div class="values-grid">
+        <div class="value-card">
+          <h3>🎯 Honesty</h3>
+          <p>
+            We provide transparent, unbiased reviews. If a product has flaws, we'll tell you. 
+            We never let affiliate relationships influence our honest opinions.
+          </p>
+        </div>
+        <div class="value-card">
+          <h3>🔍 Thoroughness</h3>
+          <p>
+            We dig deep into features, performance, and value to give you the complete information 
+            you need to make informed decisions.
+          </p>
+        </div>
+        <div class="value-card">
+          <h3>👥 User-Focused</h3>
+          <p>
+            Your needs come first. We recommend products that genuinely solve problems and provide 
+            value, not just those with the highest commissions.
+          </p>
+        </div>
+        <div class="value-card">
+          <h3>📚 Expertise</h3>
+          <p>
+            Our team stays current with technology trends and industry developments to provide 
+            informed, accurate recommendations.
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <section>
+      <h2>Affiliate Disclosure</h2>
+      <p>
+        InSpotGO is supported through affiliate partnerships. When you purchase products through 
+        our links, we may earn a commission at no additional cost to you. This helps us maintain 
+        the site and continue creating valuable content.
+      </p>
+      <p>
+        However, our affiliate relationships never influence our editorial decisions. We only 
+        recommend products we believe offer genuine value to our readers. For more details, 
+        please read our <a href="/affiliate-disclosure">Affiliate Disclosure</a> and 
+        <a href="/editorial-policy">Editorial Policy</a>.
+      </p>
+    </section>
+    
+    <section>
+      <h2>Contact Us</h2>
+      <p>
+        Have questions, suggestions, or feedback? We'd love to hear from you! 
+        Visit our <a href="/contact">Contact page</a> to get in touch.
+      </p>
+      <p>
+        You can also reach us at: <a href="mailto:{SITE_CONFIG.contact.email}">{SITE_CONFIG.contact.email}</a>
+      </p>
+    </section>
+  </div>
 </BaseLayout>
+
+<style>
+  .content-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+  
+  .intro {
+    margin: 2rem 0;
+    padding: 2rem;
+    background: var(--color-bg-alt);
+    border-left: 4px solid var(--color-primary);
+  }
+  
+  .lead {
+    font-size: 1.25rem;
+    color: var(--color-text);
+    margin: 0;
+  }
+  
+  section {
+    margin: 3rem 0;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+  
+  ul, ol {
+    margin: 1rem 0;
+    padding-left: 2rem;
+  }
+  
+  li {
+    margin-bottom: 0.75rem;
+    line-height: 1.7;
+  }
+  
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+  
+  .value-card {
+    padding: 1.5rem;
+    background: var(--color-bg-alt);
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+  }
+  
+  .value-card h3 {
+    margin-top: 0;
+    color: var(--color-primary);
+  }
+  
+  .value-card p {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+  
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+    
+    .values-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
