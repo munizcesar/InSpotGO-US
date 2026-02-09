@@ -1,0 +1,167 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE_CONFIG } from '../../config';
+
+const category = SITE_CONFIG.categories.saas;
+---
+
+<BaseLayout
+  title={`${category.name} - InSpotGO`}
+  description={`${category.description}. Expert reviews and comparisons of SaaS tools.`}
+>
+  <div class="container category-page">
+    <div class="category-header">
+      <div class="category-icon">{category.icon}</div>
+      <h1>{category.name}</h1>
+      <p class="category-description">{category.description}</p>
+    </div>
+    
+    <section class="subcategories">
+      <h2>Browse by Category</h2>
+      <div class="subcategory-grid">
+        <a href="/saas/productivity" class="subcategory-card">
+          <h3>⚡ Productivity</h3>
+          <p>Project management, note-taking, and collaboration tools</p>
+        </a>
+        <a href="/saas/marketing" class="subcategory-card">
+          <h3>📢 Marketing</h3>
+          <p>Email marketing, SEO, analytics, and social media tools</p>
+        </a>
+        <a href="/saas/development" class="subcategory-card">
+          <h3>💻 Development</h3>
+          <p>Code editors, version control, and developer tools</p>
+        </a>
+        <a href="/saas/design" class="subcategory-card">
+          <h3>🎨 Design</h3>
+          <p>Graphic design, UI/UX, and creative tools</p>
+        </a>
+      </div>
+    </section>
+    
+    <section class="coming-soon">
+      <div class="info-box">
+        <h2>📝 Content Coming Soon</h2>
+        <p>
+          We're preparing detailed reviews and comparisons of popular SaaS tools. 
+          Upcoming content includes:
+        </p>
+        <ul>
+          <li>Best project management tools for small teams</li>
+          <li>Email marketing software comparison</li>
+          <li>Top design tools for non-designers</li>
+          <li>Productivity app showdowns</li>
+        </ul>
+        <p>
+          Stay tuned for comprehensive guides to help you choose the right SaaS solutions!
+        </p>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .category-page {
+    padding: 3rem 1rem;
+    max-width: 1000px;
+  }
+  
+  .category-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  
+  .category-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+  
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+  
+  .category-description {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+  }
+  
+  section {
+    margin: 4rem 0;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--color-text);
+  }
+  
+  .subcategory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .subcategory-card {
+    padding: 2rem;
+    background: var(--color-bg-alt);
+    border: 2px solid var(--color-border);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .subcategory-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .subcategory-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
+  
+  .subcategory-card p {
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+  
+  .info-box {
+    background: #dbeafe;
+    border-left: 4px solid #2563eb;
+    padding: 2rem;
+    border-radius: 8px;
+  }
+  
+  .info-box h2 {
+    margin-top: 0;
+    color: #1e40af;
+  }
+  
+  .info-box p {
+    line-height: 1.7;
+    color: var(--color-text);
+  }
+  
+  .info-box ul {
+    margin: 1.5rem 0;
+    padding-left: 2rem;
+  }
+  
+  .info-box li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+    
+    .subcategory-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
