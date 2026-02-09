@@ -9,14 +9,24 @@ import CookieBanner from '../components/CookieBanner.astro';
 <BaseLayout title="InSpotGO: Smart Product Discovery" description="Curated deals and trusted reviews for US consumers" canonical={Astro.site}>
   <Header />
   <main class="container" style="padding:2rem 0;">
-    <div style="background:#fff;padding:2rem;border-radius:8px;margin-bottom:1rem" role="region" aria-label="Hero">
-      <div style="display:flex;flex-direction:column;gap:1rem;">
-        <div style="color:var(--color-text-muted)">Disclosure: This page contains affiliate links. We may earn a commission if you purchase through our links.</div>
-        <h1>InSpotGO: Smart Product Discovery</h1>
-        <p>Curated deals and trusted reviews for US consumers</p>
-        <div style="display:flex;gap:.75rem;">
-          <a class="cta-primary" href="/posts">See Details</a>
-          <a class="cta-secondary" href="/editorial-policy">How We Choose</a>
+    <div style="background:#fff;padding:2rem;border-radius:8px;margin-bottom:1rem;" role="region" aria-label="Hero">
+      <div style="display:flex;flex-wrap:wrap;gap:1.5rem;align-items:center;justify-content:space-between;">
+        <div style="color:var(--color-text-muted);font-size:0.9rem;width:100%;margin-bottom:0.5rem;">Disclosure: This page contains affiliate links. We may earn a commission if you purchase through our links.</div>
+        
+        <div class="notranslate" style="display:flex;align-items:center;gap:0.5rem;flex-shrink:0;">
+          <span style="font-size:1.25rem;font-weight:700;color:var(--color-primary);">[ LOGO</span>
+          <span style="font-size:1.25rem;font-weight:700;color:var(--color-primary);">InSpot</span><span style="font-size:1.25rem;font-weight:700;color:var(--color-accent);">GO</span>
+          <span style="font-size:1.25rem;font-weight:700;color:var(--color-primary);">]</span>
+        </div>
+
+        <div style="flex:1;min-width:300px;">
+          <p style="font-size:1.1rem;font-weight:700;color:var(--color-primary);margin:0 0 0.5rem 0;">Choose right. Go confident.</p>
+          <p style="font-size:0.95rem;color:var(--color-text);margin:0;">Independent reviews to help you pick the best product.</p>
+        </div>
+
+        <div style="display:flex;gap:0.75rem;flex-shrink:0;flex-wrap:wrap;justify-content:flex-end;">
+          <a class="cta-primary" href="/posts" style="white-space:nowrap;">Browse Reviews</a>
+          <a class="cta-secondary" href="/editorial-policy" style="white-space:nowrap;">Best Picks</a>
         </div>
       </div>
     </div>
