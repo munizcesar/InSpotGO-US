@@ -18,6 +18,9 @@ const { title = "InSpotGO", description = "Curated deals and trusted reviews for
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
     <meta name="twitter:card" content="summary_large_image" />
+    {Astro.props.frontmatter?.cover && (
+      <meta property="og:image" content={Astro.props.frontmatter.cover} />
+    )}
     <script type="application/ld+json">{JSON.stringify({
       "@context":"https://schema.org",
       "@type":"Organization",

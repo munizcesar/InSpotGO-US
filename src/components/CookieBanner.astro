@@ -1,5 +1,12 @@
 ---
+import { onMount } from 'astro/jsx-runtime';
 let visible = true;
+
+onMount(() => {
+  if (typeof window !== 'undefined') {
+    visible = localStorage.getItem('cookie-consent') !== 'accepted';
+  }
+});
 ---
 {visible ? (
   <div class="cookie-banner" role="dialog" aria-live="polite">
@@ -9,7 +16,12 @@ let visible = true;
         <div style="color:var(--color-text-muted)">We use cookies and similar technologies to improve your experience. No personal data is shared.</div>
       </div>
       <div class="cookie-actions">
-        <button class="cta-secondary" on:click={() => visible = false}>Dismiss</button>
+        <button class="cta-secondary" on:click={() => {
+          visible = false;
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('cookie-consent', 'accepted');
+          }
+        }}>Dismiss</button>
       </div>
     </div>
   </div>
