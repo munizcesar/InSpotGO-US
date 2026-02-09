@@ -1,29 +1,17 @@
 ---
 import PostLayout from '../../layouts/PostLayout.astro';
-// Note: Astro content fetching is placeholder — replace with your content adapter if needed
-const slug = Astro.params.slug;
-let post = null;
-try {
-  // Attempt to load markdown file from content folder
-  post = await Astro.resolve(`./../../content/posts/${slug}.md`).catch(() => null);
-} catch(e) {
-  post = null;
-}
-
-import fs from 'fs';
-import path from 'path';
+import { getCollection, getEntryBySlug } from 'astro:content';
 
 export async function getStaticPaths() {
-  const postsDir = path.resolve('./src/content/posts');
-  const files = fs.readdirSync(postsDir);
-  const paths = files
-    .filter((file) => file.endsWith('.md'))
-    .map((file) => ({ params: { slug: file.replace(/\.md$/, '') } }));
-  return paths;
+  const posts = await getCollection('posts');
+  return posts.map(post => ({ params: { slug: post.slug } }));
 }
+
+const { slug } = Astro.params;
+const post = await getEntryBySlug('posts', slug);
 ---
 {post ? (
-  <PostLayout frontmatter={post.frontmatter}>
+  <PostLayout frontmatter={post.data}>
     <div set:html={post.body} />
   </PostLayout>
 ) : (

@@ -7,40 +7,48 @@ import ProductCard from '../components/ProductCard.astro';
 import CookieBanner from '../components/CookieBanner.astro';
 ---
 <BaseLayout title="InSpotGO: Smart Product Discovery" description="Curated deals and trusted reviews for US consumers" canonical={Astro.site}>
+
   <Header />
-  <main class="container" style="padding:2rem 0;">
-    <div style="background:#fff;padding:2rem;border-radius:8px;margin-bottom:1rem;" role="region" aria-label="Hero">
-      <div style="color:var(--color-text-muted);font-size:0.9rem;margin-bottom:0.5rem;">Disclosure: This page contains affiliate links. We may earn a commission if you purchase through our links.</div>
-      <div style="display:flex;gap:0.75rem;flex-wrap:wrap;justify-content:flex-end;">
-        <a class="cta-primary" href="/posts" style="white-space:nowrap;">Browse Reviews</a>
-        <a class="cta-secondary" href="/editorial-policy" style="white-space:nowrap;">Best Picks</a>
+  <main class="container" style="padding:0;max-width:100vw;">
+    <section aria-label="Homepage hero" style="background:#fff;padding:4.5rem 0 3.2rem 0;min-height:340px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:0 0 28px 28px;box-shadow:0 2px 16px #0f2a4412;">
+      <div style="display:flex;align-items:center;gap:1.2rem;margin-bottom:2.3rem;">
+        <span class="logo-in" style="font-family:'Inter',sans-serif;font-size:2.7rem;font-weight:400;color:#0F2A44;letter-spacing:-1.2px;">InSpot</span>
+        <span class="logo-go" style="font-family:'Inter',sans-serif;font-size:2.7rem;font-weight:700;color:#2DBE60;letter-spacing:-1.2px;">GO</span>
       </div>
-    </div>
-
-    <TrustBar />
-
-    <section style="margin-top:1.25rem;">
-      <h2>Featured Deals</h2>
-      <div class="grid grid-3" style="margin-top:.75rem;">
-        <ProductCard title="Sample Product A" category="Electronics" price="$129.99" rating="4.6" />
-        <ProductCard title="Sample Product B" category="Home" price="$49.99" rating="4.4" />
-        <ProductCard title="Sample Product C" category="Fitness" price="$79.99" rating="4.7" />
-        <ProductCard title="Sample Product D" category="Tech" price="$199.99" rating="4.8" />
-        <ProductCard title="Sample Product E" category="Kitchen" price="$24.99" rating="4.3" />
-        <ProductCard title="Sample Product F" category="Outdoors" price="$59.99" rating="4.5" />
+      <h1 style="font-size:2.3rem;line-height:1.13;font-weight:700;color:#0F2A44;text-align:center;max-width:650px;margin:0 0 1.1rem 0;letter-spacing:-.7px;">Choose right. Go confident.</h1>
+      <p style="font-size:1.22rem;line-height:1.5;color:#1a1a1a;text-align:center;max-width:540px;margin:0 0 2.3rem 0;font-weight:400;">Independent reviews and buying guides to help you choose the right product, faster.</p>
+      <div style="display:flex;gap:1.1rem;flex-wrap:wrap;justify-content:center;">
+        <a class="cta-primary" href="/posts" style="background:#2DBE60;color:#fff;font-size:1.13rem;font-weight:600;padding:1rem 2.2rem;border-radius:8px;box-shadow:0 2px 8px #2dbe6012;">Browse Reviews</a>
+        <a class="cta-secondary" href="/editorial-policy" style="font-size:1.13rem;font-weight:600;">Editorial Policy</a>
       </div>
+      <style>
+        @media (max-width: 600px) {
+          section[aria-label="Homepage hero"] h1 {
+            font-size: 1.35rem;
+            max-width: 98vw;
+          }
+          section[aria-label="Homepage hero"] p {
+            font-size: 1rem;
+            max-width: 98vw;
+          }
+          section[aria-label="Homepage hero"] .logo-in,
+          section[aria-label="Homepage hero"] .logo-go {
+            font-size: 1.5rem;
+          }
+        }
+      </style>
     </section>
-
-    <section style="margin-top:2rem;">
-      <h2>Guides</h2>
+    <TrustBar />
+    <section style="margin-top:2.5rem;">
+      <h2 style="font-size:1.3rem;color:#0F2A44;font-weight:600;margin-bottom:1rem;">Guides</h2>
       <div class="grid grid-3" style="margin-top:.75rem;">
-          <a class="card" href="/posts/best-budget-smartphones-2026">Best Budget Smartphones 2026</a>
-          <a class="card" href="/posts/top-smartphones-2026">Top Smartphones 2026</a>
-          <a class="card" href="/posts/top-kitchen-gadgets-2026">Top Kitchen Gadgets 2026</a>
-          <a class="card" href="/posts/fitness-gear-guide-2026">Fitness Gear Guide 2026</a>
-          <a class="card" href="/posts/home-office-essentials-2026">Home Office Essentials 2026</a>
-          <a class="card" href="/posts/outdoor-gear-2026">Outdoor Gear 2026</a>
-          <a class="card" href="/posts/smart-home-basics-2026">Smart Home Basics 2026</a>
+        <a class="card" href="/posts/best-budget-smartphones-2026">Best Budget Smartphones 2026</a>
+        <a class="card" href="/posts/top-smartphones-2026">Top Smartphones 2026</a>
+        <a class="card" href="/posts/top-kitchen-gadgets-2026">Top Kitchen Gadgets 2026</a>
+        <a class="card" href="/posts/fitness-gear-guide-2026">Fitness Gear Guide 2026</a>
+        <a class="card" href="/posts/home-office-essentials-2026">Home Office Essentials 2026</a>
+        <a class="card" href="/posts/outdoor-gear-2026">Outdoor Gear 2026</a>
+        <a class="card" href="/posts/smart-home-basics-2026">Smart Home Basics 2026</a>
       </div>
     </section>
   </main>

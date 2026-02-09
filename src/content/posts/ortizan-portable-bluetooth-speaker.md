@@ -1,3 +1,5 @@
+
+---
 title: "Ortizan Portable Bluetooth Speaker: IPX7 waterproof, wireless, big sound, deep bass, dual pairing, 3"
 date: 2026-02-08
 category: "Tech"
