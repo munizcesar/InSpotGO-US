@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <!-- Outer ring gradient -->
+    <radialGradient id="outerGrad" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.3" />
+      <stop offset="70%" style="stop-color:#667eea;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#667eea;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Middle ring gradient -->
+    <radialGradient id="middleGrad" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#764ba2;stop-opacity:0.5" />
+      <stop offset="50%" style="stop-color:#764ba2;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Core gradient -->
+    <radialGradient id="coreGrad" cx="50%" cy="40%">
+      <stop offset="0%" style="stop-color:#FFB74D;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#EA580C;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Inner glow for core -->
+    <radialGradient id="glowGrad" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.6" />
+      <stop offset="50%" style="stop-color:#FFFFFF;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:0" />
+    </radialGradient>
+    
+    <!-- Outer glow filter -->
+    <filter id="outerGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feFlood flood-color="#F97316" flood-opacity="0.4"/>
+      <feComposite in2="blur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Shadow for depth -->
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="0" dy="2" result="offsetblur"/>
+      <feFlood flood-color="#000000" flood-opacity="0.2"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Outer ring (largest) -->
+  <circle cx="100" cy="100" r="85" fill="none" stroke="url(#outerGrad)" stroke-width="3" opacity="0.8" filter="url(#shadow)"/>
+  
+  <!-- Middle ring -->
+  <circle cx="100" cy="100" r="60" fill="none" stroke="url(#middleGrad)" stroke-width="4" opacity="0.9" filter="url(#shadow)"/>
+  
+  <!-- Inner ring (thin accent) -->
+  <circle cx="100" cy="100" r="38" fill="none" stroke="#764ba2" stroke-width="2" opacity="0.6"/>
+  
+  <!-- Core circle with gradient -->
+  <circle cx="100" cy="100" r="30" fill="url(#coreGrad)" filter="url(#outerGlow)"/>
+  
+  <!-- Inner highlight (3D effect) -->
+  <circle cx="100" cy="95" r="20" fill="url(#glowGrad)" opacity="0.5"/>
+  
+  <!-- Central dot (focal point) -->
+  <circle cx="100" cy="100" r="8" fill="#FFFFFF" opacity="0.9"/>
+  
+  <!-- Subtle shine effect -->
+  <ellipse cx="100" cy="85" rx="15" ry="8" fill="#FFFFFF" opacity="0.15"/>
+</svg>
