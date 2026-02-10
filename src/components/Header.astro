@@ -3,17 +3,131 @@ import "../styles/global.css";
 ---
 <header class="header" role="banner">
   <div class="container container-flex">
-    <a href="/" class="logo notranslate logo-block" aria-label="InSpotGO home" style="text-decoration:none; display:flex; flex-direction:column; align-items:flex-start;">
-      <span>
-        <span class="logo-in" style="font-size: 1.75rem;">InSpot</span><span class="logo-go" style="font-size: 1.75rem;">GO</span>
-      </span>
-      <span class="logo-slogan">Choose right. Go confident.</span>
+    <a href="/" class="logo-link" aria-label="InSpotGO home">
+      <!-- Desktop: Logo horizontal -->
+      <img src="/logo-horizontal.svg" alt="InSpotGO" class="logo-desktop" height="50">
+      <!-- Mobile: Logo icon only -->
+      <img src="/logo-icon.svg" alt="InSpotGO" class="logo-mobile" height="40">
     </a>
     <nav aria-label="Main navigation" class="nav">
-      <a href="/posts" class="nav-link">Guides</a>
+      <a href="/tech" class="nav-link">Tech</a>
+      <a href="/saas" class="nav-link">SaaS</a>
+      <a href="/software" class="nav-link">Software</a>
+      <a href="/guides" class="nav-link">Guides</a>
       <a href="/about" class="nav-link">About</a>
       <a href="/contact" class="nav-link">Contact</a>
-      <a class="cta-secondary" href="/posts">See Details</a>
     </nav>
   </div>
 </header>
+
+<style>
+  .header {
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.95);
+  }
+  
+  .container-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  /* Logo Styles */
+  .logo-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .logo-link:hover {
+    transform: scale(1.05);
+  }
+  
+  .logo-desktop {
+    display: block;
+    height: 50px;
+    width: auto;
+  }
+  
+  .logo-mobile {
+    display: none;
+  }
+  
+  /* Navigation */
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  
+  .nav-link {
+    color: var(--color-text);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+    position: relative;
+  }
+  
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: width 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: var(--color-primary);
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .container-flex {
+      padding: 0.75rem 1rem;
+    }
+    
+    .logo-desktop {
+      display: none;
+    }
+    
+    .logo-mobile {
+      display: block;
+      height: 40px;
+    }
+    
+    .nav {
+      gap: 1rem;
+    }
+    
+    .nav-link {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .nav {
+      gap: 0.5rem;
+    }
+    
+    .nav-link {
+      font-size: 0.85rem;
+    }
+  }
+</style>
