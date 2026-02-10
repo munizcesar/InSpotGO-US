@@ -12,15 +12,15 @@
   <!-- Inner border -->
   <rect x="6" y="6" width="116" height="116" rx="22" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
   
-  <!-- Text Group - Centered -->
+  <!-- Text Group - Centered with larger font -->
   <g transform="translate(64, 64)">
     <!-- I - White -->
     <text 
-      x="-20" 
-      y="16" 
+      x="-22" 
+      y="20" 
       font-family="'SF Pro Display', 'Segoe UI', system-ui, sans-serif" 
       font-weight="800" 
-      font-size="48" 
+      font-size="64" 
       fill="#FFFFFF"
       text-anchor="middle">
       I
@@ -28,17 +28,17 @@
     
     <!-- G - Orange -->
     <text 
-      x="15" 
-      y="16" 
+      x="20" 
+      y="20" 
       font-family="'SF Pro Display', 'Segoe UI', system-ui, sans-serif" 
       font-weight="800" 
-      font-size="48" 
+      font-size="64" 
       fill="#FF9800"
       text-anchor="middle">
       G
     </text>
   </g>
   
-  <!-- Accent dot (optional - small and discrete) -->
-  <circle cx="98" cy="30" r="3.5" fill="#FF9800" opacity="0.8"/>
+  <!-- Accent dot -->
+  <circle cx="100" cy="28" r="4" fill="#FF9800" opacity="0.85"/>
 </svg>
