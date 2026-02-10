@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { SITE_CONFIG } from '../../config';
+import { Laptop, Smartphone, Headphones, Home } from 'lucide-astro';
 
 const category = SITE_CONFIG.categories.tech;
 ---
@@ -20,19 +21,31 @@ const category = SITE_CONFIG.categories.tech;
       <h2>Browse by Category</h2>
       <div class="subcategory-grid">
         <a href="/tech/laptops" class="subcategory-card">
-          <h3>💻 Laptops</h3>
+          <div class="icon-wrapper">
+            <Laptop size={40} stroke-width={1.5} />
+          </div>
+          <h3>Laptops</h3>
           <p>Reviews of the best laptops for work, gaming, and creativity</p>
         </a>
         <a href="/tech/smartphones" class="subcategory-card">
-          <h3>📱 Smartphones</h3>
+          <div class="icon-wrapper">
+            <Smartphone size={40} stroke-width={1.5} />
+          </div>
+          <h3>Smartphones</h3>
           <p>Latest smartphone reviews and comparisons</p>
         </a>
         <a href="/tech/accessories" class="subcategory-card">
-          <h3>🎧 Accessories</h3>
+          <div class="icon-wrapper">
+            <Headphones size={40} stroke-width={1.5} />
+          </div>
+          <h3>Accessories</h3>
           <p>Headphones, keyboards, mice, and more</p>
         </a>
         <a href="/tech/smart-home" class="subcategory-card">
-          <h3>🏠 Smart Home</h3>
+          <div class="icon-wrapper">
+            <Home size={40} stroke-width={1.5} />
+          </div>
+          <h3>Smart Home</h3>
           <p>Smart speakers, lights, security systems, and IoT devices</p>
         </a>
       </div>
@@ -109,12 +122,30 @@ const category = SITE_CONFIG.categories.tech;
     border-radius: 12px;
     text-decoration: none;
     transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
   
   .subcategory-card:hover {
     border-color: var(--color-primary);
     transform: translateY(-4px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .icon-wrapper {
+    color: var(--color-primary);
+    margin-bottom: 1.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .subcategory-card:hover .icon-wrapper {
+    color: var(--color-action);
+    transform: scale(1.1);
+    transition: all 0.3s ease;
   }
   
   .subcategory-card h3 {
