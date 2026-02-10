@@ -1,15 +1,7 @@
-# Cloudflare Pages Deployment Trigger
-# Last updated: 2026-02-09 21:33 BRT
+# Force deployment trigger
+# This file forces Cloudflare Pages to redeploy and sync all files from /public folder
+# Including: favicon.svg, logo-icon.svg, logo-horizontal.svg
 
-This file triggers automatic deployment to Cloudflare Pages.
-
-## Latest Changes:
-- Dual-color branding (Blue + Orange + Green)
-- Google Analytics 4 (G-5J84J9C65G)
-- Complete site structure
-- SEO optimized
-- Legal compliance
-
-## Deployment Info:
-Commit: Latest from main branch
-Expected result: Full site with new color system
+Deploy timestamp: 2026-02-10T23:44:00-03:00
+Reason: Logo SVG files from commits 7ad1979, 27d2a06, 849b993 were not deployed
+Expected result: Logo with 3D target icon should appear in header
