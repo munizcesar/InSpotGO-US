@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE_CONFIG } from '../config';
 import CategoryCard from '../components/CategoryCard.astro';
+import { Target, BarChart3, Lightbulb, Flame, CheckCircle2, Search, Users, RefreshCw } from 'lucide-astro';
 ---
 
 <BaseLayout>
@@ -75,22 +76,30 @@ import CategoryCard from '../components/CategoryCard.astro';
       
       <div class="coming-soon-grid">
         <div class="coming-soon-card">
-          <div class="card-icon">🎯</div>
+          <div class="card-icon">
+            <Target size={48} stroke-width={1.5} />
+          </div>
           <h3>In-Depth Reviews</h3>
           <p>Honest, detailed reviews of the latest tech products and software tools</p>
         </div>
         <div class="coming-soon-card">
-          <div class="card-icon">📊</div>
+          <div class="card-icon">
+            <BarChart3 size={48} stroke-width={1.5} />
+          </div>
           <h3>Comparison Guides</h3>
           <p>Side-by-side comparisons to help you choose the right option</p>
         </div>
         <div class="coming-soon-card">
-          <div class="card-icon">💡</div>
+          <div class="card-icon">
+            <Lightbulb size={48} stroke-width={1.5} />
+          </div>
           <h3>Expert Tips</h3>
           <p>Buying guides and how-tos from our team of tech enthusiasts</p>
         </div>
         <div class="coming-soon-card">
-          <div class="card-icon">🔥</div>
+          <div class="card-icon">
+            <Flame size={48} stroke-width={1.5} />
+          </div>
           <h3>Best Deals</h3>
           <p>Curated deals and discounts on top-rated products</p>
         </div>
@@ -105,22 +114,30 @@ import CategoryCard from '../components/CategoryCard.astro';
       
       <div class="trust-grid">
         <div class="trust-item">
-          <div class="trust-icon">✓</div>
+          <div class="trust-icon">
+            <CheckCircle2 size={56} stroke-width={1.5} />
+          </div>
           <h3>Unbiased Reviews</h3>
           <p>We provide honest opinions based on thorough research and testing</p>
         </div>
         <div class="trust-item">
-          <div class="trust-icon">🔍</div>
+          <div class="trust-icon">
+            <Search size={56} stroke-width={1.5} />
+          </div>
           <h3>Thorough Research</h3>
           <p>Every review is backed by extensive research and analysis</p>
         </div>
         <div class="trust-item">
-          <div class="trust-icon">🎯</div>
+          <div class="trust-icon">
+            <Users size={56} stroke-width={1.5} />
+          </div>
           <h3>User-Focused</h3>
           <p>We prioritize your needs, not just commission rates</p>
         </div>
         <div class="trust-item">
-          <div class="trust-icon">🔄</div>
+          <div class="trust-icon">
+            <RefreshCw size={56} stroke-width={1.5} />
+          </div>
           <h3>Always Updated</h3>
           <p>We regularly update content to reflect the latest information</p>
         </div>
@@ -312,8 +329,10 @@ import CategoryCard from '../components/CategoryCard.astro';
   }
   
   .card-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    color: var(--color-primary);
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
   }
   
   .coming-soon-card h3 {
@@ -346,10 +365,10 @@ import CategoryCard from '../components/CategoryCard.astro';
   }
   
   .trust-icon {
-    font-size: 3rem;
-    margin-bottom: 1rem;
     color: var(--color-success);
-    font-weight: bold;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
   }
   
   .trust-item h3 {
