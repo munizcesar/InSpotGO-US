@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" style="enable-background:new 0 0 400 100;">
+  <defs>
+    <!-- Outer ring gradient -->
+    <radialGradient id="outerGrad" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:0.3" />
+      <stop offset="70%" style="stop-color:#667eea;stop-opacity:0.8" />
+      <stop offset="100%" style="stop-color:#667eea;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Middle ring gradient -->
+    <radialGradient id="middleGrad" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#764ba2;stop-opacity:0.5" />
+      <stop offset="50%" style="stop-color:#764ba2;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Core gradient -->
+    <radialGradient id="coreGrad" cx="50%" cy="40%">
+      <stop offset="0%" style="stop-color:#FFB74D;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#F97316;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#EA580C;stop-opacity:1" />
+    </radialGradient>
+    
+    <!-- Inner glow -->
+    <radialGradient id="glowGrad" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.6" />
+      <stop offset="50%" style="stop-color:#FFFFFF;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:0" />
+    </radialGradient>
+    
+    <!-- Outer glow filter -->
+    <filter id="outerGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feFlood flood-color="#F97316" flood-opacity="0.3"/>
+      <feComposite in2="blur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Shadow -->
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1.5"/>
+      <feOffset dx="0" dy="1" result="offsetblur"/>
+      <feFlood flood-color="#000000" flood-opacity="0.15"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- TARGET ICON -->
+  <g transform="translate(50, 50)">
+    <!-- Outer ring -->
+    <circle cx="0" cy="0" r="38" fill="none" stroke="url(#outerGrad)" stroke-width="2.5" opacity="0.8" filter="url(#shadow)"/>
+    
+    <!-- Middle ring -->
+    <circle cx="0" cy="0" r="27" fill="none" stroke="url(#middleGrad)" stroke-width="3" opacity="0.9" filter="url(#shadow)"/>
+    
+    <!-- Inner ring -->
+    <circle cx="0" cy="0" r="17" fill="none" stroke="#764ba2" stroke-width="1.5" opacity="0.6"/>
+    
+    <!-- Core -->
+    <circle cx="0" cy="0" r="13.5" fill="url(#coreGrad)" filter="url(#outerGlow)"/>
+    
+    <!-- Inner highlight -->
+    <circle cx="0" cy="-2" r="9" fill="url(#glowGrad)" opacity="0.5"/>
+    
+    <!-- Central dot -->
+    <circle cx="0" cy="0" r="3.5" fill="#FFFFFF" opacity="0.9"/>
+    
+    <!-- Shine -->
+    <ellipse cx="0" cy="-7" rx="7" ry="3.5" fill="#FFFFFF" opacity="0.15"/>
+  </g>
+  
+  <!-- TEXT: InSpotGO -->
+  <text x="110" y="62" font-family="'Inter', 'SF Pro Display', system-ui, -apple-system, 'Segoe UI', sans-serif" font-weight="700" font-size="42" letter-spacing="-1.5">
+    <!-- "InSpot" in primary blue -->
+    <tspan fill="#2563EB">InSpot</tspan><!-- "GO" in orange --><tspan fill="#F97316">GO</tspan>
+  </text>
+  
+  <!-- Optional subtle underline (uncomment if desired) -->
+  <!-- <line x1="110" y1="72" x2="340" y2="72" stroke="#E5E7EB" stroke-width="2" opacity="0.5"/> -->
+</svg>
