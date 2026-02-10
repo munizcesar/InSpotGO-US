@@ -10,15 +10,19 @@ import CategoryCard from '../components/CategoryCard.astro';
     <div class="container">
       <div class="hero-content">
         <h1>
-          <span class="hero-title">{SITE_CONFIG.name}</span>
-          <span class="hero-slogan">{SITE_CONFIG.slogan}</span>
+          <span class="hero-title">
+            <span class="hero-spot">InSpot</span><span class="hero-go">GO</span>
+          </span>
+          <span class="hero-slogan">
+            Spot the Best. <span class="go-emphasis">GO</span> Confident.
+          </span>
         </h1>
         <p class="hero-description">
           {SITE_CONFIG.description}
         </p>
         <div class="hero-cta">
           <a href="#categories" class="btn btn-primary">Explore Reviews</a>
-          <a href="/about" class="btn btn-secondary">Learn More</a>
+          <a href="/about" class="btn btn-outline">Learn More</a>
         </div>
       </div>
     </div>
@@ -71,19 +75,23 @@ import CategoryCard from '../components/CategoryCard.astro';
       
       <div class="coming-soon-grid">
         <div class="coming-soon-card">
-          <h3>🎯 In-Depth Reviews</h3>
+          <div class="card-icon">🎯</div>
+          <h3>In-Depth Reviews</h3>
           <p>Honest, detailed reviews of the latest tech products and software tools</p>
         </div>
         <div class="coming-soon-card">
-          <h3>📊 Comparison Guides</h3>
+          <div class="card-icon">📊</div>
+          <h3>Comparison Guides</h3>
           <p>Side-by-side comparisons to help you choose the right option</p>
         </div>
         <div class="coming-soon-card">
-          <h3>💡 Expert Tips</h3>
+          <div class="card-icon">💡</div>
+          <h3>Expert Tips</h3>
           <p>Buying guides and how-tos from our team of tech enthusiasts</p>
         </div>
         <div class="coming-soon-card">
-          <h3>🔥 Best Deals</h3>
+          <div class="card-icon">🔥</div>
+          <h3>Best Deals</h3>
           <p>Curated deals and discounts on top-rated products</p>
         </div>
       </div>
@@ -125,13 +133,15 @@ import CategoryCard from '../components/CategoryCard.astro';
     <div class="container">
       <h2>Ready to Make Better Choices?</h2>
       <p>Explore our reviews and guides to find the perfect products for your needs</p>
-      <a href="#categories" class="btn btn-primary">Get Started</a>
+      <a href="#categories" class="btn btn-cta">Get Started →</a>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  /* Hero Section */
+  /* ============================================
+     Hero Section - Dual Color Branding
+     ============================================ */
   .hero {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -146,9 +156,18 @@ import CategoryCard from '../components/CategoryCard.astro';
   
   .hero-title {
     display: block;
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 800;
     margin-bottom: 1rem;
+  }
+  
+  /* Dual-color logo in hero */
+  .hero-spot {
+    color: white;
+  }
+  
+  .hero-go {
+    color: var(--color-action-light);
   }
   
   .hero-slogan {
@@ -159,10 +178,15 @@ import CategoryCard from '../components/CategoryCard.astro';
     opacity: 0.95;
   }
   
+  .go-emphasis {
+    color: var(--color-action-light);
+    font-weight: 700;
+  }
+  
   .hero-description {
     font-size: 1.25rem;
     line-height: 1.6;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     opacity: 0.9;
   }
   
@@ -173,7 +197,9 @@ import CategoryCard from '../components/CategoryCard.astro';
     flex-wrap: wrap;
   }
   
-  /* Buttons */
+  /* ============================================
+     Buttons - Color Psychology
+     ============================================ */
   .btn {
     display: inline-block;
     padding: 1rem 2rem;
@@ -182,31 +208,52 @@ import CategoryCard from '../components/CategoryCard.astro';
     text-decoration: none;
     border-radius: 8px;
     transition: all 0.3s ease;
+    border: 2px solid transparent;
   }
   
+  /* Primary CTA - Orange (Action) */
   .btn-primary {
-    background: white;
-    color: #667eea;
+    background: var(--color-action);
+    color: white;
+    border-color: var(--color-action);
   }
   
   .btn-primary:hover {
-    background: #f7f7f7;
+    background: var(--color-action-dark);
+    border-color: var(--color-action-dark);
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
   }
   
-  .btn-secondary {
+  /* Outline button - White on gradient */
+  .btn-outline {
     background: transparent;
     color: white;
     border: 2px solid white;
   }
   
-  .btn-secondary:hover {
+  .btn-outline:hover {
     background: white;
-    color: #667eea;
+    color: var(--color-primary);
   }
   
-  /* Sections */
+  /* CTA section button - White with orange text */
+  .btn-cta {
+    background: white;
+    color: var(--color-action);
+    font-size: 1.2rem;
+    padding: 1.25rem 2.5rem;
+  }
+  
+  .btn-cta:hover {
+    background: #f7f7f7;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* ============================================
+     Sections
+     ============================================ */
   section {
     padding: 4rem 0;
   }
@@ -225,7 +272,9 @@ import CategoryCard from '../components/CategoryCard.astro';
     margin-bottom: 3rem;
   }
   
-  /* Categories Grid */
+  /* ============================================
+     Categories Grid
+     ============================================ */
   .categories {
     background: var(--color-bg-alt);
   }
@@ -237,7 +286,9 @@ import CategoryCard from '../components/CategoryCard.astro';
     margin-top: 3rem;
   }
   
-  /* Coming Soon Grid */
+  /* ============================================
+     Coming Soon Grid
+     ============================================ */
   .coming-soon-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -247,10 +298,22 @@ import CategoryCard from '../components/CategoryCard.astro';
   
   .coming-soon-card {
     padding: 2rem;
-    background: var(--color-bg-alt);
+    background: white;
     border-radius: 12px;
-    border: 1px solid var(--color-border);
+    border: 2px solid var(--color-border);
     text-align: center;
+    transition: all 0.3s ease;
+  }
+  
+  .coming-soon-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.1);
+  }
+  
+  .card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
   }
   
   .coming-soon-card h3 {
@@ -264,7 +327,9 @@ import CategoryCard from '../components/CategoryCard.astro';
     line-height: 1.6;
   }
   
-  /* Trust Section */
+  /* ============================================
+     Trust Section
+     ============================================ */
   .trust {
     background: var(--color-bg-alt);
   }
@@ -283,6 +348,8 @@ import CategoryCard from '../components/CategoryCard.astro';
   .trust-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
+    color: var(--color-success);
+    font-weight: bold;
   }
   
   .trust-item h3 {
@@ -296,7 +363,9 @@ import CategoryCard from '../components/CategoryCard.astro';
     line-height: 1.6;
   }
   
-  /* CTA Section */
+  /* ============================================
+     CTA Section
+     ============================================ */
   .cta-section {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -315,14 +384,16 @@ import CategoryCard from '../components/CategoryCard.astro';
     opacity: 0.9;
   }
   
-  /* Responsive */
+  /* ============================================
+     Responsive
+     ============================================ */
   @media (max-width: 768px) {
     .hero {
       padding: 4rem 0;
     }
     
     .hero-title {
-      font-size: 2rem;
+      font-size: 2.5rem;
     }
     
     .hero-slogan {

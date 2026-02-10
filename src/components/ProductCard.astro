@@ -1,5 +1,6 @@
 ---
 // Reusable product card component for reviews
+// Uses color psychology: Blue (trust) + Orange (action) + Green (validation)
 interface Props {
   title: string;
   description: string;
@@ -8,6 +9,7 @@ interface Props {
   price?: string;
   href: string;
   affiliateLink?: string;
+  badge?: string; // Optional badge like "Editor's Pick", "Best Value"
 }
 
 const {
@@ -18,12 +20,16 @@ const {
   price,
   href,
   affiliateLink,
+  badge,
 } = Astro.props;
 ---
 
 <div class="product-card">
   <a href={href} class="product-image-link">
     <img src={image} alt={title} class="product-image" loading="lazy" />
+    {badge && (
+      <span class="product-badge">🏆 {badge}</span>
+    )}
   </a>
   
   <div class="product-content">
@@ -52,7 +58,7 @@ const {
             target="_blank"
             rel="nofollow noopener sponsored"
           >
-            Check Price
+            Check Price →
           </a>
         )}
       </div>
@@ -73,8 +79,8 @@ const {
   }
   
   .product-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
   }
   
   .product-image-link {
@@ -82,6 +88,7 @@ const {
     width: 100%;
     aspect-ratio: 16/9;
     overflow: hidden;
+    position: relative;
   }
   
   .product-image {
@@ -93,6 +100,21 @@ const {
   
   .product-card:hover .product-image {
     transform: scale(1.05);
+  }
+  
+  /* Badge - Green for validation */
+  .product-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--color-success);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+    z-index: 10;
   }
   
   .product-content {
@@ -113,6 +135,7 @@ const {
     transition: color 0.2s;
   }
   
+  /* Blue for informational links */
   .product-title:hover h3 {
     color: var(--color-primary);
   }
@@ -127,11 +150,13 @@ const {
   .stars {
     color: #fbbf24;
     font-size: 1.1rem;
+    letter-spacing: 2px;
   }
   
   .rating-number {
     color: var(--color-text-light);
     font-size: 0.9rem;
+    font-weight: 600;
   }
   
   .product-description {
@@ -149,7 +174,7 @@ const {
     display: block;
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--color-primary);
+    color: var(--color-text);
     margin-bottom: 1rem;
   }
   
@@ -166,28 +191,48 @@ const {
     padding: 0.75rem 1.5rem;
     text-align: center;
     text-decoration: none;
-    border-radius: 6px;
+    border-radius: 8px;
     font-weight: 600;
     transition: all 0.2s;
+    font-size: 0.95rem;
   }
   
+  /* Blue button - Informational (trust) */
   .btn-review {
-    background: var(--color-bg-alt);
-    color: var(--color-text);
-    border: 1px solid var(--color-border);
+    background: var(--color-primary);
+    color: white;
+    border: 2px solid var(--color-primary);
   }
   
   .btn-review:hover {
-    background: var(--color-bg);
-    border-color: var(--color-primary);
+    background: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
   }
   
+  /* Orange button - Action/Conversion (affiliate link) */
   .btn-buy {
-    background: var(--color-primary);
+    background: var(--color-action);
     color: white;
+    border: 2px solid var(--color-action);
   }
   
   .btn-buy:hover {
-    background: var(--color-secondary);
+    background: var(--color-action-dark);
+    border-color: var(--color-action-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+  }
+  
+  @media (max-width: 480px) {
+    .product-actions {
+      flex-direction: column;
+    }
+    
+    .btn-review,
+    .btn-buy {
+      width: 100%;
+    }
   }
 </style>
