@@ -13,12 +13,16 @@
   <!-- Inner glow effect -->
   <rect x="4" y="4" width="120" height="120" rx="20" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
   
-  <!-- Letter I - White/Blue -->
-  <text x="38" y="85" font-family="'Inter', 'SF Pro Display', system-ui, -apple-system, 'Segoe UI', sans-serif" font-weight="800" font-size="64" fill="#FFFFFF" style="letter-spacing: -2px;">I</text>
+  <!-- TEXT: Perfectly Centered -->
+  <g text-anchor="middle">
+    <!-- Letter I - White -->
+    <text x="50" y="82" font-family="'Inter', 'SF Pro Display', system-ui, -apple-system, 'Segoe UI', sans-serif" font-weight="800" font-size="56" fill="#FFFFFF" letter-spacing="-2">I</text>
+    
+    <!-- Letter G - Orange -->
+    <text x="82" y="82" font-family="'Inter', 'SF Pro Display', system-ui, -apple-system, 'Segoe UI', sans-serif" font-weight="800" font-size="56" fill="#FFA726" letter-spacing="-2">G</text>
+  </g>
   
-  <!-- Letter G - Orange -->
-  <text x="64" y="85" font-family="'Inter', 'SF Pro Display', system-ui, -apple-system, 'Segoe UI', sans-serif" font-weight="800" font-size="64" fill="#FFA726" style="letter-spacing: -2px;">G</text>
-  
-  <!-- Small dot accent (GO reference) -->
-  <circle cx="106" cy="36" r="6" fill="#FFA726" opacity="0.9"/>
+  <!-- Small dot accent (GO reference) - top right corner -->
+  <circle cx="102" cy="26" r="5" fill="#FFA726" opacity="0.95"/>
+  <circle cx="102" cy="26" r="3" fill="#FFFFFF" opacity="0.5"/>
 </svg>
