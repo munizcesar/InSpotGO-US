@@ -3,7 +3,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://inspotgo.com',
+  site: 'https://inspotgo-us.pages.dev',
   
   // Sitemap generation
   integrations: [
@@ -12,19 +12,10 @@ export default defineConfig({
       filter: (page) => 
         !page.includes('/admin/') && 
         !page.includes('/api/'),
-      
-      // Customize URLs
-      customPages: [
-        'https://inspotgo.com',
-        'https://inspotgo.com/tech',
-        'https://inspotgo.com/saas',
-        'https://inspotgo.com/software',
-        'https://inspotgo.com/guides',
-      ],
     }),
   ],
   
-  // Build optimization
+  // Build optimization for Cloudflare Pages
   build: {
     inlineStylesheets: 'auto',
   },
@@ -34,32 +25,6 @@ export default defineConfig({
     shikiConfig: {
       theme: 'github-dark',
       wrap: true,
-    },
-  },
-  
-  // Image optimization
-  image: {
-    service: {
-      entrypoint: 'astro/assets/services/sharp',
-    },
-  },
-  
-  // Prefetch for better performance
-  prefetch: {
-    prefetchAll: true,
-    defaultStrategy: 'viewport',
-  },
-  
-  // Security headers
-  vite: {
-    build: {
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            'vendor': ['astro'],
-          },
-        },
-      },
     },
   },
 });
