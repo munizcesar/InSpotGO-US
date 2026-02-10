@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { SITE, LEGAL } from '../../config';
+import { SITE_CONFIG } from '../../config';
+
+const lastUpdated = 'February 8, 2026';
 ---
 
 <BaseLayout
@@ -10,12 +12,12 @@ import { SITE, LEGAL } from '../../config';
 >
   <div class="container legal-page">
     <h1>Privacy Policy</h1>
-    <p class="last-updated">Last Updated: {LEGAL.lastUpdated}</p>
+    <p class="last-updated">Last Updated: {lastUpdated}</p>
     
     <section>
       <h2>1. Introduction</h2>
       <p>
-        Welcome to {SITE.name}. We respect your privacy and are committed to protecting your personal data. 
+        Welcome to {SITE_CONFIG.name}. We respect your privacy and are committed to protecting your personal data. 
         This privacy policy explains how we collect, use, and safeguard your information when you visit our website.
       </p>
     </section>
@@ -157,14 +159,14 @@ import { SITE, LEGAL } from '../../config';
         If you have questions about this privacy policy or want to exercise your rights, please contact us:
       </p>
       <ul>
-        <li><strong>Email:</strong> <a href="mailto:{SITE.email}">{SITE.email}</a></li>
+        <li><strong>Email:</strong> <a href="mailto:{SITE_CONFIG.contact.email}">{SITE_CONFIG.contact.email}</a></li>
         <li><strong>Website:</strong> <a href="/contact">Contact Form</a></li>
       </ul>
     </section>
     
     <section class="jurisdiction">
-      <p><strong>Jurisdiction:</strong> {LEGAL.jurisdiction}</p>
-      <p><strong>Entity:</strong> {LEGAL.company}</p>
+      <p><strong>Entity:</strong> {SITE_CONFIG.legalEntity}</p>
+      <p><strong>Founded:</strong> {SITE_CONFIG.foundedYear}</p>
     </section>
   </div>
   
