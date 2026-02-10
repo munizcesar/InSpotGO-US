@@ -1,22 +1,238 @@
 ---
-export interface Props {
+// Reusable product card component for reviews
+// Uses color psychology: Blue (trust) + Orange (action) + Green (validation)
+interface Props {
   title: string;
-  category?: string;
+  description: string;
+  image?: string;
+  rating?: number;
   price?: string;
-  rating?: string;
-  link?: string;
+  href: string;
+  affiliateLink?: string;
+  badge?: string; // Optional badge like "Editor's Pick", "Best Value"
 }
-const { title, category = "Category", price = "$99.99", rating = "4.5", link = "https://example.com/go/deal?item=XXXX" } = Astro.props as Props;
+
+const {
+  title,
+  description,
+  image = '/placeholder-product.jpg',
+  rating,
+  price,
+  href,
+  affiliateLink,
+  badge,
+} = Astro.props;
 ---
-<article class="card" aria-label={title}>
-  <div class="card-row">
-    <div>
-      <div class="card-meta">{category}</div>
-      <h3 class="card-title">{title}</h3>
-      <div class="product-price">{price} • {rating} ★</div>
-    </div>
-    <div>
-      <a class="cta-primary" href={link} rel="nofollow noopener noreferrer" target="_blank" aria-label={"Go to deal for " + title}>Check Price</a>
+
+<div class="product-card">
+  <a href={href} class="product-image-link">
+    <img src={image} alt={title} class="product-image" loading="lazy" />
+    {badge && (
+      <span class="product-badge">🏆 {badge}</span>
+    )}
+  </a>
+  
+  <div class="product-content">
+    <a href={href} class="product-title">
+      <h3>{title}</h3>
+    </a>
+    
+    {rating && (
+      <div class="product-rating">
+        <span class="stars">{'★'.repeat(Math.floor(rating))}{'☆'.repeat(5 - Math.floor(rating))}</span>
+        <span class="rating-number">{rating}/5</span>
+      </div>
+    )}
+    
+    <p class="product-description">{description}</p>
+    
+    <div class="product-footer">
+      {price && <span class="product-price">{price}</span>}
+      
+      <div class="product-actions">
+        <a href={href} class="btn-review">Read Review</a>
+        {affiliateLink && (
+          <a 
+            href={affiliateLink} 
+            class="btn-buy"
+            target="_blank"
+            rel="nofollow noopener sponsored"
+          >
+            Check Price →
+          </a>
+        )}
+      </div>
     </div>
   </div>
-</article>
+</div>
+
+<style>
+  .product-card {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .product-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    transform: translateY(-4px);
+  }
+  
+  .product-image-link {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .product-card:hover .product-image {
+    transform: scale(1.05);
+  }
+  
+  /* Badge - Green for validation */
+  .product-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--color-success);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+    z-index: 10;
+  }
+  
+  .product-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  .product-title {
+    text-decoration: none;
+    color: var(--color-text);
+  }
+  
+  .product-title h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    transition: color 0.2s;
+  }
+  
+  /* Blue for informational links */
+  .product-title:hover h3 {
+    color: var(--color-primary);
+  }
+  
+  .product-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .stars {
+    color: #fbbf24;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+  }
+  
+  .rating-number {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  
+  .product-description {
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    flex: 1;
+  }
+  
+  .product-footer {
+    margin-top: auto;
+  }
+  
+  .product-price {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+  }
+  
+  .product-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  
+  .btn-review,
+  .btn-buy {
+    flex: 1;
+    min-width: 120px;
+    padding: 0.75rem 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.2s;
+    font-size: 0.95rem;
+  }
+  
+  /* Blue button - Informational (trust) */
+  .btn-review {
+    background: var(--color-primary);
+    color: white;
+    border: 2px solid var(--color-primary);
+  }
+  
+  .btn-review:hover {
+    background: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  }
+  
+  /* Orange button - Action/Conversion (affiliate link) */
+  .btn-buy {
+    background: var(--color-action);
+    color: white;
+    border: 2px solid var(--color-action);
+  }
+  
+  .btn-buy:hover {
+    background: var(--color-action-dark);
+    border-color: var(--color-action-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
+  }
+  
+  @media (max-width: 480px) {
+    .product-actions {
+      flex-direction: column;
+    }
+    
+    .btn-review,
+    .btn-buy {
+      width: 100%;
+    }
+  }
+</style>

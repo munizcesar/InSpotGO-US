@@ -1,46 +1,467 @@
 ---
-import "../styles/global.css";
-const { title = "InSpotGO", description = "Curated deals and trusted reviews for US consumers", canonical = Astro.site || "" } = Astro.props;
+import { SITE_CONFIG } from '../config';
+import SEO from '../components/SEO.astro';
+import GoogleAnalytics from '../components/GoogleAnalytics.astro';
+import AffiliateBanner from '../components/AffiliateBanner.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  article?: boolean;
+  noindex?: boolean;
+  showAffiliateBanner?: boolean;
+}
+
+const {
+  title = SITE_CONFIG.title,
+  description = SITE_CONFIG.description,
+  image = SITE_CONFIG.ogImage,
+  article = false,
+  noindex = false,
+  showAffiliateBanner = false,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
+
 <!doctype html>
-<html lang="en-US">
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonical} />
-    <meta name="twitter:card" content="summary_large_image" />
-    {Astro.props.frontmatter?.cover && (
-      <meta property="og:image" content={Astro.props.frontmatter.cover} />
-    )}
-    <script type="application/ld+json">{JSON.stringify({
-      "@context":"https://schema.org",
-      "@type":"Organization",
-      "name":"InSpotGO",
-      "url":"https://inspotgo.com",
-      "logo":"https://inspotgo.com/logo.png",
-      "sameAs":["https://pinterest.com/inspotgo"]
-    })}</script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- SEO Component -->
+    <SEO 
+      title={title}
+      description={description}
+      image={image}
+      article={article}
+      noindex={noindex}
+      canonicalURL={canonicalURL.href}
+    />
+    
+    <!-- Google Analytics -->
+    <GoogleAnalytics />
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://www.google-analytics.com" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    
+    <!-- Generator tag -->
+    <meta name="generator" content={Astro.generator} />
   </head>
+  
   <body>
-    <slot />
-    <!-- GA4: Uncomment and add your G-XXXXXXX -->
-    <!--
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);} 
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXX');
-    </script>
-    -->
+    <!-- Header/Navigation -->
+    <header class="site-header">
+      <nav class="container">
+        <div class="nav-wrapper">
+          <a href="/" class="logo">
+            <span class="logo-spot">InSpot</span><span class="logo-go">GO</span>
+          </a>
+          
+          <ul class="nav-menu">
+            <li><a href="/tech">Tech</a></li>
+            <li><a href="/saas">SaaS</a></li>
+            <li><a href="/software">Software</a></li>
+            <li><a href="/guides">Guides</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+          
+          <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </nav>
+    </header>
+    
+    <!-- Affiliate Disclosure Banner (if needed) -->
+    {showAffiliateBanner && <AffiliateBanner />}
+    
+    <!-- Main Content -->
+    <main>
+      <slot />
+    </main>
+    
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3><span class="logo-spot">InSpot</span><span class="logo-go">GO</span></h3>
+            <p>{SITE_CONFIG.slogan}</p>
+            <p class="footer-tagline">{SITE_CONFIG.tagline}</p>
+          </div>
+          
+          <div class="footer-section">
+            <h4>Categories</h4>
+            <ul>
+              <li><a href="/tech">Tech Products</a></li>
+              <li><a href="/saas">SaaS Tools</a></li>
+              <li><a href="/software">Software</a></li>
+              <li><a href="/guides">Guides</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="/about">About Us</a></li>
+              <li><a href="/contact">Contact</a></li>
+              <li><a href="/editorial-policy">Editorial Policy</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="/affiliate-disclosure">Affiliate Disclosure</a></li>
+              <li><a href="/privacy">Privacy Policy</a></li>
+              <li><a href="/terms">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p>&copy; {SITE_CONFIG.foundedYear} {SITE_CONFIG.legalEntity}. All rights reserved.</p>
+          <p class="disclaimer">
+            {SITE_CONFIG.affiliates.amazon.disclaimer}
+          </p>
+        </div>
+      </div>
+    </footer>
+    
+    <style is:global>
+      /* ============================================
+         InSpotGO Color System
+         ============================================
+         Based on color psychology research:
+         - Blue: Trust, reliability (navigation)
+         - Orange: Action, urgency (CTAs, conversions)
+         - Green: Success, validation (badges)
+      */
+      :root {
+        /* Primary Colors - Trust & Navigation */
+        --color-primary: #2563eb;           /* Blue - links, headers */
+        --color-primary-dark: #1e40af;      /* Blue dark - hover states */
+        --color-primary-light: #3b82f6;     /* Blue light - backgrounds */
+        
+        /* Action Colors - Conversion & CTAs */
+        --color-action: #f97316;            /* Orange - primary CTAs */
+        --color-action-dark: #ea580c;       /* Orange dark - hover */
+        --color-action-light: #fb923c;      /* Orange light - backgrounds */
+        
+        /* Success Colors - Validation & Badges */
+        --color-success: #10b981;           /* Green - badges, success */
+        --color-success-dark: #059669;      /* Green dark - hover */
+        --color-success-light: #34d399;     /* Green light - backgrounds */
+        
+        /* Neutral Colors */
+        --color-text: #1f2937;              /* Dark gray - body text */
+        --color-text-light: #6b7280;        /* Medium gray - secondary text */
+        --color-text-lighter: #9ca3af;      /* Light gray - hints */
+        --color-bg: #ffffff;                /* White - main background */
+        --color-bg-alt: #f9fafb;            /* Light gray - alternate bg */
+        --color-border: #e5e7eb;            /* Light gray - borders */
+        
+        /* Semantic Colors */
+        --color-warning: #f59e0b;           /* Amber - warnings */
+        --color-danger: #ef4444;            /* Red - errors */
+        --color-info: #3b82f6;              /* Blue - information */
+        
+        /* Layout */
+        --max-width: 1200px;
+        --spacing: 1rem;
+        
+        /* Typography */
+        --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        --font-mono: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+      }
+      
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: var(--font-sans);
+        line-height: 1.6;
+        color: var(--color-text);
+        background: var(--color-bg);
+      }
+      
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 var(--spacing);
+      }
+      
+      /* ============================================
+         Dual-Color Logo
+         ============================================ */
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+      }
+      
+      .logo-spot {
+        color: var(--color-primary);
+      }
+      
+      .logo-go {
+        color: var(--color-action);
+        margin-left: 0;
+      }
+      
+      .logo:hover .logo-spot {
+        color: var(--color-primary-dark);
+      }
+      
+      .logo:hover .logo-go {
+        color: var(--color-action-dark);
+      }
+      
+      /* ============================================
+         Header
+         ============================================ */
+      .site-header {
+        background: var(--color-bg);
+        border-bottom: 1px solid var(--color-border);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.95);
+      }
+      
+      .nav-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+      }
+      
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+      
+      .nav-menu a {
+        color: var(--color-text);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+      
+      .nav-menu a:hover {
+        color: var(--color-primary);
+      }
+      
+      .mobile-menu-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 4px;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+      
+      .mobile-menu-toggle span {
+        width: 24px;
+        height: 2px;
+        background: var(--color-text);
+        transition: 0.3s;
+      }
+      
+      /* ============================================
+         Main Content
+         ============================================ */
+      main {
+        min-height: 60vh;
+        padding: 2rem 0;
+      }
+      
+      /* ============================================
+         Buttons - Color Psychology Applied
+         ============================================ */
+      .btn {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+      
+      /* Primary Button - Action/Conversion (Orange) */
+      .btn-primary {
+        background: var(--color-action);
+        color: white;
+      }
+      
+      .btn-primary:hover {
+        background: var(--color-action-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+      }
+      
+      /* Secondary Button - Information (Blue) */
+      .btn-secondary {
+        background: var(--color-primary);
+        color: white;
+      }
+      
+      .btn-secondary:hover {
+        background: var(--color-primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+      }
+      
+      /* Outline Button */
+      .btn-outline {
+        background: transparent;
+        border: 2px solid var(--color-primary);
+        color: var(--color-primary);
+      }
+      
+      .btn-outline:hover {
+        background: var(--color-primary);
+        color: white;
+      }
+      
+      /* Success Button - Validation (Green) */
+      .btn-success {
+        background: var(--color-success);
+        color: white;
+      }
+      
+      .btn-success:hover {
+        background: var(--color-success-dark);
+      }
+      
+      /* ============================================
+         Badges
+         ============================================ */
+      .badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+      
+      .badge-success {
+        background: var(--color-success-light);
+        color: var(--color-success-dark);
+      }
+      
+      .badge-primary {
+        background: var(--color-primary-light);
+        color: var(--color-primary-dark);
+      }
+      
+      .badge-warning {
+        background: #fef3c7;
+        color: #92400e;
+      }
+      
+      /* ============================================
+         Links
+         ============================================ */
+      a {
+        color: var(--color-primary);
+        transition: color 0.2s;
+      }
+      
+      a:hover {
+        color: var(--color-primary-dark);
+      }
+      
+      /* ============================================
+         Footer
+         ============================================ */
+      .site-footer {
+        background: var(--color-bg-alt);
+        border-top: 1px solid var(--color-border);
+        padding: 3rem 0 1rem;
+        margin-top: 4rem;
+      }
+      
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+      
+      .footer-section h3,
+      .footer-section h4 {
+        margin-bottom: 1rem;
+        color: var(--color-text);
+      }
+      
+      .footer-section ul {
+        list-style: none;
+      }
+      
+      .footer-section a {
+        color: var(--color-text-light);
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      
+      .footer-section a:hover {
+        color: var(--color-primary);
+      }
+      
+      .footer-tagline {
+        color: var(--color-text-light);
+        font-size: 0.9rem;
+      }
+      
+      .footer-bottom {
+        padding-top: 2rem;
+        border-top: 1px solid var(--color-border);
+        text-align: center;
+        color: var(--color-text-light);
+        font-size: 0.9rem;
+      }
+      
+      .disclaimer {
+        margin-top: 0.5rem;
+        font-size: 0.85rem;
+      }
+      
+      /* ============================================
+         Mobile Responsive
+         ============================================ */
+      @media (max-width: 768px) {
+        .nav-menu {
+          display: none;
+        }
+        
+        .mobile-menu-toggle {
+          display: flex;
+        }
+        
+        .footer-content {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </body>
 </html>

@@ -1,0 +1,236 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE_CONFIG } from '../../config';
+
+const category = SITE_CONFIG.categories.guides;
+---
+
+<BaseLayout
+  title={`${category.name} - InSpotGO`}
+  description={`${category.description}. Comprehensive buying guides, tutorials, and comparisons.`}
+>
+  <div class="container category-page">
+    <div class="category-header">
+      <div class="category-icon">{category.icon}</div>
+      <h1>{category.name}</h1>
+      <p class="category-description">{category.description}</p>
+    </div>
+    
+    <section class="subcategories">
+      <h2>Types of Guides</h2>
+      <div class="subcategory-grid">
+        <a href="/guides/buying-guides" class="subcategory-card">
+          <h3>🛒 Buying Guides</h3>
+          <p>Comprehensive guides to help you choose the right products</p>
+        </a>
+        <a href="/guides/how-to" class="subcategory-card">
+          <h3>📚 How-To Tutorials</h3>
+          <p>Step-by-step tutorials and setup guides</p>
+        </a>
+        <a href="/guides/comparisons" class="subcategory-card">
+          <h3>⚖️ Comparisons</h3>
+          <p>Side-by-side comparisons of popular products and services</p>
+        </a>
+        <a href="/guides/best-of" class="subcategory-card">
+          <h3>🏆 Best Of</h3>
+          <p>Curated lists of the best products in each category</p>
+        </a>
+      </div>
+    </section>
+    
+    <section class="upcoming">
+      <h2>What We're Working On</h2>
+      <div class="guide-preview-grid">
+        <div class="guide-preview">
+          <div class="guide-tag">Buying Guide</div>
+          <h3>How to Choose a Laptop for Your Needs</h3>
+          <p>Complete guide covering specs, budget considerations, and use cases</p>
+        </div>
+        <div class="guide-preview">
+          <div class="guide-tag">Comparison</div>
+          <h3>Notion vs ClickUp vs Asana</h3>
+          <p>In-depth comparison of popular project management tools</p>
+        </div>
+        <div class="guide-preview">
+          <div class="guide-tag">Best Of</div>
+          <h3>Best Wireless Earbuds Under $100</h3>
+          <p>Our top picks for budget-friendly wireless earbuds</p>
+        </div>
+        <div class="guide-preview">
+          <div class="guide-tag">How-To</div>
+          <h3>Setting Up Your First Smart Home</h3>
+          <p>Beginner's guide to smart home automation</p>
+        </div>
+      </div>
+    </section>
+    
+    <section class="coming-soon">
+      <div class="info-box">
+        <h2>🚀 Guides Coming Soon</h2>
+        <p>
+          We're preparing detailed, actionable guides to help you make the best decisions. 
+          Our guides will include:
+        </p>
+        <ul>
+          <li>Clear, unbiased recommendations</li>
+          <li>Detailed comparison tables</li>
+          <li>Budget breakdowns</li>
+          <li>Pros and cons analysis</li>
+          <li>Real-world testing insights</li>
+        </ul>
+        <p>
+          Have a guide request? <a href="/contact">Let us know!</a>
+        </p>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .category-page {
+    padding: 3rem 1rem;
+    max-width: 1000px;
+  }
+  
+  .category-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  
+  .category-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+  }
+  
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+  
+  .category-description {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+  }
+  
+  section {
+    margin: 4rem 0;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--color-text);
+  }
+  
+  .subcategory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .subcategory-card {
+    padding: 2rem;
+    background: var(--color-bg-alt);
+    border: 2px solid var(--color-border);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .subcategory-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .subcategory-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
+  
+  .subcategory-card p {
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+  
+  .guide-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .guide-preview {
+    padding: 1.5rem;
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+  }
+  
+  .guide-tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: var(--color-primary);
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  
+  .guide-preview h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
+  
+  .guide-preview p {
+    color: var(--color-text-light);
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+  
+  .info-box {
+    background: #dbeafe;
+    border-left: 4px solid #2563eb;
+    padding: 2rem;
+    border-radius: 8px;
+  }
+  
+  .info-box h2 {
+    margin-top: 0;
+    color: #1e40af;
+  }
+  
+  .info-box p {
+    line-height: 1.7;
+    color: var(--color-text);
+  }
+  
+  .info-box ul {
+    margin: 1.5rem 0;
+    padding-left: 2rem;
+  }
+  
+  .info-box li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+  
+  .info-box a {
+    color: #2563eb;
+    font-weight: 600;
+  }
+  
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+    
+    .subcategory-grid,
+    .guide-preview-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

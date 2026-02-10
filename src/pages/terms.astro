@@ -1,17 +1,362 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import { SITE_CONFIG } from '../config';
 ---
-<BaseLayout title="Terms — InSpotGO">
-  <Header />
-  <main class="container" style="padding:2rem 0;">
-    <article class="card">
-      <h1>Terms of Use</h1>
-      <p>Use of this site is provided "as-is" without warranties. We are not liable for damages arising from use.</p>
-      <p>Scraping or abusive access is prohibited. We may change these terms at any time.</p>
-      <p>Jurisdiction: To be determined.</p>
-    </article>
-  </main>
-  <Footer />
+
+<BaseLayout
+  title="Terms of Service - InSpotGO"
+  description="InSpotGO Terms of Service: Rules and guidelines for using our website."
+  noindex={true}
+>
+  <div class="container content-page">
+    <h1>Terms of Service</h1>
+    
+    <p class="last-updated">Last Updated: February 9, 2026</p>
+    
+    <section>
+      <h2>Agreement to Terms</h2>
+      <p>
+        These Terms of Service ("Terms") govern your access to and use of {SITE_CONFIG.url} 
+        (the "Site") operated by {SITE_CONFIG.legalEntity} ("we," "us," or "our").
+      </p>
+      <p>
+        By accessing or using the Site, you agree to be bound by these Terms. If you disagree 
+        with any part of these Terms, you may not access the Site.
+      </p>
+    </section>
+    
+    <section>
+      <h2>Use of the Site</h2>
+      
+      <h3>Permitted Use</h3>
+      <p>You may use our Site for:</p>
+      <ul>
+        <li>Reading product reviews and articles</li>
+        <li>Accessing buying guides and comparisons</li>
+        <li>Following affiliate links to purchase products</li>
+        <li>Subscribing to our newsletter (when available)</li>
+        <li>Contacting us with questions or feedback</li>
+      </ul>
+      
+      <h3>Prohibited Use</h3>
+      <p>You agree NOT to:</p>
+      <ul>
+        <li>Use the Site for any illegal purpose or in violation of any laws</li>
+        <li>Copy, reproduce, or redistribute our content without permission</li>
+        <li>Use automated systems (bots, scrapers) to access the Site</li>
+        <li>Attempt to gain unauthorized access to any part of the Site</li>
+        <li>Transmit viruses, malware, or other harmful code</li>
+        <li>Impersonate any person or entity</li>
+        <li>Harass, abuse, or harm others</li>
+        <li>Collect user information without consent</li>
+        <li>Interfere with the proper functioning of the Site</li>
+      </ul>
+    </section>
+    
+    <section>
+      <h2>Intellectual Property</h2>
+      
+      <h3>Our Content</h3>
+      <p>
+        All content on this Site, including text, graphics, logos, images, and software, is the 
+        property of {SITE_CONFIG.legalEntity} or its content suppliers and is protected by 
+        copyright, trademark, and other intellectual property laws.
+      </p>
+      
+      <h3>Limited License</h3>
+      <p>
+        We grant you a limited, non-exclusive, non-transferable license to access and use the 
+        Site for personal, non-commercial purposes. You may not:
+      </p>
+      <ul>
+        <li>Modify, copy, or create derivative works</li>
+        <li>Reverse engineer any aspect of the Site</li>
+        <li>Remove copyright or proprietary notices</li>
+        <li>Use content for commercial purposes without written permission</li>
+      </ul>
+      
+      <h3>User Comments and Feedback</h3>
+      <p>
+        If you submit comments, suggestions, or other feedback to us, you grant us a perpetual, 
+        irrevocable, non-exclusive right to use, modify, and distribute that content without 
+        compensation to you.
+      </p>
+    </section>
+    
+    <section>
+      <h2>Affiliate Relationships</h2>
+      <p>
+        Our Site contains affiliate links to products and services. When you click these links 
+        and make purchases, we may earn commissions. For detailed information, see our 
+        <a href="/affiliate-disclosure">Affiliate Disclosure</a>.
+      </p>
+      <p>
+        Key points:
+      </p>
+      <ul>
+        <li>We are not the seller of products linked on our Site</li>
+        <li>We cannot process returns, refunds, or provide warranty support</li>
+        <li>Product availability, pricing, and features are subject to change</li>
+        <li>Merchant terms and conditions apply to all purchases</li>
+      </ul>
+    </section>
+    
+    <section>
+      <h2>Disclaimers</h2>
+      
+      <h3>No Warranties</h3>
+      <p>
+        THE SITE AND ALL CONTENT ARE PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES 
+        OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO:
+      </p>
+      <ul>
+        <li>Warranties of merchantability or fitness for a particular purpose</li>
+        <li>Warranties that the Site will be uninterrupted or error-free</li>
+        <li>Warranties regarding the accuracy or completeness of content</li>
+        <li>Warranties that defects will be corrected</li>
+      </ul>
+      
+      <h3>Information Accuracy</h3>
+      <p>
+        While we strive to provide accurate and up-to-date information:
+      </p>
+      <ul>
+        <li>Product specifications, pricing, and availability may change</li>
+        <li>Information may contain errors or omissions</li>
+        <li>We do not guarantee the accuracy of third-party information</li>
+        <li>Always verify details with manufacturers or sellers before purchasing</li>
+      </ul>
+      
+      <h3>Product Reviews</h3>
+      <p>
+        Our reviews represent our opinions based on research and testing. Your experience 
+        with products may differ. We are not responsible for:
+      </p>
+      <ul>
+        <li>Product performance or quality issues</li>
+        <li>Compatibility with your specific needs</li>
+        <li>Merchant customer service</li>
+        <li>Delivery, returns, or warranty claims</li>
+      </ul>
+    </section>
+    
+    <section>
+      <h2>Limitation of Liability</h2>
+      <p>
+        TO THE MAXIMUM EXTENT PERMITTED BY LAW, {SITE_CONFIG.legalEntity.toUpperCase()} SHALL 
+        NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, 
+        OR ANY LOSS OF PROFITS OR REVENUES, WHETHER INCURRED DIRECTLY OR INDIRECTLY, OR ANY 
+        LOSS OF DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES RESULTING FROM:
+      </p>
+      <ul>
+        <li>Your use or inability to use the Site</li>
+        <li>Any unauthorized access to or use of our servers</li>
+        <li>Any interruption or cessation of transmission to or from the Site</li>
+        <li>Any bugs, viruses, or other harmful code</li>
+        <li>Any errors or omissions in content</li>
+        <li>Any purchases made through affiliate links</li>
+      </ul>
+    </section>
+    
+    <section>
+      <h2>Indemnification</h2>
+      <p>
+        You agree to indemnify, defend, and hold harmless {SITE_CONFIG.legalEntity}, its 
+        officers, directors, employees, and agents from any claims, damages, losses, liabilities, 
+        and expenses (including legal fees) arising from:
+      </p>
+      <ul>
+        <li>Your use of the Site</li>
+        <li>Your violation of these Terms</li>
+        <li>Your violation of any rights of another person or entity</li>
+        <li>Your violation of any laws or regulations</li>
+      </ul>
+    </section>
+    
+    <section>
+      <h2>Third-Party Links</h2>
+      <p>
+        Our Site contains links to third-party websites and services, including:
+      </p>
+      <ul>
+        <li>E-commerce sites (Amazon, merchant websites)</li>
+        <li>Software and SaaS provider websites</li>
+        <li>Manufacturer websites</li>
+        <li>Other informational resources</li>
+      </ul>
+      <p>
+        We are not responsible for the content, privacy policies, or practices of third-party 
+        sites. Your interactions with these sites are governed by their own terms and policies.
+      </p>
+    </section>
+    
+    <section>
+      <h2>Changes to Content</h2>
+      <p>
+        We reserve the right to:
+      </p>
+      <ul>
+        <li>Modify, update, or discontinue any content without notice</li>
+        <li>Update product reviews based on new information</li>
+        <li>Remove or correct inaccurate information</li>
+        <li>Change site features or functionality</li>
+      </ul>
+    </section>
+    
+    <section>
+      <h2>Termination</h2>
+      <p>
+        We may terminate or suspend your access to the Site immediately, without prior notice or 
+        liability, for any reason, including breach of these Terms.
+      </p>
+      <p>
+        Upon termination, your right to use the Site will cease immediately.
+      </p>
+    </section>
+    
+    <section>
+      <h2>Governing Law</h2>
+      <p>
+        These Terms shall be governed by and construed in accordance with the laws of the 
+        United States and the State of California, without regard to its conflict of law provisions.
+      </p>
+      <p>
+        Any legal action or proceeding arising under these Terms will be brought exclusively 
+        in the federal or state courts located in California, and you consent to personal 
+        jurisdiction in such courts.
+      </p>
+    </section>
+    
+    <section>
+      <h2>Dispute Resolution</h2>
+      <p>
+        If you have any dispute with us, you agree to first contact us and attempt to resolve 
+        the dispute informally. If we cannot resolve the dispute within 30 days, either party 
+        may pursue legal remedies.
+      </p>
+    </section>
+    
+    <section>
+      <h2>Severability</h2>
+      <p>
+        If any provision of these Terms is found to be invalid or unenforceable, the remaining 
+        provisions will remain in full force and effect.
+      </p>
+    </section>
+    
+    <section>
+      <h2>Entire Agreement</h2>
+      <p>
+        These Terms, along with our Privacy Policy and Affiliate Disclosure, constitute the 
+        entire agreement between you and {SITE_CONFIG.legalEntity} regarding the use of the Site.
+      </p>
+    </section>
+    
+    <section>
+      <h2>Changes to Terms</h2>
+      <p>
+        We reserve the right to modify these Terms at any time. We will notify you of any 
+        changes by posting the new Terms on this page and updating the "Last Updated" date.
+      </p>
+      <p>
+        Your continued use of the Site after changes become effective constitutes acceptance 
+        of the revised Terms.
+      </p>
+    </section>
+    
+    <section>
+      <h2>Contact Us</h2>
+      <p>
+        If you have questions about these Terms, please contact us:
+      </p>
+      <p>
+        Email: <a href="mailto:{SITE_CONFIG.contact.email}">{SITE_CONFIG.contact.email}</a><br>
+        Website: <a href="/contact">Contact Page</a>
+      </p>
+    </section>
+    
+    <section class="legal-notice">
+      <h2>Acknowledgment</h2>
+      <p>
+        BY USING THIS SITE, YOU ACKNOWLEDGE THAT YOU HAVE READ THESE TERMS OF SERVICE AND 
+        AGREE TO BE BOUND BY THEM.
+      </p>
+    </section>
+  </div>
 </BaseLayout>
+
+<style>
+  .content-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+  }
+  
+  .last-updated {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+  
+  section {
+    margin: 3rem 0;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    margin-top: 2.5rem;
+    color: var(--color-text);
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
+  
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+  
+  ul {
+    margin: 1rem 0;
+    padding-left: 2rem;
+  }
+  
+  li {
+    margin-bottom: 0.75rem;
+    line-height: 1.7;
+  }
+  
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  .legal-notice {
+    background: var(--color-bg-alt);
+    padding: 1.5rem;
+    border-left: 4px solid var(--color-primary);
+    margin-top: 3rem;
+    font-weight: 600;
+  }
+  
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+  }
+</style>

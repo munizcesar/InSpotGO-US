@@ -1,22 +1,358 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import { SITE_CONFIG } from '../config';
 ---
-<BaseLayout title="Privacy Policy — InSpotGO">
-  <Header />
-  <main class="container" style="padding:2rem 0;">
-    <article class="card">
-      <h1>Privacy Policy</h1>
-      <h2>Data Collection</h2>
-      <p>We collect minimal data via analytics and server logs. No personal data is sold.</p>
-      <h2>Cookies</h2>
-      <p>We use cookies and third-party analytics. You can disable cookies in your browser settings.</p>
-      <h2>Third-Party Links</h2>
-      <p>Third-party websites have their own privacy policies which apply when you visit them.</p>
-      <h2>Changes to Policy</h2>
-      <p>We may update this policy; changes will be posted here.</p>
-    </article>
-  </main>
-  <Footer />
+
+<BaseLayout
+  title="Privacy Policy - InSpotGO"
+  description="InSpotGO Privacy Policy: Learn how we collect, use, and protect your personal information."
+  noindex={true}
+>
+  <div class="container content-page">
+    <h1>Privacy Policy</h1>
+    
+    <p class="last-updated">Last Updated: February 9, 2026</p>
+    
+    <section>
+      <h2>Introduction</h2>
+      <p>
+        {SITE_CONFIG.legalEntity} ("we," "us," or "our") operates {SITE_CONFIG.url} (the "Site"). 
+        This Privacy Policy explains how we collect, use, disclose, and safeguard your information 
+        when you visit our website.
+      </p>
+      <p>
+        Please read this privacy policy carefully. If you do not agree with the terms of this 
+        privacy policy, please do not access the site.
+      </p>
+    </section>
+    
+    <section>
+      <h2>Information We Collect</h2>
+      
+      <h3>Information You Provide</h3>
+      <p>
+        We may collect information that you voluntarily provide to us when you:
+      </p>
+      <ul>
+        <li>Contact us via email or contact form</li>
+        <li>Subscribe to our newsletter (when available)</li>
+        <li>Leave comments on our content (if enabled)</li>
+        <li>Participate in surveys or promotions</li>
+      </ul>
+      <p>This information may include:</p>
+      <ul>
+        <li>Name</li>
+        <li>Email address</li>
+        <li>Any other information you choose to provide</li>
+      </ul>
+      
+      <h3>Automatically Collected Information</h3>
+      <p>
+        When you visit our Site, we may automatically collect certain information about your 
+        device and browsing actions, including:
+      </p>
+      <ul>
+        <li>IP address</li>
+        <li>Browser type and version</li>
+        <li>Operating system</li>
+        <li>Pages viewed and time spent on pages</li>
+        <li>Referring website</li>
+        <li>Date and time of visit</li>
+        <li>Click data and interactions</li>
+      </ul>
+    </section>
+    
+    <section>
+      <h2>How We Use Your Information</h2>
+      <p>
+        We use the information we collect for various purposes, including:
+      </p>
+      <ul>
+        <li>Operating and maintaining our website</li>
+        <li>Improving user experience and site functionality</li>
+        <li>Analyzing site usage and trends</li>
+        <li>Responding to your inquiries and support requests</li>
+        <li>Sending newsletters and promotional materials (with your consent)</li>
+        <li>Detecting and preventing fraud or technical issues</li>
+        <li>Complying with legal obligations</li>
+      </ul>
+    </section>
+    
+    <section>
+      <h2>Cookies and Tracking Technologies</h2>
+      
+      <h3>What Are Cookies?</h3>
+      <p>
+        Cookies are small text files stored on your device when you visit websites. They help 
+        websites remember your preferences and improve your browsing experience.
+      </p>
+      
+      <h3>How We Use Cookies</h3>
+      <p>We use cookies and similar tracking technologies for:</p>
+      <ul>
+        <li>
+          <strong>Essential Cookies:</strong> Necessary for the site to function properly
+        </li>
+        <li>
+          <strong>Analytics Cookies:</strong> Help us understand how visitors use our site 
+          (Google Analytics)
+        </li>
+        <li>
+          <strong>Advertising Cookies:</strong> Track affiliate clicks and conversions
+        </li>
+      </ul>
+      
+      <h3>Third-Party Cookies</h3>
+      <p>We use the following third-party services that may set cookies:</p>
+      <ul>
+        <li><strong>Google Analytics:</strong> For website analytics</li>
+        <li><strong>Amazon Associates:</strong> For affiliate link tracking</li>
+        <li><strong>Other Affiliate Networks:</strong> For tracking referred sales</li>
+      </ul>
+      
+      <h3>Managing Cookies</h3>
+      <p>
+        You can control cookies through your browser settings. However, disabling cookies may 
+        limit your ability to use certain features of our Site.
+      </p>
+    </section>
+    
+    <section>
+      <h2>Third-Party Disclosure</h2>
+      <p>
+        We do not sell, trade, or otherwise transfer your personally identifiable information 
+        to third parties without your consent, except as described below:
+      </p>
+      
+      <h3>Service Providers</h3>
+      <p>
+        We may share information with third-party service providers who help us operate our 
+        website and business, including:
+      </p>
+      <ul>
+        <li>Web hosting providers</li>
+        <li>Analytics services (Google Analytics)</li>
+        <li>Email service providers (for newsletters)</li>
+        <li>Payment processors (if applicable)</li>
+      </ul>
+      
+      <h3>Affiliate Partners</h3>
+      <p>
+        When you click on affiliate links, you may be redirected to third-party websites. 
+        These sites have their own privacy policies, and we are not responsible for their practices.
+      </p>
+      
+      <h3>Legal Requirements</h3>
+      <p>
+        We may disclose your information if required to do so by law or in response to valid 
+        requests by public authorities.
+      </p>
+    </section>
+    
+    <section>
+      <h2>Your Privacy Rights</h2>
+      
+      <h3>For All Users</h3>
+      <p>You have the right to:</p>
+      <ul>
+        <li>Access the personal information we hold about you</li>
+        <li>Request correction of inaccurate information</li>
+        <li>Request deletion of your personal information</li>
+        <li>Object to our processing of your personal information</li>
+        <li>Opt-out of marketing communications</li>
+      </ul>
+      
+      <h3>California Residents (CCPA)</h3>
+      <p>
+        If you are a California resident, you have additional rights under the California 
+        Consumer Privacy Act (CCPA):
+      </p>
+      <ul>
+        <li>Right to know what personal information is collected</li>
+        <li>Right to know whether personal information is sold or disclosed</li>
+        <li>Right to say no to the sale of personal information</li>
+        <li>Right to access your personal information</li>
+        <li>Right to equal service and price, even if you exercise your privacy rights</li>
+      </ul>
+      <p>
+        To exercise these rights, please contact us at <a href="mailto:{SITE_CONFIG.contact.email}">{SITE_CONFIG.contact.email}</a>.
+      </p>
+      
+      <h3>European Users (GDPR)</h3>
+      <p>
+        If you are in the European Economic Area (EEA), you have rights under the General 
+        Data Protection Regulation (GDPR), including:
+      </p>
+      <ul>
+        <li>Right to access your personal data</li>
+        <li>Right to rectification of inaccurate data</li>
+        <li>Right to erasure ("right to be forgotten")</li>
+        <li>Right to restrict processing</li>
+        <li>Right to data portability</li>
+        <li>Right to object to processing</li>
+        <li>Right to withdraw consent</li>
+      </ul>
+    </section>
+    
+    <section>
+      <h2>Data Security</h2>
+      <p>
+        We implement reasonable security measures to protect your personal information from 
+        unauthorized access, alteration, disclosure, or destruction. However, no method of 
+        transmission over the Internet or electronic storage is 100% secure.
+      </p>
+      <p>
+        While we strive to protect your personal information, we cannot guarantee its absolute 
+        security.
+      </p>
+    </section>
+    
+    <section>
+      <h2>Data Retention</h2>
+      <p>
+        We retain personal information only for as long as necessary to fulfill the purposes 
+        outlined in this Privacy Policy, unless a longer retention period is required or 
+        permitted by law.
+      </p>
+      <p>
+        Analytics data is typically retained for 26 months in accordance with Google Analytics 
+        default settings.
+      </p>
+    </section>
+    
+    <section>
+      <h2>Children's Privacy</h2>
+      <p>
+        Our Site is not intended for children under 13 years of age. We do not knowingly 
+        collect personal information from children under 13. If you believe we have collected 
+        information from a child under 13, please contact us immediately.
+      </p>
+    </section>
+    
+    <section>
+      <h2>Do Not Track Signals</h2>
+      <p>
+        Some browsers include a "Do Not Track" (DNT) feature that signals to websites you visit 
+        that you do not want to have your online activity tracked. Currently, our Site does not 
+        respond to DNT signals.
+      </p>
+    </section>
+    
+    <section>
+      <h2>External Links</h2>
+      <p>
+        Our Site contains links to external websites, including affiliate links to products and 
+        services. We are not responsible for the privacy practices or content of these external sites.
+      </p>
+      <p>
+        We encourage you to review the privacy policies of any third-party sites you visit.
+      </p>
+    </section>
+    
+    <section>
+      <h2>Changes to This Privacy Policy</h2>
+      <p>
+        We may update this Privacy Policy from time to time. We will notify you of any changes 
+        by posting the new Privacy Policy on this page and updating the "Last Updated" date.
+      </p>
+      <p>
+        You are advised to review this Privacy Policy periodically for any changes. Changes to 
+        this Privacy Policy are effective when they are posted on this page.
+      </p>
+    </section>
+    
+    <section>
+      <h2>Contact Us</h2>
+      <p>
+        If you have questions or concerns about this Privacy Policy or our privacy practices, 
+        please contact us:
+      </p>
+      <p>
+        Email: <a href="mailto:{SITE_CONFIG.contact.email}">{SITE_CONFIG.contact.email}</a><br>
+        Website: <a href="/contact">Contact Page</a>
+      </p>
+    </section>
+    
+    <section class="legal-notice">
+      <h2>Consent</h2>
+      <p>
+        By using our Site, you consent to our Privacy Policy and agree to its terms.
+      </p>
+    </section>
+  </div>
 </BaseLayout>
+
+<style>
+  .content-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+  }
+  
+  .last-updated {
+    color: var(--color-text-light);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+  }
+  
+  section {
+    margin: 3rem 0;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    margin-top: 2.5rem;
+    color: var(--color-text);
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+  }
+  
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+  
+  ul {
+    margin: 1rem 0;
+    padding-left: 2rem;
+  }
+  
+  li {
+    margin-bottom: 0.75rem;
+    line-height: 1.7;
+  }
+  
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  .legal-notice {
+    background: var(--color-bg-alt);
+    padding: 1.5rem;
+    border-left: 4px solid var(--color-primary);
+    margin-top: 3rem;
+  }
+  
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+  }
+</style>
