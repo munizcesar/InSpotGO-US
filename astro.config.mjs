@@ -1,19 +1,19 @@
 import { defineConfig } from 'astro/config';
-import sitemap from '@astrojs/sitemap';
+// import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://inspotgo-us.pages.dev',
   
-  // Sitemap generation
-  integrations: [
-    sitemap({
-      // Exclude admin and API routes
-      filter: (page) => 
-        !page.includes('/admin/') && 
-        !page.includes('/api/'),
-    }),
-  ],
+  // Sitemap temporarily disabled due to build error
+  // Will re-enable after site is deployed
+  // integrations: [
+  //   sitemap({
+  //     filter: (page) => 
+  //       !page.includes('/admin/') && 
+  //       !page.includes('/api/'),
+  //   }),
+  // ],
   
   // Build optimization for Cloudflare Pages
   build: {
