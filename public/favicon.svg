@@ -13,11 +13,11 @@
   <rect x="6" y="6" width="116" height="116" rx="22" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
   
   <!-- Text Group - Perfectly Centered -->
-  <g transform="translate(64, 68)">
+  <g transform="translate(64, 72)">
     <!-- I - White -->
     <text 
-      x="-24" 
-      y="12" 
+      x="-26" 
+      y="8" 
       font-family="'SF Pro Display', 'Segoe UI', system-ui, sans-serif" 
       font-weight="800" 
       font-size="64" 
@@ -26,10 +26,14 @@
       I
     </text>
     
+    <!-- Center dot (between I and G) -->
+    <circle cx="0" cy="-8" r="5" fill="#FF9800"/>
+    <circle cx="0" cy="-8" r="2.5" fill="#FFFFFF" opacity="0.7"/>
+    
     <!-- G - Orange -->
     <text 
-      x="22" 
-      y="12" 
+      x="26" 
+      y="8" 
       font-family="'SF Pro Display', 'Segoe UI', system-ui, sans-serif" 
       font-weight="800" 
       font-size="64" 
@@ -38,7 +42,4 @@
       G
     </text>
   </g>
-  
-  <!-- Accent dot -->
-  <circle cx="100" cy="28" r="4" fill="#FF9800" opacity="0.85"/>
 </svg>
