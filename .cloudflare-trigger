@@ -1,0 +1,19 @@
+# Deployment Trigger
+# Timestamp: 2026-02-09 21:45 BRT
+
+This file forces Cloudflare Pages to deploy from the latest main branch.
+
+## Current State:
+- Branch: main
+- Commit: Latest (7af987ae...)
+- No package-lock.json (will be generated)
+- Node 18 via .nvmrc
+- Build command: npm run build
+- Output: dist/
+
+## Expected Result:
+npm install (creates new lock file)
+npm run build (Astro 4.x)
+Deploy to Cloudflare global network
+
+SUCCESS! 🎉
