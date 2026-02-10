@@ -26,9 +26,9 @@
       I
     </text>
     
-    <!-- Center dot - small and elegant -->
-    <circle cx="0" cy="-2" r="3.5" fill="#FFA726"/>
-    <circle cx="0" cy="-2" r="1.5" fill="#FFFFFF" opacity="0.8"/>
+    <!-- Center dot - positioned at exact middle between I and G -->
+    <circle cx="0" cy="4" r="3.5" fill="#FFA726"/>
+    <circle cx="0" cy="4" r="1.5" fill="#FFFFFF" opacity="0.8"/>
     
     <!-- Letter G (Orange) -->
     <text 
