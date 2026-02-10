@@ -1,28 +1,42 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-  <!-- Background with gradient -->
   <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
       <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
     </linearGradient>
   </defs>
   
-  <!-- Rounded rectangle background -->
-  <rect width="128" height="128" rx="24" fill="url(#grad)"/>
+  <!-- Background -->
+  <rect width="128" height="128" rx="24" fill="url(#bgGrad)"/>
   
-  <!-- Inner glow effect -->
-  <rect x="4" y="4" width="120" height="120" rx="20" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <!-- Subtle inner border -->
+  <rect x="4" y="4" width="120" height="120" rx="20" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
   
-  <!-- TEXT: Perfectly Centered -->
-  <g text-anchor="middle">
-    <!-- Letter I - White -->
-    <text x="50" y="82" font-family="'Inter', 'SF Pro Display', system-ui, -apple-system, 'Segoe UI', sans-serif" font-weight="800" font-size="56" fill="#FFFFFF" letter-spacing="-2">I</text>
-    
-    <!-- Letter G - Orange -->
-    <text x="82" y="82" font-family="'Inter', 'SF Pro Display', system-ui, -apple-system, 'Segoe UI', sans-serif" font-weight="800" font-size="56" fill="#FFA726" letter-spacing="-2">G</text>
-  </g>
+  <!-- Letter I (White) - Positioned at x=42 -->
+  <text 
+    x="42" 
+    y="80" 
+    font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" 
+    font-weight="800" 
+    font-size="54" 
+    fill="#FFFFFF"
+    letter-spacing="-1">
+    I
+  </text>
   
-  <!-- Small dot accent (GO reference) - top right corner -->
-  <circle cx="102" cy="26" r="5" fill="#FFA726" opacity="0.95"/>
-  <circle cx="102" cy="26" r="3" fill="#FFFFFF" opacity="0.5"/>
+  <!-- Letter G (Orange) - Positioned at x=71 -->
+  <text 
+    x="71" 
+    y="80" 
+    font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" 
+    font-weight="800" 
+    font-size="54" 
+    fill="#FFA726"
+    letter-spacing="-1">
+    G
+  </text>
+  
+  <!-- Small accent dot (top right) -->
+  <circle cx="100" cy="28" r="4" fill="#FFA726"/>
+  <circle cx="100" cy="28" r="2" fill="#FFFFFF" opacity="0.6"/>
 </svg>
