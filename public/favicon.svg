@@ -52,6 +52,9 @@
     </filter>
   </defs>
   
+  <!-- White circular background - matches target inner area -->
+  <circle cx="100" cy="100" r="90" fill="#FFFFFF" opacity="1"/>
+  
   <!-- Outer ring (largest) -->
   <circle cx="100" cy="100" r="85" fill="none" stroke="url(#outerGrad)" stroke-width="3" opacity="0.8" filter="url(#shadow)"/>
   
