@@ -219,40 +219,43 @@ import "../styles/global.css";
   }
 </style>
 
-<script>
-  // Mobile menu toggle functionality
-  const menuToggle = document.getElementById('mobile-menu-toggle');
-  const nav = document.getElementById('main-nav');
-  
-  if (menuToggle && nav) {
-    menuToggle.addEventListener('click', () => {
-      const isActive = menuToggle.classList.toggle('active');
-      nav.classList.toggle('active');
-      menuToggle.setAttribute('aria-expanded', isActive.toString());
-      
-      // Prevent body scroll when menu is open
-      document.body.style.overflow = isActive ? 'hidden' : '';
-    });
+<script is:inline>
+  // Wait for DOM to be fully loaded
+  document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu toggle functionality
+    const menuToggle = document.getElementById('mobile-menu-toggle');
+    const nav = document.getElementById('main-nav');
     
-    // Close menu when clicking on a link
-    const navLinks = nav.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        menuToggle.classList.remove('active');
-        nav.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
+    if (menuToggle && nav) {
+      menuToggle.addEventListener('click', function() {
+        const isActive = menuToggle.classList.toggle('active');
+        nav.classList.toggle('active');
+        menuToggle.setAttribute('aria-expanded', isActive.toString());
+        
+        // Prevent body scroll when menu is open
+        document.body.style.overflow = isActive ? 'hidden' : '';
       });
-    });
-    
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!nav.contains(e.target) && !menuToggle.contains(e.target) && nav.classList.contains('active')) {
-        menuToggle.classList.remove('active');
-        nav.classList.remove('active');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
-      }
-    });
-  }
+      
+      // Close menu when clicking on a link
+      const navLinks = nav.querySelectorAll('.nav-link');
+      navLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
+          menuToggle.classList.remove('active');
+          nav.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        });
+      });
+      
+      // Close menu when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!nav.contains(e.target) && !menuToggle.contains(e.target) && nav.classList.contains('active')) {
+          menuToggle.classList.remove('active');
+          nav.classList.remove('active');
+          menuToggle.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        }
+      });
+    }
+  });
 </script>
