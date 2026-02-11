@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1500 500">
+  <defs>
+    <!-- Main background gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#764ba2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#667eea;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Accent gradient overlay -->
+    <radialGradient id="accentGrad" cx="50%" cy="50%" r="80%">
+      <stop offset="0%" style="stop-color:#8B7EC8;stop-opacity:0.3" />
+      <stop offset="100%" style="stop-color:#667eea;stop-opacity:0" />
+    </radialGradient>
+    
+    <!-- Text shadow -->
+    <filter id="textShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="0" dy="2" result="offsetblur"/>
+      <feFlood flood-color="#000000" flood-opacity="0.4"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1500" height="500" fill="url(#bgGrad)"/>
+  <rect width="1500" height="500" fill="url(#accentGrad)"/>
+  
+  <!-- Decorative circles (background pattern) -->
+  <circle cx="1350" cy="400" r="150" fill="#FFFFFF" opacity="0.03"/>
+  <circle cx="150" cy="100" r="100" fill="#FFFFFF" opacity="0.03"/>
+  <circle cx="1400" cy="100" r="80" fill="#FFFFFF" opacity="0.05"/>
+  <circle cx="250" cy="450" r="60" fill="#FFFFFF" opacity="0.04"/>
+  
+  <!-- Decorative rings pattern (right side) -->
+  <g opacity="0.08">
+    <circle cx="1100" cy="250" r="180" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+    <circle cx="1100" cy="250" r="220" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
+    <circle cx="1100" cy="250" r="260" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+  </g>
+  
+  <!-- Brand Name (CENTERED) -->
+  <text x="750" y="200" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="100" font-weight="800" fill="#FFFFFF" filter="url(#textShadow)" text-anchor="middle">InSpotGO</text>
+  
+  <!-- Tagline -->
+  <text x="750" y="270" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="36" font-weight="500" fill="#FFFFFF" opacity="0.95" text-anchor="middle">Smart Reviews, Better Choices</text>
+  
+  <!-- Decorative line accent -->
+  <line x1="550" y1="295" x2="950" y2="295" stroke="#FFFFFF" stroke-width="2" opacity="0.3"/>
+  
+  <!-- Category tags (centered) -->
+  <g transform="translate(485, 330)">
+    <rect x="0" y="0" width="90" height="40" rx="20" fill="#FFFFFF" opacity="0.15"/>
+    <text x="45" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="17" font-weight="600" fill="#FFFFFF" text-anchor="middle">Tech</text>
+    
+    <rect x="110" y="0" width="95" height="40" rx="20" fill="#FFFFFF" opacity="0.15"/>
+    <text x="157.5" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="17" font-weight="600" fill="#FFFFFF" text-anchor="middle">SaaS</text>
+    
+    <rect x="225" y="0" width="120" height="40" rx="20" fill="#FFFFFF" opacity="0.15"/>
+    <text x="285" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="17" font-weight="600" fill="#FFFFFF" text-anchor="middle">Software</text>
+    
+    <rect x="365" y="0" width="105" height="40" rx="20" fill="#FFFFFF" opacity="0.15"/>
+    <text x="417.5" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="17" font-weight="600" fill="#FFFFFF" text-anchor="middle">Guides</text>
+  </g>
+  
+  <!-- Call to action -->
+  <g transform="translate(750, 410)">
+    <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="500" fill="#FFFFFF" opacity="0.8" text-anchor="middle">📱 Latest Tech Reviews & Product Guides</text>
+  </g>
+  
+  <!-- URL at bottom right -->
+  <text x="1420" y="470" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="500" fill="#FFFFFF" opacity="0.6" text-anchor="end">inspotgo.com</text>
+</svg>

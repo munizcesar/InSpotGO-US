@@ -1,0 +1,28 @@
+---
+// Logo component with fallback support
+---
+<picture class="logo-picture">
+  <!-- Try SVG first -->
+  <source srcset="/logo-horizontal.svg" type="image/svg+xml" class="desktop-logo">
+  <!-- Fallback to PNG if SVG fails -->
+  <img 
+    src="/logo-horizontal.png" 
+    alt="InSpotGO - Smart Product Reviews" 
+    class="logo-desktop"
+    width="200"
+    height="50"
+    loading="eager"
+  >
+</picture>
+
+<style>
+  .logo-picture {
+    display: inline-block;
+  }
+  
+  .logo-desktop {
+    height: 50px;
+    width: auto;
+    display: block;
+  }
+</style>
