@@ -1,18 +1,21 @@
 # Cloudflare Pages Headers Configuration
-# Force correct MIME types for SVG files
 
+# PNG Logo and Favicon files - shorter cache for easier updates
+/logo-*.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=3600, must-revalidate
+  X-Content-Type-Options: nosniff
+
+/favicon.png
+  Content-Type: image/png
+  Cache-Control: public, max-age=3600, must-revalidate
+  X-Content-Type-Options: nosniff
+
+# SVG files (for other graphics, not logos)
 /*.svg
   Content-Type: image/svg+xml
   Cache-Control: public, max-age=31536000, immutable
   X-Content-Type-Options: nosniff
-
-/logo-*.svg
-  Content-Type: image/svg+xml
-  Cache-Control: public, max-age=31536000, immutable
-
-/favicon.svg
-  Content-Type: image/svg+xml
-  Cache-Control: public, max-age=31536000, immutable
 
 /social/*.svg
   Content-Type: image/svg+xml
