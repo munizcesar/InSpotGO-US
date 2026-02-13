@@ -73,8 +73,8 @@ const posts = await getCollection('posts');
   <!-- Recent Posts Section -->
   <section class="recent-posts">
     <div class="container">
-      <h2 class="section-title">Matérias Recentes</h2>
-      <p class="section-subtitle">Confira as últimas análises e novidades do nosso time</p>
+      <h2 class="section-title">Recent Articles</h2>
+      <p class="section-subtitle">Check out the latest reviews and news from our team</p>
       <div class="posts-grid">
         {posts.slice(0, 3).map(post => (
           <PostCard
@@ -87,7 +87,7 @@ const posts = await getCollection('posts');
         ))}
       </div>
       <div style="text-align:center; margin-top:2rem;">
-        <a href="/posts" class="btn btn-outline">Ver todas as matérias</a>
+        <a href="/posts" class="btn btn-outline">View all articles</a>
       </div>
     </div>
   </section>
