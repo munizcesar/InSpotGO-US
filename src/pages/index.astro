@@ -5,9 +5,7 @@ import CategoryCard from '../components/CategoryCard.astro';
 import { Target, BarChart3, Lightbulb, Flame, CheckCircle2, Search, Users, RefreshCw } from 'lucide-astro';
 import { getCollection } from 'astro:content';
 import PostCard from '../components/PostCard.astro';
----
 
----
 const posts = await getCollection('posts');
 ---
 
@@ -22,7 +20,7 @@ const posts = await getCollection('posts');
             <PostCard
               title={post.data.title}
               description={post.data.description}
-              cover={post.data.cover}
+              cover={post.data.cover || post.data.image}
               date={post.data.date || post.data.pubDate}
               href={`/posts/${post.slug}`}
             />
