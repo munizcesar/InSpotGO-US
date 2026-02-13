@@ -3,7 +3,23 @@
 > Expert reviews and guides for tech products, software, and SaaS tools.
 
 **Site**: https://inspotgo.com  
-**Status**: 🔄 In Development
+**Status**: 🔄 In Development  
+**Language**: 🇺🇸 English Only (US Market) - See [LANGUAGE-POLICY.md](./LANGUAGE-POLICY.md)
+
+---
+
+## ⚠️ Important: Language Policy
+
+**This repository is for the US market and MUST contain English-only content.**
+
+Before making any changes, please read the [**LANGUAGE-POLICY.md**](./LANGUAGE-POLICY.md) file.
+
+- ✅ All user-facing text must be in English
+- ✅ All documentation must be in English
+- ✅ All commits must be in English
+- ❌ Portuguese text is NOT allowed
+
+For the Brazilian Portuguese version, use the **AltiVita** repository.
 
 ---
 
@@ -65,6 +81,7 @@ npm run preview
 
 ## 📚 Documentation
 
+- **[LANGUAGE-POLICY.md](./LANGUAGE-POLICY.md)** - ⚠️ **READ FIRST** - English-only policy
 - **[ROADMAP.md](./ROADMAP.md)** - Complete development roadmap (7 phases)
 - **[CONTENT-GUIDE.md](./CONTENT-GUIDE.md)** - Content creation workflow
 - **[src/config.ts](./src/config.ts)** - Site configuration
@@ -80,6 +97,7 @@ npm run preview
 - [x] Category structure
 - [x] Homepage and category hubs
 - [x] Reusable components
+- [x] Language policy enforcement
 
 ### 🔄 In Progress
 - [ ] Content creation (first 10 posts)
@@ -122,6 +140,7 @@ InSpotGO-US/
 ├── public/
 │   └── robots.txt
 ├── astro.config.mjs       # Astro configuration
+├── LANGUAGE-POLICY.md     # English-only enforcement
 ├── ROADMAP.md             # Development plan
 └── CONTENT-GUIDE.md       # Content creation guide
 ```
@@ -200,11 +219,15 @@ Follow the [CONTENT-GUIDE.md](./CONTENT-GUIDE.md) for:
 - Image requirements
 - Publishing workflow
 
+**Remember**: All content must be in English (see [LANGUAGE-POLICY.md](./LANGUAGE-POLICY.md))
+
 ---
 
 ## 🤝 Contributing
 
 Currently a solo project. Contributions may be accepted in the future.
+
+**Before contributing**: Read [LANGUAGE-POLICY.md](./LANGUAGE-POLICY.md) to understand the English-only requirement.
 
 ---
 
