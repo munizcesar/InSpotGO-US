@@ -3,9 +3,36 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE_CONFIG } from '../config';
 import CategoryCard from '../components/CategoryCard.astro';
 import { Target, BarChart3, Lightbulb, Flame, CheckCircle2, Search, Users, RefreshCw } from 'lucide-astro';
+import { getCollection } from 'astro:content';
+import PostCard from '../components/PostCard.astro';
+---
+
+---
+const posts = await getCollection('posts');
 ---
 
 <BaseLayout>
+    <!-- Recent Posts Section -->
+    <section class="recent-posts">
+      <div class="container">
+        <h2 class="section-title">Matérias Recentes</h2>
+        <p class="section-subtitle">Confira as últimas análises e novidades do nosso time</p>
+        <div class="posts-grid">
+          {posts.slice(0, 3).map(post => (
+            <PostCard
+              title={post.data.title}
+              description={post.data.description}
+              cover={post.data.cover}
+              date={post.data.date || post.data.pubDate}
+              href={`/posts/${post.slug}`}
+            />
+          ))}
+        </div>
+        <div style="text-align:center; margin-top:2rem;">
+          <a href="/posts" class="btn btn-outline">Ver todas as matérias</a>
+        </div>
+      </div>
+    </section>
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
@@ -156,6 +183,16 @@ import { Target, BarChart3, Lightbulb, Flame, CheckCircle2, Search, Users, Refre
 </BaseLayout>
 
 <style>
+  .recent-posts {
+    background: var(--color-bg);
+    padding: 4rem 0 2rem 0;
+  }
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
   /* ============================================
      Hero Section - Dual Color Branding
      ============================================ */
