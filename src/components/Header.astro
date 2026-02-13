@@ -4,11 +4,11 @@ import "../styles/global.css";
 <header class="header" role="banner">
   <div class="container container-flex">
     <a href="/" class="logo-link" aria-label="InSpotGO home">
-      <!-- Icon + name on mobile; full horizontal logo on desktop -->
-      <img src="/logo-horizontal.png?v=3" alt="InSpotGO" class="logo-desktop" height="50">
+      <!-- SVG logo on desktop for correct colors -->
+      <img src="/logo-horizontal.svg" alt="InSpotGO" class="logo-desktop" height="50">
       <span class="logo-mobile-wrap">
-        <img src="/logo-icon.png?v=3" alt="" class="logo-mobile-icon" height="32" width="32">
-        <span class="logo-mobile-text" aria-hidden="true">InSpot<span class="logo-go">GO</span></span>
+        <img src="/logo-icon.svg" alt="" class="logo-mobile-icon" height="32" width="32">
+        <span class="logo-mobile-text" aria-hidden="true"><span class="logo-spot">InSpot</span><span class="logo-go">GO</span></span>
       </span>
     </a>
 
@@ -93,13 +93,17 @@ import "../styles/global.css";
     font-weight: 800;
     font-size: 1.1rem;
     letter-spacing: -0.02em;
-    color: var(--color-primary);
     line-height: 1;
     user-select: none;
   }
 
+  /* Dual-color logo text */
+  .logo-spot {
+    color: var(--color-primary); /* Blue #2563EB */
+  }
+
   .logo-go {
-    color: var(--color-action);
+    color: var(--color-action); /* Orange #F97316 */
   }
 
   /* Mobile Menu Toggle Button */
