@@ -10,27 +10,6 @@ const posts = await getCollection('posts');
 ---
 
 <BaseLayout>
-    <!-- Recent Posts Section -->
-    <section class="recent-posts">
-      <div class="container">
-        <h2 class="section-title">Matérias Recentes</h2>
-        <p class="section-subtitle">Confira as últimas análises e novidades do nosso time</p>
-        <div class="posts-grid">
-          {posts.slice(0, 3).map(post => (
-            <PostCard
-              title={post.data.title}
-              description={post.data.description}
-              cover={post.data.cover || post.data.image}
-              date={(post.data.date instanceof Date ? post.data.date.toISOString().split('T')[0] : post.data.date) || post.data.pubDate}
-              href={`/posts/${post.slug}`}
-            />
-          ))}
-        </div>
-        <div style="text-align:center; margin-top:2rem;">
-          <a href="/posts" class="btn btn-outline">Ver todas as matérias</a>
-        </div>
-      </div>
-    </section>
   <!-- Hero Section -->
   <section class="hero">
     <div class="container">
@@ -87,6 +66,28 @@ const posts = await getCollection('posts');
           icon={SITE_CONFIG.categories.guides.icon}
           href="/guides"
         />
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent Posts Section -->
+  <section class="recent-posts">
+    <div class="container">
+      <h2 class="section-title">Matérias Recentes</h2>
+      <p class="section-subtitle">Confira as últimas análises e novidades do nosso time</p>
+      <div class="posts-grid">
+        {posts.slice(0, 3).map(post => (
+          <PostCard
+            title={post.data.title}
+            description={post.data.description}
+            cover={post.data.cover || post.data.image}
+            date={(post.data.date instanceof Date ? post.data.date.toISOString().split('T')[0] : post.data.date) || post.data.pubDate}
+            href={`/posts/${post.slug}`}
+          />
+        ))}
+      </div>
+      <div style="text-align:center; margin-top:2rem;">
+        <a href="/posts" class="btn btn-outline">Ver todas as matérias</a>
       </div>
     </div>
   </section>
@@ -183,7 +184,7 @@ const posts = await getCollection('posts');
 <style>
   .recent-posts {
     background: var(--color-bg);
-    padding: 4rem 0 2rem 0;
+    padding: 4rem 0;
   }
   .posts-grid {
     display: grid;
