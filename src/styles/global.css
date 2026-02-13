@@ -13,13 +13,31 @@
   line-height: 1.3;
 }
 :root{
-  --color-primary: #0F2A44; /* Azul escuro oficial */
-  --color-accent: #2DBE60;  /* Verde GO oficial */
-  --color-bg: #FFFFFF;      /* Branco oficial */
-  --color-bg-alt: #F4F6F8;  /* Cinza claro oficial */
-  --color-text: #0F2A44;    /* Usando azul escuro para texto principal */
-  --color-text-muted: #64748B;
-  --color-border: #E2E8F0;
+  /* Primary Colors (Trust & Navigation) - from COLOR-GUIDE.md */
+  --color-primary: #2563eb;      /* Blue - Trust */
+  --color-primary-dark: #1e40af; /* Blue Dark */
+  --color-primary-light: #3b82f6;/* Blue Light */
+  
+  /* Action Colors (Conversion & CTAs) - from COLOR-GUIDE.md */
+  --color-action: #f97316;       /* Orange - GO and CTAs */
+  --color-action-dark: #ea580c;  /* Orange Dark */
+  --color-action-light: #fb923c; /* Orange Light */
+  
+  /* Success Colors (Validation & Badges) - from COLOR-GUIDE.md */
+  --color-success: #10b981;      /* Green */
+  --color-success-dark: #059669; /* Green Dark */
+  
+  /* Neutral Colors */
+  --color-bg: #ffffff;           /* White */
+  --color-bg-alt: #f9fafb;       /* Light Gray BG */
+  --color-text: #1f2937;         /* Dark Gray */
+  --color-text-light: #6b7280;   /* Medium Gray */
+  --color-text-muted: #9ca3af;   /* Light Gray */
+  --color-border: #e5e7eb;       /* Border Gray */
+  
+  /* Legacy aliases for compatibility */
+  --color-accent: var(--color-action); /* Orange for GO */
+  
   --font-stack: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
@@ -42,10 +60,10 @@ button{font-family:inherit}
 }
 .container{max-width:1100px;margin:0 auto;padding:1rem;}
 .logo-in{color:var(--color-primary);font-weight:400}
-.logo-go{color:var(--color-accent);font-weight:700}
+.logo-go{color:var(--color-action);font-weight:700}
 
 .cta-primary{
-  background:var(--color-accent);color:#fff;border:none;padding:.8rem 1rem;border-radius:8px;cursor:pointer;
+  background:var(--color-action);color:#fff;border:none;padding:.8rem 1rem;border-radius:8px;cursor:pointer;
 }
 .cta-primary:hover{filter:brightness(.95)}
 .cta-secondary{
@@ -95,7 +113,7 @@ button{font-family:inherit}
 .cookie-actions{display:flex;gap:.5rem}
 
 /* Accessible focus styles */
-:focus-visible{outline:3px solid rgba(30,58,138,0.18);outline-offset:2px}
+:focus-visible{outline:3px solid rgba(37,99,235,0.18);outline-offset:2px}
 
 /* Buttons focus refinement */
-.cta-primary:focus-visible,.cta-secondary:focus-visible{box-shadow:0 0 0 3px rgba(30,58,138,0.12);border-radius:8px}
+.cta-primary:focus-visible,.cta-secondary:focus-visible{box-shadow:0 0 0 3px rgba(37,99,235,0.12);border-radius:8px}
