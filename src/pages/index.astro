@@ -21,7 +21,7 @@ const posts = await getCollection('posts');
               title={post.data.title}
               description={post.data.description}
               cover={post.data.cover || post.data.image}
-              date={post.data.date || post.data.pubDate}
+              date={(post.data.date instanceof Date ? post.data.date.toISOString().split('T')[0] : post.data.date) || post.data.pubDate}
               href={`/posts/${post.slug}`}
             />
           ))}
