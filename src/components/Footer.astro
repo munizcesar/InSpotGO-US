@@ -1,246 +1,145 @@
 ---
-import { Target, Mail, MapPin } from 'lucide-astro';
 ---
-
-<footer class="site-footer">
+<footer class="footer" role="contentinfo">
   <div class="container">
     <div class="footer-content">
-      <!-- Brand Section -->
       <div class="footer-brand">
-        <a href="/" class="footer-logo">
-          <Target size={36} class="logo-icon" stroke-width={2} />
-          <span class="logo-text">
-            <span class="logo-inspot">InSpot</span><span class="logo-go">GO</span>
-          </span>
-        </a>
-        <p class="tagline">Spot the Best. Go Confident.</p>
-        <p class="description">
-          Expert reviews and buying guides for tech products, software, and SaaS tools.
-        </p>
+        <div class="footer-logo-text">
+          <span class="logo-spot">InSpot</span><span class="logo-go">GO</span>
+        </div>
+        <p class="footer-tagline">Spot the Best. GO Confident.</p>
+        <p class="footer-copyright">© 2026 InSpotGO — All rights reserved.</p>
       </div>
-
-      <!-- Categories -->
-      <div class="footer-section">
-        <h3>Categories</h3>
-        <ul>
-          <li><a href="/tech">Tech Reviews</a></li>
-          <li><a href="/saas">SaaS Tools</a></li>
-          <li><a href="/software">Software</a></li>
-          <li><a href="/guides">Buying Guides</a></li>
-        </ul>
-      </div>
-
-      <!-- Company -->
-      <div class="footer-section">
-        <h3>Company</h3>
-        <ul>
-          <li><a href="/about">About Us</a></li>
-          <li><a href="/contact">Contact</a></li>
-          <li><a href="/affiliate-disclosure">Affiliate Disclosure</a></li>
-          <li><a href="/privacy">Privacy Policy</a></li>
-        </ul>
-      </div>
-
-      <!-- Contact -->
-      <div class="footer-section">
-        <h3>Get in Touch</h3>
-        <ul class="contact-list">
-          <li>
-            <Mail size={18} />
-            <a href="mailto:contact@inspotgo.com">contact@inspotgo.com</a>
-          </li>
-          <li>
-            <MapPin size={18} />
-            <span>United States</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Bottom Bar -->
-    <div class="footer-bottom">
-      <p>&copy; {new Date().getFullYear()} InSpotGO. All rights reserved.</p>
+      
       <div class="footer-links">
-        <a href="/terms">Terms of Service</a>
-        <span>•</span>
-        <a href="/privacy">Privacy</a>
-        <span>•</span>
-        <a href="/affiliate-disclosure">Disclosure</a>
+        <div class="footer-column">
+          <h4>Categories</h4>
+          <a href="/tech">Tech Products</a>
+          <a href="/saas">SaaS Tools</a>
+          <a href="/software">Software</a>
+          <a href="/guides">Guides</a>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Company</h4>
+          <a href="/about">About Us</a>
+          <a href="/contact">Contact</a>
+          <a href="/editorial-policy">Editorial Policy</a>
+        </div>
+        
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+          <a href="/affiliate-disclosure">Affiliate Disclosure</a>
+        </div>
       </div>
     </div>
   </div>
 </footer>
 
 <style>
-  .site-footer {
-    background: var(--color-bg-dark);
-    color: var(--color-text-light);
-    padding: 4rem 0 2rem;
+  .footer {
+    background: var(--color-bg-alt);
+    border-top: 1px solid var(--color-border);
+    padding: 3rem 0 2rem;
     margin-top: 4rem;
   }
-
+  
   .footer-content {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    grid-template-columns: 1.5fr 2fr;
     gap: 3rem;
-    margin-bottom: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
   }
-
-  /* Brand Section with Icon */
+  
   .footer-brand {
-    max-width: 320px;
-  }
-
-  .footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    text-decoration: none;
-    font-size: 1.75rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-    transition: transform var(--transition-base);
-  }
-
-  .footer-logo:hover {
-    transform: scale(1.02);
-  }
-
-  .logo-icon {
-    color: var(--color-primary);
-    flex-shrink: 0;
-  }
-
-  .logo-text {
-    display: flex;
-    align-items: baseline;
-    gap: 0.125rem;
-  }
-
-  .logo-inspot {
-    background: var(--gradient-text);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .logo-go {
-    background: var(--gradient-action);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .tagline {
-    font-size: 0.875rem;
-    color: var(--color-text-muted);
-    margin-bottom: 0.75rem;
-    font-style: italic;
-  }
-
-  .description {
-    font-size: 0.875rem;
-    line-height: 1.6;
-  }
-
-  /* Footer Sections */
-  .footer-section h3 {
-    font-size: 1rem;
-    font-weight: 700;
-    color: white;
-    margin-bottom: 1.25rem;
-  }
-
-  .footer-section ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
   }
-
-  .footer-section a {
+  
+  .footer-logo-text {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Logo uses global.css classes */
+  .logo-spot {
+    color: var(--color-primary);
+  }
+  
+  .logo-go {
+    background: var(--gradient-logo-go);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .footer-tagline {
+    color: var(--color-text-light);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+  
+  .footer-copyright {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    margin: 0;
+  }
+  
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .footer-column h4 {
+    color: var(--color-text);
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+  }
+  
+  .footer-column a {
     color: var(--color-text-light);
     text-decoration: none;
     font-size: 0.9rem;
-    transition: color var(--transition-base);
+    transition: color 0.3s ease;
   }
-
-  .footer-section a:hover {
+  
+  .footer-column a:hover {
     color: var(--color-primary);
   }
-
-  /* Contact List */
-  .contact-list li {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.9rem;
-  }
-
-  .contact-list svg {
-    color: var(--color-primary);
-    flex-shrink: 0;
-  }
-
-  /* Bottom Bar */
-  .footer-bottom {
-    padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .footer-bottom p {
-    margin: 0;
-    font-size: 0.875rem;
-    color: var(--color-text-muted);
-  }
-
-  .footer-links {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-size: 0.875rem;
-  }
-
-  .footer-links a {
-    color: var(--color-text-muted);
-    text-decoration: none;
-    transition: color var(--transition-base);
-  }
-
-  .footer-links a:hover {
-    color: var(--color-primary);
-  }
-
-  .footer-links span {
-    color: var(--color-text-muted);
-  }
-
-  /* Responsive */
+  
   @media (max-width: 768px) {
+    .footer {
+      padding: 2rem 0 1.5rem;
+    }
+    
     .footer-content {
       grid-template-columns: 1fr;
-      gap: 2.5rem;
+      gap: 2rem;
+      padding: 0 1rem;
     }
-
-    .footer-brand {
-      max-width: 100%;
-    }
-
-    .footer-bottom {
-      flex-direction: column;
-      text-align: center;
-    }
-
+    
     .footer-links {
-      flex-wrap: wrap;
-      justify-content: center;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    
+    .footer-logo-text {
+      font-size: 1.75rem;
     }
   }
 </style>
