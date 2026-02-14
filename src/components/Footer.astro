@@ -4,7 +4,9 @@
   <div class="container">
     <div class="footer-content">
       <div class="footer-brand">
-        <img src="/logo-horizontal.svg" alt="InSpotGO" class="footer-logo" height="40">
+        <div class="footer-logo-text">
+          <span class="logo-spot">InSpot</span><span class="logo-go">GO</span>
+        </div>
         <p class="footer-tagline">Spot the Best. GO Confident.</p>
         <p class="footer-copyright">© 2026 InSpotGO — All rights reserved.</p>
       </div>
@@ -59,10 +61,23 @@
     gap: 0.75rem;
   }
   
-  .footer-logo {
-    height: 40px;
-    width: auto;
+  .footer-logo-text {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
     margin-bottom: 0.5rem;
+  }
+  
+  /* Logo uses global.css classes */
+  .logo-spot {
+    color: var(--color-primary);
+  }
+  
+  .logo-go {
+    background: var(--gradient-logo-go);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   
   .footer-tagline {
@@ -123,8 +138,8 @@
       gap: 1.5rem;
     }
     
-    .footer-logo {
-      height: 36px;
+    .footer-logo-text {
+      font-size: 1.75rem;
     }
   }
 </style>
