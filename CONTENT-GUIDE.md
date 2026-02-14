@@ -2,7 +2,7 @@
 
 > **Purpose**: Step-by-step guide for creating high-quality, SEO-optimized content that converts.
 
-**Last Updated**: February 9, 2026
+**Last Updated**: February 13, 2026
 
 ---
 
@@ -16,6 +16,101 @@
 
 ---
 
+## 🎨 Brand Voice & Tone Guidelines
+
+### Core Writing Style: Professional, Journalistic, Tech-Style
+
+InSpotGO follows the editorial standards of leading tech publications like **TechCrunch**, **The Verge**, and **Wirecutter**.
+
+#### ✅ DO Write Like This:
+
+**Professional Tone:**
+- Clear, authoritative, and credible
+- Fact-based with data and sources
+- Objective analysis with expert insights
+- Structured like tech journalism, not blog posts
+
+**Tech-Style Language:**
+- Use industry-standard terminology correctly
+- Explain technical concepts clearly without dumbing down
+- Reference specs, benchmarks, and real-world tests
+- Compare objectively using measurable criteria
+
+**Journalistic Approach:**
+- Start with the most important information (inverted pyramid)
+- Support claims with evidence and testing
+- Include multiple perspectives when relevant
+- Update content with "Editor's Note" when facts change
+- Cite sources and link to official specifications
+
+#### ❌ DON'T Write Like This:
+
+**Avoid Casual/Informal:**
+- ❌ "What's Hot" → ✅ "Trending Now"
+- ❌ "Check this out!" → ✅ "Notable features include"
+- ❌ "Super cool gadget" → ✅ "Innovative device"
+- ❌ "This thing is awesome!" → ✅ "This product performs exceptionally well"
+
+**Avoid Overhype:**
+- ❌ "Mind-blowing performance!"
+- ❌ "You won't believe this!"
+- ❌ "The absolute best ever!"
+- ❌ Excessive exclamation marks!!!
+
+**Avoid Marketing Speak:**
+- ❌ "Revolutionary game-changer"
+- ❌ "Must-have product"
+- ❌ "Life-changing experience"
+- ❌ Buzzwords without substance
+
+### Vocabulary Guidelines
+
+**Professional Alternatives:**
+
+| Instead of (Casual) | Use (Professional) |
+|---------------------|--------------------|
+| Hot, Trending, Viral | Popular, In-demand, Widely adopted |
+| Awesome, Cool | Impressive, Notable, Well-designed |
+| Check out | Consider, Explore, Review |
+| Stuff, Things | Features, Components, Elements |
+| Cheap | Budget-friendly, Affordable, Cost-effective |
+| Expensive | Premium, High-end, Enterprise-grade |
+| Easy | Intuitive, User-friendly, Accessible |
+| Hard | Complex, Advanced, Technical |
+
+**Tech Terminology Standards:**
+- Use exact technical terms: "1080p resolution" not "HD quality"
+- Specify measurements: "8GB RAM" not "lots of memory"
+- Reference benchmarks: "scored 1,200 on Geekbench" not "runs fast"
+- Include model numbers: "iPhone 16 Pro" not "latest iPhone"
+
+### Writing Structure (Journalistic)
+
+**Lede Paragraph (First 1-2 sentences):**
+```
+The [Product Name] delivers [main benefit] through [key feature], 
+making it [position in market] for [target audience]. Priced at [cost], 
+it competes directly with [main competitor].
+```
+
+**Nut Graf (2-3 paragraphs):**
+- Why this matters now
+- Key context readers need
+- What we tested/evaluated
+
+**Body:**
+- Most important findings first
+- Supporting details and analysis
+- Technical specifications and benchmarks
+- Real-world testing results
+
+**Conclusion:**
+- Clear verdict based on testing
+- Specific recommendations for different users
+- Alternatives to consider
+
+---
+
 ## 📋 Content Types
 
 ### 1. Product Reviews
@@ -25,35 +120,43 @@
 ```markdown
 # [Product Name] Review: [Main Benefit]
 
-## Quick Verdict (TL;DR)
+## Editor's Verdict (Summary)
 - Rating: X/5 stars
-- Best for: [audience]
-- Price: $X
-- Pros: bullet points
-- Cons: bullet points
+- Best for: [specific audience]
+- Price: $X (as of [date])
+- Pros: [specific benefits]
+- Cons: [specific limitations]
 
 ## What is [Product]?
-Brief introduction
+[Professional introduction with context]
 
 ## Key Features
-### Feature 1
-### Feature 2
-### Feature 3
+### [Feature 1 Name]
+[Analysis with testing results]
 
-## Pricing
-Breakdown of plans
+### [Feature 2 Name]
+[Analysis with testing results]
+
+## Performance Benchmarks
+[Measured results, comparison data]
+
+## Pricing & Value
+[Objective cost analysis]
 
 ## Pros and Cons
-### Pros
-### Cons
+### Strengths
+### Limitations
 
-## Who Should Buy [Product]?
+## Who Should Consider [Product]?
+[Specific use cases]
 
-## Alternatives to Consider
+## Alternatives
+[Comparable products with differentiation]
 
 ## Final Verdict
+[Clear recommendation based on testing]
 
-[Affiliate CTA Button]
+[Professional CTA]
 ```
 
 ### 2. Comparison Posts
@@ -61,28 +164,44 @@ Breakdown of plans
 
 **Structure**:
 ```markdown
-# [Product A] vs [Product B]: Which is Better in 2026?
+# [Product A] vs [Product B]: Comparative Analysis (2026)
 
-## Quick Comparison
+## Executive Summary
+[Quick verdict based on testing]
+
+## Specifications Comparison
 | Feature | Product A | Product B |
 |---------|-----------|------------|
 
 ## Overview
-### Product A
-### Product B
+### [Product A]
+[Professional analysis]
 
-## Feature-by-Feature Comparison
-### Feature 1
-### Feature 2
-### Feature 3
+### [Product B]
+[Professional analysis]
 
-## Pricing Comparison
+## Feature-by-Feature Analysis
+### [Category 1]
+[Objective comparison with data]
 
-## Which Should You Choose?
-### Choose Product A if...
-### Choose Product B if...
+### [Category 2]
+[Objective comparison with data]
+
+## Performance Testing
+[Benchmark results and real-world tests]
+
+## Pricing Analysis
+[Value proposition evaluation]
+
+## Verdict: Which Performs Better?
+### Choose [Product A] if:
+[Specific scenarios with reasoning]
+
+### Choose [Product B] if:
+[Specific scenarios with reasoning]
 
 ## Final Recommendation
+[Clear guidance based on use case]
 ```
 
 ### 3. Buying Guides
@@ -90,32 +209,39 @@ Breakdown of plans
 
 **Structure**:
 ```markdown
-# Best [Product Category] for [Use Case] in 2026
+# Best [Product Category] for [Use Case]: Expert Analysis (2026)
 
-## Why Trust Our Recommendations?
+## Editorial Methodology
+[How we test and evaluate]
 
-## Quick Picks
-1. Best Overall: [Product]
-2. Best Budget: [Product]
-3. Best Premium: [Product]
+## Top Picks
+1. Best Overall: [Product] - [Reason]
+2. Best Value: [Product] - [Reason]
+3. Best Premium: [Product] - [Reason]
 
-## What to Look for in [Product]
-- Factor 1
-- Factor 2
-- Factor 3
+## Evaluation Criteria
+- [Factor 1]: [Why it matters]
+- [Factor 2]: [Why it matters]
+- [Factor 3]: [Why it matters]
 
-## Detailed Reviews
+## Detailed Analysis
 ### 1. [Product Name] - Best Overall
-### 2. [Product Name] - Best Budget
-### 3. [Product Name] - Best Premium
+[Professional review with specs]
 
-## Comparison Table
+### 2. [Product Name] - Best Value
+[Professional review with specs]
 
-## How We Test
+## Performance Comparison
+[Data-driven comparison table]
 
-## FAQ
+## Testing Methodology
+[Transparent process explanation]
+
+## Frequently Asked Questions
+[Technical questions with expert answers]
 
 ## Conclusion
+[Specific recommendations by use case]
 ```
 
 ### 4. How-To Guides
@@ -123,22 +249,33 @@ Breakdown of plans
 
 **Structure**:
 ```markdown
-# How to [Do Something]: Complete Guide (2026)
+# How to [Accomplish Task]: Technical Guide (2026)
 
-## What You'll Need
+## Prerequisites
+[Required knowledge, tools, software]
 
-## Step 1: [Action]
-## Step 2: [Action]
-## Step 3: [Action]
+## Step-by-Step Instructions
 
-## Tips & Best Practices
+### Step 1: [Action]
+[Clear technical instructions]
 
-## Common Mistakes to Avoid
+### Step 2: [Action]
+[Clear technical instructions]
+
+### Step 3: [Action]
+[Clear technical instructions]
+
+## Best Practices
+[Professional recommendations]
+
+## Common Issues & Solutions
+[Troubleshooting guide]
 
 ## Recommended Tools
-[Include affiliate products]
+[Professional-grade options with analysis]
 
 ## Conclusion
+[Summary of process and outcomes]
 ```
 
 ---
@@ -152,161 +289,186 @@ Breakdown of plans
 2. Find keywords with:
    - Monthly search volume: 500-5,000 (sweet spot for starting)
    - Low-medium competition
-   - Buyer intent ("best", "review", "vs", "how to choose")
+   - Buyer intent ("best", "review", "vs", "comparison")
 
-**Good keyword examples**:
-- "best noise cancelling headphones under 200"
-- "notion vs clickup for project management"
-- "how to choose a laptop for video editing"
+**Professional keyword examples**:
+- "best noise cancelling headphones professional use"
+- "notion vs clickup feature comparison"
+- "how to select laptop for video production"
 
 #### B. Competitor Analysis
 1. Google your target keyword
 2. Analyze top 5 results:
-   - What structure do they use?
-   - What topics do they cover?
-   - What's missing?
-   - How can you do better?
+   - Editorial structure and depth
+   - Technical details included
+   - Testing methodology
+   - What authoritative sources they cite
+   - Gaps in coverage you can fill
 
 #### C. Outline Creation
-1. Create detailed outline with H2/H3 headings
-2. Plan where affiliate links will go
-3. Identify images needed
-4. Note key points for each section
+1. Create detailed outline with journalistic structure
+2. Plan data points and benchmarks to include
+3. Identify technical specifications needed
+4. Note expert sources to cite
+5. Map affiliate link placements (naturally integrated)
 
 ### Step 2: Content Creation
 
 #### Writing Guidelines:
 
 **Tone & Voice**:
-- Professional but conversational
-- Helpful and honest
-- No hype or exaggeration
-- Write in 2nd person ("you")
-- Use short paragraphs (2-3 sentences max)
+- ✅ Professional and authoritative
+- ✅ Objective with clear methodology
+- ✅ Technical but accessible
+- ✅ Evidence-based conclusions
+- ✅ Use active voice: "We tested" not "Tests were conducted"
+- ✅ Present tense for current products
+- ✅ Precise language over vague descriptors
 
 **Structure**:
-- Use descriptive H2/H3 headings
-- Include bullet points for easy scanning
-- Add comparison tables where relevant
-- Break up text with images
-- Use bold for important points
+- Lead with most important information
+- Use descriptive, specific H2/H3 headings
+- Include data tables for specifications
+- Add benchmark results where applicable
+- Use bold for technical terms on first use
+- Include editor's notes for updates
 
 **Word Count Guidelines**:
-- Product Review: 1,500-2,500 words
-- Comparison: 2,000-3,000 words
-- Buying Guide: 2,500-4,000 words
-- How-To: 1,000-2,000 words
+- Product Review: 1,800-2,800 words
+- Comparison Analysis: 2,200-3,500 words
+- Buying Guide: 2,800-4,500 words
+- Technical Guide: 1,500-2,500 words
 
-**SEO Optimization**:
+**SEO Optimization** (Natural Integration):
 - Include target keyword in:
-  - Title (H1)
-  - First paragraph
-  - At least one H2
+  - Title (H1) - naturally phrased
+  - First paragraph (lede)
+  - At least one H2 (contextually)
   - Meta description
   - URL slug
-  - Image alt text
-- But write naturally - don't keyword stuff!
-- Use semantic keywords (related terms)
-- Link to other relevant posts (internal linking)
+  - Image alt text (descriptively)
+- Write for readers first, search engines second
+- Use semantic keywords and industry terminology
+- Link to authoritative sources (manufacturers, spec sheets)
+- Internal linking to related content
 
-### Step 3: Adding Affiliate Links
+**Professional Language Examples:**
 
-#### Where to Place Affiliate Links:
-1. **Top of post** - Quick verdict box
-2. **Product buttons** - "Check Price on Amazon"
-3. **Within content** - Naturally in context
-4. **Comparison tables** - Link from product names
-5. **End of post** - Final recommendation CTA
+❌ **Avoid:**
+> "This laptop is super fast and has tons of RAM! You'll love how quick it runs your apps."
 
-#### Affiliate Link Best Practices:
+✅ **Write Instead:**
+> "The device features 16GB of DDR5 RAM and an Intel Core i7-13700H processor, delivering benchmark scores of 1,850 in Geekbench 6 single-core and 12,400 in multi-core tests—performance sufficient for professional video editing and 3D rendering workflows."
+
+### Step 3: Adding Affiliate Links (Professional Integration)
+
+#### Where to Place Links:
+1. **Summary section** - "Check current pricing"
+2. **Product comparison tables** - Linked product names
+3. **Within analysis** - Natural contextual mentions
+4. **Alternatives section** - "View specifications"
+5. **Conclusion** - "See latest offers"
+
+#### Professional CTA Examples:
+
+❌ **Avoid:**
+> "BUY NOW!!! 🔥 CLICK HERE FOR AMAZING DEALS!!!"
+
+✅ **Use Instead:**
 ```astro
-<!-- Use clear, action-oriented CTAs -->
-<a href="{amazonLink}" 
-   class="affiliate-button"
+<a href="{affiliateLink}" 
+   class="btn-primary"
    target="_blank"
    rel="nofollow noopener sponsored">
-  Check Current Price on Amazon →
+  View Current Pricing →
 </a>
 
-<!-- Always add rel="nofollow sponsored" for affiliate links -->
-<!-- This is required by Google and FTC -->
+<!-- Or -->
+<a href="{link}" rel="nofollow sponsored">
+  Check Specifications
+</a>
 ```
 
-#### Disclosure Requirements:
-- Add affiliate disclosure at TOP of every post with affiliate links
-- Make it visible and clear
-- Example: "This post contains affiliate links. If you make a purchase through these links, we may earn a commission at no extra cost to you."
+#### Disclosure (Professional & Compliant):
+**Place at top of every review/comparison:**
+
+> **Affiliate Disclosure**: InSpotGO may earn commissions from purchases made through links in this article. Our editorial content is independent and based on our testing and research. [Learn more about our review process](/editorial-policy).
 
 ### Step 4: Images & Media
 
 #### Image Requirements:
-- **Hero image**: 1200x630px (for social sharing)
-- **Product images**: High quality, 800px+ width
-- **Screenshots**: Clear and annotated
-- **File format**: WebP preferred (Astro auto-converts)
-- **Naming**: descriptive-file-name.jpg
+- **Hero image**: 1200x630px, professional quality
+- **Product photos**: High-resolution, 800px+ width
+- **Charts/graphs**: Clean data visualization
+- **Screenshots**: Annotated, relevant to analysis
+- **File format**: WebP (optimized)
+- **Naming**: descriptive-technical-name.webp
 
-#### Image Sources:
-- Own photos (best!)
-- Manufacturer press kits
-- Amazon product images (with proper attribution)
-- Unsplash/Pexels (free stock)
-- Never steal images - use only licensed
+#### Professional Image Sources:
+- Official press kits (manufacturer-provided)
+- Own photography (preferred for testing)
+- Licensed stock (Unsplash, Pexels with attribution)
+- Product screenshots (with proper context)
+- Benchmark result screenshots
 
 #### Optimization:
-- Compress images before upload
-- Add descriptive alt text
-- Include keywords in alt text naturally
+- Compress without quality loss
+- Descriptive, technical alt text
+- Include specifications in captions when relevant
 
 ### Step 5: Pre-Publish Checklist
 
 ```markdown
-## Content Quality
-- [ ] Article is 1,500+ words
-- [ ] Information is accurate and fact-checked
-- [ ] Writing is clear and easy to understand
+## Editorial Quality
+- [ ] Professional, journalistic tone throughout
+- [ ] No casual language or marketing hype
+- [ ] Technical terms used correctly
+- [ ] Claims supported with data/sources
+- [ ] Fact-checked against official specifications
+- [ ] Editor's verdict is clear and specific
 - [ ] No spelling or grammar errors
-- [ ] Proper heading hierarchy (H1 → H2 → H3)
-- [ ] Short paragraphs (2-3 sentences)
-- [ ] Bullet points used where appropriate
+- [ ] Proper heading hierarchy
+- [ ] Professional CTAs (no "BUY NOW!!!")
+- [ ] Competitor analysis is objective
 
-## SEO
-- [ ] Target keyword in title
-- [ ] Target keyword in first paragraph
-- [ ] Target keyword in at least one H2
-- [ ] Meta description written (150-160 characters)
-- [ ] URL slug is clean and includes keyword
-- [ ] Internal links to 2-3 other posts
+## Technical Accuracy
+- [ ] All specifications verified
+- [ ] Benchmark data included where relevant
+- [ ] Price checked and dated
+- [ ] Model numbers accurate
+- [ ] Links to official sources provided
+- [ ] Testing methodology explained
+
+## SEO (Natural Integration)
+- [ ] Target keyword in title (naturally)
+- [ ] Lede paragraph includes keyword contextually
+- [ ] Meta description written (150-160 chars)
+- [ ] URL slug is clean and descriptive
+- [ ] Internal links to related content (2-3)
 - [ ] External links to authoritative sources
-- [ ] Images have descriptive alt text
+- [ ] Images have technical alt text
 
 ## Affiliate Compliance
-- [ ] Affiliate disclosure at top of post
+- [ ] Professional disclosure at top
 - [ ] All affiliate links have rel="nofollow sponsored"
-- [ ] CTAs are clear and action-oriented
-- [ ] At least 2-3 affiliate link placements
-- [ ] Links open in new tab (target="_blank")
+- [ ] CTAs are professional and clear
+- [ ] Links naturally integrated in content
+- [ ] Links open in new tab
 
 ## Images
-- [ ] Hero image added (1200x630px)
-- [ ] Product images are high quality
-- [ ] All images compressed
-- [ ] All images have alt text
-- [ ] Images are relevant to content
+- [ ] Hero image (1200x630px, professional)
+- [ ] Product images high quality
+- [ ] All images compressed (WebP)
+- [ ] Descriptive, technical alt text
+- [ ] Charts/graphs if applicable
 
 ## User Experience
-- [ ] Quick verdict/TL;DR at top
-- [ ] Table of contents for long posts
+- [ ] Editor's verdict/summary at top
+- [ ] Specifications table included
 - [ ] Comparison table (if applicable)
-- [ ] Pros/cons clearly listed
-- [ ] Mobile-friendly formatting
-- [ ] Easy to scan (headings, bullets, bold)
-
-## Technical
-- [ ] No broken links
-- [ ] Page loads fast
-- [ ] Schema markup added (auto-generated)
-- [ ] Social share image set
+- [ ] Pros/cons clearly analyzed
+- [ ] Mobile-optimized
+- [ ] Professional formatting
 ```
 
 ---
@@ -315,111 +477,117 @@ Breakdown of plans
 
 ### Metrics to Monitor:
 1. **Organic traffic** (Google Analytics)
-2. **Rankings** (Google Search Console)
-3. **Affiliate clicks** (affiliate dashboards)
+2. **Search rankings** (Google Search Console)
+3. **Affiliate click-through rate** (affiliate dashboards)
 4. **Conversion rate** (clicks to purchases)
-5. **Time on page** (engagement)
-6. **Bounce rate** (content quality)
+5. **Average time on page** (engagement metric)
+6. **Bounce rate** (content quality indicator)
 
 ### Update Schedule:
-- Review top posts monthly
-- Update pricing/info quarterly
-- Refresh low-performers
-- Add new products as released
+- Review top-performing content monthly
+- Update specifications and pricing quarterly
+- Refresh low-performing articles with new data
+- Add new products as they're released
+- Mark updates with "Updated: [Date]" notes
 
 ---
 
 ## 🚫 Content DON'Ts
 
 ### Never Do This:
-- ❌ Copy content from other sites
-- ❌ Make false claims or promises
+- ❌ Copy content from other publications
+- ❌ Make unsubstantiated claims
 - ❌ Hide affiliate relationships
-- ❌ Review products you haven't researched
-- ❌ Keyword stuff
-- ❌ Use clickbait titles
-- ❌ Ignore user intent
-- ❌ Forget mobile users
-- ❌ Skip proofreading
+- ❌ Review products without research
+- ❌ Use casual, unprofessional language
+- ❌ Rely on marketing materials only
+- ❌ Ignore technical accuracy
+- ❌ Skip fact-checking
 - ❌ Promote low-quality products for commission
+- ❌ Use clickbait headlines
 
-### Ethical Guidelines:
-- ✅ Only recommend products you'd use yourself
-- ✅ Be honest about cons and limitations
+### Editorial Standards:
+- ✅ Only recommend products backed by research
+- ✅ Disclose limitations objectively
 - ✅ Update content when products change
-- ✅ Disclose affiliate relationships clearly
-- ✅ Put user needs before commissions
-- ✅ Cite sources and data
-- ✅ Test products when possible
+- ✅ Transparent affiliate disclosure
+- ✅ Put reader needs first
+- ✅ Cite manufacturer specifications
+- ✅ Test products when feasible
+- ✅ Maintain journalistic objectivity
 
 ---
 
 ## 📚 Content Ideas Generator
 
-### Tech Products:
-- "Best [product] for [use case] under $[price]"
-- "[Product A] vs [Product B]: Which Should You Buy?"
-- "[Brand] [Product] Review: Worth the Money?"
-- "Top [number] [product category] for [year]"
-- "Is [expensive product] Worth It? (Honest Review)"
+### Tech Products (Professional Framing):
+- "Best [product] for [professional use case]: Technical Analysis"
+- "[Product A] vs [Product B]: Performance Comparison"
+- "[Brand] [Product] Review: Specifications and Testing"
+- "Top [number] [category] for [year]: Expert Evaluation"
+- "[Product] Performance Analysis: Worth the Investment?"
 
-### SaaS:
-- "[SaaS A] vs [SaaS B] for [use case]"
-- "Best [category] software for [audience]"
-- "[SaaS] Review: Features, Pricing & Alternatives"
-- "[Free SaaS] vs [Paid Alternative]: Complete Comparison"
-- "How to Choose [SaaS category] for Your Business"
+### SaaS (B2B Professional):
+- "[SaaS A] vs [SaaS B]: Feature Comparison for [use case]"
+- "Best [category] platforms for [professional audience]"
+- "[SaaS] Review: Features, Pricing, and Alternatives"
+- "Enterprise [category] solutions: Comparative Analysis"
+- "Selecting [SaaS type]: Technical Evaluation Guide"
 
-### Seasonal Content:
-- "Best Tech Gifts Under $[price] ([Holiday])"
-- "Back to School: Best [products] for Students"
-- "Black Friday Deals: Best [category] Discounts"
-- "New Year: Top Productivity Tools for [year]"
+### Seasonal (Professional Approach):
+- "Professional Tech Recommendations: [Holiday] Guide"
+- "Best [products] for Academic Use: Back-to-School"
+- "Year-End [category] Evaluation: 2026 Roundup"
+- "Q1 Productivity Tools: Professional Assessment"
 
 ---
 
 ## 🎓 Resources
 
+### Professional Standards:
+- AP Stylebook (journalism standards)
+- FTC Disclosure Guidelines (affiliate compliance)
+- Google Search Central (SEO best practices)
+
+### Editorial Examples:
+- Wirecutter (gold standard reviews)
+- The Verge (tech journalism)
+- TechCrunch (industry coverage)
+- AnandTech (technical depth)
+- Tom's Hardware (benchmark-driven)
+
 ### SEO Tools:
 - Google Keyword Planner (free)
 - Google Search Console (free)
-- Ubersuggest (free tier)
-- AnswerThePublic (free tier)
-- Ahrefs / SEMrush (paid)
+- Ahrefs / SEMrush (professional tier)
 
 ### Writing Tools:
-- Grammarly (grammar/spelling)
-- Hemingway Editor (readability)
+- Grammarly (professional writing)
+- Hemingway Editor (clarity)
 - Google Docs (collaboration)
 
-### Image Tools:
-- Canva (design)
-- TinyPNG (compression)
-- Figma (mockups)
-
-### Learning Resources:
-- Amazon Associates Central
-- FTC Disclosure Guidelines
-- Google Search Central Blog
-- Backlinko (SEO guides)
-- Nerd Wallet (good affiliate site example)
-- Wirecutter (gold standard for reviews)
+### Technical Resources:
+- Manufacturer specification sheets
+- Benchmark databases (Geekbench, 3DMark)
+- Industry white papers
 
 ---
 
-## 💡 Pro Tips
+## 💡 Professional Standards Checklist
 
-1. **Update old content** - Better ROI than always writing new
-2. **Link internally** - Helps SEO and keeps users on site
-3. **Email capture** - Build list from Day 1
-4. **Promote on Pinterest** - Great for product content
-5. **Answer real questions** - Check Reddit, Quora for ideas
-6. **Be specific** - "Best laptop" is too broad
-7. **Show, don't just tell** - Use screenshots, examples
-8. **Write comparison tables** - Easy to scan, rank well
-9. **Track what works** - Double down on winners
-10. **Stay consistent** - Regular publishing = compound growth
+**Before Publishing, Ask:**
+
+1. ✅ Would this be published in TechCrunch or The Verge?
+2. ✅ Is every claim backed by data or sources?
+3. ✅ Have I used professional, technical language?
+4. ✅ Are specifications and benchmarks included?
+5. ✅ Is the analysis objective and evidence-based?
+6. ✅ Would an industry professional respect this content?
+7. ✅ Have I avoided casual language and hype?
+8. ✅ Is the disclosure clear and professional?
+9. ✅ Does the content serve the reader first?
+10. ✅ Is this content I'd be proud to share with tech journalists?
 
 ---
 
-**Remember**: Quality beats quantity. One excellent, helpful post is worth 10 mediocre ones. Focus on genuinely helping your readers make good decisions! 🎯
+**Remember**: InSpotGO is a professional tech publication, not a casual blog. Every piece of content should meet the editorial standards of leading tech journalism. Write like you're contributing to The Verge or Wirecutter—professional, authoritative, and reader-focused. 🎯
