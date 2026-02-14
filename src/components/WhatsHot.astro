@@ -1,0 +1,279 @@
+---
+import { TrendingUp } from 'lucide-astro';
+
+interface Props {
+  items?: Array<{
+    title: string;
+    category: string;
+    href: string;
+    views?: string;
+    date?: string;
+    image?: string;
+  }>;
+}
+
+const { items = [] } = Astro.props;
+
+// Mock data if no items provided
+const hotItems = items.length > 0 ? items : [
+  {
+    title: "Best Budget Laptops 2026",
+    category: "Tech",
+    href: "/tech/best-budget-laptops",
+    views: "2.3k",
+    date: "2h ago",
+  },
+  {
+    title: "Top 10 Project Management Tools",
+    category: "SaaS",
+    href: "/saas/project-management",
+    views: "1.8k",
+    date: "5h ago",
+  },
+  {
+    title: "ChatGPT vs Claude: AI Showdown",
+    category: "Software",
+    href: "/software/ai-comparison",
+    views: "4.1k",
+    date: "1d ago",
+  },
+  {
+    title: "How to Choose the Right Monitor",
+    category: "Guides",
+    href: "/guides/monitor-buying-guide",
+    views: "1.2k",
+    date: "2d ago",
+  },
+  {
+    title: "iPhone 16 Pro Review",
+    category: "Tech",
+    href: "/tech/iphone-16-pro",
+    views: "3.5k",
+    date: "3d ago",
+  },
+];
+
+const categoryColors: Record<string, string> = {
+  Tech: 'var(--color-primary)',
+  SaaS: '#8b5cf6',
+  Software: '#10b981',
+  Guides: '#f59e0b',
+};
+---
+
+<aside class="whats-hot" aria-label="Trending articles">
+  <div class="hot-header">
+    <TrendingUp size={24} class="hot-icon" />
+    <h3 class="hot-title">What's Hot</h3>
+  </div>
+  
+  <div class="hot-list">
+    {hotItems.map((item, index) => (
+      <a href={item.href} class="hot-item">
+        <div class="hot-item-number">{index + 1}</div>
+        <div class="hot-item-content">
+          <span 
+            class="hot-item-category" 
+            style={`background: ${categoryColors[item.category] || 'var(--color-primary)'}`}
+          >
+            {item.category}
+          </span>
+          <h4 class="hot-item-title">{item.title}</h4>
+          <div class="hot-item-meta">
+            {item.views && (
+              <span class="hot-item-views">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+                {item.views}
+              </span>
+            )}
+            {item.date && <span class="hot-item-date">{item.date}</span>}
+          </div>
+        </div>
+      </a>
+    ))}
+  </div>
+  
+  <a href="/trending" class="hot-view-all">
+    View All Trending
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </a>
+</aside>
+
+<style>
+  .whats-hot {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 80px;
+  }
+  
+  /* Header */
+  .hot-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--color-border);
+  }
+  
+  .hot-icon {
+    color: var(--color-action);
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+  
+  .hot-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin: 0;
+  }
+  
+  /* List */
+  .hot-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .hot-item {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition: all var(--transition-base);
+    border: 1px solid transparent;
+  }
+  
+  .hot-item:hover {
+    background: var(--color-bg-alt);
+    border-color: var(--color-border);
+    transform: translateX(4px);
+  }
+  
+  /* Number Badge */
+  .hot-item-number {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-action);
+    color: white;
+    font-weight: 700;
+    font-size: 0.875rem;
+    border-radius: 50%;
+  }
+  
+  /* Content */
+  .hot-item-content {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .hot-item-category {
+    display: inline-block;
+    padding: 0.125rem 0.5rem;
+    border-radius: var(--radius-full);
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+  
+  .hot-item-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0 0 0.5rem 0;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .hot-item:hover .hot-item-title {
+    color: var(--color-primary);
+  }
+  
+  /* Meta */
+  .hot-item-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+  }
+  
+  .hot-item-views {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  
+  .hot-item-views svg {
+    flex-shrink: 0;
+  }
+  
+  /* View All Button */
+  .hot-view-all {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding: 0.75rem;
+    background: var(--gradient-action);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+  }
+  
+  .hot-view-all:hover {
+    background: var(--gradient-action-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+  }
+  
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .whats-hot {
+      position: static;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .whats-hot {
+      padding: 1.25rem;
+    }
+    
+    .hot-list {
+      gap: 0.75rem;
+    }
+    
+    .hot-item {
+      padding: 0.75rem;
+    }
+  }
+</style>
