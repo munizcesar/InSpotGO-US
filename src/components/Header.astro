@@ -4,11 +4,25 @@ import "../styles/global.css";
 <header class="header" role="banner">
   <div class="container container-flex">
     <a href="/" class="logo-link" aria-label="InSpotGO home">
-      <!-- SVG logo on desktop for correct colors -->
-      <img src="/logo-horizontal.svg" alt="InSpotGO" class="logo-desktop" height="50">
+      <!-- Desktop: SVG logo -->
+      <svg class="logo-desktop" width="200" height="50" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#f97316;stop-opacity:1" />
+            <stop offset="50%" style="stop-color:#fb7185;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <text x="10" y="35" font-family="Inter, sans-serif" font-size="32" font-weight="800" fill="#2E1155">InSpot</text>
+        <text x="130" y="35" font-family="Inter, sans-serif" font-size="32" font-weight="800" fill="url(#logoGradient)">GO</text>
+      </svg>
+      
+      <!-- Mobile: Icon + Text -->
       <span class="logo-mobile-wrap">
         <img src="/logo-icon.svg" alt="" class="logo-mobile-icon" height="40" width="40">
-        <span class="logo-mobile-text" aria-hidden="true"><span class="logo-spot">InSpot</span><span class="logo-go">GO</span></span>
+        <span class="logo-mobile-text" aria-hidden="true">
+          <span class="logo-spot">InSpot</span><span class="logo-go">GO</span>
+        </span>
       </span>
     </a>
 
@@ -97,14 +111,9 @@ import "../styles/global.css";
     user-select: none;
   }
 
-  /* Dual-color logo text */
-  .logo-spot {
-    color: var(--color-primary); /* Blue #2563EB */
-  }
-
-  .logo-go {
-    color: var(--color-action); /* Orange #F97316 */
-  }
+  /* Logo uses global.css classes:
+     .logo-spot { color: #2E1155 }
+     .logo-go { gradient orange-to-pink } */
 
   /* Mobile Menu Toggle Button */
   .mobile-menu-toggle {
