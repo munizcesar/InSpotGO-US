@@ -2,11 +2,43 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE_CONFIG } from '../config';
 import CategoryCard from '../components/CategoryCard.astro';
-import { Target, BarChart3, Lightbulb, Flame, CheckCircle2, Search, Users, RefreshCw } from 'lucide-astro';
+import LatestNewsSection from '../components/LatestNewsSection.astro';
+import { Target, BarChart3, Lightbulb, CheckCircle2, Search, Users, RefreshCw } from 'lucide-astro';
 import { getCollection } from 'astro:content';
-import PostCard from '../components/PostCard.astro';
 
-const posts = await getCollection('posts');
+const allPosts = await getCollection('posts');
+
+// Sort posts: featured first, then by date
+const sortedPosts = allPosts.sort((a, b) => {
+  // Featured posts come first
+  if (a.data.featured && !b.data.featured) return -1;
+  if (!a.data.featured && b.data.featured) return 1;
+  
+  // Then sort by date (newest first)
+  const dateA = new Date(a.data.date);
+  const dateB = new Date(b.data.date);
+  return dateB.getTime() - dateA.getTime();
+});
+
+// Transform posts to Article format for LatestNewsSection
+const articles = sortedPosts.map((post) => {
+  const date = new Date(post.data.date);
+  
+  return {
+    title: post.data.title,
+    description: post.data.description,
+    category: post.data.category || 'Tech',
+    image: post.data.cover || '/images/default-post.jpg',
+    href: `/posts/${post.slug}`,
+    date: date.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric'
+    }),
+    readTime: post.data.readTime || '5 min',
+    featured: post.data.featured || false,
+  };
+});
 ---
 
 <BaseLayout>
@@ -26,7 +58,7 @@ const posts = await getCollection('posts');
           {SITE_CONFIG.description}
         </p>
         <div class="hero-cta">
-          <a href="#categories" class="btn btn-primary">Explore Reviews</a>
+          <a href="#latest-news" class="btn btn-primary">Explore Reviews</a>
           <a href="/about" class="btn btn-outline">Learn More</a>
         </div>
       </div>
@@ -38,7 +70,7 @@ const posts = await getCollection('posts');
     <div class="container">
       <h2 class="section-title">What We Review</h2>
       <p class="section-subtitle">
-        Expert reviews and guides to help you make confident decisions
+        Professional analysis and buying guides to help you make informed decisions
       </p>
       
       <div class="categories-grid">
@@ -70,67 +102,9 @@ const posts = await getCollection('posts');
     </div>
   </section>
 
-  <!-- Recent Posts Section -->
-  <section class="recent-posts">
-    <div class="container">
-      <h2 class="section-title">Recent Articles</h2>
-      <p class="section-subtitle">Check out the latest reviews and news from our team</p>
-      <div class="posts-grid">
-        {posts.slice(0, 3).map(post => (
-          <PostCard
-            title={post.data.title}
-            description={post.data.description}
-            cover={post.data.cover || post.data.image}
-            date={(post.data.date instanceof Date ? post.data.date.toISOString().split('T')[0] : post.data.date) || post.data.pubDate}
-            href={`/posts/${post.slug}`}
-          />
-        ))}
-      </div>
-      <div style="text-align:center; margin-top:2rem;">
-        <a href="/posts" class="btn btn-outline">View all articles</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured Content Section -->
-  <section class="featured">
-    <div class="container">
-      <h2 class="section-title">Coming Soon</h2>
-      <p class="section-subtitle">
-        We're working on comprehensive reviews and buying guides. Check back soon!
-      </p>
-      
-      <div class="coming-soon-grid">
-        <div class="coming-soon-card">
-          <div class="card-icon">
-            <Target size={48} stroke-width={1.5} />
-          </div>
-          <h3>In-Depth Reviews</h3>
-          <p>Honest, detailed reviews of the latest tech products and software tools</p>
-        </div>
-        <div class="coming-soon-card">
-          <div class="card-icon">
-            <BarChart3 size={48} stroke-width={1.5} />
-          </div>
-          <h3>Comparison Guides</h3>
-          <p>Side-by-side comparisons to help you choose the right option</p>
-        </div>
-        <div class="coming-soon-card">
-          <div class="card-icon">
-            <Lightbulb size={48} stroke-width={1.5} />
-          </div>
-          <h3>Expert Tips</h3>
-          <p>Buying guides and how-tos from our team of tech enthusiasts</p>
-        </div>
-        <div class="coming-soon-card">
-          <div class="card-icon">
-            <Flame size={48} stroke-width={1.5} />
-          </div>
-          <h3>Best Deals</h3>
-          <p>Curated deals and discounts on top-rated products</p>
-        </div>
-      </div>
-    </div>
+  <!-- Latest News Section (NEW) -->
+  <section id="latest-news">
+    <LatestNewsSection articles={articles} />
   </section>
 
   <!-- Why Trust Us Section -->
@@ -143,29 +117,63 @@ const posts = await getCollection('posts');
           <div class="trust-icon">
             <CheckCircle2 size={56} stroke-width={1.5} />
           </div>
-          <h3>Unbiased Reviews</h3>
-          <p>We provide honest opinions based on thorough research and testing</p>
+          <h3>Professional Analysis</h3>
+          <p>Evidence-based reviews following journalistic standards with benchmark testing and technical verification</p>
         </div>
         <div class="trust-item">
           <div class="trust-icon">
             <Search size={56} stroke-width={1.5} />
           </div>
-          <h3>Thorough Research</h3>
-          <p>Every review is backed by extensive research and analysis</p>
+          <h3>Comprehensive Research</h3>
+          <p>Every review backed by extensive testing, specification analysis, and industry comparison</p>
         </div>
         <div class="trust-item">
           <div class="trust-icon">
             <Users size={56} stroke-width={1.5} />
           </div>
-          <h3>User-Focused</h3>
-          <p>We prioritize your needs, not just commission rates</p>
+          <h3>Reader-Focused</h3>
+          <p>Objective recommendations prioritizing user needs over affiliate commissions</p>
         </div>
         <div class="trust-item">
           <div class="trust-icon">
             <RefreshCw size={56} stroke-width={1.5} />
           </div>
-          <h3>Always Updated</h3>
-          <p>We regularly update content to reflect the latest information</p>
+          <h3>Regularly Updated</h3>
+          <p>Content refreshed with latest pricing, specifications, and market developments</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial Standards Section -->
+  <section class="featured">
+    <div class="container">
+      <h2 class="section-title">Our Editorial Standards</h2>
+      <p class="section-subtitle">
+        Professional tech journalism with transparent methodology and expert analysis
+      </p>
+      
+      <div class="coming-soon-grid">
+        <div class="coming-soon-card">
+          <div class="card-icon">
+            <Target size={48} stroke-width={1.5} />
+          </div>
+          <h3>In-Depth Reviews</h3>
+          <p>Detailed technical analysis with specifications, benchmarks, and real-world testing results</p>
+        </div>
+        <div class="coming-soon-card">
+          <div class="card-icon">
+            <BarChart3 size={48} stroke-width={1.5} />
+          </div>
+          <h3>Comparison Guides</h3>
+          <p>Data-driven comparisons with performance metrics and feature analysis</p>
+        </div>
+        <div class="coming-soon-card">
+          <div class="card-icon">
+            <Lightbulb size={48} stroke-width={1.5} />
+          </div>
+          <h3>Expert Insights</h3>
+          <p>Professional buying guides and technical tutorials from experienced reviewers</p>
         </div>
       </div>
     </div>
@@ -174,29 +182,19 @@ const posts = await getCollection('posts');
   <!-- CTA Section -->
   <section class="cta-section">
     <div class="container">
-      <h2>Ready to Make Better Choices?</h2>
-      <p>Explore our reviews and guides to find the perfect products for your needs</p>
-      <a href="#categories" class="btn btn-cta">Get Started →</a>
+      <h2>Ready to Make Informed Decisions?</h2>
+      <p>Explore our professional reviews and analysis to find the perfect products</p>
+      <a href="#latest-news" class="btn btn-cta">Browse Latest Reviews →</a>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .recent-posts {
-    background: var(--color-bg);
-    padding: 4rem 0;
-  }
-  .posts-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2rem;
-    margin-top: 2.5rem;
-  }
   /* ============================================
-     Hero Section - Dual Color Branding
+     Hero Section - Premium Gradient
      ============================================ */
   .hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--gradient-hero);
     color: white;
     padding: 6rem 0;
     text-align: center;
@@ -220,7 +218,10 @@ const posts = await getCollection('posts');
   }
   
   .hero-go {
-    color: var(--color-action-light);
+    background: var(--gradient-logo-go);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   
   .hero-slogan {
@@ -232,8 +233,8 @@ const posts = await getCollection('posts');
   }
   
   .go-emphasis {
-    color: var(--color-action-light);
     font-weight: 700;
+    color: #fbbf24;
   }
   
   .hero-description {
@@ -251,7 +252,7 @@ const posts = await getCollection('posts');
   }
   
   /* ============================================
-     Buttons - Color Psychology
+     Buttons - Premium Gradient Style
      ============================================ */
   .btn {
     display: inline-block;
@@ -259,23 +260,22 @@ const posts = await getCollection('posts');
     font-size: 1.1rem;
     font-weight: 600;
     text-decoration: none;
-    border-radius: 8px;
-    transition: all 0.3s ease;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
     border: 2px solid transparent;
   }
   
-  /* Primary CTA - Orange (Action) */
+  /* Primary CTA - Gradient */
   .btn-primary {
-    background: var(--color-action);
+    background: var(--gradient-action);
     color: white;
-    border-color: var(--color-action);
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
   }
   
   .btn-primary:hover {
-    background: var(--color-action-dark);
-    border-color: var(--color-action-dark);
+    background: var(--gradient-action-hover);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(249, 115, 22, 0.4);
+    box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
   }
   
   /* Outline button - White on gradient */
@@ -290,12 +290,13 @@ const posts = await getCollection('posts');
     color: var(--color-primary);
   }
   
-  /* CTA section button - White with orange text */
+  /* CTA section button */
   .btn-cta {
     background: white;
-    color: var(--color-action);
+    color: var(--color-primary);
     font-size: 1.2rem;
     padding: 1.25rem 2.5rem;
+    border-radius: var(--radius-lg);
   }
   
   .btn-cta:hover {
@@ -316,6 +317,7 @@ const posts = await getCollection('posts');
     text-align: center;
     margin-bottom: 1rem;
     color: var(--color-text);
+    font-weight: 800;
   }
   
   .section-subtitle {
@@ -323,6 +325,9 @@ const posts = await getCollection('posts');
     text-align: center;
     color: var(--color-text-light);
     margin-bottom: 3rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
   }
   
   /* ============================================
@@ -340,11 +345,11 @@ const posts = await getCollection('posts');
   }
   
   /* ============================================
-     Coming Soon Grid
+     Coming Soon / Editorial Standards Grid
      ============================================ */
   .coming-soon-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
   }
@@ -352,16 +357,17 @@ const posts = await getCollection('posts');
   .coming-soon-card {
     padding: 2rem;
     background: white;
-    border-radius: 12px;
-    border: 2px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
     text-align: center;
-    transition: all 0.3s ease;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-sm);
   }
   
   .coming-soon-card:hover {
     border-color: var(--color-primary);
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.1);
+    box-shadow: var(--shadow-lg);
   }
   
   .card-icon {
@@ -375,6 +381,7 @@ const posts = await getCollection('posts');
     font-size: 1.5rem;
     margin-bottom: 1rem;
     color: var(--color-text);
+    font-weight: 700;
   }
   
   .coming-soon-card p {
@@ -411,6 +418,7 @@ const posts = await getCollection('posts');
     font-size: 1.5rem;
     margin-bottom: 0.75rem;
     color: var(--color-text);
+    font-weight: 700;
   }
   
   .trust-item p {
@@ -422,7 +430,7 @@ const posts = await getCollection('posts');
      CTA Section
      ============================================ */
   .cta-section {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: var(--gradient-hero);
     color: white;
     text-align: center;
     padding: 5rem 0;
@@ -431,6 +439,7 @@ const posts = await getCollection('posts');
   .cta-section h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
+    font-weight: 800;
   }
   
   .cta-section p {
