@@ -1,0 +1,265 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { Cloud } from 'lucide-astro';
+
+const allPosts = await getCollection('posts', ({ data }) => {
+  return data.category === 'SaaS';
+});
+
+const sortedPosts = allPosts.sort((a, b) => {
+  const dateA = new Date(a.data.date);
+  const dateB = new Date(b.data.date);
+  return dateB.getTime() - dateA.getTime();
+});
+---
+
+<BaseLayout title="SaaS Reviews & Comparisons - InSpotGO" description="Professional analysis of SaaS platforms, project management tools, and cloud services. Data-driven comparisons and feature evaluations.">
+  <section class="category-hero">
+    <div class="container">
+      <div class="category-header">
+        <div class="category-icon">
+          <Cloud size={48} stroke-width={1.5} />
+        </div>
+        <h1>SaaS Reviews & Comparisons</h1>
+        <p class="category-description">
+          Professional analysis of SaaS platforms, project management tools, CRM systems, and cloud services. 
+          Feature comparisons, pricing evaluation, and use case recommendations.
+        </p>
+        <div class="category-stats">
+          <span class="stat">
+            <strong>{sortedPosts.length}</strong> Articles
+          </span>
+          <span class="stat">
+            <strong>Updated</strong> Weekly
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="posts-section">
+    <div class="container">
+      {sortedPosts.length === 0 ? (
+        <div class="no-posts">
+          <p>No SaaS articles published yet. Check back soon!</p>
+        </div>
+      ) : (
+        <div class="posts-grid">
+          {sortedPosts.map((post) => {
+            const date = new Date(post.data.date);
+            return (
+              <article class="post-card">
+                <a href={`/posts/${post.slug}`} class="post-link">
+                  {post.data.cover && (
+                    <div class="post-image">
+                      <img src={post.data.cover} alt={post.data.title} loading="lazy" />
+                    </div>
+                  )}
+                  <div class="post-content">
+                    <div class="post-meta">
+                      <span class="post-category">{post.data.category}</span>
+                      <span class="post-date">
+                        {date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                      </span>
+                      {post.data.readTime && (
+                        <span class="post-read-time">{post.data.readTime}</span>
+                      )}
+                    </div>
+                    <h2 class="post-title">{post.data.title}</h2>
+                    <p class="post-description">{post.data.description}</p>
+                    {post.data.tags && post.data.tags.length > 0 && (
+                      <div class="post-tags">
+                        {post.data.tags.slice(0, 3).map((tag: string) => (
+                          <span class="tag">{tag}</span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </a>
+              </article>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .category-hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  .category-header {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .category-icon {
+    display: inline-flex;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    margin-bottom: 1.5rem;
+  }
+
+  .category-header h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+
+  .category-description {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+  }
+
+  .category-stats {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    font-size: 1.1rem;
+  }
+
+  .stat strong {
+    font-weight: 700;
+  }
+
+  .posts-section {
+    padding: 4rem 0;
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+
+  .post-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .post-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: #667eea;
+  }
+
+  .post-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .post-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: var(--color-bg-alt);
+  }
+
+  .post-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-base);
+  }
+
+  .post-card:hover .post-image img {
+    transform: scale(1.05);
+  }
+
+  .post-content {
+    padding: 1.5rem;
+  }
+
+  .post-meta {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .post-category {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+  }
+
+  .post-date,
+  .post-read-time {
+    color: var(--color-text-light);
+  }
+
+  .post-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .post-description {
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .post-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    background: var(--color-bg-alt);
+    color: var(--color-text-light);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+  }
+
+  .no-posts {
+    text-align: center;
+    padding: 4rem 0;
+    color: var(--color-text-light);
+    font-size: 1.25rem;
+  }
+
+  @media (max-width: 768px) {
+    .category-header h1 {
+      font-size: 2rem;
+    }
+
+    .category-description {
+      font-size: 1rem;
+    }
+
+    .posts-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
