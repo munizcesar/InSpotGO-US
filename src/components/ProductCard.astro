@@ -1,4 +1,3 @@
----
 // Reusable product card component for reviews
 // Uses color psychology: Blue (trust) + Orange (action) + Green (validation)
 interface Props {
@@ -22,6 +21,9 @@ const {
   affiliateLink,
   badge,
 } = Astro.props;
+
+const cleanAffiliateLink = typeof affiliateLink === 'string' ? affiliateLink.trim() : '';
+const hasAffiliateLink = cleanAffiliateLink.length > 0;
 ---
 
 <div class="product-card">
@@ -51,9 +53,9 @@ const {
       
       <div class="product-actions">
         <a href={href} class="btn-review">Read Review</a>
-        {affiliateLink && (
+        {hasAffiliateLink && (
           <a 
-            href={affiliateLink} 
+            href={cleanAffiliateLink} 
             class="btn-buy"
             target="_blank"
             rel="nofollow noopener sponsored"

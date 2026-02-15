@@ -9,10 +9,12 @@ export async function getStaticPaths() {
 
 const { slug } = Astro.params;
 const post = await getEntryBySlug('posts', slug);
+const { Content } = post ? await post.render() : { Content: null };
 ---
-{post ? (
+
+{post && Content ? (
   <PostLayout frontmatter={post.data}>
-    <div set:html={post.body} />
+    <Content />
   </PostLayout>
 ) : (
   <main class="container" style="padding:2rem 0;">

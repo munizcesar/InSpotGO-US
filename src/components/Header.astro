@@ -4,23 +4,10 @@ import "../styles/global.css";
 <header class="header" role="banner">
   <div class="container container-flex">
     <a href="/" class="logo-link" aria-label="InSpotGO home">
-      <!-- Desktop: SVG logo -->
-      <svg class="logo-desktop" width="200" height="50" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" style="stop-color:#f97316;stop-opacity:1" />
-            <stop offset="50%" style="stop-color:#fb7185;stop-opacity:1" />
-            <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
-          </linearGradient>
-        </defs>
-        <text x="10" y="35" font-family="Inter, sans-serif" font-size="32" font-weight="800" fill="#2E1155">InSpot</text>
-        <text x="130" y="35" font-family="Inter, sans-serif" font-size="32" font-weight="800" fill="url(#logoGradient)">GO</text>
-      </svg>
-      
-      <!-- Mobile: Icon + Text -->
-      <span class="logo-mobile-wrap">
-        <img src="/logo-icon.svg" alt="" class="logo-mobile-icon" height="40" width="40">
-        <span class="logo-mobile-text" aria-hidden="true">
+      <!-- Unified logo (desktop + mobile): Icon + Text -->
+      <span class="logo-wrap">
+        <img src="/logo-icon.svg" alt="" class="logo-icon" height="40" width="40" />
+        <span class="logo-text" aria-hidden="true">
           <span class="logo-spot">InSpot</span><span class="logo-go">GO</span>
         </span>
       </span>
@@ -77,38 +64,31 @@ import "../styles/global.css";
     align-items: center;
     transition: transform 0.3s ease;
     z-index: 1001;
-    gap: 0.5rem;
   }
 
   .logo-link:hover {
     transform: scale(1.05);
   }
 
-  .logo-desktop {
-    display: block;
-    height: 50px;
-    width: auto;
-  }
-
-  /* Mobile logo (icon + text) */
-  .logo-mobile-wrap {
-    display: none;
+  .logo-wrap {
+    display: inline-flex;
     align-items: center;
     gap: 0.625rem;
   }
 
-  .logo-mobile-icon {
+  .logo-icon {
     display: block;
     height: 40px;
     width: 40px;
   }
 
-  .logo-mobile-text {
+  .logo-text {
     font-weight: 800;
     font-size: 1.25rem;
     letter-spacing: -0.02em;
     line-height: 1;
     user-select: none;
+    white-space: nowrap;
   }
 
   /* Logo uses global.css classes:
@@ -198,14 +178,6 @@ import "../styles/global.css";
       padding: 0.875rem 1rem;
     }
 
-    .logo-desktop {
-      display: none;
-    }
-
-    .logo-mobile-wrap {
-      display: inline-flex;
-    }
-
     /* Show hamburger button */
     .mobile-menu-toggle {
       display: flex;
@@ -250,12 +222,12 @@ import "../styles/global.css";
   }
 
   @media (max-width: 360px) {
-    .logo-mobile-icon {
+    .logo-icon {
       height: 36px;
       width: 36px;
     }
-    
-    .logo-mobile-text {
+
+    .logo-text {
       font-size: 1.125rem;
     }
   }
