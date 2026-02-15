@@ -212,7 +212,26 @@ const getProductLink = (product) => {
     background: #e68a00;
   }
 
-  /* Responsive */
+  /* Amazon CTA Buttons - grandes e mobile-friendly */
+  .post-content :global(a.cta-amazon) {
+    display: inline-block;
+    padding: 14px 24px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    border-radius: 10px;
+    background: #ff9900;
+    color: #111 !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);
+    transition: all 0.2s ease;
+  }
+
+  .post-content :global(a.cta-amazon:hover) {
+    background: #e68a00;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 153, 0, 0.4);
+  }
+
   @media (max-width: 768px) {
     .post-container { padding: 1.5rem 1rem; }
     .post-article { padding: 1.5rem; }
