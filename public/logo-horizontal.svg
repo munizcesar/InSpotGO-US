@@ -77,7 +77,7 @@
   </g>
   
   <!-- TEXT: InSpotGO - Positioned closer to icon with better vertical alignment -->
-  <text x="95" y="60" font-family="'Inter', 'SF Pro Display', system-ui, -apple-system, 'Segoe UI', sans-serif" font-weight="700" font-size="42" letter-spacing="-1.5">
-    <tspan fill="#2563EB">InSpot</tspan><tspan fill="#F97316">GO</tspan>
+  <text x="85" y="60" font-family="'Inter', 'SF Pro Display', system-ui, -apple-system, 'Segoe UI', sans-serif" font-weight="700" font-size="42" letter-spacing="-1.5">
+    <tspan fill="#2563EB">InSpot</tspan><tspan fill="#F97316" dx="-18">GO</tspan>
   </text>
 </svg>
