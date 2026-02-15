@@ -2,26 +2,24 @@ backend:
   name: github
   repo: munizcesar/InSpotGO-US
   branch: main
-  auth_type: oauth
-  oauth_provider: github
-  client_id: Ov23lixf1w5HUwjcetKZ
-  client_secret: ed01b238695a794954256d5ef428a30cd0363f99
+  base_url: https://api.github.com
+  auth_type: implicit
+  app_id: Ov23lixf1w5HUwjcetKZ
 
-media_folder: "public/images"
-public_folder: "/images"
-publish_mode: editorial_workflow
+media_folder: public/images
+public_folder: /images
 
 collections:
-  - name: "posts"
-    label: "Posts"
-    folder: "src/content/posts"
+  - name: posts
+    label: Posts
+    folder: src/content/posts
     create: true
     slug: "{{year}}-{{slug}}"
     fields:
-      - {label: "Title", name: "title", widget: "string", required: true}
-      - {label: "Date", name: "date", widget: "datetime", default: "now"}
-      - {label: "Category", name: "category", widget: "select", options: ["Tech", "SaaS", "Software", "Guides"], required: true}
-      - {label: "Tags", name: "tags", widget: "list", field: {label: "Tag", name: "tag", widget: "string"}}
-      - {label: "Description", name: "description", widget: "text"}
-      - {label: "Cover Image", name: "cover", widget: "image", required: true}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: Title, name: title, widget: string}
+      - {label: Date, name: date, widget: datetime}
+      - {label: Category, name: category, widget: select, options: ["Tech", "SaaS", "Software", "Guides"]}
+      - {label: Tags, name: tags, widget: list}
+      - {label: Description, name: description, widget: text}
+      - {label: Cover, name: cover, widget: image}
+      - {label: Body, name: body, widget: markdown}
