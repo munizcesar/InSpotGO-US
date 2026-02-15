@@ -13,6 +13,7 @@ export async function onRequest(context) {
   });
 
   const data = await tokenResponse.json();
+  console.log("GitHub Response:", JSON.stringify(data));
   
   const content = data.error 
     ? `authorization:github:error:${data.error_description || data.error}`
