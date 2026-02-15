@@ -33,24 +33,28 @@ The 2026 flagship smartphone market features significant AI integration, advance
   <div class="product-card">
     <img src="/images/products/iphone17pro.webp" alt="iPhone 17 Pro" />
     <h3>iPhone 17 Pro</h3>
-    <p class="price">From $1,199</p>
-    <a href="https://amzn.to/4rgr5zj" class="cta-amazon" target="_blank" rel="nofollow noopener sponsored">Ver preço na Amazon →</a>
+    <a href="https://amzn.to/4rgr5zj" class="cta-amazon" target="_blank" rel="nofollow noopener sponsored">
+      Ver preço na Amazon →
+    </a>
   </div>
   
   <div class="product-card">
     <img src="/images/products/galaxys25ultra.webp" alt="Samsung Galaxy S25 Ultra" />
     <h3>Galaxy S25 Ultra</h3>
-    <p class="price">From $1,299</p>
-    <a href="https://amzn.to/4kGRnIG" class="cta-amazon" target="_blank" rel="nofollow noopener sponsored">Ver preço na Amazon →</a>
+    <a href="https://amzn.to/4kGRnIG" class="cta-amazon" target="_blank" rel="nofollow noopener sponsored">
+      Ver preço na Amazon →
+    </a>
   </div>
   
   <div class="product-card">
     <img src="/images/products/pixel10.webp" alt="Google Pixel 10 Pro" />
     <h3>Pixel 10 Pro</h3>
-    <p class="price">From $999</p>
-    <a href="https://amzn.to/4aECeD9" class="cta-amazon" target="_blank" rel="nofollow noopener sponsored">Ver preço na Amazon →</a>
+    <a href="https://amzn.to/4aECeD9" class="cta-amazon" target="_blank" rel="nofollow noopener sponsored">
+      Ver preço na Amazon →
+    </a>
   </div>
 </div>
+
 
 
 ---
