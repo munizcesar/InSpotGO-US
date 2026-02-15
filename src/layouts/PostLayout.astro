@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import ShareButtons from '../components/ShareButtons.astro';
 const { frontmatter } = Astro.props;
 
 // Helper to generate Amazon Search Link if specific link is missing
@@ -26,6 +27,9 @@ const getProductLink = (product) => {
           <span class="post-read-time" style="margin-left: 10px; color: #6b7280;">• {frontmatter.readTime}</span>
         )}
       </div>
+
+      <!-- Social Share Buttons -->
+      <ShareButtons title={frontmatter.title} url={Astro.url.href} />
       
       <div class="post-content">
         <slot />
@@ -98,9 +102,8 @@ const getProductLink = (product) => {
   .post-meta {
     color: var(--color-text-light);
     font-size: 0.95rem;
-    margin-bottom: 2.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 1.5rem; /* Reduced margin to fit share buttons */
+    padding-bottom: 0.5rem;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -121,6 +124,7 @@ const getProductLink = (product) => {
     font-size: 1.125rem;
     line-height: 1.8;
     color: var(--color-text);
+    margin-top: 1.5rem;
   }
 
   /* Important: Responsive Images inside Content */
