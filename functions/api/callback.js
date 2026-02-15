@@ -13,11 +13,33 @@ export async function onRequest(context) {
   });
 
   const data = await tokenResponse.json();
+  
+  const content = data.error 
+    ? `authorization:github:error:${data.error_description || data.error}`
+    : `authorization:github:success:${JSON.stringify({
+        token: data.access_token,
+        provider: 'github'
+      })}`;
+
   const html = `
-    <script>
-      window.opener.postMessage({token: "${data.access_token}", provider: "github"}, window.location.origin);
-      window.close();
-    </script>
+    <!DOCTYPE html>
+    <html>
+    <body>
+      <script>
+        (function() {
+          function receiveMessage(e) {
+            console.log("Receiving message:", e.data);
+            if (e.data !== "authorizing:github") return;
+            
+            window.opener.postMessage("${content}", e.origin);
+            window.removeEventListener("message", receiveMessage, false);
+          }
+          window.addEventListener("message", receiveMessage, false);
+          window.opener.postMessage("authorizing:github", "*");
+        })()
+      </script>
+    </body>
+    </html>
   `;
   return new Response(html, { headers: { 'Content-Type': 'text/html' } });
 }
