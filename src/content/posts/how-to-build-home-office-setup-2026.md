@@ -54,7 +54,7 @@ Research from Stanford University (2025) shows alternating sitting/standing redu
 - Recommended: 60" x 30" (dual monitor, documents)
 - Power user: 72" x 30" (triple monitor, equipment)
 
-[View FlexiSpot Options →](#)
+
 
 ---
 
@@ -92,7 +92,7 @@ Research from Stanford University (2025) shows alternating sitting/standing redu
 - Average (5'4" - 6'2"): Aeron Size B, standard Leap
 - Tall (over 6'2"): Aeron Size C, Leap with tall cylinder
 
-[Compare Chair Options →](#)
+
 
 ---
 
@@ -140,7 +140,7 @@ All recommended monitors include blue light filters. Additional protection:
 - Glasses: Gunnar or Felix Gray ($50-100)
 - Rule: 20-20-20 (every 20 min, look 20 feet away, 20 seconds)
 
-[View Monitor Recommendations →](#)
+
 
 ---
 

@@ -56,7 +56,7 @@ The budget smartphone segment under $300 offers compelling options in 2026, with
 
 **Average Price:** $249
 
-[View Specifications →](#)
+
 
 ---
 
@@ -97,7 +97,7 @@ The budget smartphone segment under $300 offers compelling options in 2026, with
 
 **Average Price:** $229
 
-[Check Availability →](#)
+
 
 ---
 
@@ -134,7 +134,7 @@ The budget smartphone segment under $300 offers compelling options in 2026, with
 
 **Average Price:** $199
 
-[View Details →](#)
+
 
 ---
 
@@ -169,7 +169,7 @@ The budget smartphone segment under $300 offers compelling options in 2026, with
 
 **Average Price:** $219
 
-[Compare Options →](#)
+
 
 ---
 
@@ -202,7 +202,7 @@ The budget smartphone segment under $300 offers compelling options in 2026, with
 
 **Average Price:** $189
 
-[View Pricing →](#)
+
 
 ---
 
