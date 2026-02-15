@@ -5,7 +5,7 @@ updated: 2026-02-13
 category: "Tech"
 tags: ["smartphones", "flagship", "iPhone", "Samsung", "Google", "comparison"]
 description: "Comprehensive analysis of 2026's flagship smartphones from Apple, Samsung, and Google. Expert evaluation of AI features, camera systems, and performance benchmarks."
-cover: "/images/smartphones-2026-hero.jpg"
+cover: "/images/imagespost/smartphones-2026-hero.png"
 author: "InSpotGO Editorial Team"
 readTime: "8 min"
 featured: true
