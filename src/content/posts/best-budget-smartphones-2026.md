@@ -1,16 +1,24 @@
 ---
+readTime: 6 min
+author: InSpotGO Editorial Team
+featured: false
 title: "Best Budget Smartphones 2026: Value Analysis Under $300"
 date: 2026-02-08
+category: Tech
+tags:
+  - smartphones
+  - budget
+  - affordable
+  - value
+  - buying-guide
+description: Professional evaluation of the best budget smartphones under $300
+  in 2026. Specifications comparison, battery testing, and camera performance
+  analysis.
+cover: https://cdn.pixabay.com/video/2026/02/11/334067_tiny.jpg
 updated: 2026-02-13
-category: "Tech"
-tags: ["smartphones", "budget", "affordable", "value", "buying-guide"]
-description: "Professional evaluation of the best budget smartphones under $300 in 2026. Specifications comparison, battery testing, and camera performance analysis."
-cover: "/images/budget-phones-2026.jpg"
-author: "InSpotGO Editorial Team"
-readTime: "6 min"
-featured: false
 seo:
-  keywords: "best budget smartphones 2026, cheap phones under 300, affordable Android phones, budget phone comparison"
+  keywords: best budget smartphones 2026, cheap phones under 300, affordable
+    Android phones, budget phone comparison
 ---
 
 **Affiliate Disclosure**: InSpotGO may earn commissions from purchases made through links in this article. Our editorial content is independent and based on our testing and research. [Learn more](/editorial-policy).
