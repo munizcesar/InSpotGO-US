@@ -1,16 +1,25 @@
 ---
+readTime: 8 min
+author: InSpotGO Editorial Team
+featured: true
 title: "Top Smartphones 2026: iPhone 17 Pro, Galaxy S25 Ultra, Pixel 10 Pro Analysis"
 date: 2026-02-13
+category: Tech
+tags:
+  - smartphones
+  - flagship
+  - iPhone
+  - Samsung
+  - Google
+  - comparison
+description: Comprehensive analysis of 2026's flagship smartphones from Apple,
+  Samsung, and Google. Expert evaluation of AI features, camera systems, and
+  performance benchmarks.
+cover: blob:https://inspotgo.com/1c5bf9ac-1df9-4f3d-a0f0-cdc29063e0ad
 updated: 2026-02-13
-category: "Tech"
-tags: ["smartphones", "flagship", "iPhone", "Samsung", "Google", "comparison"]
-description: "Comprehensive analysis of 2026's flagship smartphones from Apple, Samsung, and Google. Expert evaluation of AI features, camera systems, and performance benchmarks."
-cover: "/images/imagespost/smartphones-2026-hero.png"
-author: "InSpotGO Editorial Team"
-readTime: "8 min"
-featured: true
 seo:
-  keywords: "best smartphones 2026, iPhone 17 Pro review, Galaxy S25 Ultra, Pixel 10 Pro, flagship phone comparison"
+  keywords: best smartphones 2026, iPhone 17 Pro review, Galaxy S25 Ultra, Pixel
+    10 Pro, flagship phone comparison
 ---
 
 
