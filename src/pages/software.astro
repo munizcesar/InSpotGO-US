@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { Code } from 'lucide-astro';
+import WhatsHot from '../components/WhatsHot.astro';
 
 const allPosts = await getCollection('posts');
 const softwarePosts = allPosts
@@ -26,7 +27,7 @@ const softwarePosts = allPosts
   </section>
 
   <section class="posts-section">
-    <div class="container">
+    <div class="container category-two-col">
       <div class="posts-grid">
         {softwarePosts.map((post) => {
           const date = new Date(post.data.date);
@@ -50,6 +51,10 @@ const softwarePosts = allPosts
           );
         })}
       </div>
+
+      <aside class="category-sidebar">
+        <WhatsHot limit={5} category="Software" />
+      </aside>
       
       {softwarePosts.length === 0 && (
         <div class="no-posts">
@@ -61,6 +66,27 @@ const softwarePosts = allPosts
 </BaseLayout>
 
 <style>
+  .category-two-col {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .category-sidebar {
+    position: relative;
+  }
+
+  @media (max-width: 1024px) {
+    .category-two-col {
+      grid-template-columns: 1fr;
+    }
+
+    .category-sidebar {
+      order: 2;
+    }
+  }
+
   .category-hero {
     background: var(--gradient-hero);
     color: white;
