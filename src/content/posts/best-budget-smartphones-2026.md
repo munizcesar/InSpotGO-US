@@ -13,7 +13,7 @@ tags:
   - value
   - buying-guide
 description: Professional evaluation of the best budget smartphones. Specifications comparison, battery testing, and camera performance analysis.
-cover: https://cdn.pixabay.com/video/2026/02/11/334067_tiny.jpg
+cover: /images/cel1.png
 seo:
   keywords: best budget smartphones, affordable phones, budget phone comparison, value smartphones
 ---
