@@ -3,17 +3,18 @@ backend:
   repo: munizcesar/InSpotGO-US
   branch: main
   base_url: https://inspotgo.com
-  auth_endpoint: /api/auth
+  auth_endpoint: api/auth
+  app_id: Ov23liut527fMI71NRQR
 
-media_folder: public/imagespost
-public_folder: /imagespost
+media_folder: public/images
+public_folder: /images
 
 collections:
   - name: posts
     label: Posts
     folder: src/content/posts
     create: true
-    slug: "{{year}}-{{month}}-{{slug}}"
+    slug: "{{year}}-{{slug}}"
     fields:
       - {label: Title, name: title, widget: string}
       - {label: Date, name: date, widget: datetime}
