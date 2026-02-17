@@ -18,6 +18,8 @@ updated: 2026-02-17
 seo:
   keywords: best smartphones, iPhone 17 Pro review, Galaxy S25 Ultra, Pixel 10 Pro, flagship phone comparison
 
+---
+
 *We may earn a commission when you buy through links on our site. [Learn more](/affiliate-disclosure).*
 
 # Top Smartphones: Professional Analysis
