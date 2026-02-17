@@ -3,7 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE_CONFIG } from '../config';
 import CategoryCard from '../components/CategoryCard.astro';
 import LatestNewsSection from '../components/LatestNewsSection.astro';
-import WhatsHot from '../components/WhatsHot.astro';
 import { Target, BarChart3, Lightbulb, CheckCircle2, Search, Users, RefreshCw } from 'lucide-astro';
 import { getCollection } from 'astro:content';
 
@@ -103,16 +102,9 @@ const articles = sortedPosts.map((post) => {
     </div>
   </section>
 
-  <!-- Latest + Trending -->
+  <!-- Latest News (LatestNewsSection already has built-in sidebar) -->
   <section id="latest-news">
-    <div class="container home-two-col">
-      <div>
-        <LatestNewsSection articles={articles} />
-      </div>
-      <div class="home-sidebar" aria-label="Sidebar">
-        <WhatsHot limit={5} />
-      </div>
-    </div>
+    <LatestNewsSection articles={articles} />
   </section>
 
   <!-- Why Trust Us Section -->
@@ -198,24 +190,6 @@ const articles = sortedPosts.map((post) => {
 </BaseLayout>
 
 <style>
-  .home-two-col {
-    display: grid;
-    grid-template-columns: 1fr 360px;
-    gap: 2rem;
-    align-items: start;
-  }
-
-  @media (max-width: 1024px) {
-    .home-two-col {
-      grid-template-columns: 1fr;
-    }
-
-    .home-sidebar {
-      order: 2;
-    }
-  }
-
-  /* existing styles remain below */
   /* ============================================
      Hero Section - Premium Gradient
      ============================================ */
