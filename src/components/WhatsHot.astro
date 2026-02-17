@@ -1,5 +1,6 @@
 ---
 import { TrendingUp } from 'lucide-astro';
+import { getCollection } from 'astro:content';
 
 interface Props {
   items?: Array<{
@@ -10,48 +11,53 @@ interface Props {
     date?: string;
     image?: string;
   }>;
+  limit?: number;
+  category?: string;
 }
 
-const { items = [] } = Astro.props;
+const { items, limit = 5, category } = Astro.props;
 
-// Mock data if no items provided
-const hotItems = items.length > 0 ? items : [
-  {
-    title: "Best Budget Laptops 2026",
-    category: "Tech",
-    href: "/tech/best-budget-laptops",
-    views: "2.3k",
-    date: "2h ago",
-  },
-  {
-    title: "Top 10 Project Management Tools",
-    category: "SaaS",
-    href: "/saas/project-management",
-    views: "1.8k",
-    date: "5h ago",
-  },
-  {
-    title: "ChatGPT vs Claude: AI Showdown",
-    category: "Software",
-    href: "/software/ai-comparison",
-    views: "4.1k",
-    date: "1d ago",
-  },
-  {
-    title: "How to Choose the Right Monitor",
-    category: "Guides",
-    href: "/guides/monitor-buying-guide",
-    views: "1.2k",
-    date: "2d ago",
-  },
-  {
-    title: "iPhone 16 Pro Review",
-    category: "Tech",
-    href: "/tech/iphone-16-pro",
-    views: "3.5k",
-    date: "3d ago",
-  },
-];
+// Always prefer provided items (lets us do a manual/editorial override on key pages).
+let hotItems = items;
+
+if (!hotItems || hotItems.length === 0) {
+  const posts = await getCollection('posts');
+
+  const eligible = posts
+    .filter((p) => !p.data.draft)
+    .filter((p) => (category ? p.data.category === category : true));
+
+  const scored = eligible
+    .map((p) => {
+      const rawDate = (p.data.updated || p.data.date || p.data.pubDate) as any;
+      const publishedAt = rawDate ? new Date(rawDate) : new Date(0);
+      const daysSince = Math.max(0, (Date.now() - publishedAt.getTime()) / (1000 * 60 * 60 * 24));
+
+      // Simple “strategic” scoring:
+      // - featured gets a boost (editorial control)
+      // - recency gets a mild boost (keeps list fresh)
+      const featuredBoost = p.data.featured ? 50 : 0;
+      const recencyScore = Math.max(0, 30 - Math.floor(daysSince)); // 0..30
+      const score = featuredBoost + recencyScore;
+
+      return {
+        score,
+        item: {
+          title: p.data.title,
+          category: p.data.category || 'Tech',
+          href: `/posts/${p.slug}`,
+          date: publishedAt.getTime() > 0
+            ? publishedAt.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+            : undefined,
+        },
+      };
+    })
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map((x) => x.item);
+
+  hotItems = scored;
+}
 
 const categoryColors: Record<string, string> = {
   Tech: 'var(--color-primary)',
@@ -96,8 +102,8 @@ const categoryColors: Record<string, string> = {
     ))}
   </div>
   
-  <a href="/trending" class="hot-view-all">
-    View All Trending
+  <a href="/posts" class="hot-view-all">
+    View All Posts
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <polyline points="9 18 15 12 9 6"></polyline>
     </svg>
@@ -222,17 +228,7 @@ const categoryColors: Record<string, string> = {
     font-size: 0.75rem;
     color: var(--color-text-muted);
   }
-  
-  .hot-item-views {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-  }
-  
-  .hot-item-views svg {
-    flex-shrink: 0;
-  }
-  
+
   /* View All Button */
   .hot-view-all {
     display: flex;
@@ -255,25 +251,11 @@ const categoryColors: Record<string, string> = {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
   }
-  
+
   /* Responsive */
   @media (max-width: 1024px) {
     .whats-hot {
       position: static;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .whats-hot {
-      padding: 1.25rem;
-    }
-    
-    .hot-list {
-      gap: 0.75rem;
-    }
-    
-    .hot-item {
-      padding: 0.75rem;
     }
   }
 </style>

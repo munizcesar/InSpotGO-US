@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { Cpu } from 'lucide-astro';
+import WhatsHot from '../components/WhatsHot.astro';
 
 const allPosts = await getCollection('posts');
 const techPosts = allPosts
@@ -26,7 +27,7 @@ const techPosts = allPosts
   </section>
 
   <section class="posts-section">
-    <div class="container">
+    <div class="container category-two-col">
       <div class="posts-grid">
         {techPosts.map((post) => {
           const date = new Date(post.data.date);
@@ -50,6 +51,10 @@ const techPosts = allPosts
           );
         })}
       </div>
+
+      <aside class="category-sidebar">
+        <WhatsHot limit={5} category="Tech" />
+      </aside>
       
       {techPosts.length === 0 && (
         <div class="no-posts">
@@ -61,35 +66,56 @@ const techPosts = allPosts
 </BaseLayout>
 
 <style>
+  .category-two-col {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .category-sidebar {
+    position: relative;
+  }
+
+  @media (max-width: 1024px) {
+    .category-two-col {
+      grid-template-columns: 1fr;
+    }
+
+    .category-sidebar {
+      order: 2;
+    }
+  }
+
   .category-hero {
     background: var(--gradient-hero);
     color: white;
     padding: 4rem 0 3rem;
     text-align: center;
   }
-  
+
   .hero-content {
     max-width: 700px;
     margin: 0 auto;
   }
-  
+
   .category-icon {
     margin-bottom: 1.5rem;
     opacity: 0.9;
   }
-  
+
   .category-hero h1 {
     font-size: 3rem;
     font-weight: 800;
     margin-bottom: 1rem;
   }
-  
+
   .category-hero p {
     font-size: 1.25rem;
     opacity: 0.9;
     margin-bottom: 1.5rem;
   }
-  
+
   .stats {
     display: inline-flex;
     gap: 2rem;
@@ -99,17 +125,17 @@ const techPosts = allPosts
     font-size: 0.95rem;
     font-weight: 600;
   }
-  
+
   .posts-section {
     padding: 4rem 0;
   }
-  
+
   .posts-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
     gap: 2rem;
   }
-  
+
   .post-card {
     background: white;
     border: 1px solid var(--color-border);
@@ -118,23 +144,23 @@ const techPosts = allPosts
     box-shadow: var(--shadow-sm);
     transition: all var(--transition-base);
   }
-  
+
   .post-card:hover {
     box-shadow: var(--shadow-lg);
     transform: translateY(-4px);
   }
-  
+
   .post-link {
     text-decoration: none;
     display: block;
   }
-  
+
   .post-image {
     position: relative;
     padding-top: 56.25%;
     overflow: hidden;
   }
-  
+
   .post-image img {
     position: absolute;
     top: 0;
@@ -144,11 +170,11 @@ const techPosts = allPosts
     object-fit: cover;
     transition: transform 0.3s ease;
   }
-  
+
   .post-card:hover .post-image img {
     transform: scale(1.05);
   }
-  
+
   .post-badge {
     position: absolute;
     top: 1rem;
@@ -163,11 +189,11 @@ const techPosts = allPosts
     border-radius: var(--radius-full);
     z-index: 1;
   }
-  
+
   .post-content {
     padding: 1.5rem;
   }
-  
+
   .post-title {
     font-size: 1.25rem;
     font-weight: 700;
@@ -179,11 +205,11 @@ const techPosts = allPosts
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  
+
   .post-card:hover .post-title {
     color: var(--color-primary);
   }
-  
+
   .post-description {
     font-size: 0.95rem;
     color: var(--color-text-light);
@@ -194,7 +220,7 @@ const techPosts = allPosts
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  
+
   .post-meta {
     display: flex;
     align-items: center;
@@ -204,19 +230,19 @@ const techPosts = allPosts
     padding-top: 1rem;
     border-top: 1px solid var(--color-border);
   }
-  
+
   .no-posts {
     text-align: center;
     padding: 4rem 2rem;
     color: var(--color-text-light);
     font-size: 1.125rem;
   }
-  
+
   @media (max-width: 768px) {
     .category-hero h1 {
       font-size: 2rem;
     }
-    
+
     .posts-grid {
       grid-template-columns: 1fr;
     }

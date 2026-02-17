@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE_CONFIG } from '../config';
 import CategoryCard from '../components/CategoryCard.astro';
 import LatestNewsSection from '../components/LatestNewsSection.astro';
+import WhatsHot from '../components/WhatsHot.astro';
 import { Target, BarChart3, Lightbulb, CheckCircle2, Search, Users, RefreshCw } from 'lucide-astro';
 import { getCollection } from 'astro:content';
 
@@ -102,9 +103,16 @@ const articles = sortedPosts.map((post) => {
     </div>
   </section>
 
-  <!-- Latest News Section (NEW) -->
+  <!-- Latest + Trending -->
   <section id="latest-news">
-    <LatestNewsSection articles={articles} />
+    <div class="container home-two-col">
+      <div>
+        <LatestNewsSection articles={articles} />
+      </div>
+      <div class="home-sidebar" aria-label="Sidebar">
+        <WhatsHot limit={5} />
+      </div>
+    </div>
   </section>
 
   <!-- Why Trust Us Section -->
@@ -190,6 +198,24 @@ const articles = sortedPosts.map((post) => {
 </BaseLayout>
 
 <style>
+  .home-two-col {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  @media (max-width: 1024px) {
+    .home-two-col {
+      grid-template-columns: 1fr;
+    }
+
+    .home-sidebar {
+      order: 2;
+    }
+  }
+
+  /* existing styles remain below */
   /* ============================================
      Hero Section - Premium Gradient
      ============================================ */
@@ -303,175 +329,5 @@ const articles = sortedPosts.map((post) => {
     background: #f7f7f7;
     transform: translateY(-2px);
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* ============================================
-     Sections
-     ============================================ */
-  section {
-    padding: 4rem 0;
-  }
-  
-  .section-title {
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 1rem;
-    color: var(--color-text);
-    font-weight: 800;
-  }
-  
-  .section-subtitle {
-    font-size: 1.2rem;
-    text-align: center;
-    color: var(--color-text-light);
-    margin-bottom: 3rem;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  /* ============================================
-     Categories Grid
-     ============================================ */
-  .categories {
-    background: var(--color-bg-alt);
-  }
-  
-  .categories-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-  }
-  
-  /* ============================================
-     Coming Soon / Editorial Standards Grid
-     ============================================ */
-  .coming-soon-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-  }
-  
-  .coming-soon-card {
-    padding: 2rem;
-    background: white;
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--color-border);
-    text-align: center;
-    transition: all var(--transition-base);
-    box-shadow: var(--shadow-sm);
-  }
-  
-  .coming-soon-card:hover {
-    border-color: var(--color-primary);
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-  }
-  
-  .card-icon {
-    color: var(--color-primary);
-    margin-bottom: 1.5rem;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .coming-soon-card h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--color-text);
-    font-weight: 700;
-  }
-  
-  .coming-soon-card p {
-    color: var(--color-text-light);
-    line-height: 1.6;
-  }
-  
-  /* ============================================
-     Trust Section
-     ============================================ */
-  .trust {
-    background: var(--color-bg-alt);
-  }
-  
-  .trust-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 3rem;
-    margin-top: 3rem;
-  }
-  
-  .trust-item {
-    text-align: center;
-  }
-  
-  .trust-icon {
-    color: var(--color-success);
-    margin-bottom: 1.5rem;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .trust-item h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.75rem;
-    color: var(--color-text);
-    font-weight: 700;
-  }
-  
-  .trust-item p {
-    color: var(--color-text-light);
-    line-height: 1.6;
-  }
-  
-  /* ============================================
-     CTA Section
-     ============================================ */
-  .cta-section {
-    background: var(--gradient-hero);
-    color: white;
-    text-align: center;
-    padding: 5rem 0;
-  }
-  
-  .cta-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    font-weight: 800;
-  }
-  
-  .cta-section p {
-    font-size: 1.25rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
-  }
-  
-  /* ============================================
-     Responsive
-     ============================================ */
-  @media (max-width: 768px) {
-    .hero {
-      padding: 4rem 0;
-    }
-    
-    .hero-title {
-      font-size: 2.5rem;
-    }
-    
-    .hero-slogan {
-      font-size: 1.5rem;
-    }
-    
-    .section-title {
-      font-size: 2rem;
-    }
-    
-    .categories-grid,
-    .coming-soon-grid,
-    .trust-grid {
-      grid-template-columns: 1fr;
-    }
   }
 </style>
