@@ -5,7 +5,7 @@ updated: 2026-02-17
 category: "Software"
 tags: ["AI", "chatgpt", "claude", "gemini", "artificial-intelligence", "productivity"]
 description: "Professional comparison of leading AI assistants: ChatGPT, Claude, and Google Gemini. Performance benchmarks, capabilities analysis, and use case recommendations."
-cover: "/images/ai-comparison-2026.jpg"
+cover: "/images/ChatGeminiClaude.png"
 author: "InSpotGO Editorial Team"
 readTime: "10 min"
 featured: true
