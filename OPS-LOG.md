@@ -1,4 +1,3 @@
----
 # InSpotGO Ops Log (Living Doc)
 
 This is a living document to track what we changed, what we learned, and what we will do next.
@@ -8,7 +7,7 @@ This is a living document to track what we changed, what we learned, and what we
 ### 2026-02-17
 - Standardized affiliate disclosure line across posts to a short, professional one-liner.
 - Fixed "Trending Now" to pull real posts from the Astro content collection instead of mock links.
-- Added "Trending Now" placement to the homepage and to the Tech category page (sidebar).
+- Added "Trending Now" placement to: homepage, Tech, SaaS, Guides, Software, and All Articles pages (sidebar).
 
 ## How "Trending Now" works
 
@@ -24,13 +23,11 @@ Behavior:
 ## Where it is placed
 
 - Homepage: `src/pages/index.astro` (sidebar next to Latest News).
-- Tech category: `src/pages/tech.astro` (sidebar next to the post grid).
-
-If you want it on other categories, repeat the same pattern on:
-- `src/pages/software.astro`
-- `src/pages/guides.astro`
-- `src/pages/saas.astro`
-- `src/pages/posts.astro`
+- Tech: `src/pages/tech.astro` (sidebar next to the post grid).
+- SaaS: `src/pages/saas.astro` (sidebar next to the post grid).
+- Guides: `src/pages/guides.astro` (sidebar next to the post grid).
+- Software: `src/pages/software.astro` (sidebar next to the post grid).
+- All Articles: `src/pages/posts.astro` (sidebar next to the post grid).
 
 ## Next steps (planned)
 
@@ -48,4 +45,3 @@ If you want it on other categories, repeat the same pattern on:
 
 - "Evergreen" means the intent stays stable; you keep it fresh by updating specs, models, and dates.
 - Favor categories with higher buyer intent (Tech, Software) for early monetization.
-
