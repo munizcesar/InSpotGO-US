@@ -1,6 +1,0 @@
-export async function onRequest(context) {
-  const clientId = context.env.GITHUB_CLIENT_ID;
-  const redirectUri = `https://inspotgo.com/api/callback`;
-  const authUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=repo,user`;
-  return Response.redirect(authUrl, 302);
-}
