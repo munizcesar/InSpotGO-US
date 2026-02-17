@@ -1,8 +1,14 @@
+# Cloudflare Pages Configuration for Astro
 name = "inspotgo-us"
 compatibility_date = "2026-02-07"
 
-# Deploy a directory of static assets (the Astro build output)
-assets = { directory = "./dist" }
+# Pages-specific configuration
+pages_build_output_dir = "./dist"
 
-# When deploying, Wrangler will use CF_ACCOUNT_ID / CLOUDFLARE_ACCOUNT_ID
-# from the environment if present. Do NOT store secrets here.
+# Environment variables (DO NOT store secrets here)
+# Set these in Cloudflare Dashboard > Pages > Settings > Environment Variables:
+# - CLOUDFLARE_ACCOUNT_ID (your Cloudflare account ID)
+# - CLOUDFLARE_API_TOKEN (API token with Pages permissions)
+
+# For local development with Wrangler, use:
+# wrangler pages dev ./dist
