@@ -13,7 +13,7 @@ seo:
   keywords: "project management tools, team collaboration software, workflow management, productivity tools"
 ---
 
-**Affiliate Disclosure**: InSpotGO may earn commissions from purchases made through links in this article. [Learn more](/affiliate-disclosure).
+*We may earn a commission when you buy through links on our site. [Learn more](/affiliate-disclosure).*
 
 # Best Project Management Tools: Team Collaboration Guide
 

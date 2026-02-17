@@ -13,7 +13,7 @@ seo:
   keywords: "best laptops, laptop buying guide, work laptops, gaming laptops, MacBook vs Windows"
 ---
 
-**Affiliate Disclosure**: InSpotGO may earn commissions from purchases made through links in this article. Our editorial content is independent and based on our testing. [Learn more](/affiliate-disclosure).
+*We may earn a commission when you buy through links on our site. [Learn more](/affiliate-disclosure).*
 
 # Best Laptops: Expert Evaluation
 

@@ -13,7 +13,7 @@ seo:
   keywords: "ChatGPT vs Claude, best AI assistant, Gemini comparison, AI chatbot review"
 ---
 
-**Affiliate Disclosure**: InSpotGO may earn commissions from purchases made through links in this article. Our editorial content is independent. [Learn more](/affiliate-disclosure).
+*We may earn a commission when you buy through links on our site. [Learn more](/affiliate-disclosure).*
 
 # ChatGPT vs Claude vs Gemini: Comprehensive AI Analysis
 

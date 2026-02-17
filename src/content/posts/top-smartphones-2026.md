@@ -19,7 +19,7 @@ seo:
   keywords: best smartphones, iPhone 17 Pro review, Galaxy S25 Ultra, Pixel 10 Pro, flagship phone comparison
 ---
 
-**Affiliate Disclosure**: InSpotGO may earn commissions from purchases made through links in this article. Our editorial content is independent. [Learn more](/affiliate-disclosure).
+*We may earn a commission when you buy through links on our site. [Learn more](/affiliate-disclosure).*
 
 # Top Smartphones: Professional Analysis
 

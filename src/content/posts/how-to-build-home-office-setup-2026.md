@@ -13,7 +13,7 @@ seo:
   keywords: "home office setup, ergonomic workspace, remote work setup, home office equipment"
 ---
 
-**Affiliate Disclosure**: InSpotGO may earn commissions from purchases made through links in this article. Our editorial content is independent. [Learn more](/affiliate-disclosure).
+*We may earn a commission when you buy through links on our site. [Learn more](/affiliate-disclosure).*
 
 # How to Build the Perfect Home Office Setup: Professional Guide
 

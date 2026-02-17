@@ -13,7 +13,7 @@ seo:
   keywords: "best project management software, Asana vs Monday, project management tools comparison"
 ---
 
-**Affiliate Disclosure**: InSpotGO may earn commissions from purchases made through links in this article. [Learn more](/affiliate-disclosure).
+*We may earn a commission when you buy through links on our site. [Learn more](/affiliate-disclosure).*
 
 # Best Project Management Software: Professional Comparison
 
