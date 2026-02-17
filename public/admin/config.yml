@@ -2,18 +2,16 @@ backend:
   name: github
   repo: munizcesar/InSpotGO-US
   branch: main
-  base_url: https://api.netlify.com
-  auth_endpoint: auth
 
-media_folder: public/images
-public_folder: /images
+media_folder: public/imagespost
+public_folder: /imagespost
 
 collections:
   - name: posts
     label: Posts
     folder: src/content/posts
     create: true
-    slug: "{{year}}-{{slug}}"
+    slug: "{{year}}-{{month}}-{{slug}}"
     fields:
       - {label: Title, name: title, widget: string}
       - {label: Date, name: date, widget: datetime}
