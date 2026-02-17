@@ -304,4 +304,219 @@ const articles = sortedPosts.map((post) => {
     transform: translateY(-2px);
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
   }
+
+  /* ============================================
+     Categories Section - Grid Layout
+     ============================================ */
+  .categories {
+    background: var(--color-bg-alt);
+    padding: 5rem 0;
+  }
+  
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+    text-align: center;
+  }
+  
+  .section-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    text-align: center;
+  }
+  
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+  
+  @media (max-width: 768px) {
+    .categories {
+      padding: 3rem 0;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+    }
+    
+    .categories-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  /* ============================================
+     Trust Section - 4-Column Grid
+     ============================================ */
+  .trust {
+    background: white;
+    padding: 5rem 0;
+  }
+  
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+  }
+  
+  .trust-item {
+    text-align: center;
+    padding: 2rem 1.5rem;
+    background: var(--color-bg-alt);
+    border-radius: var(--radius-lg);
+    transition: all var(--transition-base);
+    border: 1px solid var(--color-border);
+  }
+  
+  .trust-item:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary-light);
+  }
+  
+  .trust-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background: var(--gradient-action);
+    border-radius: var(--radius-full);
+    margin: 0 auto 1.5rem;
+    color: white;
+  }
+  
+  .trust-item h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+  }
+  
+  .trust-item p {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 768px) {
+    .trust {
+      padding: 3rem 0;
+    }
+    
+    .trust-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  /* ============================================
+     Editorial Standards Section - 3-Column Grid
+     ============================================ */
+  .featured {
+    background: var(--color-bg-alt);
+    padding: 5rem 0;
+  }
+  
+  .coming-soon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+  }
+  
+  .coming-soon-card {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .coming-soon-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--color-primary);
+  }
+  
+  .card-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    border-radius: var(--radius-lg);
+    margin: 0 auto 1.5rem;
+    color: white;
+  }
+  
+  .coming-soon-card h3 {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 0.875rem;
+  }
+  
+  .coming-soon-card p {
+    font-size: 0.975rem;
+    color: var(--color-text-light);
+    line-height: 1.65;
+  }
+  
+  @media (max-width: 768px) {
+    .featured {
+      padding: 3rem 0;
+    }
+    
+    .coming-soon-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  /* ============================================
+     CTA Section - Centered
+     ============================================ */
+  .cta-section {
+    background: var(--gradient-hero);
+    padding: 5rem 0;
+    text-align: center;
+    color: white;
+  }
+  
+  .cta-section h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+  }
+  
+  .cta-section p {
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.95;
+  }
+  
+  @media (max-width: 768px) {
+    .cta-section {
+      padding: 3rem 0;
+    }
+    
+    .cta-section h2 {
+      font-size: 2rem;
+    }
+    
+    .cta-section p {
+      font-size: 1.125rem;
+    }
+  }
 </style>
