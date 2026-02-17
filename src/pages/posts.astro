@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { FileText } from 'lucide-astro';
+import WhatsHot from '../components/WhatsHot.astro';
 
 const allPosts = await getCollection('posts');
 const sortedPosts = allPosts.sort((a, b) => 
@@ -42,38 +43,44 @@ const categoryColors: Record<string, string> = {
   </section>
 
   <section class="posts-section">
-    <div class="container">
-      <div class="posts-grid">
-        {sortedPosts.map((post) => {
-          const date = new Date(post.data.date);
-          const categoryColor = categoryColors[post.data.category] || 'var(--color-primary)';
-          
-          return (
-            <article class="post-card" data-category={post.data.category}>
-              <a href={`/posts/${post.slug}`} class="post-link">
-                <div class="post-image">
-                  <img src={post.data.cover || '/images/default-post.jpg'} alt={post.data.title} loading="lazy" />
-                  <span class="post-badge" style={`background: ${categoryColor}`}>
-                    {post.data.category}
-                  </span>
-                </div>
-                <div class="post-content">
-                  <h2 class="post-title">{post.data.title}</h2>
-                  <p class="post-description">{post.data.description}</p>
-                  <div class="post-meta">
-                    <span class="post-date">{date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-                    {post.data.readTime && <span class="post-read-time">{post.data.readTime}</span>}
+    <div class="container posts-two-col">
+      <div>
+        <div class="posts-grid">
+          {sortedPosts.map((post) => {
+            const date = new Date(post.data.date);
+            const categoryColor = categoryColors[post.data.category] || 'var(--color-primary)';
+            
+            return (
+              <article class="post-card" data-category={post.data.category}>
+                <a href={`/posts/${post.slug}`} class="post-link">
+                  <div class="post-image">
+                    <img src={post.data.cover || '/images/default-post.jpg'} alt={post.data.title} loading="lazy" />
+                    <span class="post-badge" style={`background: ${categoryColor}`}>
+                      {post.data.category}
+                    </span>
                   </div>
-                </div>
-              </a>
-            </article>
-          );
-        })}
+                  <div class="post-content">
+                    <h2 class="post-title">{post.data.title}</h2>
+                    <p class="post-description">{post.data.description}</p>
+                    <div class="post-meta">
+                      <span class="post-date">{date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                      {post.data.readTime && <span class="post-read-time">{post.data.readTime}</span>}
+                    </div>
+                  </div>
+                </a>
+              </article>
+            );
+          })}
+        </div>
+
+        <div class="no-results" style="display: none;">
+          <p>No articles found in this category.</p>
+        </div>
       </div>
-      
-      <div class="no-results" style="display: none;">
-        <p>No articles found in this category.</p>
-      </div>
+
+      <aside class="posts-sidebar">
+        <WhatsHot limit={5} />
+      </aside>
     </div>
   </section>
 </BaseLayout>
@@ -115,6 +122,23 @@ const categoryColors: Record<string, string> = {
 </script>
 
 <style>
+  .posts-two-col {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  @media (max-width: 1024px) {
+    .posts-two-col {
+      grid-template-columns: 1fr;
+    }
+
+    .posts-sidebar {
+      order: 2;
+    }
+  }
+
   .page-hero {
     background: var(--gradient-hero);
     color: white;
