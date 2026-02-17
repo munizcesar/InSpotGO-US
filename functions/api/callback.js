@@ -3,7 +3,7 @@ export async function onRequest(context) {
   const code = url.searchParams.get('code');
 
   if (!code) {
-    return new Response("Erro: Código de autorização não encontrado.", { status: 400 });
+    return new Response("Error: Authorization code not found.", { status: 400 });
   }
 
   const tokenResponse = await fetch('https://github.com/login/oauth/access_token', {
@@ -19,29 +19,36 @@ export async function onRequest(context) {
   const data = await tokenResponse.json();
   
   if (data.error) {
-    return new Response(`Erro na autenticação: ${data.error_description || data.error}`, { status: 500 });
+    return new Response(`Authentication error: ${data.error_description || data.error}`, { status: 500 });
   }
 
-  const responseData = {
-    token: data.access_token,
-    provider: 'github'
-  };
-
+  // Format expected by Decap CMS
   const html = `
     <!DOCTYPE html>
     <html>
+    <head>
+      <title>Authentication Complete</title>
+    </head>
     <body>
       <script>
         (function() {
-          const responseData = ${JSON.stringify(responseData)};
-          const message = "authorization:github:success:" + JSON.stringify(responseData);
-          
-          if (window.opener) {
-            window.opener.postMessage(message, window.location.origin);
-            window.close();
-          } else {
-            document.body.innerHTML = "Autenticação concluída! Você já pode fechar esta janela e voltar ao painel.";
+          function receiveMessage(e) {
+            console.log("Received message:", e);
+            window.opener.postMessage(
+              'authorization:github:success:' + JSON.stringify({
+                token: "${data.access_token}",
+                provider: "github"
+              }),
+              e.origin
+            );
+            window.removeEventListener("message", receiveMessage, false);
           }
+          window.addEventListener("message", receiveMessage, false);
+          console.log("Sending message to opener");
+          window.opener.postMessage(
+            "authorizing:github",
+            "*"
+          );
         })()
       </script>
     </body>
