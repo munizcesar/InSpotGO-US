@@ -13,7 +13,7 @@ seo:
   keywords: "best mechanical keyboards, budget mechanical keyboard, Keychron review, keyboard switches guide, gaming keyboard comparison"
 ---
 
-*We may earn a commission when you buy through links on our site. [Learn more](/affiliate-disclosure).*
+
 
 # Best Mechanical Keyboards: Professional Testing
 

@@ -20,7 +20,7 @@ seo:
 
 ---
 
-*We may earn a commission when you buy through links on our site. [Learn more](/affiliate-disclosure).*
+
 
 # Top Smartphones: Professional Analysis
 

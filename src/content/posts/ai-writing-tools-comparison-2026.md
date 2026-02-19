@@ -13,7 +13,7 @@ seo:
   keywords: "best AI writing tools, ChatGPT vs Claude, Gemini Advanced review, AI content creation, writing assistant comparison"
 ---
 
-*We may earn a commission when you buy through links on our site. [Learn more](/affiliate-disclosure).*
+
 
 # AI Writing Tools: Expert Comparison Guide
 

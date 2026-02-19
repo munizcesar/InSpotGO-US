@@ -18,7 +18,7 @@ seo:
   keywords: best budget smartphones, affordable phones, budget phone comparison, value smartphones
 ---
 
-*We may earn a commission when you buy through links on our site. [Learn more](/affiliate-disclosure).*
+
 
 ![Top Smartphones](/images/smartphones-2026.jpg)
 

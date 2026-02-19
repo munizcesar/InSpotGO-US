@@ -13,7 +13,7 @@ seo:
   keywords: "best noise cancelling headphones, ANC headphones review, Sony vs Bose, wireless headphones comparison"
 ---
 
-*We may earn a commission when you buy through links on our site. [Learn more](/affiliate-disclosure).*
+
 
 # Best Noise-Cancelling Headphones: Technical Evaluation
 
