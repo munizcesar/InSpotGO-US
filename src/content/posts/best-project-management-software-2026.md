@@ -19,6 +19,8 @@ seo:
 
 Project management software has evolved significantly with enhanced collaboration features, AI-powered automation, and improved integrations. This analysis evaluates leading platforms for teams of various sizes.
 
+<img src="/images/project.png" alt="Project Management Software" style="max-width: 100%; height: auto; margin: 24px 0;" />
+
 ## Top Platforms Overview
 
 ### Best Overall: Monday.com
