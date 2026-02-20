@@ -11,7 +11,7 @@ const getProductLink = (product) => {
   return `https://www.amazon.com/s?k=${query}&tag=inspotgous-20`;
 };
 ---
-<BaseLayout title={frontmatter.title} description={frontmatter.description} canonical={`${Astro.site || ''}${Astro.url.pathname}`} article={true}>
+<BaseLayout title={frontmatter.title} description={frontmatter.description} canonical={`${Astro.site || ''}${Astro.url.pathname}`} article={true} showAffiliateBanner={false}>
   <main class="container post-container">
     <article class="post-article card" itemScope itemType="https://schema.org/Article">
       {frontmatter.cover && (
