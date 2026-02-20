@@ -13,6 +13,8 @@ interface Props {
   article?: boolean;
   noindex?: boolean;
   showAffiliateBanner?: boolean;
+  publishedTime?: string;
+  modifiedTime?: string;
 }
 
 const {
@@ -22,6 +24,8 @@ const {
   article = false,
   noindex = false,
   showAffiliateBanner,
+  publishedTime,
+  modifiedTime,
 } = Astro.props;
 
 const shouldShowAffiliateBanner = typeof showAffiliateBanner === 'boolean' ? showAffiliateBanner : article;
@@ -51,6 +55,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       article={article}
       noindex={noindex}
       canonicalURL={canonicalURL.href}
+      publishedTime={publishedTime}
+      modifiedTime={modifiedTime}
     />
     
     <!-- Google Analytics -->
