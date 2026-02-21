@@ -3,7 +3,7 @@ title: "The Vertical SaaS Revolution: Architecture, Intelligence, and the End of
 description: "Why the era of 'jack-of-all-trades' software is ending and how Vertical SaaS ecosystems are reshaping the modern enterprise stack."
 pubDate: 2026-02-21
 category: "SaaS"
-heroImage: "/images/posts/formato.png"
+heroImage: "/images/posts/SaaS1.png"
 draft: false
 tags: ["SaaS", "Vertical SaaS", "Enterprise", "AI", "Technology"]
 ---
