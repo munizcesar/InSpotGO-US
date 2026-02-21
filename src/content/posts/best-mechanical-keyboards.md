@@ -5,7 +5,7 @@ updated: 2026-02-20
 category: "Tech"
 tags: ["keyboards", "peripherals", "gaming", "productivity", "hardware"]
 description: "A timeless guide to picking mechanical keyboards by layout, switches, connectivity, and use case. Covers important features and top choices for gaming, office, customization, and budget."
-cover: "/images/keyboards-2026.jpg"
+cover: "/images/Keyboards.png"  # existing image added earlier
 slug: "best-mechanical-keyboards"
 seo:
   keywords: "best mechanical keyboards, hot swap keyboard, custom mechanical keyboards, gaming keyboard, office keyboard"
