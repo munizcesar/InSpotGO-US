@@ -4,3 +4,6 @@ dist/
 .DS_Store
 public/uploads/
 .astro/
+
+# ignore temporary markdown files created by editors
+*.tmp.md
