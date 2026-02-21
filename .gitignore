@@ -1,9 +1,20 @@
 node_modules/
 dist/
 .env
+.env.local
+.env.*.local
 .DS_Store
 public/uploads/
 .astro/
+
+# Credentials & secrets (prevent accidental leaks to GitHub)
+*.pem
+*.key
+credentials.json
+secrets/
+*.secret
+.env.production
+.env.development
 
 # ignore temporary markdown files created by editors
 *.tmp.md

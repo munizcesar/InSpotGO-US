@@ -6,6 +6,46 @@ import LatestNewsSection from '../components/LatestNewsSection.astro';
 import { Target, BarChart3, Lightbulb, CheckCircle2, Search, Users, RefreshCw } from 'lucide-astro';
 import { getCollection } from 'astro:content';
 
+// JSON-LD for AI Overviews (SGE) - boosts discoverability in search
+const siteUrl = SITE_CONFIG.url;
+const homepageSchema = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${siteUrl}/#website`,
+    url: siteUrl,
+    name: SITE_CONFIG.name,
+    description: SITE_CONFIG.description,
+    publisher: { '@id': `${siteUrl}/#organization` },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: { '@type': 'EntryPoint', urlTemplate: `${siteUrl}/posts?q={search_term_string}` },
+      'query-input': 'required name=search_term_string',
+    },
+    inLanguage: 'en-US',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': `${siteUrl}/#organization`,
+    name: SITE_CONFIG.name,
+    url: siteUrl,
+    logo: { '@type': 'ImageObject', url: `${siteUrl}/logo.png` },
+    foundingDate: String(SITE_CONFIG.foundedYear),
+    description: SITE_CONFIG.tagline,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Tech Products', url: `${siteUrl}/tech` },
+      { '@type': 'ListItem', position: 2, name: 'SaaS Tools', url: `${siteUrl}/saas` },
+      { '@type': 'ListItem', position: 3, name: 'Software', url: `${siteUrl}/software` },
+      { '@type': 'ListItem', position: 4, name: 'Buying Guides', url: `${siteUrl}/guides` },
+    ],
+  },
+];
+
 const allPosts = await getCollection('posts');
 
 // Sort posts: featured first, then by date
@@ -41,9 +81,9 @@ const articles = sortedPosts.map((post) => {
 });
 ---
 
-<BaseLayout>
-  <!-- Hero Section -->
-  <section class="hero">
+<BaseLayout extraSchema={homepageSchema}>
+  <!-- Hero Section (semantic HTML5: header for introductory content) -->
+  <header class="hero">
     <div class="container">
       <div class="hero-content">
         <h1>
@@ -63,7 +103,7 @@ const articles = sortedPosts.map((post) => {
         </div>
       </div>
     </div>
-  </section>
+  </header>
 
   <!-- Latest News & Trending (moved before Categories) -->
   <section id="latest-news">

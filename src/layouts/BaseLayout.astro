@@ -15,6 +15,8 @@ interface Props {
   showAffiliateBanner?: boolean;
   publishedTime?: string;
   modifiedTime?: string;
+  /** Optional extra JSON-LD schema(s) for homepage/AI Overviews */
+  extraSchema?: object | object[];
 }
 
 const {
@@ -26,6 +28,7 @@ const {
   showAffiliateBanner,
   publishedTime,
   modifiedTime,
+  extraSchema,
 } = Astro.props;
 
 const shouldShowAffiliateBanner = typeof showAffiliateBanner === 'boolean' ? showAffiliateBanner : article;
@@ -58,6 +61,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       publishedTime={publishedTime}
       modifiedTime={modifiedTime}
     />
+    
+    <!-- Extra JSON-LD for AI Overviews / SGE (homepage, etc.) -->
+    {extraSchema && (
+      <script type="application/ld+json" set:html={JSON.stringify(Array.isArray(extraSchema) ? extraSchema : extraSchema)} />
+    )}
     
     <!-- Google Analytics -->
     <GoogleAnalytics />
