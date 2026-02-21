@@ -1,0 +1,12 @@
+---
+export const prerender = true;
+
+export function get() {
+  return new Response(null, {
+    status: 301,
+    headers: {
+      location: '/posts/best-mechanical-keyboards/'
+    }
+  });
+}
+---

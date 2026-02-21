@@ -15,9 +15,14 @@ seo:
 
 
 
+> **Note:** This version is archived. Please visit [the evergreen guide](/posts/best-mechanical-keyboards/) for the latest updates.
+>
 # Best Mechanical Keyboards: Professional Testing
 
 Mechanical keyboards have reached impressive quality levels with features previously exclusive to premium models. This analysis evaluates leading options based on switch quality, build construction, typing experience, and value proposition for both productivity and gaming use.
+
+![Mechanical Keyboards](/images/Keyboards.png)
+
 
 ## Top Picks Summary
 
