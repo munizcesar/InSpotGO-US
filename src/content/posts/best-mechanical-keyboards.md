@@ -1,4 +1,4 @@
-http://localhost:3000/postshttp://localhost:3000/posts---
+---
 title: "Best Mechanical Keyboards (Tested & Explained): Picks by Use Case"
 date: 2026-02-09
 updated: 2026-02-20
