@@ -24,21 +24,29 @@ const { articles = [] } = Astro.props;
 // fetch latest posts from the content collection when no explicit articles are provided
 let fetchedArticles: Article[] = [];
 if (articles.length === 0) {
-  const latestPosts = (await getCollection('posts', ({ data }) => data.draft !== true))
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-
-  fetchedArticles = latestPosts.map((p) => ({
-    title: p.data.title,
-    description: p.data.description || '',
-    category: p.data.category || 'Tech',
-    image: p.data.image || '/images/placeholder.jpg',
-    href: `/posts/${p.slug}`,
-    date: p.data.pubDate
-      ? new Date(p.data.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
-      : '',
-    readTime: p.data.readTime,
-    featured: p.data.featured,
-  }));
+  const all = await getCollection('posts', ({ data }) => data.draft !== true);
+  const raw = (d: { date?: string | Date; pubDate?: string | Date }) =>
+    d.date || d.pubDate;
+  const latestPosts = all
+    .sort((a, b) => {
+      const da = raw(a.data) ? new Date(raw(a.data)!).getTime() : 0;
+      const db = raw(b.data) ? new Date(raw(b.data)!).getTime() : 0;
+      return db - da; // newest first
+    })
+    .map((p) => {
+      const d = raw(p.data) ? new Date(raw(p.data)!) : null;
+      return {
+        title: p.data.title,
+        description: p.data.description || '',
+        category: p.data.category || 'Tech',
+        image: p.data.cover || p.data.image || '/images/placeholder.jpg',
+        href: `/posts/${p.slug}`,
+        date: d ? d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '',
+        readTime: p.data.readTime,
+        featured: p.data.featured,
+      };
+    });
+  fetchedArticles = latestPosts;
 }
 
 // fallback to default mock data only if neither props nor fetched posts are available
@@ -107,8 +115,9 @@ const allArticles =
     ? fetchedArticles
     : defaultArticles;
 
-const featuredArticle = allArticles.find((a) => a.featured) || allArticles[0];
-const regularArticles = allArticles.filter((a) => a !== featuredArticle).slice(0, 5);
+// Featured = latest post (first in list); regular = next 5
+const featuredArticle = allArticles[0];
+const regularArticles = allArticles.slice(1, 6);
 
 const categoryColors: Record<string, string> = {
   Tech: 'var(--color-primary)',

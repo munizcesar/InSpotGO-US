@@ -29,7 +29,7 @@ if (!hotItems || hotItems.length === 0) {
 
   const scored = eligible
     .map((p) => {
-      const rawDate = (p.data.updated || p.data.date || p.data.pubDate) as any;
+      const rawDate = (p.data.date || p.data.pubDate) as string | Date | undefined;
       const publishedAt = rawDate ? new Date(rawDate) : new Date(0);
       const daysSince = Math.max(0, (Date.now() - publishedAt.getTime()) / (1000 * 60 * 60 * 24));
 

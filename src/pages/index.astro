@@ -46,35 +46,29 @@ const homepageSchema = [
   },
 ];
 
-const allPosts = await getCollection('posts');
+const allPosts = await getCollection('posts', ({ data }) => data.draft !== true);
 
-// Sort posts: featured first, then by date
-const sortedPosts = allPosts.sort((a, b) => {
-  // Featured posts come first
-  if (a.data.featured && !b.data.featured) return -1;
-  if (!a.data.featured && b.data.featured) return 1;
-  
-  // Then sort by date (newest first)
-  const dateA = new Date(a.data.date);
-  const dateB = new Date(b.data.date);
-  return dateB.getTime() - dateA.getTime();
-});
+// Helper: get publish/creation date (date || pubDate)
+const getPostDate = (post: (typeof allPosts)[number]) => {
+  const raw = post.data.date || post.data.pubDate;
+  return raw ? new Date(raw) : new Date(0);
+};
+
+// Sort by date descending (newest first) - latest post appears first
+const sortedPosts = allPosts.sort((a, b) => getPostDate(b).getTime() - getPostDate(a).getTime());
 
 // Transform posts to Article format for LatestNewsSection
 const articles = sortedPosts.map((post) => {
-  const date = new Date(post.data.date);
-  
+  const date = getPostDate(post);
   return {
     title: post.data.title,
     description: post.data.description,
     category: post.data.category || 'Tech',
-    image: post.data.cover || '/images/default-post.jpg',
+    image: post.data.cover || post.data.image || '/images/default-post.jpg',
     href: `/posts/${post.slug}`,
-    date: date.toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric'
-    }),
+    date: date.getTime() > 0
+      ? date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+      : '',
     readTime: post.data.readTime || '5 min',
     featured: post.data.featured || false,
   };
