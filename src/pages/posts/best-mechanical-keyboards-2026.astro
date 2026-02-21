@@ -1,9 +1,7 @@
 ---
 export const prerender = true;
-
-export function get() {
-  // include a small HTML body so users seeing this URL directly aren’t left staring at a blank screen
-  const body = `<!DOCTYPE html>
+---
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -12,15 +10,6 @@ export function get() {
 </head>
 <body>
   <p>Redirecting to <a href="/posts/best-mechanical-keyboards/">best-mechanical-keyboards</a>…</p>
+  <!-- server-side 301 done by hosting platform or configuration; meta redirect is fallback -->
 </body>
-</html>`;
-
-  return new Response(body, {
-    status: 301,
-    headers: {
-      'location': '/posts/best-mechanical-keyboards/',
-      'Content-Type': 'text/html; charset=utf-8'
-    }
-  });
-}
----
+</html>
