@@ -13,13 +13,35 @@ interface Article {
   featured?: boolean;
 }
 
+import { getCollection } from 'astro:content';
+
 interface Props {
   articles?: Article[];
 }
 
 const { articles = [] } = Astro.props;
 
-// Mock data if no articles provided
+// fetch latest posts from the content collection when no explicit articles are provided
+let fetchedArticles: Article[] = [];
+if (articles.length === 0) {
+  const latestPosts = (await getCollection('posts', ({ data }) => data.draft !== true))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+  fetchedArticles = latestPosts.map((p) => ({
+    title: p.data.title,
+    description: p.data.description || '',
+    category: p.data.category || 'Tech',
+    image: p.data.image || '/images/placeholder.jpg',
+    href: `/posts/${p.slug}`,
+    date: p.data.pubDate
+      ? new Date(p.data.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+      : '',
+    readTime: p.data.readTime,
+    featured: p.data.featured,
+  }));
+}
+
+// fallback to default mock data only if neither props nor fetched posts are available
 const defaultArticles: Article[] = [
   {
     title: "The Ultimate Guide to Choosing Your Next Laptop in 2026",
@@ -78,9 +100,15 @@ const defaultArticles: Article[] = [
   },
 ];
 
-const allArticles = articles.length > 0 ? articles : defaultArticles;
-const featuredArticle = allArticles.find(a => a.featured) || allArticles[0];
-const regularArticles = allArticles.filter(a => a !== featuredArticle).slice(0, 5);
+const allArticles =
+  articles.length > 0
+    ? articles
+    : fetchedArticles.length > 0
+    ? fetchedArticles
+    : defaultArticles;
+
+const featuredArticle = allArticles.find((a) => a.featured) || allArticles[0];
+const regularArticles = allArticles.filter((a) => a !== featuredArticle).slice(0, 5);
 
 const categoryColors: Record<string, string> = {
   Tech: 'var(--color-primary)',
