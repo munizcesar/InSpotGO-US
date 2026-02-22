@@ -219,24 +219,21 @@ const categoryColors: Record<string, string> = {
       <aside class="news-sidebar">
         <WhatsHot />
         
-        <!-- Newsletter Widget -->
-        <div class="newsletter-widget" id="newsletter-widget">
+        <!-- Newsletter Widget (optional) -->
+        <div class="newsletter-widget">
           <h4>Stay Updated</h4>
           <p>Get the latest reviews delivered to your inbox</p>
-          <form class="newsletter-form" id="newsletter-form">
+          <form class="newsletter-form">
             <input 
               type="email" 
               placeholder="Your email" 
               class="newsletter-input"
-              id="newsletter-email"
               required
-              aria-label="Email address"
             />
-            <button type="submit" class="newsletter-button" id="newsletter-submit">
+            <button type="submit" class="newsletter-button">
               Subscribe
             </button>
           </form>
-          <div class="newsletter-message" id="newsletter-message" role="alert" aria-live="polite"></div>
         </div>
       </aside>
     </div>
@@ -558,37 +555,6 @@ const categoryColors: Record<string, string> = {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
   }
-
-  .newsletter-button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
-  }
-  
-  /* Success/Error Messages */
-  .newsletter-message {
-    margin-top: 1rem;
-    padding: 0.75rem;
-    border-radius: var(--radius-md);
-    font-size: 0.875rem;
-    font-weight: 500;
-    text-align: center;
-    display: none;
-  }
-
-  .newsletter-message.success {
-    display: block;
-    background: rgba(16, 185, 129, 0.2);
-    color: #10b981;
-    border: 1px solid rgba(16, 185, 129, 0.3);
-  }
-
-  .newsletter-message.error {
-    display: block;
-    background: rgba(239, 68, 68, 0.2);
-    color: #ef4444;
-    border: 1px solid rgba(239, 68, 68, 0.3);
-  }
   
   /* Responsive */
   @media (max-width: 1024px) {
@@ -625,66 +591,3 @@ const categoryColors: Record<string, string> = {
     }
   }
 </style>
-
-<script is:inline>
-  document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('newsletter-form');
-    const emailInput = document.getElementById('newsletter-email');
-    const submitButton = document.getElementById('newsletter-submit');
-    const messageDiv = document.getElementById('newsletter-message');
-
-    if (form && emailInput && submitButton && messageDiv) {
-      form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        const email = emailInput.value.trim();
-        
-        // Reset message
-        messageDiv.className = 'newsletter-message';
-        messageDiv.textContent = '';
-        
-        // Disable button during submission
-        submitButton.disabled = true;
-        submitButton.textContent = 'Subscribing...';
-        
-        try {
-          const response = await fetch('/api/newsletter', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email }),
-          });
-          
-          const data = await response.json();
-          
-          if (response.ok && data.success) {
-            // Success message
-            messageDiv.className = 'newsletter-message success';
-            messageDiv.textContent = '✓ Thank you! Redirecting...';
-            emailInput.value = '';
-            
-            // Redirect to thank-you page after 1.5 seconds
-            setTimeout(() => {
-              window.location.href = '/thank-you';
-            }, 1500);
-          } else {
-            // Error message
-            messageDiv.className = 'newsletter-message error';
-            messageDiv.textContent = data.error || 'Something went wrong. Please try again.';
-            
-            submitButton.disabled = false;
-            submitButton.textContent = 'Subscribe';
-          }
-        } catch (error) {
-          console.error('Newsletter subscription error:', error);
-          messageDiv.className = 'newsletter-message error';
-          messageDiv.textContent = 'Network error. Please check your connection and try again.';
-          
-          submitButton.disabled = false;
-          submitButton.textContent = 'Subscribe';
-        }
-      });
-    }
-  });
-</script>
