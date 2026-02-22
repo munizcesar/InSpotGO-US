@@ -206,9 +206,10 @@ import "../styles/global.css";
       display: flex;
     }
 
-    /* Show backdrop on mobile */
+    /* Backdrop should still be hidden by default; .active class toggles visibility */
+    /* (previous rule unconditionally showed it on small screens, blocking all taps) */
     .drawer-backdrop {
-      display: block;
+      display: none;
     }
 
     /* Mobile Navigation Drawer */
