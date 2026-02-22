@@ -1,0 +1,393 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_CONFIG } from '../config';
+import { CheckCircle2, Download, ArrowRight, Mail } from 'lucide-astro';
+
+const siteUrl = SITE_CONFIG.url;
+---
+
+<BaseLayout 
+  title="Thank You for Subscribing | InSpotGO"
+  description="Welcome to InSpotGO! Get exclusive access to expert tech reviews and buying guides."
+>
+  <main class="thank-you-page">
+    <div class="container">
+      <div class="thank-you-content">
+        <!-- Success Icon -->
+        <div class="success-icon">
+          <CheckCircle2 size={80} stroke-width={1.5} />
+        </div>
+
+        <!-- Main Message -->
+        <h1 class="thank-you-title">Welcome to the Knowledge Edge</h1>
+        <p class="thank-you-subtitle">
+          You've successfully subscribed to InSpotGO's expert insights
+        </p>
+
+        <!-- Confirmation Message -->
+        <div class="confirmation-box">
+          <Mail size={24} />
+          <p>
+            We've sent a confirmation email to your inbox. 
+            <strong>Check your email</strong> to verify your subscription.
+          </p>
+        </div>
+
+        <!-- Value Drop: Exclusive Access -->
+        <section class="exclusive-access">
+          <h2>Your Exclusive Access</h2>
+          <div class="access-grid">
+            <div class="access-card">
+              <div class="access-icon">📚</div>
+              <h3>Expert Reviews</h3>
+              <p>Get notified when we publish in-depth product analysis and comparisons</p>
+            </div>
+            <div class="access-card">
+              <div class="access-icon">🎯</div>
+              <h3>Buying Guides</h3>
+              <p>Receive our latest buying guides to make confident purchasing decisions</p>
+            </div>
+            <div class="access-card">
+              <div class="access-icon">⚡</div>
+              <h3>Early Access</h3>
+              <p>Be the first to know about new reviews and exclusive content</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Next Steps -->
+        <section class="next-steps">
+          <h2>What's Next?</h2>
+          <div class="steps-list">
+            <div class="step-item">
+              <span class="step-number">1</span>
+              <div class="step-content">
+                <h3>Explore Our Reviews</h3>
+                <p>Browse our professional tech reviews and buying guides</p>
+                <a href="/posts" class="btn-step">
+                  Browse Articles <ArrowRight size={18} />
+                </a>
+              </div>
+            </div>
+            <div class="step-item">
+              <span class="step-number">2</span>
+              <div class="step-content">
+                <h3>Follow Our Categories</h3>
+                <p>Discover reviews for Tech Products, SaaS Tools, Software, and Guides</p>
+                <a href="/#categories" class="btn-step">
+                  View Categories <ArrowRight size={18} />
+                </a>
+              </div>
+            </div>
+            <div class="step-item">
+              <span class="step-number">3</span>
+              <div class="step-content">
+                <h3>Stay Updated</h3>
+                <p>You'll receive our latest insights directly in your inbox</p>
+                <a href="/about" class="btn-step">
+                  Learn More <ArrowRight size={18} />
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA Back to Home -->
+        <div class="cta-back">
+          <a href="/" class="btn-primary">
+            Return to Homepage
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Schema.org for Thank You Page -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Thank You for Subscribing",
+    "description": "Welcome to InSpotGO - Expert tech reviews and buying guides",
+    "url": `${siteUrl}/thank-you`,
+    "publisher": {
+      "@type": "Organization",
+      "name": SITE_CONFIG.name,
+      "logo": `${siteUrl}/logo.png`
+    }
+  })} />
+</BaseLayout>
+
+<style>
+  .thank-you-page {
+    min-height: 80vh;
+    padding: 4rem 0;
+    background: var(--color-bg-alt);
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .thank-you-content {
+    text-align: center;
+  }
+
+  /* Success Icon */
+  .success-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-radius: 50%;
+    margin: 0 auto 2rem;
+    color: white;
+    animation: scaleIn 0.5s ease-out;
+  }
+
+  @keyframes scaleIn {
+    from {
+      transform: scale(0);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  /* Title */
+  .thank-you-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .thank-you-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+  }
+
+  /* Confirmation Box */
+  .confirmation-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    padding: 1.5rem;
+    background: white;
+    border: 2px solid #10b981;
+    border-radius: var(--radius-lg);
+    text-align: left;
+  }
+
+  .confirmation-box svg {
+    flex-shrink: 0;
+    color: #10b981;
+  }
+
+  .confirmation-box p {
+    margin: 0;
+    color: var(--color-text);
+    line-height: 1.6;
+  }
+
+  /* Exclusive Access Section */
+  .exclusive-access {
+    margin: 4rem 0;
+    text-align: left;
+  }
+
+  .exclusive-access h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .access-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .access-card {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    text-align: center;
+    transition: all var(--transition-base);
+  }
+
+  .access-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+  }
+
+  .access-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .access-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+  }
+
+  .access-card p {
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Next Steps */
+  .next-steps {
+    margin: 4rem 0;
+    text-align: left;
+  }
+
+  .next-steps h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .step-item {
+    display: flex;
+    gap: 1.5rem;
+    background: white;
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    transition: all var(--transition-base);
+  }
+
+  .step-item:hover {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-md);
+  }
+
+  .step-number {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-action);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-radius: 50%;
+  }
+
+  .step-content {
+    flex: 1;
+  }
+
+  .step-content h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+  }
+
+  .step-content p {
+    color: var(--color-text-light);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .btn-step {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: var(--gradient-action);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+  }
+
+  .btn-step:hover {
+    background: var(--gradient-action-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+  }
+
+  /* CTA Back */
+  .cta-back {
+    margin-top: 3rem;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: var(--gradient-action);
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base);
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+  }
+
+  .btn-primary:hover {
+    background: var(--gradient-action-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .thank-you-page {
+      padding: 2rem 0;
+    }
+
+    .thank-you-title {
+      font-size: 2rem;
+    }
+
+    .confirmation-box {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .access-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .step-item {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .step-content {
+      text-align: center;
+    }
+  }
+</style>

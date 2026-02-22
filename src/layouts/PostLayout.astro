@@ -1,7 +1,18 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import ShareButtons from '../components/ShareButtons.astro';
+import { SITE_CONFIG } from '../config';
 const { frontmatter } = Astro.props;
+
+// Helper to get full URL for images
+const getImageUrl = (imagePath) => {
+  if (!imagePath) return null;
+  return new URL(imagePath, Astro.site).href;
+};
+
+// Get dates (support date || pubDate)
+const publishedDate = frontmatter.date || frontmatter.pubDate;
+const modifiedDate = frontmatter.updated || frontmatter.date || frontmatter.pubDate;
 
 // Helper to generate Amazon Search Link if specific link is missing
 const getProductLink = (product) => {
@@ -60,11 +71,36 @@ const getProductLink = (product) => {
   </main>
   
   <script type="application/ld+json" set:html={JSON.stringify({
-    "@context":"https://schema.org",
-    "@type":"Article",
+    "@context": "https://schema.org",
+    "@type": "Article",
     "headline": frontmatter.title,
-    "datePublished": frontmatter.date,
-    "author": {"@type":"Organization","name":"InSpotGO"}
+    "description": frontmatter.description,
+    "image": getImageUrl(frontmatter.cover) || getImageUrl('/og-image.jpg'),
+    "datePublished": publishedDate,
+    "dateModified": modifiedDate,
+    "author": {
+      "@type": "Organization",
+      "name": SITE_CONFIG.name,
+      "url": SITE_CONFIG.url
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": SITE_CONFIG.name,
+      "logo": {
+        "@type": "ImageObject",
+        "url": getImageUrl('/logo.png')
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": Astro.url.href
+    },
+    ...(frontmatter.category && {
+      "articleSection": frontmatter.category
+    }),
+    ...(frontmatter.tags && Array.isArray(frontmatter.tags) && {
+      "keywords": frontmatter.tags.join(", ")
+    })
   })} />
 </BaseLayout>
 
