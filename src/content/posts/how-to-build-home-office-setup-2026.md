@@ -17,6 +17,8 @@ seo:
 
 # How to Build the Perfect Home Office Setup: Professional Guide
 
+![Home Office Setup](/images/posts/OfficeSetup.png)
+
 A well-designed home office significantly impacts productivity, health, and work satisfaction. This guide provides evidence-based recommendations for creating an ergonomic, efficient workspace.
 
 ## Essential Components
