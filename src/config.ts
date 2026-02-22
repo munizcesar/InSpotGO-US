@@ -27,8 +27,8 @@ export const SITE_CONFIG = {
   
   // SEO & Analytics
   analytics: {
-    // Google Analytics 4
-    googleAnalyticsId: 'G-5J84J9C65G', // ✅ GA4 configured!
+    // Google Analytics 4 (vinculado ao email do site)
+    googleAnalyticsId: 'G-7K7X7D66FJ',
     googleAdsId: '3771126331',
     
     // TODO: Add other analytics as needed

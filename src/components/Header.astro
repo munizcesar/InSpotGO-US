@@ -25,6 +25,9 @@ import "../styles/global.css";
       <span class="hamburger"></span>
     </button>
 
+    <!-- Mobile Drawer Backdrop (Overlay) -->
+    <div class="drawer-backdrop" id="drawer-backdrop" aria-hidden="true"></div>
+
     <!-- Navigation -->
     <nav aria-label="Main navigation" class="nav" id="main-nav">
       <a href="/tech" class="nav-link">Tech</a>
@@ -172,6 +175,26 @@ import "../styles/global.css";
     width: 100%;
   }
 
+  /* Mobile Drawer Backdrop (Overlay) */
+  .drawer-backdrop {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh; /* Dynamic Viewport Height for mobile browsers */
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    will-change: opacity;
+  }
+
+  .drawer-backdrop.active {
+    display: block;
+    opacity: 1;
+  }
+
   /* Responsive */
   @media (max-width: 768px) {
     .container-flex {
@@ -183,12 +206,17 @@ import "../styles/global.css";
       display: flex;
     }
 
-    /* Mobile Navigation */
+    /* Show backdrop on mobile */
+    .drawer-backdrop {
+      display: block;
+    }
+
+    /* Mobile Navigation Drawer */
     .nav {
       position: fixed;
       top: 0;
       right: 0;
-      height: 100vh;
+      height: 100dvh; /* Dynamic Viewport Height - accounts for mobile browser toolbars */
       width: 70%;
       max-width: 300px;
       background: var(--color-bg);
@@ -196,13 +224,18 @@ import "../styles/global.css";
       align-items: flex-start;
       gap: 0;
       padding: 5rem 2rem 2rem;
-      transform: translateX(100%);
-      transition: transform 0.3s ease;
+      /* Hardware acceleration: translate3d for 60fps smooth animation */
+      transform: translate3d(100%, 0, 0);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      will-change: transform;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
     }
 
     .nav.active {
-      transform: translateX(0);
+      transform: translate3d(0, 0, 0); /* Hardware accelerated slide-in */
     }
 
     .nav-link {
@@ -237,31 +270,81 @@ import "../styles/global.css";
   document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.getElementById('mobile-menu-toggle');
     const nav = document.getElementById('main-nav');
+    const backdrop = document.getElementById('drawer-backdrop');
 
-    if (menuToggle && nav) {
-      menuToggle.addEventListener('click', function() {
-        const isActive = menuToggle.classList.toggle('active');
-        nav.classList.toggle('active');
-        menuToggle.setAttribute('aria-expanded', isActive.toString());
-        document.body.style.overflow = isActive ? 'hidden' : '';
+    function openDrawer() {
+      menuToggle?.classList.add('active');
+      nav?.classList.add('active');
+      backdrop?.classList.add('active');
+      menuToggle?.setAttribute('aria-expanded', 'true');
+      backdrop?.setAttribute('aria-hidden', 'false');
+      // Prevent scroll-chaining: lock body scroll when drawer is open
+      document.body.style.overflow = 'hidden';
+      // Prevent iOS bounce scroll
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+    }
+
+    function closeDrawer() {
+      menuToggle?.classList.remove('active');
+      nav?.classList.remove('active');
+      backdrop?.classList.remove('active');
+      menuToggle?.setAttribute('aria-expanded', 'false');
+      backdrop?.setAttribute('aria-hidden', 'true');
+      // Restore body scroll
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+    }
+
+    if (menuToggle && nav && backdrop) {
+      // Toggle drawer on hamburger click
+      menuToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (nav.classList.contains('active')) {
+          closeDrawer();
+        } else {
+          openDrawer();
+        }
       });
 
+      // Close drawer when clicking backdrop
+      backdrop.addEventListener('click', function() {
+        closeDrawer();
+      });
+
+      // Close drawer when clicking nav links
       const navLinks = nav.querySelectorAll('.nav-link');
       navLinks.forEach(function(link) {
         link.addEventListener('click', function() {
-          menuToggle.classList.remove('active');
-          nav.classList.remove('active');
-          menuToggle.setAttribute('aria-expanded', 'false');
-          document.body.style.overflow = '';
+          closeDrawer();
         });
       });
 
+      // Close drawer on outside click (desktop behavior)
       document.addEventListener('click', function(e) {
-        if (!nav.contains(e.target) && !menuToggle.contains(e.target) && nav.classList.contains('active')) {
-          menuToggle.classList.remove('active');
-          nav.classList.remove('active');
-          menuToggle.setAttribute('aria-expanded', 'false');
-          document.body.style.overflow = '';
+        if (
+          nav.classList.contains('active') &&
+          !nav.contains(e.target) &&
+          !menuToggle.contains(e.target) &&
+          !backdrop.contains(e.target)
+        ) {
+          closeDrawer();
+        }
+      });
+
+      // Close drawer on Escape key (accessibility)
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && nav.classList.contains('active')) {
+          closeDrawer();
+          menuToggle?.focus(); // Return focus to toggle button
+        }
+      });
+
+      // Close drawer on window resize (if resizing to desktop)
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && nav.classList.contains('active')) {
+          closeDrawer();
         }
       });
     }
