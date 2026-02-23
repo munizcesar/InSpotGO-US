@@ -14,7 +14,7 @@ seo:
 ---
 
 
-![Home Office Setup](/images/posts/OfficeSetup.png)
+
 *We may earn a commission when you buy through links on our site. [Learn more](/affiliate-disclosure).*
 
 
