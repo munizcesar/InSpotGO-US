@@ -5,7 +5,7 @@ updated: 2026-02-17
 category: "Guides"
 tags: ["home-office", "productivity", "ergonomics", "remote-work", "workspace"]
 description: "Comprehensive guide to creating an ergonomic, productive home office. Equipment recommendations, layout optimization, and productivity tips."
-cover: "/images/home-office-guide-2026.jpg"
+cover: "/images/posts/OfficeSetup.png"
 author: "InSpotGO Editorial Team"
 readTime: "12 min"
 featured: false
@@ -13,9 +13,10 @@ seo:
   keywords: "home office setup, ergonomic workspace, remote work setup, home office equipment"
 ---
 
-*We may earn a commission when you buy through links on our site. [Learn more](/affiliate-disclosure).*
 
 ![Home Office Setup](/images/posts/OfficeSetup.png)
+*We may earn a commission when you buy through links on our site. [Learn more](/affiliate-disclosure).*
+
 
 A well-designed home office significantly impacts productivity, health, and work satisfaction. This guide provides evidence-based recommendations for creating an ergonomic, efficient workspace.
 
