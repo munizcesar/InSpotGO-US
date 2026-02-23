@@ -1,296 +1,463 @@
-# Components Guide - InSpotGO-US
+# InSpotGO Components Guide
 
-## New Premium Components
-
-This guide covers the newly implemented premium layout components with Deep Purple + Orange-to-Pink gradient design.
+> Reusable components for building consistent, conversion-optimized pages
 
 ---
 
-## 🔥 WhatsHot Component
+## Overview
 
-**Location:** `src/components/WhatsHot.astro`
+This guide covers all InSpotGO components, their props, and usage examples.
 
-### Features
-- Trending articles sidebar widget
-- Numbered list with gradient badges
-- Category tags with custom colors
-- View count and date metadata
-- Animated trending icon
-- Sticky positioning on desktop
-- "View All Trending" CTA button
+**Design Principle**: Every component follows our blue (trust) + orange (action) color psychology for maximum conversion.
 
-### Usage
+---
 
+## Table of Contents
+
+1. [Layout Components](#layout-components)
+2. [Content Components](#content-components)
+3. [Comparison Components](#comparison-components)
+4. [SEO Components](#seo-components)
+5. [Analytics Components](#analytics-components)
+6. [Interactive Components](#interactive-components)
+
+---
+
+## Layout Components
+
+### BaseLayout
+
+**Location**: `src/layouts/BaseLayout.astro`
+
+**Purpose**: Main layout wrapper with SEO, header, footer, and analytics
+
+**Usage**:
 ```astro
----
-import WhatsHot from '../components/WhatsHot.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+
+<BaseLayout 
+  title="Page Title - InSpotGO"
+  description="Page description for SEO"
+>
+  <!-- Your content -->
+</BaseLayout>
+```
+
+**Props**:
+- `title` (string, required): Page title with site name
+- `description` (string, required): Meta description
+- `ogImage` (string, optional): Social media image
+- `canonicalURL` (string, optional): Canonical URL
+
 ---
 
-<!-- Basic usage with mock data -->
-<WhatsHot />
+## Content Components
 
-<!-- Custom data -->
-<WhatsHot 
-  items={[
-    {
-      title: "Article Title",
-      category: "Tech",
-      href: "/tech/article-slug",
-      views: "2.3k",
-      date: "2h ago",
-    },
-    // ... more items
-  ]}
+### ProductCard
+
+**Location**: `src/components/ProductCard.astro`
+
+**Purpose**: Display individual product with image, rating, and CTA
+
+**Usage**:
+```astro
+import ProductCard from '@/components/ProductCard.astro';
+
+<ProductCard 
+  title="MacBook Air M3"
+  image="/images/macbook-air-m3.jpg"
+  rating={4.8}
+  price="$1,099"
+  affiliateLink="https://amazon.com/..."
+  badge="Editor's Pick"
 />
 ```
 
-### Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `items` | `Array<HotItem>` | Mock data | Array of trending articles |
-
-**HotItem Interface:**
-```typescript
-{
-  title: string;
-  category: string;  // "Tech", "SaaS", "Software", "Guides"
-  href: string;
-  views?: string;
-  date?: string;
-  image?: string;
-}
-```
-
-### Design Features
-- **Gradient number badges** using `--gradient-action`
-- **Category-specific colors:**
-  - Tech: Deep Purple (`#2E1155`)
-  - SaaS: Purple (`#8b5cf6`)
-  - Software: Green (`#10b981`)
-  - Guides: Orange (`#f59e0b`)
-- **Hover effects:** Slide right + background change
-- **Pulse animation** on trending icon
+**Design Notes**:
+- Blue title link (trust)
+- Orange "Check Price" button (action)
+- Green badge for featured products (validation)
 
 ---
 
-## 📰 LatestNewsSection Component
+### CategoryCard
 
-**Location:** `src/components/LatestNewsSection.astro`
+**Location**: `src/components/CategoryCard.astro`
 
-### Features
-- Large featured article with 16:9 image
-- Grid of 5 regular articles
-- Integrated WhatsHot sidebar
-- Newsletter subscription widget
-- Responsive layout (sidebar moves to bottom on mobile)
-- Category badges with custom colors
-- Read time estimates
-- Gradient CTA buttons
+**Purpose**: Navigate to category pages
 
-### Usage
-
+**Usage**:
 ```astro
----
-import LatestNewsSection from '../components/LatestNewsSection.astro';
----
+import CategoryCard from '@/components/CategoryCard.astro';
 
-<!-- Basic usage with mock data -->
-<LatestNewsSection />
-
-<!-- Custom articles -->
-<LatestNewsSection 
-  articles={[
-    {
-      title: "Article Title",
-      description: "Article description...",
-      category: "Tech",
-      image: "/images/article.jpg",
-      href: "/tech/article-slug",
-      date: "Feb 13, 2026",
-      readTime: "8 min",
-      featured: true,  // First featured article becomes hero
-    },
-    // ... more articles
-  ]}
+<CategoryCard 
+  title="Tech Products"
+  description="Laptops, smartphones, and gadgets"
+  icon="💻"
+  href="/tech"
 />
 ```
 
-### Props
+---
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `articles` | `Array<Article>` | Mock data | Array of articles |
+### PostCard
 
-**Article Interface:**
+**Location**: `src/components/PostCard.astro`
+
+**Purpose**: Display blog post preview
+
+**Usage**:
+```astro
+import PostCard from '@/components/PostCard.astro';
+
+<PostCard 
+  title="Best Laptops 2026"
+  excerpt="Our top picks for work and study"
+  coverImage="/images/laptops-2026.jpg"
+  publishDate="2026-02-15"
+  slug="/tech/best-laptops-2026"
+/>
+```
+
+---
+
+## Comparison Components
+
+### ComparisonTable
+
+**Location**: `src/components/ComparisonTable.astro`
+
+**Purpose**: Compare multiple products side-by-side with detailed specifications
+
+**Usage**:
+```astro
+import ComparisonTable from '@/components/ComparisonTable.astro';
+
+const products = [
+  {
+    name: 'Xiaomi Redmi Note 13',
+    badge: '🏆 Editor\'s Pick',
+    badgeType: 'editor',
+    display: { main: '6.6" AMOLED', sub: '120Hz Refresh Rate' },
+    processor: { main: 'Snapdragon 7', sub: 'Gen 2' },
+    battery: { main: '5,000 mAh', sub: '67W Fast Charging' },
+    camera: { main: '64MP', sub: 'with OIS' },
+    tier: 'mid',
+    highlight: true
+  },
+  // ... more products
+];
+
+<ComparisonTable 
+  title="Smartphone Specifications Comparison"
+  products={products}
+  note="Prices may vary by region. Last updated: February 2026."
+/>
+```
+
+**Props**:
+- `title` (string, optional): Table heading
+- `products` (Product[], required): Array of products to compare
+- `note` (string, optional): Footer note
+
+**Product Object**:
 ```typescript
-{
-  title: string;
-  description: string;
-  category: string;      // "Tech", "SaaS", "Software", "Guides"
-  image: string;         // Image URL or path
-  href: string;
-  date: string;
-  readTime?: string;     // e.g., "8 min"
-  featured?: boolean;    // Makes it the hero article
+interface Product {
+  name: string;                              // Product name
+  badge?: string;                            // Badge text
+  badgeType?: 'editor' | 'value' | 'popular'; // Badge style
+  display: { main: string; sub?: string };   // Display specs
+  processor: { main: string; sub?: string }; // Processor specs
+  battery: { main: string; sub?: string };   // Battery specs
+  camera: { main: string; sub?: string };    // Camera specs
+  tier: 'entry' | 'mid' | 'premium';         // Product tier
+  highlight?: boolean;                       // Highlight row
 }
 ```
 
-### Layout Structure
+**Features**:
+- ✅ Fully responsive with horizontal scroll
+- ✅ Sticky header for easy navigation
+- ✅ Highlight rows for featured products
+- ✅ Three badge types (Editor, Value, Popular)
+- ✅ Three tier levels (Entry, Mid, Premium)
+- ✅ Smooth hover animations
+- ✅ InSpotGO blue/orange color scheme
 
-```
-┌─────────────────────────────────────────────┐
-│     Latest News & Reviews (Title)            │
-├────────────────────────────┬────────────────┤
-│                            │                 │
-│  FEATURED ARTICLE          │  WHAT'S HOT    │
-│  (Large, 16:9 image)       │  • Item 1      │
-│                            │  • Item 2      │
-├────────────────────────────┤  • Item 3      │
-│  ARTICLE  │  ARTICLE       │  • Item 4      │
-│    1      │     2          │  • Item 5      │
-├───────────┼────────────────┤                 │
-│  ARTICLE  │  ARTICLE       │  NEWSLETTER    │
-│    3      │     4          │  WIDGET        │
-├───────────┼────────────────┤                 │
-│  ARTICLE 5 (optional)      │                 │
-├────────────────────────────┴────────────────┤
-│         [View All Articles]                  │
-└─────────────────────────────────────────────┘
-```
+**When to Use**:
+- ✅ Product comparison reviews
+- ✅ "Best of" roundup articles
+- ✅ Buying guides with 3-10 products
+- ✅ Direct product comparisons
 
-### Design Features
+**When NOT to Use**:
+- ❌ Homepage (use ProductCard instead)
+- ❌ Single product reviews
+- ❌ More than 15 products (too cluttered)
+- ❌ Legal/informational pages
 
-**Featured Article:**
-- Large format with prominent image
-- Full description visible
-- Hover: Image zoom effect
-- Category badge top-left
+**Examples**:
 
-**Regular Articles:**
-- 2-column grid on desktop
-- Compact card format
-- 2-line title clamp
-- 2-line description clamp
-- Read time badge
-
-**Sidebar:**
-- Sticky WhatsHot widget
-- Gradient newsletter form
-- Responsive: becomes 2-column grid on tablet
-
----
-
-## 🎨 Integration Example
-
-### Replace Current Homepage Section
-
-**Before** (`src/pages/index.astro`):
+Smartphone Comparison:
 ```astro
-<!-- Recent Posts Section -->
-<section class="recent-posts">
-  <div class="container">
-    <h2>Recent Articles</h2>
-    <div class="posts-grid">
-      {posts.map(post => <PostCard {...post} />)}
-    </div>
-  </div>
-</section>
+const smartphones = [
+  {
+    name: 'Xiaomi Redmi Note 13',
+    badge: '🏆 Editor\'s Pick',
+    badgeType: 'editor',
+    display: { main: '6.6" AMOLED', sub: '120Hz' },
+    processor: { main: 'Snapdragon 7 Gen 2' },
+    battery: { main: '5,000 mAh', sub: '67W' },
+    camera: { main: '64MP', sub: 'OIS' },
+    tier: 'mid',
+    highlight: true
+  }
+];
 ```
 
-**After:**
+Laptop Comparison:
 ```astro
+const laptops = [
+  {
+    name: 'MacBook Air M3',
+    badge: '🏆 Editor\'s Pick',
+    badgeType: 'editor',
+    display: { main: '13.6" Retina', sub: '2560x1664' },
+    processor: { main: 'Apple M3', sub: '8-core' },
+    battery: { main: 'Up to 18 hours' },
+    camera: { main: '1080p FaceTime' },
+    tier: 'premium',
+    highlight: true
+  }
+];
+```
+
+SaaS Tools Comparison:
+```astro
+const saasTools = [
+  {
+    name: 'Notion',
+    badge: '🔥 Most Popular',
+    badgeType: 'popular',
+    display: { main: 'All-in-one workspace' },
+    processor: { main: 'Unlimited blocks', sub: 'Free plan' },
+    battery: { main: '$8/month', sub: 'Per user' },
+    camera: { main: 'Web, iOS, Android' },
+    tier: 'mid',
+    highlight: true
+  }
+];
+```
+
+**Design Notes**:
+- Blue gradient header (trust and authority)
+- Orange highlight for featured products (action)
+- Green badges for Editor's Pick (validation)
+- Orange badges for Best Value (action/urgency)
+- Purple badges for Most Popular (social proof)
+- Smooth hover effects for interactivity
+- Responsive design with horizontal scroll on mobile
+
+**Documentation**:
+- Full guide: `docs/components/comparison-table-usage.md`
+- Examples: `docs/examples/comparison-table-example.astro`
+
 ---
-import LatestNewsSection from '../components/LatestNewsSection.astro';
-import { getCollection } from 'astro:content';
 
-const posts = await getCollection('posts');
+## SEO Components
 
-// Transform posts to Article format
-const articles = posts.map((post, index) => ({
-  title: post.data.title,
-  description: post.data.description,
-  category: post.data.category || 'Tech',
-  image: post.data.cover || post.data.image || '/images/default.jpg',
-  href: `/posts/${post.slug}`,
-  date: new Date(post.data.date).toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric'
-  }),
-  readTime: post.data.readTime || '5 min',
-  featured: index === 0,  // First post is featured
-}));
----
+### SEO
 
-<LatestNewsSection articles={articles} />
+**Location**: `src/components/SEO.astro`
+
+**Purpose**: Inject SEO meta tags
+
+**Usage**:
+```astro
+import SEO from '@/components/SEO.astro';
+
+<SEO 
+  title="Page Title"
+  description="Page description"
+  ogImage="/images/og-image.jpg"
+/>
 ```
 
 ---
 
-## 📱 Responsive Behavior
+## Analytics Components
 
-### Desktop (>1024px)
-- 2-column layout: Main content (left) + Sidebar (right)
-- Sidebar sticky at `top: 80px`
-- Featured article + 2×3 grid
+### GoogleAnalytics
 
-### Tablet (768px - 1024px)
-- Single column layout
-- Sidebar becomes 2-column grid below content
-- Featured article + 2×2 grid + single article
+**Location**: `src/components/GoogleAnalytics.astro`
 
-### Mobile (<768px)
-- Single column everything
-- Featured article scales down
-- Articles stack vertically
-- Sidebar widgets stack
+**Purpose**: Load Google Analytics 4
 
----
+**Usage**:
+```astro
+import GoogleAnalytics from '@/components/GoogleAnalytics.astro';
 
-## 🎯 Color System
-
-### Category Colors
-```css
-Tech:     #2E1155 (Deep Purple)
-SaaS:     #8b5cf6 (Purple)
-Software: #10b981 (Green)
-Guides:   #f59e0b (Orange)
+<GoogleAnalytics />
 ```
 
-### Gradient Buttons
-```css
---gradient-action: linear-gradient(135deg, #f97316 0%, #fb7185 50%, #ec4899 100%);
+**Setup**:
+1. Add `PUBLIC_GA_ID` to `.env`
+2. Component auto-loads on production
+
+---
+
+## Interactive Components
+
+### CookieBanner
+
+**Location**: `src/components/CookieBanner.astro`
+
+**Purpose**: GDPR/CCPA cookie consent
+
+**Usage**:
+```astro
+import CookieBanner from '@/components/CookieBanner.astro';
+
+<CookieBanner />
 ```
 
-### Hover States
-- Cards: Lift 2-4px with shadow increase
-- Images: Scale 1.05
-- Titles: Change to `--color-primary`
-- Buttons: Darker gradient + lift + shadow
+**Features**:
+- Accept/Decline buttons
+- Persists choice in localStorage
+- GDPR compliant
 
 ---
 
-## 🚀 Next Steps
+### AffiliateBanner
 
-1. **Replace homepage recent posts section** with `LatestNewsSection`
-2. **Add real post data** instead of mock data
-3. **Create trending logic** for WhatsHot (views/date based)
-4. **Implement newsletter** backend integration
-5. **Add category pages** using similar layout
+**Location**: `src/components/AffiliateBanner.astro`
 
----
+**Purpose**: FTC-required affiliate disclosure
 
-## 📄 Files Modified
+**Usage**:
+```astro
+import AffiliateBanner from '@/components/AffiliateBanner.astro';
 
-- ✅ `src/styles/global.css` - Premium color system
-- ✅ `src/components/Header.astro` - Gradient logo
-- ✅ `src/components/Footer.astro` - Gradient logo  
-- ✅ `src/components/WhatsHot.astro` - NEW
-- ✅ `src/components/LatestNewsSection.astro` - NEW
-- ⏳ `src/pages/index.astro` - TO UPDATE
+<AffiliateBanner />
+```
+
+**Display**: Appears at top of pages with affiliate links
 
 ---
 
-**Questions or Issues?**
-Refer to `LANGUAGE-POLICY.md` for content guidelines and `ROADMAP.md` for project planning.
+## Header & Footer
+
+### Header
+
+**Location**: `src/components/Header.astro`
+
+**Features**:
+- Dual-color logo (blue "InSpot" + orange "GO")
+- Responsive navigation
+- Mobile menu
+
+### Footer
+
+**Location**: `src/components/Footer.astro`
+
+**Features**:
+- Category links
+- Legal pages
+- Social media
+- Newsletter signup
+
+---
+
+## Logo Component
+
+### Logo
+
+**Location**: `src/components/Logo.astro`
+
+**Usage**:
+```astro
+import Logo from '@/components/Logo.astro';
+
+<Logo />
+```
+
+**Design**:
+- "InSpot" in blue (#2563eb) - Trust
+- "GO" in orange (#f97316) - Action
+
+---
+
+## Component Hierarchy
+
+```
+BaseLayout
+├── Header
+│   └── Logo
+├── SEO
+├── GoogleAnalytics
+├── CookieBanner
+├── AffiliateBanner
+├── [Your Content]
+│   ├── ProductCard
+│   ├── ComparisonTable (NEW)
+│   ├── CategoryCard
+│   └── PostCard
+└── Footer
+```
+
+---
+
+## Best Practices
+
+### Component Usage
+
+1. **Always use BaseLayout** for full pages
+2. **ProductCard for individual items** on listings
+3. **ComparisonTable for 3-10 products** in reviews
+4. **CategoryCard for navigation** on homepage/hubs
+5. **PostCard for blog listings**
+
+### Color Usage
+
+- **Blue links**: Navigation, article links (trust)
+- **Orange buttons**: Affiliate links, CTAs (action)
+- **Green badges**: Editor's Pick, success (validation)
+
+### Responsive Design
+
+- All components mobile-first
+- Tables scroll horizontally on mobile
+- Cards stack on small screens
+
+---
+
+## Testing Components
+
+### Local Development
+
+```bash
+npm run dev
+```
+
+Visit: http://localhost:4321
+
+### Test Pages
+
+- Homepage: `/`
+- Categories: `/tech`, `/saas`, `/software`
+- Example comparison: `docs/examples/comparison-table-example.astro`
+
+---
+
+## Related Documentation
+
+- [COLOR-GUIDE.md](./COLOR-GUIDE.md) - Color psychology and usage
+- [BRANDBOOK.md](./BRANDBOOK.md) - Brand guidelines
+- [CONTENT-GUIDE.md](./CONTENT-GUIDE.md) - Content creation
+- [docs/components/comparison-table-usage.md](./docs/components/comparison-table-usage.md) - ComparisonTable full guide
+
+---
+
+**Questions?** Check individual component files for inline documentation.
+
+**Built with ❤️ for InSpotGO**

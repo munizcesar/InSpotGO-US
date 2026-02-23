@@ -1,28 +1,72 @@
 # Cloudflare Pages Headers Configuration
+# This file controls caching and security headers
+# https://developers.cloudflare.com/pages/configuration/headers/
 
-# PNG Logo and Favicon files - shorter cache for easier updates
-/logo-*.png
-  Content-Type: image/png
-  Cache-Control: public, max-age=3600, must-revalidate
-  X-Content-Type-Options: nosniff
-
-/favicon.png
-  Content-Type: image/png
-  Cache-Control: public, max-age=3600, must-revalidate
-  X-Content-Type-Options: nosniff
-
-# SVG files (for other graphics, not logos)
-/*.svg
-  Content-Type: image/svg+xml
-  Cache-Control: public, max-age=31536000, immutable
-  X-Content-Type-Options: nosniff
-
-/social/*.svg
-  Content-Type: image/svg+xml
-  Cache-Control: public, max-age=31536000, immutable
-
-# General security headers
+# ============================================
+# HTML Pages - No Cache (Always Fresh)
+# ============================================
 /*
-  X-Frame-Options: SAMEORIGIN
+  Cache-Control: public, max-age=0, must-revalidate
   X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  X-XSS-Protection: 1; mode=block
   Referrer-Policy: strict-origin-when-cross-origin
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# ============================================
+# Static Assets - Long Cache (1 Year)
+# ============================================
+/*.css
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.js
+  Cache-Control: public, max-age=31536000, immutable
+
+# Images
+/*.jpg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.jpeg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.gif
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.webp
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.svg
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.ico
+  Cache-Control: public, max-age=31536000, immutable
+
+# Fonts
+/*.woff
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.ttf
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.otf
+  Cache-Control: public, max-age=31536000, immutable
+
+# ============================================
+# Other Assets
+# ============================================
+/*.pdf
+  Cache-Control: public, max-age=604800
+
+/*.xml
+  Cache-Control: public, max-age=3600
+
+/*.json
+  Cache-Control: public, max-age=0, must-revalidate

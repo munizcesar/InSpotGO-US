@@ -1,0 +1,282 @@
+---
+/**
+ * ComparisonTable Example Page
+ * 
+ * This is a complete example showing how to use the ComparisonTable component
+ * in a real review page with multiple product categories.
+ */
+
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import ComparisonTable from '@/components/ComparisonTable.astro';
+
+// Example 1: Smartphone Comparison
+const smartphones = [
+  {
+    name: 'Xiaomi Redmi Note 13',
+    badge: '🏆 Editor\'s Pick',
+    badgeType: 'editor',
+    display: { main: '6.6" AMOLED', sub: '120Hz Refresh Rate' },
+    processor: { main: 'Snapdragon 7', sub: 'Gen 2' },
+    battery: { main: '5,000 mAh', sub: '67W Fast Charging' },
+    camera: { main: '64MP', sub: 'with OIS' },
+    tier: 'mid',
+    highlight: true
+  },
+  {
+    name: 'Samsung Galaxy A25',
+    display: { main: '6.5" S-AMOLED', sub: '120Hz Refresh Rate' },
+    processor: { main: 'Exynos 1380' },
+    battery: { main: '5,000 mAh', sub: '25W Fast Charging' },
+    camera: { main: '50MP', sub: 'with OIS' },
+    tier: 'mid'
+  },
+  {
+    name: 'Moto G Power',
+    badge: '💰 Best Battery',
+    badgeType: 'value',
+    display: { main: '6.7" LCD', sub: '120Hz' },
+    processor: { main: 'Snapdragon 680' },
+    battery: { main: '6,000 mAh', sub: '30W Charging' },
+    camera: { main: '48MP' },
+    tier: 'entry'
+  },
+  {
+    name: 'Realme Narzo 60',
+    display: { main: '6.4" AMOLED', sub: '90Hz Refresh Rate' },
+    processor: { main: 'Dimensity 810' },
+    battery: { main: '5,000 mAh', sub: '67W Fast Charging' },
+    camera: { main: '50MP' },
+    tier: 'mid'
+  },
+  {
+    name: 'Nokia G400',
+    display: { main: '6.6" LCD', sub: '120Hz' },
+    processor: { main: 'Snapdragon 480+' },
+    battery: { main: '5,000 mAh', sub: '20W Charging' },
+    camera: { main: '—' },
+    tier: 'entry'
+  }
+];
+
+// Example 2: Laptop Comparison
+const laptops = [
+  {
+    name: 'MacBook Air M3',
+    badge: '🏆 Editor\'s Pick',
+    badgeType: 'editor',
+    display: { main: '13.6" Liquid Retina', sub: '2560x1664' },
+    processor: { main: 'Apple M3', sub: '8-core CPU' },
+    battery: { main: 'Up to 18 hours' },
+    camera: { main: '1080p FaceTime' },
+    tier: 'premium',
+    highlight: true
+  },
+  {
+    name: 'Dell XPS 13',
+    display: { main: '13.4" FHD+', sub: '1920x1200' },
+    processor: { main: 'Intel Core i7', sub: '13th Gen' },
+    battery: { main: 'Up to 12 hours' },
+    camera: { main: '720p HD' },
+    tier: 'premium'
+  },
+  {
+    name: 'HP Pavilion 15',
+    badge: '💰 Best Value',
+    badgeType: 'value',
+    display: { main: '15.6" FHD', sub: '1920x1080' },
+    processor: { main: 'AMD Ryzen 5', sub: '7000 Series' },
+    battery: { main: 'Up to 8 hours' },
+    camera: { main: '720p HD' },
+    tier: 'mid'
+  }
+];
+
+// Example 3: SaaS Tools Comparison
+const saasTools = [
+  {
+    name: 'Notion',
+    badge: '🔥 Most Popular',
+    badgeType: 'popular',
+    display: { main: 'All-in-one workspace' },
+    processor: { main: 'Unlimited blocks', sub: 'Free plan available' },
+    battery: { main: '$8/month', sub: 'Per user (Plus)' },
+    camera: { main: 'Web, iOS, Android' },
+    tier: 'mid',
+    highlight: true
+  },
+  {
+    name: 'ClickUp',
+    display: { main: 'Project management' },
+    processor: { main: 'Unlimited tasks', sub: 'Free forever plan' },
+    battery: { main: '$7/month', sub: 'Per user (Unlimited)' },
+    camera: { main: 'Web, iOS, Android' },
+    tier: 'mid'
+  },
+  {
+    name: 'Asana',
+    display: { main: 'Team collaboration' },
+    processor: { main: 'Limited tasks', sub: 'Free for 15 users' },
+    battery: { main: '$10.99/month', sub: 'Per user (Premium)' },
+    camera: { main: 'Web, iOS, Android' },
+    tier: 'mid'
+  }
+];
+---
+
+<BaseLayout 
+  title="ComparisonTable Examples - InSpotGO"
+  description="Examples of using the ComparisonTable component for different product categories."
+>
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <h1>ComparisonTable Component Examples</h1>
+    
+    <p class="lead">
+      This page demonstrates various use cases for the ComparisonTable component.
+      Use these examples as templates for your own review pages.
+    </p>
+
+    <hr class="my-12" />
+
+    <!-- Example 1: Smartphones -->
+    <section>
+      <h2>Example 1: Smartphone Comparison</h2>
+      <p>
+        Perfect for tech product reviews with detailed specifications.
+        Notice the highlighted row for the Editor's Pick.
+      </p>
+
+      <ComparisonTable 
+        title="Best Budget Smartphones 2026"
+        products={smartphones}
+        note="Prices may vary by region and retailer. Last updated: February 2026."
+      />
+    </section>
+
+    <hr class="my-12" />
+
+    <!-- Example 2: Laptops -->
+    <section>
+      <h2>Example 2: Laptop Comparison</h2>
+      <p>
+        Comparing laptops across different price tiers and manufacturers.
+        Great for "Best Laptops" roundup articles.
+      </p>
+
+      <ComparisonTable 
+        title="Best Laptops for Work & Study 2026"
+        products={laptops}
+        note="All prices are for base configurations. Students may qualify for educational discounts."
+      />
+    </section>
+
+    <hr class="my-12" />
+
+    <!-- Example 3: SaaS Tools -->
+    <section>
+      <h2>Example 3: SaaS Tools Comparison</h2>
+      <p>
+        Adapted for comparing software and SaaS tools.
+        Notice how the columns are repurposed for software-specific features.
+      </p>
+
+      <ComparisonTable 
+        title="Best Project Management Tools 2026"
+        products={saasTools}
+        note="Prices shown are for monthly billing. Annual plans typically offer 20% discount."
+      />
+    </section>
+
+    <hr class="my-12" />
+
+    <!-- Usage Notes -->
+    <section class="bg-blue-50 p-6 rounded-lg">
+      <h2>Usage Notes</h2>
+      <ul>
+        <li><strong>Smartphone Example:</strong> Standard tech product comparison with all specs</li>
+        <li><strong>Laptop Example:</strong> Premium vs mid-range tier distinction</li>
+        <li><strong>SaaS Example:</strong> Adapted columns for software features and pricing</li>
+      </ul>
+      <p class="mt-4">
+        <strong>Pro tip:</strong> The column headers are fixed, but you can interpret them 
+        flexibly based on your product category. For SaaS tools, "Display" becomes "Type", 
+        "Processor" becomes "Features", etc.
+      </p>
+    </section>
+
+    <hr class="my-12" />
+
+    <!-- Code Examples -->
+    <section>
+      <h2>Code for Smartphone Example</h2>
+      <pre><code>{`const smartphones = [
+  {
+    name: 'Xiaomi Redmi Note 13',
+    badge: '🏆 Editor\'s Pick',
+    badgeType: 'editor',
+    display: { main: '6.6" AMOLED', sub: '120Hz Refresh Rate' },
+    processor: { main: 'Snapdragon 7', sub: 'Gen 2' },
+    battery: { main: '5,000 mAh', sub: '67W Fast Charging' },
+    camera: { main: '64MP', sub: 'with OIS' },
+    tier: 'mid',
+    highlight: true
+  },
+  // ... more products
+];
+
+<ComparisonTable 
+  title="Best Budget Smartphones 2026"
+  products={smartphones}
+/>`}</code></pre>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .lead {
+    font-size: 1.25rem;
+    color: var(--color-text-light, #6b7280);
+    margin-bottom: 2rem;
+  }
+
+  hr {
+    border: none;
+    border-top: 2px solid #e5e7eb;
+  }
+
+  section {
+    margin: 3rem 0;
+  }
+
+  section h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-text, #1f2937);
+    margin-bottom: 1rem;
+  }
+
+  section p {
+    color: var(--color-text-light, #6b7280);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  ul {
+    list-style: disc;
+    margin-left: 1.5rem;
+    line-height: 1.8;
+  }
+
+  pre {
+    background: #1f2937;
+    color: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  code {
+    font-family: 'Courier New', monospace;
+  }
+</style>
