@@ -24,8 +24,8 @@ if (!hotItems || hotItems.length === 0) {
   const posts = await getCollection('posts');
 
   const eligible = posts
-    .filter((p) => !p.data.draft)
-    .filter((p) => (category ? p.data.category === category : true));
+    .filter((p) => !p.data.draft);
+  // note: category prop is currently ignored to show global trending items
 
   const scored = eligible
     .map((p) => {
