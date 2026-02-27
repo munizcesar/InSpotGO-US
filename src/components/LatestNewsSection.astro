@@ -1,6 +1,7 @@
 ---
 import { Clock, ArrowRight } from 'lucide-astro';
 import WhatsHot from './WhatsHot.astro';
+import { SITE_CONFIG } from '../config';
 
 interface Article {
   title: string;
@@ -220,6 +221,7 @@ const categoryColors: Record<string, string> = {
         <WhatsHot />
         
         <!-- Newsletter Widget (optional) -->
+        {SITE_CONFIG.features.newsletter && (
         <div class="newsletter-widget">
           <h4>Stay Updated</h4>
           <p>Get the latest reviews delivered to your inbox</p>
@@ -235,10 +237,41 @@ const categoryColors: Record<string, string> = {
             </button>
           </form>
         </div>
+        )}
       </aside>
     </div>
   </div>
 </section>
+
+<!-- client-side script to handle newsletter form -->
+<script type="module" client:load>
+  const form = document.querySelector('.newsletter-form');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const input = form.querySelector('input');
+      const email = input?.value.trim();
+      if (!email) return;
+      try {
+        const response = await fetch('/api/newsletter', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email }),
+        });
+        if (response.ok) {
+          // redirect to thank-you page or show success
+          window.location.href = '/thank-you';
+        } else {
+          const data = await response.json();
+          alert(data.error || 'Subscription failed');
+        }
+      } catch (err) {
+        console.error(err);
+        alert('An error occurred. Please try again later.');
+      }
+    });
+  }
+</script>
 
 <style>
   .latest-news-section {

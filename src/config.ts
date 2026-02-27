@@ -86,7 +86,7 @@ export const SITE_CONFIG = {
   
   // Site Features
   features: {
-    newsletter: false, // Enable when you setup email service
+    newsletter: true, // Enable when you setup email service
     comments: false, // Enable if you want comments (Disqus, etc)
     search: true,
     darkMode: true,
