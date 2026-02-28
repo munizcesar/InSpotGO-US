@@ -2,9 +2,9 @@
 
 ## ✅ API Key Configurada
 
-A API key do Resend já foi configurada nas variáveis de ambiente do Cloudflare Pages.
+A API key do Resend está configurada nas variáveis de ambiente do Cloudflare Pages.
 
-**API Key:** `re_Q3cq34fg_9NSLiAyqSnVmduPHwLNmdNyU`
+**⚠️ Nunca coloque a API Key diretamente neste arquivo. Use sempre as variáveis de ambiente do Cloudflare Pages.**
 
 ---
 
@@ -20,10 +20,10 @@ A API key do Resend já foi configurada nas variáveis de ambiente do Cloudflare
 
 ## Configuração no Cloudflare Pages
 
-A variável de ambiente já deve estar configurada:
+Adicione a variável de ambiente no painel do Cloudflare Pages:
 
 - **Nome:** `RESEND_API_KEY`
-- **Valor:** `re_Q3cq34fg_9NSLiAyqSnVmduPHwLNmdNyU`
+- **Valor:** *(sua chave gerada no painel do Resend — nunca exponha aqui)*
 - **Ambiente:** Production + Preview
 
 ---
