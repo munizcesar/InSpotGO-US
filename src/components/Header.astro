@@ -35,48 +35,42 @@ const currentPath = Astro.url.pathname;
             <div class="drawer-brand-tagline">Spot the Best. Go Confident.</div>
           </div>
         </div>
+        <button class="drawer-close" id="drawer-close" aria-label="Close navigation menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
       </div>
 
       <div class="nav-links">
         <a href="/tech" class={`nav-link ${currentPath.startsWith('/tech') ? 'active' : ''}`} aria-current={currentPath.startsWith('/tech') ? 'page' : undefined}>
-          <span class="nav-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-          </span>
+          <span class="nav-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
           <span class="nav-label">Tech</span>
           <svg class="nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
         <a href="/saas" class={`nav-link ${currentPath.startsWith('/saas') ? 'active' : ''}`} aria-current={currentPath.startsWith('/saas') ? 'page' : undefined}>
-          <span class="nav-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
-          </span>
+          <span class="nav-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></span>
           <span class="nav-label">SaaS</span>
           <svg class="nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
         <a href="/software" class={`nav-link ${currentPath.startsWith('/software') ? 'active' : ''}`} aria-current={currentPath.startsWith('/software') ? 'page' : undefined}>
-          <span class="nav-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-          </span>
+          <span class="nav-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
           <span class="nav-label">Software</span>
           <svg class="nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
         <a href="/guides" class={`nav-link ${currentPath.startsWith('/guides') ? 'active' : ''}`} aria-current={currentPath.startsWith('/guides') ? 'page' : undefined}>
-          <span class="nav-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-          </span>
+          <span class="nav-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></span>
           <span class="nav-label">Guides</span>
           <svg class="nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
         <a href="/about" class={`nav-link ${currentPath === '/about' ? 'active' : ''}`} aria-current={currentPath === '/about' ? 'page' : undefined}>
-          <span class="nav-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-          </span>
+          <span class="nav-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></span>
           <span class="nav-label">About</span>
           <svg class="nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
         <a href="/contact" class={`nav-link ${currentPath === '/contact' ? 'active' : ''}`} aria-current={currentPath === '/contact' ? 'page' : undefined}>
-          <span class="nav-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </span>
+          <span class="nav-icon-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
           <span class="nav-label">Contact</span>
           <svg class="nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
@@ -92,22 +86,8 @@ const currentPath = Astro.url.pathname;
 </header>
 
 <style>
-  .header {
-    background: rgba(255,255,255,0.95);
-    border-bottom: 1px solid var(--color-border);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    backdrop-filter: blur(8px);
-  }
-  .container-flex {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 1.5rem;
-    max-width: 1400px;
-    margin: 0 auto;
-  }
+  .header { background: rgba(255,255,255,0.95); border-bottom: 1px solid var(--color-border); position: sticky; top: 0; z-index: 1000; backdrop-filter: blur(8px); }
+  .container-flex { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.5rem; max-width: 1400px; margin: 0 auto; }
   .logo-link { text-decoration: none; display: flex; align-items: center; transition: transform 0.3s ease; z-index: 1001; }
   .logo-link:hover { transform: scale(1.05); }
   .logo-wrap { display: inline-flex; align-items: center; gap: 0.625rem; }
@@ -127,6 +107,7 @@ const currentPath = Astro.url.pathname;
   .nav-links { display: flex; align-items: center; gap: 2rem; }
   .nav-icon-wrap { display: none; }
   .nav-arrow { display: none; }
+  .drawer-close { display: none; }
   .nav-link { color: var(--color-text); text-decoration: none; font-weight: 500; font-size: 1rem; transition: color 0.3s ease; position: relative; }
   .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--color-primary); transition: width 0.3s ease; }
   .nav-link:hover { color: var(--color-primary); }
@@ -157,8 +138,10 @@ const currentPath = Astro.url.pathname;
     .nav.active { transform: translate3d(0, 0, 0); }
 
     .drawer-header {
-      display: flex; align-items: center;
-      padding: 1.25rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1rem 1rem 1.25rem;
       background: var(--gradient-hero, linear-gradient(135deg, #1e1150, #2e1155));
       flex-shrink: 0;
     }
@@ -167,18 +150,30 @@ const currentPath = Astro.url.pathname;
     .drawer-brand-name { font-size: 1.1rem; font-weight: 800; line-height: 1; margin-bottom: 0.2rem; }
     .drawer-brand-tagline { font-size: 0.68rem; color: rgba(255,255,255,0.6); font-style: italic; }
 
+    /* Close button */
+    .drawer-close {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
+      color: rgba(255,255,255,0.9);
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .drawer-close:hover { background: rgba(255,255,255,0.22); }
+    .drawer-close:focus { outline: 2px solid rgba(255,255,255,0.5); outline-offset: 2px; }
+
     .nav-links { display: flex; flex-direction: column; gap: 0; flex: 1; }
 
     .nav-link {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      width: 100%;
-      padding: 0.9rem 1.25rem;
-      font-size: 0.95rem;
-      font-weight: 500;
-      color: #374151;
-      border-bottom: 1px solid #f3f4f6;
+      display: flex; align-items: center; gap: 0;
+      width: 100%; padding: 0.9rem 1.25rem;
+      font-size: 0.95rem; font-weight: 500;
+      color: #374151; border-bottom: 1px solid #f3f4f6;
       text-decoration: none;
       transition: background 0.15s, color 0.15s;
       position: relative;
@@ -186,54 +181,22 @@ const currentPath = Astro.url.pathname;
     .nav-link:last-child { border-bottom: none; }
     .nav-link::after { display: none; }
     .nav-link:hover { background: #f9fafb; color: var(--color-primary); }
-    .nav-link.active {
-      background: #fff7ed;
-      color: var(--color-primary);
-      border-left: 3px solid var(--color-primary);
-      font-weight: 600;
-    }
+    .nav-link.active { background: #fff7ed; color: var(--color-primary); border-left: 3px solid var(--color-primary); font-weight: 600; }
 
-    .nav-icon-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 20px;
-      height: 20px;
-      flex-shrink: 0;
-      margin-right: 0.875rem;
-      color: #9ca3af;
-    }
+    .nav-icon-wrap { display: flex; align-items: center; justify-content: center; width: 20px; height: 20px; flex-shrink: 0; margin-right: 0.875rem; color: #9ca3af; }
     .nav-icon-wrap svg { width: 18px; height: 18px; }
-    .nav-link:hover .nav-icon-wrap { color: var(--color-primary); }
+    .nav-link:hover .nav-icon-wrap,
     .nav-link.active .nav-icon-wrap { color: var(--color-primary); }
 
     .nav-label { flex: 1; }
 
-    .nav-arrow {
-      display: block;
-      width: 14px; height: 14px;
-      color: #d1d5db;
-      flex-shrink: 0;
-    }
+    .nav-arrow { display: block; width: 14px; height: 14px; color: #d1d5db; flex-shrink: 0; }
     .nav-link.active .nav-arrow { color: var(--color-primary); opacity: 0.5; }
 
-    .drawer-footer {
-      display: block;
-      padding: 1.25rem;
-      border-top: 1px solid #f3f4f6;
-      background: #fafafa;
-      flex-shrink: 0;
-    }
+    .drawer-footer { display: block; padding: 1.25rem; border-top: 1px solid #f3f4f6; background: #fafafa; flex-shrink: 0; }
     .drawer-newsletter-title { font-size: 0.875rem; font-weight: 700; color: #111827; margin: 0 0 0.2rem; }
     .drawer-newsletter-sub { font-size: 0.75rem; color: #9ca3af; margin: 0 0 0.875rem; }
-    .drawer-newsletter-btn {
-      display: block; text-align: center;
-      background: var(--gradient-action, linear-gradient(135deg, #f97316, #ec4899));
-      color: #fff; font-weight: 600; font-size: 0.85rem;
-      padding: 0.65rem 1rem; border-radius: 8px;
-      text-decoration: none; letter-spacing: 0.02em;
-      transition: opacity 0.2s;
-    }
+    .drawer-newsletter-btn { display: block; text-align: center; background: var(--gradient-action, linear-gradient(135deg, #f97316, #ec4899)); color: #fff; font-weight: 600; font-size: 0.85rem; padding: 0.65rem 1rem; border-radius: 8px; text-decoration: none; letter-spacing: 0.02em; transition: opacity 0.2s; }
     .drawer-newsletter-btn:hover { opacity: 0.88; }
   }
 
@@ -248,6 +211,7 @@ const currentPath = Astro.url.pathname;
     const menuToggle = document.getElementById('mobile-menu-toggle');
     const nav = document.getElementById('main-nav');
     const backdrop = document.getElementById('drawer-backdrop');
+    const closeBtn = document.getElementById('drawer-close');
     function openDrawer() {
       menuToggle?.classList.add('active'); nav?.classList.add('active'); backdrop?.classList.add('active');
       menuToggle?.setAttribute('aria-expanded', 'true'); backdrop?.setAttribute('aria-hidden', 'false');
@@ -261,6 +225,7 @@ const currentPath = Astro.url.pathname;
     if (menuToggle && nav && backdrop) {
       menuToggle.addEventListener('click', function(e) { e.stopPropagation(); nav.classList.contains('active') ? closeDrawer() : openDrawer(); });
       backdrop.addEventListener('click', closeDrawer);
+      closeBtn?.addEventListener('click', closeDrawer);
       nav.querySelectorAll('.nav-link').forEach(function(link) { link.addEventListener('click', closeDrawer); });
       const newsletterBtn = nav.querySelector('.drawer-newsletter-btn');
       if (newsletterBtn) newsletterBtn.addEventListener('click', closeDrawer);
