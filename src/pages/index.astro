@@ -6,7 +6,6 @@ import LatestNewsSection from '../components/LatestNewsSection.astro';
 import { Target, BarChart3, Lightbulb, CheckCircle2, Search, Users, RefreshCw } from 'lucide-astro';
 import { getCollection } from 'astro:content';
 
-// JSON-LD for AI Overviews (SGE) - boosts discoverability in search
 const siteUrl = SITE_CONFIG.url;
 const homepageSchema = [
   {
@@ -47,17 +46,11 @@ const homepageSchema = [
 ];
 
 const allPosts = await getCollection('posts', ({ data }) => data.draft !== true);
-
-// Helper: get publish/creation date (date || pubDate)
 const getPostDate = (post: (typeof allPosts)[number]) => {
   const raw = post.data.date || post.data.pubDate;
   return raw ? new Date(raw) : new Date(0);
 };
-
-// Sort by date descending (newest first) - latest post appears first
 const sortedPosts = allPosts.sort((a, b) => getPostDate(b).getTime() - getPostDate(a).getTime());
-
-// Transform posts to Article format for LatestNewsSection
 const articles = sortedPosts.map((post) => {
   const date = getPostDate(post);
   return {
@@ -66,9 +59,7 @@ const articles = sortedPosts.map((post) => {
     category: post.data.category || 'Tech',
     image: post.data.cover || post.data.image || '/images/default-post.jpg',
     href: `/posts/${post.slug}`,
-    date: date.getTime() > 0
-      ? date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
-      : '',
+    date: date.getTime() > 0 ? date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '',
     readTime: post.data.readTime || '5 min',
     featured: post.data.featured || false,
   };
@@ -76,102 +67,95 @@ const articles = sortedPosts.map((post) => {
 ---
 
 <BaseLayout extraSchema={homepageSchema}>
-  <!-- Hero Section (semantic HTML5: header for introductory content) -->
+
+  <!-- Hero Section -->
   <header class="hero">
     <div class="container">
       <div class="hero-content">
-        <h1>
-          <span class="hero-title">
-            <span class="hero-spot">InSpot</span><span class="hero-go">GO</span>
-          </span>
-          <span class="hero-slogan">
-            Spot the Best. <span class="go-emphasis">GO</span> Confident.
-          </span>
+
+        <!-- Trust badge -->
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Independent Reviews &amp; Buying Guides
+        </div>
+
+        <h1 class="hero-headline">
+          Stop Guessing.<br/>
+          <span class="hero-headline-accent">Buy with Confidence.</span>
         </h1>
+
         <p class="hero-description">
-          {SITE_CONFIG.description}
+          Expert-tested reviews on tech, software, and SaaS tools — so you spend smarter and choose better, every time.
         </p>
+
         <div class="hero-cta">
           <a href="#latest-news" class="btn btn-primary">Explore Reviews</a>
-          <a href="/about" class="btn btn-outline">Learn More</a>
+          <a href="/guides" class="btn btn-outline">Buying Guides</a>
         </div>
+
+        <!-- Social proof bar -->
+        <div class="hero-proof">
+          <div class="proof-item">
+            <span class="proof-number">100+</span>
+            <span class="proof-label">Products Reviewed</span>
+          </div>
+          <div class="proof-divider"></div>
+          <div class="proof-item">
+            <span class="proof-number">4</span>
+            <span class="proof-label">Categories</span>
+          </div>
+          <div class="proof-divider"></div>
+          <div class="proof-item">
+            <span class="proof-number">100%</span>
+            <span class="proof-label">Independent</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </header>
 
-  <!-- Latest News & Trending (moved before Categories) -->
+  <!-- Latest News -->
   <section id="latest-news">
     <LatestNewsSection articles={articles} />
   </section>
 
-  <!-- Categories Section -->
+  <!-- Categories -->
   <section class="categories" id="categories">
     <div class="container">
       <h2 class="section-title">What We Review</h2>
-      <p class="section-subtitle">
-        Professional analysis and buying guides to help you make informed decisions
-      </p>
-      
+      <p class="section-subtitle">Professional analysis and buying guides to help you make informed decisions</p>
       <div class="categories-grid">
-        <CategoryCard
-          title={SITE_CONFIG.categories.tech.name}
-          description={SITE_CONFIG.categories.tech.description}
-          icon={SITE_CONFIG.categories.tech.icon}
-          href="/tech"
-        />
-        <CategoryCard
-          title={SITE_CONFIG.categories.saas.name}
-          description={SITE_CONFIG.categories.saas.description}
-          icon={SITE_CONFIG.categories.saas.icon}
-          href="/saas"
-        />
-        <CategoryCard
-          title={SITE_CONFIG.categories.software.name}
-          description={SITE_CONFIG.categories.software.description}
-          icon={SITE_CONFIG.categories.software.icon}
-          href="/software"
-        />
-        <CategoryCard
-          title={SITE_CONFIG.categories.guides.name}
-          description={SITE_CONFIG.categories.guides.description}
-          icon={SITE_CONFIG.categories.guides.icon}
-          href="/guides"
-        />
+        <CategoryCard title={SITE_CONFIG.categories.tech.name} description={SITE_CONFIG.categories.tech.description} icon={SITE_CONFIG.categories.tech.icon} href="/tech" />
+        <CategoryCard title={SITE_CONFIG.categories.saas.name} description={SITE_CONFIG.categories.saas.description} icon={SITE_CONFIG.categories.saas.icon} href="/saas" />
+        <CategoryCard title={SITE_CONFIG.categories.software.name} description={SITE_CONFIG.categories.software.description} icon={SITE_CONFIG.categories.software.icon} href="/software" />
+        <CategoryCard title={SITE_CONFIG.categories.guides.name} description={SITE_CONFIG.categories.guides.description} icon={SITE_CONFIG.categories.guides.icon} href="/guides" />
       </div>
     </div>
   </section>
 
-  <!-- Why Trust Us Section -->
+  <!-- Why Trust Us -->
   <section class="trust">
     <div class="container">
       <h2 class="section-title">Why Trust InSpotGO?</h2>
-      
       <div class="trust-grid">
         <div class="trust-item">
-          <div class="trust-icon">
-            <CheckCircle2 size={56} stroke-width={1.5} />
-          </div>
+          <div class="trust-icon"><CheckCircle2 size={56} stroke-width={1.5} /></div>
           <h3>Professional Analysis</h3>
           <p>Evidence-based reviews following journalistic standards with benchmark testing and technical verification</p>
         </div>
         <div class="trust-item">
-          <div class="trust-icon">
-            <Search size={56} stroke-width={1.5} />
-          </div>
+          <div class="trust-icon"><Search size={56} stroke-width={1.5} /></div>
           <h3>Comprehensive Research</h3>
           <p>Every review backed by extensive testing, specification analysis, and industry comparison</p>
         </div>
         <div class="trust-item">
-          <div class="trust-icon">
-            <Users size={56} stroke-width={1.5} />
-          </div>
+          <div class="trust-icon"><Users size={56} stroke-width={1.5} /></div>
           <h3>Reader-Focused</h3>
           <p>Objective recommendations prioritizing user needs over affiliate commissions</p>
         </div>
         <div class="trust-item">
-          <div class="trust-icon">
-            <RefreshCw size={56} stroke-width={1.5} />
-          </div>
+          <div class="trust-icon"><RefreshCw size={56} stroke-width={1.5} /></div>
           <h3>Regularly Updated</h3>
           <p>Content refreshed with latest pricing, specifications, and market developments</p>
         </div>
@@ -179,33 +163,24 @@ const articles = sortedPosts.map((post) => {
     </div>
   </section>
 
-  <!-- Editorial Standards Section -->
+  <!-- Editorial Standards -->
   <section class="featured">
     <div class="container">
       <h2 class="section-title">Our Editorial Standards</h2>
-      <p class="section-subtitle">
-        Professional tech journalism with transparent methodology and expert analysis
-      </p>
-      
+      <p class="section-subtitle">Professional tech journalism with transparent methodology and expert analysis</p>
       <div class="coming-soon-grid">
         <div class="coming-soon-card">
-          <div class="card-icon">
-            <Target size={48} stroke-width={1.5} />
-          </div>
+          <div class="card-icon"><Target size={48} stroke-width={1.5} /></div>
           <h3>In-Depth Reviews</h3>
           <p>Detailed technical analysis with specifications, benchmarks, and real-world testing results</p>
         </div>
         <div class="coming-soon-card">
-          <div class="card-icon">
-            <BarChart3 size={48} stroke-width={1.5} />
-          </div>
+          <div class="card-icon"><BarChart3 size={48} stroke-width={1.5} /></div>
           <h3>Comparison Guides</h3>
           <p>Data-driven comparisons with performance metrics and feature analysis</p>
         </div>
         <div class="coming-soon-card">
-          <div class="card-icon">
-            <Lightbulb size={48} stroke-width={1.5} />
-          </div>
+          <div class="card-icon"><Lightbulb size={48} stroke-width={1.5} /></div>
           <h3>Expert Insights</h3>
           <p>Professional buying guides and technical tutorials from experienced reviewers</p>
         </div>
@@ -213,344 +188,155 @@ const articles = sortedPosts.map((post) => {
     </div>
   </section>
 
-  <!-- CTA Section -->
+  <!-- CTA -->
   <section class="cta-section">
     <div class="container">
       <h2>Ready to Make Informed Decisions?</h2>
       <p>Explore our professional reviews and analysis to find the perfect products</p>
-      <a href="#latest-news" class="btn btn-cta">Browse Latest Reviews →</a>
+      <a href="#latest-news" class="btn btn-cta">Browse Latest Reviews &rarr;</a>
     </div>
   </section>
+
 </BaseLayout>
 
 <style>
-  /* ============================================
-     Hero Section - Premium Gradient
-     ============================================ */
+  /* Hero */
   .hero {
     background: var(--gradient-hero);
     color: white;
-    padding: 6rem 0;
+    padding: 5rem 0 4.5rem;
     text-align: center;
+    position: relative;
+    overflow: hidden;
   }
-  
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(249,115,22,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
   .hero-content {
-    max-width: 800px;
+    max-width: 780px;
     margin: 0 auto;
+    position: relative;
   }
-  
-  .hero-title {
-    display: block;
-    font-size: 3.5rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
+
+  /* Trust badge */
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.22);
+    color: rgba(255,255,255,0.92);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.875rem;
+    border-radius: 100px;
+    margin-bottom: 1.75rem;
   }
-  
-  /* Dual-color logo in hero */
-  .hero-spot {
+
+  /* Headline */
+  .hero-headline {
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.25rem;
     color: white;
   }
-  
-  .hero-go {
-    background: var(--gradient-logo-go);
+  .hero-headline-accent {
+    background: var(--gradient-logo-go, linear-gradient(90deg, #f97316, #ec4899));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  
-  .hero-slogan {
-    display: block;
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    opacity: 0.95;
-  }
-  
-  .go-emphasis {
-    font-weight: 700;
-    color: #fbbf24;
-  }
-  
+
   .hero-description {
-    font-size: 1.25rem;
-    line-height: 1.6;
-    margin-bottom: 2.5rem;
-    opacity: 0.9;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.82);
+    max-width: 600px;
+    margin: 0 auto 2.25rem;
   }
-  
+
   .hero-cta {
     display: flex;
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
-  }
-  
-  /* ============================================
-     Buttons - Premium Gradient Style
-     ============================================ */
-  .btn {
-    display: inline-block;
-    padding: 1rem 2rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    text-decoration: none;
-    border-radius: var(--radius-md);
-    transition: all var(--transition-base);
-    border: 2px solid transparent;
-  }
-  
-  /* Primary CTA - Gradient */
-  .btn-primary {
-    background: var(--gradient-action);
-    color: white;
-    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
-  }
-  
-  .btn-primary:hover {
-    background: var(--gradient-action-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
-  }
-  
-  /* Outline button - White on gradient */
-  .btn-outline {
-    background: transparent;
-    color: white;
-    border: 2px solid white;
-  }
-  
-  .btn-outline:hover {
-    background: white;
-    color: var(--color-primary);
-  }
-  
-  /* CTA section button */
-  .btn-cta {
-    background: white;
-    color: var(--color-primary);
-    font-size: 1.2rem;
-    padding: 1.25rem 2.5rem;
-    border-radius: var(--radius-lg);
-  }
-  
-  .btn-cta:hover {
-    background: #f7f7f7;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+    margin-bottom: 2.75rem;
   }
 
-  /* ============================================
-     Categories Section - Grid Layout
-     ============================================ */
-  .categories {
-    background: var(--color-bg-alt);
-    padding: 5rem 0;
-  }
-  
-  .section-title {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--color-text);
-    margin-bottom: 0.75rem;
-    text-align: center;
-  }
-  
-  .section-subtitle {
-    font-size: 1.125rem;
-    color: var(--color-text-light);
-    max-width: 700px;
-    margin: 0 auto 3rem;
-    text-align: center;
-  }
-  
-  .categories-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 2rem;
-    margin-top: 3rem;
-  }
-  
-  @media (max-width: 768px) {
-    .categories {
-      padding: 3rem 0;
-    }
-    
-    .section-title {
-      font-size: 2rem;
-    }
-    
-    .categories-grid {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-  }
-
-  /* ============================================
-     Trust Section - 4-Column Grid
-     ============================================ */
-  .trust {
-    background: white;
-    padding: 5rem 0;
-  }
-  
-  .trust-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 3rem;
-    margin-top: 3rem;
-  }
-  
-  .trust-item {
-    text-align: center;
-    padding: 2rem 1.5rem;
-    background: var(--color-bg-alt);
-    border-radius: var(--radius-lg);
-    transition: all var(--transition-base);
-    border: 1px solid var(--color-border);
-  }
-  
-  .trust-item:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--color-primary-light);
-  }
-  
-  .trust-icon {
+  /* Social proof */
+  .hero-proof {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    width: 80px;
-    height: 80px;
-    background: var(--gradient-action);
-    border-radius: var(--radius-full);
-    margin: 0 auto 1.5rem;
-    color: white;
+    gap: 1.5rem;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 100px;
+    padding: 0.6rem 2rem;
   }
-  
-  .trust-item h3 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--color-text);
-    margin-bottom: 0.75rem;
-  }
-  
-  .trust-item p {
-    font-size: 0.95rem;
-    color: var(--color-text-light);
-    line-height: 1.6;
-  }
-  
-  @media (max-width: 768px) {
-    .trust {
-      padding: 3rem 0;
-    }
-    
-    .trust-grid {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-  }
+  .proof-item { display: flex; flex-direction: column; align-items: center; }
+  .proof-number { font-size: 1.1rem; font-weight: 800; color: white; line-height: 1; }
+  .proof-label { font-size: 0.65rem; color: rgba(255,255,255,0.6); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 0.15rem; }
+  .proof-divider { width: 1px; height: 28px; background: rgba(255,255,255,0.18); }
 
-  /* ============================================
-     Editorial Standards Section - 3-Column Grid
-     ============================================ */
-  .featured {
-    background: var(--color-bg-alt);
-    padding: 5rem 0;
-  }
-  
-  .coming-soon-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2.5rem;
-    margin-top: 3rem;
-  }
-  
-  .coming-soon-card {
-    background: white;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    padding: 2.5rem 2rem;
-    text-align: center;
-    transition: all var(--transition-base);
-    box-shadow: var(--shadow-sm);
-  }
-  
-  .coming-soon-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-xl);
-    border-color: var(--color-primary);
-  }
-  
-  .card-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 72px;
-    height: 72px;
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-    border-radius: var(--radius-lg);
-    margin: 0 auto 1.5rem;
-    color: white;
-  }
-  
-  .coming-soon-card h3 {
-    font-size: 1.375rem;
-    font-weight: 700;
-    color: var(--color-text);
-    margin-bottom: 0.875rem;
-  }
-  
-  .coming-soon-card p {
-    font-size: 0.975rem;
-    color: var(--color-text-light);
-    line-height: 1.65;
-  }
-  
-  @media (max-width: 768px) {
-    .featured {
-      padding: 3rem 0;
-    }
-    
-    .coming-soon-grid {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-  }
+  /* Buttons */
+  .btn { display: inline-block; padding: 0.9rem 1.875rem; font-size: 1rem; font-weight: 600; text-decoration: none; border-radius: var(--radius-md); transition: all 0.2s ease; border: 2px solid transparent; }
+  .btn-primary { background: var(--gradient-action); color: white; box-shadow: 0 4px 16px rgba(249,115,22,0.35); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(249,115,22,0.45); }
+  .btn-outline { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.55); }
+  .btn-outline:hover { background: rgba(255,255,255,0.12); border-color: white; }
+  .btn-cta { background: white; color: var(--color-primary); font-size: 1.1rem; padding: 1.1rem 2.25rem; border-radius: var(--radius-lg); }
+  .btn-cta:hover { background: #f7f7f7; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.2); }
 
-  /* ============================================
-     CTA Section - Centered
-     ============================================ */
-  .cta-section {
-    background: var(--gradient-hero);
-    padding: 5rem 0;
-    text-align: center;
-    color: white;
-  }
-  
-  .cta-section h2 {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-  }
-  
-  .cta-section p {
-    font-size: 1.25rem;
-    margin-bottom: 2.5rem;
-    opacity: 0.95;
-  }
-  
+  /* Categories */
+  .categories { background: var(--color-bg-alt); padding: 5rem 0; }
+  .section-title { font-size: 2.25rem; font-weight: 800; color: var(--color-text); margin-bottom: 0.75rem; text-align: center; }
+  .section-subtitle { font-size: 1.1rem; color: var(--color-text-light); max-width: 700px; margin: 0 auto 3rem; text-align: center; }
+  .categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-top: 3rem; }
+
+  /* Trust */
+  .trust { background: white; padding: 5rem 0; }
+  .trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-top: 3rem; }
+  .trust-item { text-align: center; padding: 2rem 1.5rem; background: var(--color-bg-alt); border-radius: var(--radius-lg); transition: all 0.2s; border: 1px solid var(--color-border); }
+  .trust-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--color-primary-light); }
+  .trust-icon { display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; background: var(--gradient-action); border-radius: var(--radius-full); margin: 0 auto 1.5rem; color: white; }
+  .trust-item h3 { font-size: 1.2rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.75rem; }
+  .trust-item p { font-size: 0.95rem; color: var(--color-text-light); line-height: 1.6; }
+
+  /* Editorial */
+  .featured { background: var(--color-bg-alt); padding: 5rem 0; }
+  .coming-soon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; margin-top: 3rem; }
+  .coming-soon-card { background: white; border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 2.5rem 2rem; text-align: center; transition: all 0.2s; box-shadow: var(--shadow-sm); }
+  .coming-soon-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-xl); border-color: var(--color-primary); }
+  .card-icon { display: inline-flex; align-items: center; justify-content: center; width: 72px; height: 72px; background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%); border-radius: var(--radius-lg); margin: 0 auto 1.5rem; color: white; }
+  .coming-soon-card h3 { font-size: 1.35rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.875rem; }
+  .coming-soon-card p { font-size: 0.975rem; color: var(--color-text-light); line-height: 1.65; }
+
+  /* CTA */
+  .cta-section { background: var(--gradient-hero); padding: 5rem 0; text-align: center; color: white; }
+  .cta-section h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; }
+  .cta-section p { font-size: 1.2rem; margin-bottom: 2.5rem; opacity: 0.9; }
+
+  /* Responsive */
   @media (max-width: 768px) {
-    .cta-section {
-      padding: 3rem 0;
-    }
-    
-    .cta-section h2 {
-      font-size: 2rem;
-    }
-    
-    .cta-section p {
-      font-size: 1.125rem;
-    }
+    .hero { padding: 3.5rem 0 3rem; }
+    .hero-proof { flex-wrap: wrap; gap: 1rem; padding: 0.75rem 1.25rem; border-radius: 16px; }
+    .proof-divider { display: none; }
+    .categories { padding: 3rem 0; }
+    .section-title { font-size: 1.875rem; }
+    .categories-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+    .trust { padding: 3rem 0; }
+    .trust-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .featured { padding: 3rem 0; }
+    .coming-soon-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .cta-section { padding: 3rem 0; }
+    .cta-section h2 { font-size: 2rem; }
   }
 </style>

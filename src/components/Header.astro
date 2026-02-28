@@ -27,7 +27,6 @@ const currentPath = Astro.url.pathname;
     <div class="drawer-backdrop" id="drawer-backdrop" aria-hidden="true"></div>
 
     <nav aria-label="Main navigation" class="nav" id="main-nav">
-
       <div class="drawer-header">
         <div class="drawer-brand">
           <img src="/logo-icon.svg" alt="" class="drawer-logo-icon" height="36" width="36" />
@@ -40,46 +39,61 @@ const currentPath = Astro.url.pathname;
 
       <div class="nav-links">
         <a href="/tech" class={`nav-link ${currentPath.startsWith('/tech') ? 'active' : ''}`} aria-current={currentPath.startsWith('/tech') ? 'page' : undefined}>
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-          Tech
+          <span class="nav-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </span>
+          <span class="nav-label">Tech</span>
+          <svg class="nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
         <a href="/saas" class={`nav-link ${currentPath.startsWith('/saas') ? 'active' : ''}`} aria-current={currentPath.startsWith('/saas') ? 'page' : undefined}>
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
-          SaaS
+          <span class="nav-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+          </span>
+          <span class="nav-label">SaaS</span>
+          <svg class="nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
         <a href="/software" class={`nav-link ${currentPath.startsWith('/software') ? 'active' : ''}`} aria-current={currentPath.startsWith('/software') ? 'page' : undefined}>
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-          Software
+          <span class="nav-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </span>
+          <span class="nav-label">Software</span>
+          <svg class="nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
         <a href="/guides" class={`nav-link ${currentPath.startsWith('/guides') ? 'active' : ''}`} aria-current={currentPath.startsWith('/guides') ? 'page' : undefined}>
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-          Guides
+          <span class="nav-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          </span>
+          <span class="nav-label">Guides</span>
+          <svg class="nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
         <a href="/about" class={`nav-link ${currentPath === '/about' ? 'active' : ''}`} aria-current={currentPath === '/about' ? 'page' : undefined}>
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-          About
+          <span class="nav-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+          </span>
+          <span class="nav-label">About</span>
+          <svg class="nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
         <a href="/contact" class={`nav-link ${currentPath === '/contact' ? 'active' : ''}`} aria-current={currentPath === '/contact' ? 'page' : undefined}>
-          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Contact
+          <span class="nav-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </span>
+          <span class="nav-label">Contact</span>
+          <svg class="nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </a>
       </div>
 
       <div class="drawer-footer">
-        <div class="drawer-newsletter">
-          <p class="drawer-newsletter-title">Stay Updated</p>
-          <p class="drawer-newsletter-sub">Get the latest reviews in your inbox</p>
-          <a href="/#newsletter" class="drawer-newsletter-btn">Subscribe Free</a>
-        </div>
+        <p class="drawer-newsletter-title">Stay Updated</p>
+        <p class="drawer-newsletter-sub">Expert reviews delivered to your inbox</p>
+        <a href="/#newsletter" class="drawer-newsletter-btn">Subscribe Free</a>
       </div>
-
     </nav>
   </div>
 </header>
 
 <style>
   .header {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255,255,255,0.95);
     border-bottom: 1px solid var(--color-border);
     position: sticky;
     top: 0;
@@ -94,125 +108,58 @@ const currentPath = Astro.url.pathname;
     max-width: 1400px;
     margin: 0 auto;
   }
-  .logo-link {
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    transition: transform 0.3s ease;
-    z-index: 1001;
-  }
+  .logo-link { text-decoration: none; display: flex; align-items: center; transition: transform 0.3s ease; z-index: 1001; }
   .logo-link:hover { transform: scale(1.05); }
   .logo-wrap { display: inline-flex; align-items: center; gap: 0.625rem; }
   .logo-icon { display: block; height: 40px; width: 40px; }
-  .logo-text {
-    font-weight: 800;
-    font-size: 1.25rem;
-    letter-spacing: -0.02em;
-    line-height: 1;
-    user-select: none;
-    white-space: nowrap;
-  }
+  .logo-text { font-weight: 800; font-size: 1.25rem; letter-spacing: -0.02em; line-height: 1; user-select: none; white-space: nowrap; }
 
-  .mobile-menu-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 2rem;
-    height: 2rem;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    z-index: 1001;
-  }
+  .mobile-menu-toggle { display: none; flex-direction: column; justify-content: space-around; width: 2rem; height: 2rem; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 1001; }
   .mobile-menu-toggle:focus { outline: 2px solid var(--color-primary); outline-offset: 4px; }
-  .hamburger {
-    width: 2rem;
-    height: 0.2rem;
-    background: var(--color-text);
-    border-radius: 10px;
-    transition: all 0.3s ease;
-    transform-origin: center;
-  }
+  .hamburger { width: 2rem; height: 0.2rem; background: var(--color-text); border-radius: 10px; transition: all 0.3s ease; transform-origin: center; }
   .mobile-menu-toggle.active .hamburger:nth-child(1) { transform: translateY(0.6rem) rotate(45deg); }
   .mobile-menu-toggle.active .hamburger:nth-child(2) { opacity: 0; }
   .mobile-menu-toggle.active .hamburger:nth-child(3) { transform: translateY(-0.6rem) rotate(-45deg); }
 
-  /* Desktop nav */
+  /* Desktop */
   .nav { display: flex; align-items: center; gap: 2rem; }
   .drawer-header, .drawer-footer { display: none; }
   .nav-links { display: flex; align-items: center; gap: 2rem; }
-  .nav-icon { display: none; }
-  .nav-link {
-    color: var(--color-text);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1rem;
-    transition: color 0.3s ease;
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: -4px; left: 0;
-    width: 0; height: 2px;
-    background: var(--color-primary);
-    transition: width 0.3s ease;
-  }
+  .nav-icon-wrap { display: none; }
+  .nav-arrow { display: none; }
+  .nav-link { color: var(--color-text); text-decoration: none; font-weight: 500; font-size: 1rem; transition: color 0.3s ease; position: relative; }
+  .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--color-primary); transition: width 0.3s ease; }
   .nav-link:hover { color: var(--color-primary); }
   .nav-link:hover::after { width: 100%; }
   .nav-link.active { color: var(--color-primary); font-weight: 600; }
   .nav-link.active::after { width: 100%; }
 
-  .drawer-backdrop {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100dvh;
-    background: rgba(0,0,0,0.5);
-    z-index: 999;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
+  .drawer-backdrop { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100dvh; background: rgba(0,0,0,0.5); z-index: 999; opacity: 0; transition: opacity 0.3s ease; }
   .drawer-backdrop.active { display: block; opacity: 1; }
 
-  /* ======= MOBILE ======= */
+  /* ===== MOBILE ===== */
   @media (max-width: 768px) {
     .container-flex { padding: 0.875rem 1rem; }
     .mobile-menu-toggle { display: flex; }
     .drawer-backdrop { display: none; }
 
     .nav {
-      position: fixed;
-      top: 0; right: 0;
-      height: 100dvh;
-      width: 80%;
-      max-width: 320px;
+      position: fixed; top: 0; right: 0;
+      height: 100dvh; width: 82%; max-width: 320px;
       background: #fff;
-      flex-direction: column;
-      align-items: stretch;
-      justify-content: flex-start;
-      gap: 0;
-      padding: 0;
+      flex-direction: column; align-items: stretch; justify-content: flex-start;
+      gap: 0; padding: 0;
       transform: translate3d(100%, 0, 0);
       transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       box-shadow: -4px 0 32px rgba(0,0,0,0.14);
-      z-index: 1002;
-      will-change: transform;
-      overflow-y: auto;
-      -webkit-overflow-scrolling: touch;
+      z-index: 1002; overflow-y: auto; -webkit-overflow-scrolling: touch;
     }
     .nav.active { transform: translate3d(0, 0, 0); }
 
     .drawer-header {
-      display: flex;
-      align-items: center;
-      padding: 1.25rem 1.5rem;
+      display: flex; align-items: center;
+      padding: 1.25rem 1.25rem;
       background: var(--gradient-hero, linear-gradient(135deg, #1e1150, #2e1155));
-      border-bottom: 1px solid rgba(255,255,255,0.08);
       flex-shrink: 0;
     }
     .drawer-brand { display: flex; align-items: center; gap: 0.75rem; }
@@ -220,77 +167,71 @@ const currentPath = Astro.url.pathname;
     .drawer-brand-name { font-size: 1.1rem; font-weight: 800; line-height: 1; margin-bottom: 0.2rem; }
     .drawer-brand-tagline { font-size: 0.68rem; color: rgba(255,255,255,0.6); font-style: italic; }
 
-    .nav-links { display: flex; flex-direction: column; gap: 0; flex: 1; padding: 0.25rem 0; }
-
-    .nav-icon {
-      display: block;
-      width: 18px;
-      height: 18px;
-      flex-shrink: 0;
-      opacity: 0.5;
-      transition: opacity 0.2s;
-    }
+    .nav-links { display: flex; flex-direction: column; gap: 0; flex: 1; }
 
     .nav-link {
-      width: 100%;
-      padding: 0.95rem 1.5rem;
-      font-size: 0.95rem;
-      font-weight: 500;
-      border-bottom: 1px solid #f3f4f6;
-      color: #374151;
       display: flex;
       align-items: center;
-      gap: 0.875rem;
-      transition: background 0.15s, color 0.15s, padding-left 0.15s;
-      letter-spacing: 0.01em;
+      gap: 0;
+      width: 100%;
+      padding: 0.9rem 1.25rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #374151;
+      border-bottom: 1px solid #f3f4f6;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+      position: relative;
     }
     .nav-link:last-child { border-bottom: none; }
     .nav-link::after { display: none; }
-    .nav-link:hover {
-      background: #f9fafb;
-      color: var(--color-primary);
-      padding-left: 1.75rem;
-    }
-    .nav-link:hover .nav-icon { opacity: 1; }
+    .nav-link:hover { background: #f9fafb; color: var(--color-primary); }
     .nav-link.active {
       background: #fff7ed;
       color: var(--color-primary);
       border-left: 3px solid var(--color-primary);
       font-weight: 600;
-      padding-left: calc(1.5rem - 3px);
     }
-    .nav-link.active .nav-icon { opacity: 1; }
+
+    .nav-icon-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      margin-right: 0.875rem;
+      color: #9ca3af;
+    }
+    .nav-icon-wrap svg { width: 18px; height: 18px; }
+    .nav-link:hover .nav-icon-wrap { color: var(--color-primary); }
+    .nav-link.active .nav-icon-wrap { color: var(--color-primary); }
+
+    .nav-label { flex: 1; }
+
+    .nav-arrow {
+      display: block;
+      width: 14px; height: 14px;
+      color: #d1d5db;
+      flex-shrink: 0;
+    }
+    .nav-link.active .nav-arrow { color: var(--color-primary); opacity: 0.5; }
 
     .drawer-footer {
       display: block;
-      padding: 1.25rem 1.5rem 1.5rem;
+      padding: 1.25rem;
       border-top: 1px solid #f3f4f6;
       background: #fafafa;
       flex-shrink: 0;
     }
-    .drawer-newsletter-title {
-      font-size: 0.875rem;
-      font-weight: 700;
-      color: #111827;
-      margin: 0 0 0.2rem 0;
-      letter-spacing: 0.01em;
-    }
-    .drawer-newsletter-sub {
-      font-size: 0.75rem;
-      color: #9ca3af;
-      margin: 0 0 0.875rem 0;
-    }
+    .drawer-newsletter-title { font-size: 0.875rem; font-weight: 700; color: #111827; margin: 0 0 0.2rem; }
+    .drawer-newsletter-sub { font-size: 0.75rem; color: #9ca3af; margin: 0 0 0.875rem; }
     .drawer-newsletter-btn {
-      display: block;
-      text-align: center;
+      display: block; text-align: center;
       background: var(--gradient-action, linear-gradient(135deg, #f97316, #ec4899));
-      color: #fff;
-      font-weight: 600;
-      font-size: 0.85rem;
-      padding: 0.65rem 1rem;
-      border-radius: 8px;
-      text-decoration: none;
-      letter-spacing: 0.02em;
+      color: #fff; font-weight: 600; font-size: 0.85rem;
+      padding: 0.65rem 1rem; border-radius: 8px;
+      text-decoration: none; letter-spacing: 0.02em;
       transition: opacity 0.2s;
     }
     .drawer-newsletter-btn:hover { opacity: 0.88; }
@@ -307,48 +248,25 @@ const currentPath = Astro.url.pathname;
     const menuToggle = document.getElementById('mobile-menu-toggle');
     const nav = document.getElementById('main-nav');
     const backdrop = document.getElementById('drawer-backdrop');
-
     function openDrawer() {
-      menuToggle?.classList.add('active');
-      nav?.classList.add('active');
-      backdrop?.classList.add('active');
-      menuToggle?.setAttribute('aria-expanded', 'true');
-      backdrop?.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.width = '100%';
+      menuToggle?.classList.add('active'); nav?.classList.add('active'); backdrop?.classList.add('active');
+      menuToggle?.setAttribute('aria-expanded', 'true'); backdrop?.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden'; document.body.style.position = 'fixed'; document.body.style.width = '100%';
     }
     function closeDrawer() {
-      menuToggle?.classList.remove('active');
-      nav?.classList.remove('active');
-      backdrop?.classList.remove('active');
-      menuToggle?.setAttribute('aria-expanded', 'false');
-      backdrop?.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.width = '';
+      menuToggle?.classList.remove('active'); nav?.classList.remove('active'); backdrop?.classList.remove('active');
+      menuToggle?.setAttribute('aria-expanded', 'false'); backdrop?.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = ''; document.body.style.position = ''; document.body.style.width = '';
     }
-
     if (menuToggle && nav && backdrop) {
-      menuToggle.addEventListener('click', function(e) {
-        e.stopPropagation();
-        nav.classList.contains('active') ? closeDrawer() : openDrawer();
-      });
+      menuToggle.addEventListener('click', function(e) { e.stopPropagation(); nav.classList.contains('active') ? closeDrawer() : openDrawer(); });
       backdrop.addEventListener('click', closeDrawer);
-      nav.querySelectorAll('.nav-link').forEach(function(link) {
-        link.addEventListener('click', closeDrawer);
-      });
+      nav.querySelectorAll('.nav-link').forEach(function(link) { link.addEventListener('click', closeDrawer); });
       const newsletterBtn = nav.querySelector('.drawer-newsletter-btn');
       if (newsletterBtn) newsletterBtn.addEventListener('click', closeDrawer);
-      document.addEventListener('click', function(e) {
-        if (nav.classList.contains('active') && !nav.contains(e.target) && !menuToggle.contains(e.target) && !backdrop.contains(e.target)) closeDrawer();
-      });
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && nav.classList.contains('active')) { closeDrawer(); menuToggle?.focus(); }
-      });
-      window.addEventListener('resize', function() {
-        if (window.innerWidth > 768 && nav.classList.contains('active')) closeDrawer();
-      });
+      document.addEventListener('click', function(e) { if (nav.classList.contains('active') && !nav.contains(e.target) && !menuToggle.contains(e.target)) closeDrawer(); });
+      document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && nav.classList.contains('active')) { closeDrawer(); menuToggle?.focus(); } });
+      window.addEventListener('resize', function() { if (window.innerWidth > 768 && nav.classList.contains('active')) closeDrawer(); });
       let touchStartX = 0;
       nav.addEventListener('touchstart', function(e) { touchStartX = e.touches[0].clientX; }, { passive: true });
       nav.addEventListener('touchend', function(e) { if (e.changedTouches[0].clientX - touchStartX > 60) closeDrawer(); }, { passive: true });
