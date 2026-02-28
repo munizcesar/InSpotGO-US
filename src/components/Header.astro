@@ -1,10 +1,10 @@
 ---
 import "../styles/global.css";
+const currentPath = Astro.url.pathname;
 ---
 <header class="header" role="banner">
   <div class="container container-flex">
     <a href="/" class="logo-link" aria-label="InSpotGO home">
-      <!-- Unified logo (desktop + mobile): Icon + Text -->
       <span class="logo-wrap">
         <img src="/logo-icon.svg" alt="" class="logo-icon" height="40" width="40" />
         <span class="logo-text" aria-hidden="true">
@@ -25,17 +25,54 @@ import "../styles/global.css";
       <span class="hamburger"></span>
     </button>
 
-    <!-- Mobile Drawer Backdrop (Overlay) -->
+    <!-- Mobile Drawer Backdrop -->
     <div class="drawer-backdrop" id="drawer-backdrop" aria-hidden="true"></div>
 
     <!-- Navigation -->
     <nav aria-label="Main navigation" class="nav" id="main-nav">
-      <a href="/tech" class="nav-link">Tech</a>
-      <a href="/saas" class="nav-link">SaaS</a>
-      <a href="/software" class="nav-link">Software</a>
-      <a href="/guides" class="nav-link">Guides</a>
-      <a href="/about" class="nav-link">About</a>
-      <a href="/contact" class="nav-link">Contact</a>
+
+      <!-- Drawer Header (mobile only) -->
+      <div class="drawer-header">
+        <div class="drawer-brand">
+          <img src="/logo-icon.svg" alt="" class="drawer-logo-icon" height="36" width="36" />
+          <div>
+            <div class="drawer-brand-name"><span class="logo-spot">InSpot</span><span class="logo-go">GO</span></div>
+            <div class="drawer-brand-tagline">Spot the Best. Go Confident.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Nav Links -->
+      <div class="nav-links">
+        <a href="/tech" class={`nav-link ${currentPath.startsWith('/tech') ? 'active' : ''}`} aria-current={currentPath.startsWith('/tech') ? 'page' : undefined}>
+          <span class="nav-icon">💻</span> Tech
+        </a>
+        <a href="/saas" class={`nav-link ${currentPath.startsWith('/saas') ? 'active' : ''}`} aria-current={currentPath.startsWith('/saas') ? 'page' : undefined}>
+          <span class="nav-icon">☁️</span> SaaS
+        </a>
+        <a href="/software" class={`nav-link ${currentPath.startsWith('/software') ? 'active' : ''}`} aria-current={currentPath.startsWith('/software') ? 'page' : undefined}>
+          <span class="nav-icon">⚙️</span> Software
+        </a>
+        <a href="/guides" class={`nav-link ${currentPath.startsWith('/guides') ? 'active' : ''}`} aria-current={currentPath.startsWith('/guides') ? 'page' : undefined}>
+          <span class="nav-icon">📚</span> Guides
+        </a>
+        <a href="/about" class={`nav-link ${currentPath === '/about' ? 'active' : ''}`} aria-current={currentPath === '/about' ? 'page' : undefined}>
+          <span class="nav-icon">👋</span> About
+        </a>
+        <a href="/contact" class={`nav-link ${currentPath === '/contact' ? 'active' : ''}`} aria-current={currentPath === '/contact' ? 'page' : undefined}>
+          <span class="nav-icon">✉️</span> Contact
+        </a>
+      </div>
+
+      <!-- Drawer Footer CTA (mobile only) -->
+      <div class="drawer-footer">
+        <div class="drawer-newsletter">
+          <p class="drawer-newsletter-title">📬 Stay Updated</p>
+          <p class="drawer-newsletter-sub">Get the latest reviews in your inbox</p>
+          <a href="/#newsletter" class="drawer-newsletter-btn">Subscribe Free</a>
+        </div>
+      </div>
+
     </nav>
   </div>
 </header>
@@ -60,7 +97,7 @@ import "../styles/global.css";
     margin: 0 auto;
   }
 
-  /* Logo Styles */
+  /* Logo */
   .logo-link {
     text-decoration: none;
     display: flex;
@@ -68,23 +105,13 @@ import "../styles/global.css";
     transition: transform 0.3s ease;
     z-index: 1001;
   }
-
-  .logo-link:hover {
-    transform: scale(1.05);
-  }
-
+  .logo-link:hover { transform: scale(1.05); }
   .logo-wrap {
     display: inline-flex;
     align-items: center;
     gap: 0.625rem;
   }
-
-  .logo-icon {
-    display: block;
-    height: 40px;
-    width: 40px;
-  }
-
+  .logo-icon { display: block; height: 40px; width: 40px; }
   .logo-text {
     font-weight: 800;
     font-size: 1.25rem;
@@ -94,11 +121,7 @@ import "../styles/global.css";
     white-space: nowrap;
   }
 
-  /* Logo uses global.css classes:
-     .logo-spot { color: #2E1155 }
-     .logo-go { gradient orange-to-pink } */
-
-  /* Mobile Menu Toggle Button */
+  /* Mobile Menu Toggle */
   .mobile-menu-toggle {
     display: none;
     flex-direction: column;
@@ -112,12 +135,10 @@ import "../styles/global.css";
     z-index: 1001;
     position: relative;
   }
-
   .mobile-menu-toggle:focus {
     outline: 2px solid var(--color-primary);
     outline-offset: 4px;
   }
-
   .hamburger {
     width: 2rem;
     height: 0.2rem;
@@ -126,22 +147,18 @@ import "../styles/global.css";
     transition: all 0.3s ease;
     transform-origin: center;
   }
+  .mobile-menu-toggle.active .hamburger:nth-child(1) { transform: translateY(0.6rem) rotate(45deg); }
+  .mobile-menu-toggle.active .hamburger:nth-child(2) { opacity: 0; }
+  .mobile-menu-toggle.active .hamburger:nth-child(3) { transform: translateY(-0.6rem) rotate(-45deg); }
 
-  /* Hamburger Animation */
-  .mobile-menu-toggle.active .hamburger:nth-child(1) {
-    transform: translateY(0.6rem) rotate(45deg);
-  }
-
-  .mobile-menu-toggle.active .hamburger:nth-child(2) {
-    opacity: 0;
-  }
-
-  .mobile-menu-toggle.active .hamburger:nth-child(3) {
-    transform: translateY(-0.6rem) rotate(-45deg);
-  }
-
-  /* Navigation */
+  /* Desktop Navigation */
   .nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .drawer-header, .drawer-footer { display: none; }
+  .nav-links {
     display: flex;
     align-items: center;
     gap: 2rem;
@@ -154,8 +171,11 @@ import "../styles/global.css";
     font-size: 1rem;
     transition: color 0.3s ease;
     position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
   }
-
+  .nav-icon { display: none; } /* hidden on desktop */
   .nav-link::after {
     content: '';
     position: absolute;
@@ -166,105 +186,155 @@ import "../styles/global.css";
     background: var(--color-primary);
     transition: width 0.3s ease;
   }
-
-  .nav-link:hover {
+  .nav-link:hover { color: var(--color-primary); }
+  .nav-link:hover::after { width: 100%; }
+  .nav-link.active {
     color: var(--color-primary);
+    font-weight: 600;
   }
+  .nav-link.active::after { width: 100%; }
 
-  .nav-link:hover::after {
-    width: 100%;
-  }
-
-  /* Mobile Drawer Backdrop (Overlay) */
+  /* Backdrop */
   .drawer-backdrop {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100dvh; /* Dynamic Viewport Height for mobile browsers */
+    top: 0; left: 0;
+    width: 100%; height: 100dvh;
     background: rgba(0, 0, 0, 0.5);
     z-index: 999;
     opacity: 0;
     transition: opacity 0.3s ease;
     will-change: opacity;
   }
+  .drawer-backdrop.active { display: block; opacity: 1; }
 
-  .drawer-backdrop.active {
-    display: block;
-    opacity: 1;
-  }
-
-  /* Responsive */
+  /* ===================== MOBILE ===================== */
   @media (max-width: 768px) {
-    .container-flex {
-      padding: 0.875rem 1rem;
-    }
+    .container-flex { padding: 0.875rem 1rem; }
+    .mobile-menu-toggle { display: flex; }
+    .drawer-backdrop { display: none; }
 
-    /* Show hamburger button */
-    .mobile-menu-toggle {
-      display: flex;
-    }
-
-    /* Backdrop should still be hidden by default; .active class toggles visibility */
-    /* (previous rule unconditionally showed it on small screens, blocking all taps) */
-    .drawer-backdrop {
-      display: none;
-    }
-
-    /* Mobile Navigation Drawer */
+    /* Drawer panel */
     .nav {
       position: fixed;
-      top: 0;
-      right: 0;
-      height: 100dvh; /* Dynamic Viewport Height - accounts for mobile browser toolbars */
-      width: 70%;
-      max-width: 300px;
-      background: var(--color-bg);
+      top: 0; right: 0;
+      height: 100dvh;
+      width: 80%;
+      max-width: 320px;
+      background: #ffffff;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: stretch;
+      justify-content: flex-start;
       gap: 0;
-      padding: 5rem 2rem 2rem;
-      /* Hardware acceleration: translate3d for 60fps smooth animation */
+      padding: 0;
       transform: translate3d(100%, 0, 0);
       transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-      /* drawer must float above header/logo */
+      box-shadow: -4px 0 24px rgba(0,0,0,0.12);
       z-index: 1002;
       will-change: transform;
       overflow-y: auto;
-      -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+      -webkit-overflow-scrolling: touch;
+    }
+    .nav.active { transform: translate3d(0, 0, 0); }
+
+    /* Drawer Header */
+    .drawer-header {
+      display: flex;
+      align-items: center;
+      padding: 1.25rem 1.5rem;
+      background: var(--gradient-hero, linear-gradient(135deg, #1e1150, #2e1155));
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .drawer-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .drawer-logo-icon { border-radius: 8px; }
+    .drawer-brand-name {
+      font-size: 1.1rem;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 0.2rem;
+    }
+    .drawer-brand-tagline {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.7);
+      font-style: italic;
     }
 
-    .nav.active {
-      transform: translate3d(0, 0, 0); /* Hardware accelerated slide-in */
+    /* Nav Links */
+    .nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      flex: 1;
+      padding: 0.5rem 0;
     }
-
+    .nav-icon { display: inline; font-size: 1.1rem; }
     .nav-link {
       width: 100%;
-      padding: 1rem 0;
-      font-size: 1.1rem;
-      border-bottom: 1px solid var(--color-border);
+      padding: 0.9rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 500;
+      border-bottom: 1px solid #f3f4f6;
+      color: #1f2937;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    .nav-link:last-child { border-bottom: none; }
+    .nav-link::after { display: none; }
+    .nav-link:hover {
+      background: #f9fafb;
+      color: var(--color-primary);
+      padding-left: 1.75rem;
+    }
+    .nav-link.active {
+      background: #fff7ed;
+      color: var(--color-primary);
+      border-left: 3px solid var(--color-primary);
+      font-weight: 600;
     }
 
-    .nav-link:last-child {
-      border-bottom: none;
+    /* Drawer Footer */
+    .drawer-footer {
+      display: block;
+      padding: 1.25rem 1.5rem;
+      border-top: 1px solid #f3f4f6;
+      background: #fafafa;
+      margin-top: auto;
     }
-
-    .nav-link::after {
-      display: none;
+    .drawer-newsletter-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1f2937;
+      margin: 0 0 0.25rem 0;
     }
+    .drawer-newsletter-sub {
+      font-size: 0.78rem;
+      color: #6b7280;
+      margin: 0 0 0.75rem 0;
+    }
+    .drawer-newsletter-btn {
+      display: block;
+      text-align: center;
+      background: var(--gradient-action, linear-gradient(135deg, #f97316, #ec4899));
+      color: white;
+      font-weight: 600;
+      font-size: 0.875rem;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .drawer-newsletter-btn:hover { opacity: 0.9; }
   }
 
   @media (max-width: 360px) {
-    .logo-icon {
-      height: 36px;
-      width: 36px;
-    }
-
-    .logo-text {
-      font-size: 1.125rem;
-    }
+    .logo-icon { height: 36px; width: 36px; }
+    .logo-text { font-size: 1.125rem; }
   }
 </style>
 
@@ -280,9 +350,7 @@ import "../styles/global.css";
       backdrop?.classList.add('active');
       menuToggle?.setAttribute('aria-expanded', 'true');
       backdrop?.setAttribute('aria-hidden', 'false');
-      // Prevent scroll-chaining: lock body scroll when drawer is open
       document.body.style.overflow = 'hidden';
-      // Prevent iOS bounce scroll
       document.body.style.position = 'fixed';
       document.body.style.width = '100%';
     }
@@ -293,62 +361,51 @@ import "../styles/global.css";
       backdrop?.classList.remove('active');
       menuToggle?.setAttribute('aria-expanded', 'false');
       backdrop?.setAttribute('aria-hidden', 'true');
-      // Restore body scroll
       document.body.style.overflow = '';
       document.body.style.position = '';
       document.body.style.width = '';
     }
 
     if (menuToggle && nav && backdrop) {
-      // Toggle drawer on hamburger click
       menuToggle.addEventListener('click', function(e) {
         e.stopPropagation();
-        if (nav.classList.contains('active')) {
-          closeDrawer();
-        } else {
-          openDrawer();
-        }
+        nav.classList.contains('active') ? closeDrawer() : openDrawer();
       });
-
-      // Close drawer when clicking backdrop
-      backdrop.addEventListener('click', function() {
-        closeDrawer();
+      backdrop.addEventListener('click', closeDrawer);
+      nav.querySelectorAll('.nav-link').forEach(function(link) {
+        link.addEventListener('click', closeDrawer);
       });
+      // Close newsletter CTA link too
+      const newsletterBtn = nav.querySelector('.drawer-newsletter-btn');
+      if (newsletterBtn) newsletterBtn.addEventListener('click', closeDrawer);
 
-      // Close drawer when clicking nav links
-      const navLinks = nav.querySelectorAll('.nav-link');
-      navLinks.forEach(function(link) {
-        link.addEventListener('click', function() {
-          closeDrawer();
-        });
-      });
-
-      // Close drawer on outside click (desktop behavior)
       document.addEventListener('click', function(e) {
         if (
           nav.classList.contains('active') &&
           !nav.contains(e.target) &&
           !menuToggle.contains(e.target) &&
           !backdrop.contains(e.target)
-        ) {
-          closeDrawer();
-        }
+        ) closeDrawer();
       });
-
-      // Close drawer on Escape key (accessibility)
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && nav.classList.contains('active')) {
           closeDrawer();
-          menuToggle?.focus(); // Return focus to toggle button
+          menuToggle?.focus();
         }
+      });
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 768 && nav.classList.contains('active')) closeDrawer();
       });
 
-      // Close drawer on window resize (if resizing to desktop)
-      window.addEventListener('resize', function() {
-        if (window.innerWidth > 768 && nav.classList.contains('active')) {
-          closeDrawer();
-        }
-      });
+      // Swipe to close (right swipe on drawer)
+      let touchStartX = 0;
+      nav.addEventListener('touchstart', function(e) {
+        touchStartX = e.touches[0].clientX;
+      }, { passive: true });
+      nav.addEventListener('touchend', function(e) {
+        const swipeDist = e.changedTouches[0].clientX - touchStartX;
+        if (swipeDist > 60) closeDrawer();
+      }, { passive: true });
     }
   });
 </script>
