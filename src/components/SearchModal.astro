@@ -39,7 +39,17 @@
   </div>
 </div>
 
-<style>
+<!-- 
+  IMPORTANT: <style is:global> is required here.
+  Classes like .s-row, .s-badge, .s-title, .s-text, .s-meta, .s-arrow, .s-dot
+  are injected via innerHTML in the script below.
+  Astro scoped styles add data-astro-* attributes at build time — elements
+  created at runtime via innerHTML never receive those attributes, so scoped
+  CSS would silently not apply to search results.
+  We use .search-overlay as a manual namespace to avoid leaking to the rest
+  of the page.
+-->
+<style is:global>
 .search-overlay {
   position: fixed; inset: 0;
   background: rgba(9,9,11,0.65);
@@ -50,73 +60,69 @@
   align-items: flex-start;
   justify-content: center;
   padding: 8vh 1rem 2rem;
-  animation: oIn 0.12s ease;
+  animation: s-oIn 0.12s ease;
 }
 .search-overlay[hidden] { display: none; }
-@keyframes oIn { from { opacity:0 } to { opacity:1 } }
+@keyframes s-oIn { from { opacity:0 } to { opacity:1 } }
 
-.search-modal {
+.search-overlay .search-modal {
   background: #fff;
   border: 1px solid #e4e4e7;
   border-radius: 14px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.04), 0 20px 40px rgba(0,0,0,0.14);
   width: 100%; max-width: 580px;
   overflow: hidden;
-  animation: mIn 0.15s cubic-bezier(0.16,1,0.3,1);
+  animation: s-mIn 0.15s cubic-bezier(0.16,1,0.3,1);
 }
-@keyframes mIn {
+@keyframes s-mIn {
   from { opacity:0; transform:translateY(-6px) scale(0.98) }
   to   { opacity:1; transform:none }
 }
 
-/* ---- header ---- */
-.search-header {
+.search-overlay .search-header {
   display: flex;
   align-items: center;
   gap: 0.625rem;
   padding: 0.75rem 1rem;
   border-bottom: 1px solid #f4f4f5;
 }
-.s-icon { color: #a1a1aa; flex-shrink: 0; }
-.s-input {
+.search-overlay .s-icon { color: #a1a1aa; flex-shrink: 0; }
+.search-overlay .s-input {
   flex: 1;
   border: none; background: transparent;
   font-size: 0.9375rem; color: #09090b;
   outline: none; min-width: 0;
   letter-spacing: -0.01em;
 }
-.s-input::placeholder { color: #a1a1aa; }
-.s-close {
+.search-overlay .s-input::placeholder { color: #a1a1aa; }
+.search-overlay .s-close {
   display: flex; align-items: center; justify-content: center;
   width: 26px; height: 26px;
   background: #f4f4f5; border: none; border-radius: 6px;
   color: #71717a; cursor: pointer; flex-shrink: 0;
   transition: background 0.12s, color 0.12s;
 }
-.s-close:hover { background: #fee2e2; color: #ef4444; }
+.search-overlay .s-close:hover { background: #fee2e2; color: #ef4444; }
 
-/* ---- body ---- */
-.s-body { max-height: 420px; overflow-y: auto; }
-.s-body::-webkit-scrollbar { width: 3px; }
-.s-body::-webkit-scrollbar-thumb { background: #e4e4e7; border-radius: 4px; }
+.search-overlay .s-body { max-height: 420px; overflow-y: auto; }
+.search-overlay .s-body::-webkit-scrollbar { width: 3px; }
+.search-overlay .s-body::-webkit-scrollbar-thumb { background: #e4e4e7; border-radius: 4px; }
 
-/* ---- empty ---- */
-.s-empty { padding: 1.25rem 1rem; }
-.s-shortcuts { display: flex; flex-direction: column; gap: 0.25rem; }
-.s-sc-row {
+.search-overlay .s-empty { padding: 1.25rem 1rem; }
+.search-overlay .s-shortcuts { display: flex; flex-direction: column; gap: 0.25rem; }
+.search-overlay .s-sc-row {
   display: flex; align-items: center; justify-content: space-between;
   padding: 0.3rem 0.5rem;
   font-size: 0.8rem; color: #71717a;
 }
-.s-sc-row span:last-child { display:flex; gap:0.25rem; }
+.search-overlay .s-sc-row span:last-child { display:flex; gap:0.25rem; }
 
-/* ---- list ---- */
-.s-list { list-style: none; margin: 0; padding: 0.25rem 0; }
+.search-overlay .s-list { list-style: none; margin: 0; padding: 0.25rem 0; }
 
-/* ---- result row ---- */
-.s-row {
+/* --- result rows (injected via innerHTML) --- */
+.search-overlay .s-row {
   display: flex;
-  flex-direction: row;      /* garante horizontal */
+  flex-direction: row;
   align-items: center;
   gap: 0.625rem;
   padding: 0.5rem 1rem;
@@ -125,17 +131,17 @@
   cursor: pointer;
   transition: background 0.08s;
   position: relative;
-  min-width: 0;             /* critical para flex child truncation */
+  min-width: 0;
 }
-.s-row:hover, .s-row.focused { background: #f4f4f5; }
-.s-row.focused::before {
+.search-overlay .s-row:hover,
+.search-overlay .s-row.focused { background: #f4f4f5; }
+.search-overlay .s-row.focused::before {
   content: '';
   position: absolute; left: 0; top: 5px; bottom: 5px;
   width: 2.5px; background: #f97316; border-radius: 2px;
 }
 
-/* ---- category badge ---- */
-.s-badge {
+.search-overlay .s-badge {
   flex-shrink: 0;
   display: inline-flex;
   align-items: center;
@@ -149,21 +155,20 @@
   text-transform: uppercase;
   line-height: 1;
 }
-.s-badge[data-c="tech"]     { background: linear-gradient(135deg,#6366f1,#8b5cf6); }
-.s-badge[data-c="saas"]     { background: linear-gradient(135deg,#0ea5e9,#6366f1); }
-.s-badge[data-c="software"] { background: linear-gradient(135deg,#10b981,#06b6d4); }
-.s-badge[data-c="guides"]   { background: linear-gradient(135deg,#f97316,#ec4899); }
-.s-badge[data-c="default"]  { background: linear-gradient(135deg,#a1a1aa,#71717a); }
+.search-overlay .s-badge[data-c="tech"]     { background: linear-gradient(135deg,#6366f1,#8b5cf6); }
+.search-overlay .s-badge[data-c="saas"]     { background: linear-gradient(135deg,#0ea5e9,#6366f1); }
+.search-overlay .s-badge[data-c="software"] { background: linear-gradient(135deg,#10b981,#06b6d4); }
+.search-overlay .s-badge[data-c="guides"]   { background: linear-gradient(135deg,#f97316,#ec4899); }
+.search-overlay .s-badge[data-c="default"]  { background: linear-gradient(135deg,#a1a1aa,#71717a); }
 
-/* ---- text block ---- */
-.s-text {
+.search-overlay .s-text {
   flex: 1;
-  min-width: 0;   /* permite truncation */
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 0.15rem;
 }
-.s-title {
+.search-overlay .s-title {
   font-size: 0.875rem;
   font-weight: 500;
   color: #09090b;
@@ -173,7 +178,7 @@
   line-height: 1.3;
   letter-spacing: -0.01em;
 }
-.s-title mark {
+.search-overlay .s-title mark {
   background: rgba(249,115,22,0.15);
   color: #c2410c;
   border-radius: 2px;
@@ -181,7 +186,7 @@
   font-weight: 600;
   font-style: normal;
 }
-.s-meta {
+.search-overlay .s-meta {
   display: flex;
   align-items: center;
   gap: 0.3rem;
@@ -190,38 +195,36 @@
   white-space: nowrap;
   overflow: hidden;
 }
-.s-dot { width: 2px; height: 2px; border-radius: 50%; background: #d4d4d8; flex-shrink:0; }
+.search-overlay .s-dot { width: 2px; height: 2px; border-radius: 50%; background: #d4d4d8; flex-shrink:0; }
 
-/* ---- arrow ---- */
-.s-arrow {
+.search-overlay .s-arrow {
   flex-shrink: 0;
   color: #d4d4d8;
   opacity: 0;
   transition: opacity 0.1s;
 }
-.s-row:hover .s-arrow, .s-row.focused .s-arrow { opacity: 1; }
+.search-overlay .s-row:hover .s-arrow,
+.search-overlay .s-row.focused .s-arrow { opacity: 1; }
 
-/* ---- no results ---- */
-.s-noresults {
+.search-overlay .s-noresults {
   display: flex; flex-direction: column; align-items: center;
   padding: 2.5rem 1rem; text-align: center;
   color: #a1a1aa; gap: 0.5rem;
 }
-.s-noresults p { font-size: 0.9rem; color: #52525b; margin: 0; }
-.s-noresults strong { color: #09090b; }
-.s-noresults span { font-size: 0.78rem; }
+.search-overlay .s-noresults p { font-size: 0.9rem; color: #52525b; margin: 0; }
+.search-overlay .s-noresults strong { color: #09090b; }
+.search-overlay .s-noresults span { font-size: 0.78rem; }
 
-/* ---- footer ---- */
-.s-footer {
+.search-overlay .s-footer {
   display: flex; align-items: center; justify-content: space-between;
   padding: 0.5rem 1rem;
   border-top: 1px solid #f4f4f5;
   font-size: 0.7rem; color: #a1a1aa;
 }
-.s-count { font-weight: 600; color: #71717a; }
-.s-hint { display: flex; align-items: center; gap: 0.25rem; }
+.search-overlay .s-count { font-weight: 600; color: #71717a; }
+.search-overlay .s-hint { display: flex; align-items: center; gap: 0.25rem; }
 
-kbd {
+.search-overlay kbd {
   font-size: 0.67rem;
   background: #f4f4f5;
   border: 1px solid #e4e4e7;
@@ -234,10 +237,10 @@ kbd {
 
 @media (max-width: 480px) {
   .search-overlay { padding: 0; align-items: flex-end; }
-  .search-modal { border-radius: 18px 18px 0 0; max-width: 100%; }
-  .s-footer { display: none; }
-  .s-shortcuts { display: none; }
-  .s-empty { padding: 1.25rem 1rem; }
+  .search-overlay .search-modal { border-radius: 18px 18px 0 0; max-width: 100%; }
+  .search-overlay .s-footer { display: none; }
+  .search-overlay .s-shortcuts { display: none; }
+  .search-overlay .s-empty { padding: 1.25rem 1rem; }
 }
 </style>
 
