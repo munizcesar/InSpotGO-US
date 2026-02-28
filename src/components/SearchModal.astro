@@ -128,13 +128,38 @@
     transition: background 0.1s; text-decoration: none; color: inherit;
   }
   .search-result-item:hover, .search-result-item.focused { background: #f9fafb; }
-  .search-result-thumb { width: 52px; height: 40px; border-radius: 6px; object-fit: cover; flex-shrink: 0; background: #f3f4f6; }
-  .search-result-thumb-placeholder {
-    width: 52px; height: 40px; border-radius: 6px;
-    background: linear-gradient(135deg, #f97316, #ec4899);
-    flex-shrink: 0; display: flex; align-items: center; justify-content: center;
-    color: white; font-size: 0.65rem; font-weight: 700;
+
+  /* Thumbnail — tamanho fixo com overflow hidden para nunca expandir */
+  .search-result-thumb {
+    width: 52px;
+    height: 40px;
+    min-width: 52px;
+    max-width: 52px;
+    max-height: 40px;
+    border-radius: 6px;
+    object-fit: cover;
+    flex-shrink: 0;
+    overflow: hidden;
+    display: block;
+    background: #f3f4f6;
   }
+  .search-result-thumb-placeholder {
+    width: 52px;
+    height: 40px;
+    min-width: 52px;
+    max-width: 52px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #f97316, #ec4899);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    overflow: hidden;
+  }
+
   .search-result-body { flex: 1; min-width: 0; }
   .search-result-title {
     font-size: 0.9rem; font-weight: 600; color: #111827; line-height: 1.3;
@@ -230,7 +255,7 @@
       noResults.hidden = true; resultsList.hidden = false;
       resultsList.innerHTML = results.map((item, i) => {
         const thumb = item.image
-          ? `<img class="search-result-thumb" src="${item.image}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"><div class="search-result-thumb-placeholder" style="display:none">${item.category.slice(0,3).toUpperCase()}</div>`
+          ? `<img class="search-result-thumb" src="${item.image}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" width="52" height="40"><div class="search-result-thumb-placeholder" style="display:none">${item.category.slice(0,3).toUpperCase()}</div>`
           : `<div class="search-result-thumb-placeholder">${item.category.slice(0,3).toUpperCase()}</div>`;
         return `<li role="option"><a class="search-result-item" href="/posts/${item.slug}">${thumb}<div class="search-result-body"><div class="search-result-title">${highlight(item.title,query)}</div><div class="search-result-meta"><span class="search-result-category">${item.category}</span><span>${item.date}</span><span>${item.readTime}</span></div></div><svg class="search-result-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="9 18 15 12 9 6"/></svg></a></li>`;
       }).join('');
@@ -244,11 +269,9 @@
       items[currentFocus]?.scrollIntoView({ block: 'nearest' });
     }
 
-    // Trigger: desktop pill + mobile icon button (both in Header)
     ['search-trigger', 'search-trigger-mobile'].forEach(function(id) {
       document.getElementById(id)?.addEventListener('click', openSearch);
     });
-    // Also support custom event from anywhere
     document.addEventListener('open-search', openSearch);
 
     closeBtn?.addEventListener('click', closeSearch);
