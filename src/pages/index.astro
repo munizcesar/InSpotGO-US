@@ -77,8 +77,10 @@ const articles = sortedPosts.map((post) => {
 
         <!-- Trust badge -->
         <div class="hero-badge">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Independent Reviews &amp; Buying Guides
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          No Paid Placements
+          <span class="badge-dot"></span>
+          Honest Reviews
         </div>
 
         <h1 class="hero-headline">
@@ -95,7 +97,7 @@ const articles = sortedPosts.map((post) => {
           <a href="/guides" class="btn btn-outline">Buying Guides</a>
         </div>
 
-        <!-- Social proof bar — numbers are real and auto-updated at build time -->
+        <!-- Social proof bar -->
         <div class="hero-proof">
           <div class="proof-item">
             <span class="proof-number">{totalReviews}</span>
@@ -108,8 +110,8 @@ const articles = sortedPosts.map((post) => {
           </div>
           <div class="proof-divider"></div>
           <div class="proof-item">
-            <span class="proof-number">100%</span>
-            <span class="proof-label">Independent</span>
+            <span class="proof-number">No ads</span>
+            <span class="proof-label">No Sponsorships</span>
           </div>
         </div>
 
@@ -154,7 +156,7 @@ const articles = sortedPosts.map((post) => {
         <div class="trust-item">
           <div class="trust-icon"><Users size={56} stroke-width={1.5} /></div>
           <h3>Reader-Focused</h3>
-          <p>Objective recommendations prioritizing user needs over affiliate commissions</p>
+          <p>Objective recommendations prioritizing reader needs — affiliate links never influence our picks</p>
         </div>
         <div class="trust-item">
           <div class="trust-icon"><RefreshCw size={56} stroke-width={1.5} /></div>
@@ -234,11 +236,19 @@ const articles = sortedPosts.map((post) => {
     color: rgba(255,255,255,0.92);
     font-size: 0.78rem;
     font-weight: 600;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     padding: 0.35rem 0.875rem;
     border-radius: 100px;
     margin-bottom: 1.75rem;
+  }
+  .badge-dot {
+    display: inline-block;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    margin: 0 0.1rem;
   }
 
   /* Headline */
