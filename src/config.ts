@@ -18,7 +18,7 @@ export const SITE_CONFIG = {
   
   // Contact & Legal
   contact: {
-    email: 'contact@inspotgo.com',
+    email: 'hello@inspotgo.com',
     form: '/contact',
   },
   
