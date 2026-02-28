@@ -1,10 +1,5 @@
 import type { APIRoute } from 'astro';
 
-// This route mirrors the Cloudflare function at functions/api/newsletter.js
-// so that the newsletter widget works during local development.
-// Once deployed to Cloudflare Pages, the function file will handle the
-// same endpoint. We reuse identical logic here.
-
 const validateEmail = (email: string) => {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 };
@@ -30,6 +25,8 @@ export const POST: APIRoute = async ({ request }) => {
       });
     }
 
+    // Using Resend's shared sender while custom domain is not yet verified.
+    // Once inspotgo.com is verified in Resend, change back to: noreply@inspotgo.com
     const emailResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -37,7 +34,7 @@ export const POST: APIRoute = async ({ request }) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'InSpotGO <noreply@inspotgo.com>',
+        from: 'InSpotGO <onboarding@resend.dev>',
         to: ['inspotgo@gmail.com'],
         subject: `New Newsletter Subscription: ${email}`,
         html: `
