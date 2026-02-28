@@ -46,6 +46,8 @@ const homepageSchema = [
 ];
 
 const allPosts = await getCollection('posts', ({ data }) => data.draft !== true);
+const totalReviews = allPosts.length;
+
 const getPostDate = (post: (typeof allPosts)[number]) => {
   const raw = post.data.date || post.data.pubDate;
   return raw ? new Date(raw) : new Date(0);
@@ -93,11 +95,11 @@ const articles = sortedPosts.map((post) => {
           <a href="/guides" class="btn btn-outline">Buying Guides</a>
         </div>
 
-        <!-- Social proof bar -->
+        <!-- Social proof bar — numbers are real and auto-updated at build time -->
         <div class="hero-proof">
           <div class="proof-item">
-            <span class="proof-number">100+</span>
-            <span class="proof-label">Products Reviewed</span>
+            <span class="proof-number">{totalReviews}</span>
+            <span class="proof-label">Reviews Published</span>
           </div>
           <div class="proof-divider"></div>
           <div class="proof-item">
