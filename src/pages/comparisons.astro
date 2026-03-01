@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('posts', ({ data }) => data.draft !== true);
+
+const getPostDate = (post: (typeof allPosts)[number]) => {
+  const raw = post.data.date || post.data.pubDate;
+  return raw ? new Date(raw) : new Date(0);
+};
+
+const comparisons = allPosts
+  .filter(p => {
+    const cat = (p.data.category || '').toLowerCase();
+    const title = (p.data.title || '').toLowerCase();
+    return cat === 'comparison' || cat === 'comparisons' || title.includes(' vs ') || title.includes('comparison');
+  })
+  .sort((a, b) => getPostDate(b).getTime() - getPostDate(a).getTime());
+
+const allSorted = allPosts.sort((a, b) => getPostDate(b).getTime() - getPostDate(a).getTime());
+const posts = comparisons.length > 0 ? comparisons : allSorted;
+---
+
+<BaseLayout
+  title="SaaS Tool Comparisons — InSpotGO"
+  description="Head-to-head comparisons of the best SaaS tools and software. Clear, opinionated breakdowns to help professionals choose the right tool."
+>
+  <div class="page-header">
+    <div class="container">
+      <h1>Comparisons</h1>
+      <p>Head-to-head breakdowns of competing SaaS tools — with clear, opinionated recommendations.</p>
+    </div>
+  </div>
+
+  <div class="container posts-list">
+    {posts.length === 0 ? (
+      <p class="empty">No comparisons published yet. Check back soon.</p>
+    ) : (
+      <div class="grid">
+        {posts.map(post => {
+          const date = getPostDate(post);
+          return (
+            <a href={`/posts/${post.slug}`} class="card">
+              <div class="card-body">
+                <span class="badge">Comparison</span>
+                <h2>{post.data.title}</h2>
+                <p>{post.data.description}</p>
+                <span class="meta">
+                  {date.getTime() > 0 ? date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : ''}
+                  {post.data.readTime ? ` · ${post.data.readTime}` : ''}
+                </span>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    background: var(--gradient-hero);
+    color: white;
+    padding: 4rem 0 3rem;
+    text-align: center;
+  }
+  .page-header h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 0.75rem;
+  }
+  .page-header p {
+    font-size: 1.1rem;
+    opacity: 0.85;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .posts-list {
+    padding: 3rem 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+  .card {
+    display: block;
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    box-shadow: var(--shadow-sm);
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--color-primary);
+  }
+  .badge {
+    display: inline-block;
+    background: var(--color-primary);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.65rem;
+    border-radius: 100px;
+    margin-bottom: 0.75rem;
+  }
+  .card h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+  }
+  .card p {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  .meta {
+    font-size: 0.8rem;
+    color: var(--color-text-light);
+  }
+  .empty {
+    text-align: center;
+    color: var(--color-text-light);
+    padding: 4rem 0;
+  }
+  @media (max-width: 768px) {
+    .page-header h1 { font-size: 2rem; }
+  }
+</style>

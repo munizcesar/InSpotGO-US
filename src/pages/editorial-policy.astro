@@ -5,16 +5,16 @@ import { SITE_CONFIG } from '../config';
 
 <BaseLayout
   title="Editorial Policy — InSpotGO"
-  description="How InSpotGO selects, researches, and publishes reviews. Our editorial standards, independence policy, and content methodology."
+  description="How InSpotGO selects, researches, and publishes software and SaaS reviews. Our editorial standards, independence policy, and content methodology."
 >
   <div class="container content-page">
 
     <h1>Editorial Policy</h1>
-    <p class="lead">InSpotGO is committed to publishing honest, research-backed content that helps readers make confident decisions about tech products, software, and SaaS tools. This page explains how we work, how we make money, and how we keep those two things separate.</p>
+    <p class="lead">InSpotGO is committed to publishing honest, research-backed content that helps professionals and business owners make confident decisions about software and SaaS tools. This page explains how we work, how we make money, and how we keep those two things separate.</p>
 
     <section>
       <h2>Editorial Independence</h2>
-      <p>All content published on InSpotGO is created independently by our editorial team. Affiliate partnerships, advertising relationships, and commercial agreements have zero influence on which products we recommend, how we rate them, or what we write about them.</p>
+      <p>All content published on InSpotGO is created independently. Affiliate partnerships, advertising relationships, and commercial agreements have zero influence on which products we recommend, how we rate them, or what we write about them.</p>
       <p>We do not accept payment for positive reviews. We do not guarantee favorable coverage in exchange for affiliate access. If a product has flaws, we write about them — regardless of whether we earn a commission from it.</p>
     </section>
 
@@ -22,10 +22,10 @@ import { SITE_CONFIG } from '../config';
       <h2>How We Select Topics</h2>
       <p>Topics are chosen based on reader relevance, search demand, and the genuine usefulness of the content — not on commission rates or partner relationships. Our primary focus areas are:</p>
       <ul>
-        <li>SaaS tools and software platforms with broad business applicability</li>
-        <li>Productivity, project management, and team collaboration tools</li>
-        <li>Tech products and accessories used in professional environments</li>
-        <li>Buying guides that help readers navigate complex decisions</li>
+        <li>SaaS platforms with broad business applicability: project management, CRM, marketing, productivity</li>
+        <li>Software tools for security, privacy, and professional workflows</li>
+        <li>Head-to-head comparisons of competing tools in the same category</li>
+        <li>Buying guides that help readers navigate complex software decisions</li>
       </ul>
     </section>
 
@@ -37,7 +37,7 @@ import { SITE_CONFIG } from '../config';
         <li><strong>Hands-on evaluation</strong> — Where possible, we test tools directly through free trials, demos, or owned accounts to verify real-world behavior.</li>
         <li><strong>User feedback analysis</strong> — We analyze verified user reviews across platforms (G2, Capterra, Trustpilot, Reddit) to surface patterns in real-world experience.</li>
         <li><strong>Competitive context</strong> — We compare products against their closest alternatives to identify where each tool genuinely excels or falls short.</li>
-        <li><strong>Benefit-focused writing</strong> — We communicate findings in terms of practical impact — how a tool changes someone's workflow, saves time, or solves a specific problem.</li>
+        <li><strong>Benefit-focused writing</strong> — We communicate findings in terms of practical impact — how a tool changes a workflow, saves time, or solves a specific problem.</li>
       </ol>
     </section>
 
@@ -49,9 +49,9 @@ import { SITE_CONFIG } from '../config';
 
     <section>
       <h2>How We Make Money</h2>
-      <p>InSpotGO earns revenue through affiliate marketing. When a reader clicks a link on our site and subsequently signs up for or purchases a product, we may receive a commission from the vendor — at no additional cost to the reader.</p>
+      <p>InSpotGO earns revenue through affiliate marketing. When a reader clicks a link on our site and subsequently signs up for or purchases a software product, we may receive a commission from the vendor — at no additional cost to the reader.</p>
       <p>Affiliate links are used across product reviews, comparison articles, and buying guides. Their presence does not indicate an endorsement beyond what is stated in the content itself. We participate in affiliate programs only for products we have independently reviewed and consider genuinely useful.</p>
-      <p>For full details on our affiliate relationships, see our <a href="/affiliate-disclosure">Affiliate Disclosure page</a>.</p>
+      <p>For full details, see our <a href="/affiliate-disclosure">Affiliate Disclosure page</a>.</p>
     </section>
 
     <section>
@@ -69,61 +69,16 @@ import { SITE_CONFIG } from '../config';
 </BaseLayout>
 
 <style>
-  .content-page {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 3rem 1rem;
-  }
-  h1 {
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-    color: var(--color-text);
-  }
-  .lead {
-    font-size: 1.15rem;
-    line-height: 1.75;
-    color: var(--color-text-light);
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    background: var(--color-bg-alt);
-    border-left: 4px solid var(--color-primary);
-    border-radius: 0 var(--radius-md) var(--radius-md) 0;
-  }
-  section {
-    margin: 2.5rem 0;
-    padding-bottom: 2.5rem;
-    border-bottom: 1px solid var(--color-border);
-  }
-  section:last-child {
-    border-bottom: none;
-  }
-  h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    color: var(--color-text);
-  }
-  p {
-    margin-bottom: 1rem;
-    line-height: 1.75;
-    color: var(--color-text-light);
-  }
-  ul, ol {
-    margin: 1rem 0;
-    padding-left: 1.5rem;
-  }
-  li {
-    margin-bottom: 0.6rem;
-    line-height: 1.7;
-    color: var(--color-text-light);
-  }
-  a {
-    color: var(--color-primary);
-    text-decoration: none;
-  }
+  .content-page { max-width: 800px; margin: 0 auto; padding: 3rem 1rem; }
+  h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; color: var(--color-text); }
+  .lead { font-size: 1.15rem; line-height: 1.75; color: var(--color-text-light); margin-bottom: 2rem; padding: 1.5rem; background: var(--color-bg-alt); border-left: 4px solid var(--color-primary); border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+  section { margin: 2.5rem 0; padding-bottom: 2.5rem; border-bottom: 1px solid var(--color-border); }
+  section:last-child { border-bottom: none; }
+  h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: var(--color-text); }
+  p { margin-bottom: 1rem; line-height: 1.75; color: var(--color-text-light); }
+  ul, ol { margin: 1rem 0; padding-left: 1.5rem; }
+  li { margin-bottom: 0.6rem; line-height: 1.7; color: var(--color-text-light); }
+  a { color: var(--color-primary); text-decoration: none; }
   a:hover { text-decoration: underline; }
-  @media (max-width: 768px) {
-    h1 { font-size: 2rem; }
-  }
+  @media (max-width: 768px) { h1 { font-size: 2rem; } }
 </style>
