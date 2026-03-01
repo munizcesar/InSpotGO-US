@@ -1,132 +1,100 @@
 // ============================================
 // InSpotGO - Site Configuration
 // ============================================
-// Central configuration file for all site settings
-// Update affiliate IDs and API keys here as you get them
 
 export const SITE_CONFIG = {
   // Basic Site Info
   name: 'InSpotGO',
   title: 'InSpotGO - Spot the Best. Go Confident.',
-  description: 'Discover the best tech products, software, and SaaS tools. Expert reviews, comparisons, and buying guides to help you make confident decisions.',
+  description: 'Discover the best software and SaaS tools. Expert reviews, comparisons, and buying guides to help professionals make confident decisions.',
   url: 'https://inspotgo.com',
-  ogImage: '/og-image.jpg', // Create this image 1200x630px
-  
+  ogImage: '/og-image.jpg',
+
   // Branding
   slogan: 'Spot the Best. Go Confident.',
-  tagline: 'Expert reviews and guides for tech products, software, and SaaS',
-  
+  tagline: 'Expert reviews and guides for software and SaaS tools',
+
   // Contact & Legal
   contact: {
-    email: 'contact@inspotgo.com',
+    email: 'hello@inspotgo.com',
     form: '/contact',
   },
-  
-  legalEntity: 'InSpotGO Team',
+
+  legalEntity: 'InSpotGO',
   foundedYear: 2026,
-  
+
   // SEO & Analytics
   analytics: {
-    // Google Analytics 4 (vinculado ao email do site)
     googleAnalyticsId: 'G-7K7X7D66FJ',
     googleAdsId: '3771126331',
-    
-    // TODO: Add other analytics as needed
-    // microsoftClarityId: '',
-    // facebookPixelId: '',
   },
-  
+
   // Affiliate Programs
   affiliates: {
-    amazon: {
-      // Amazon Associates Program
-      tag: 'YOUR-AMAZON-TAG-20', // TODO: Add your Amazon Associate Tag after approval
-      disclaimer: 'As an Amazon Associate, we earn from qualifying purchases.',
-      // You can have different tags for different regions
-      tags: {
-        us: 'YOUR-US-TAG-20',
-        // uk: 'YOUR-UK-TAG-21',
-        // ca: 'YOUR-CA-TAG-20',
-      }
-    },
-    
     partnerStack: {
-      // PartnerStack for SaaS affiliates
-      enabled: false, // Set to true when you join
-      // publicKey: '',
+      enabled: false, // Set to true when approved
     },
-    
     impact: {
-      // Impact.com affiliate network
-      enabled: false, // Set to true when you join
-      // accountId: '',
+      enabled: false, // Set to true when approved
     },
-    
-    // Add other affiliate networks here
     shareASale: {
       enabled: false,
-      // affiliateId: '',
     },
-    
     cj: {
       enabled: false,
-      // websiteId: '',
     },
   },
-  
+
   // Social Media
   social: {
-    twitter: '', // TODO: Add @username when created
+    twitter: '',
     facebook: '',
     instagram: '',
     linkedin: '',
     youtube: '',
-    pinterest: '', // Good for product images
   },
-  
+
   // Site Features
   features: {
-    newsletter: true, // Enable when you setup email service
-    comments: false, // Enable if you want comments (Disqus, etc)
+    newsletter: true,
+    comments: false,
     search: true,
     darkMode: true,
   },
-  
-  // Content Categories
+
+  // Content Categories — SaaS & Software only
   categories: {
-    tech: {
-      name: 'Tech Products',
-      slug: 'tech',
-      description: 'Laptops, smartphones, accessories, and smart home devices',
-      icon: '💻',
-    },
     saas: {
       name: 'SaaS Tools',
       slug: 'saas',
-      description: 'Productivity, marketing, development, and design software',
+      description: 'Project management, CRM, marketing, and productivity platforms',
       icon: '☁️',
     },
     software: {
       name: 'Software',
       slug: 'software',
-      description: 'Desktop applications and utilities',
+      description: 'Security, productivity, and professional desktop applications',
       icon: '⚙️',
     },
+    comparisons: {
+      name: 'Comparisons',
+      slug: 'posts',
+      description: 'Head-to-head breakdowns of competing tools with clear recommendations',
+      icon: '⚖️',
+    },
     guides: {
-      name: 'Guides',
+      name: 'Buying Guides',
       slug: 'guides',
-      description: 'Buying guides, tutorials, and comparisons',
+      description: 'Structured decision guides to help you choose the right tool',
       icon: '📚',
     },
   },
-  
+
   // SEO Settings
   seo: {
     twitterCard: 'summary_large_image',
     language: 'en-US',
     locale: 'en_US',
-    
-    // Schema.org settings
     schema: {
       type: 'WebSite',
       publisher: {
@@ -137,12 +105,6 @@ export const SITE_CONFIG = {
     },
   },
 };
-
-// Helper function to generate affiliate links
-export function getAmazonLink(asin: string, tag?: string): string {
-  const amazonTag = tag || SITE_CONFIG.affiliates.amazon.tag;
-  return `https://www.amazon.com/dp/${asin}?tag=${amazonTag}`;
-}
 
 // Helper to check if affiliate program is active
 export function isAffiliateActive(program: keyof typeof SITE_CONFIG.affiliates): boolean {
