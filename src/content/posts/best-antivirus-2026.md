@@ -22,10 +22,10 @@ seo:
 |---|---|---|---|
 | **Best for** | Best value | Complete suite | Lightweight add-on |
 | **Platforms** | Win/Mac/Android/iOS | Win/Mac/Android/iOS | Win/Mac/Android |
-| **Devices (entry)** | 3 | 1 | 1 |
-| **Price from** | $29.99/yr | $29.99/yr | $44.99/yr |
-| **VPN included** | ✅ (200MB/day) | ✅ Unlimited | ❌ |
 | **Free plan** | ✅ (Windows only) | ❌ | ✅ (manual scans) |
+| **VPN included** | ✅ (limited) | ✅ Unlimited | ❌ |
+| **Pricing** | [See plans](https://www.bitdefender.com/solutions/) | [See plans](https://us.norton.com/products) | [See plans](https://www.malwarebytes.com/pricing) |
+| **Money-back** | 30 days | 30 days | 30 days |
 
 ---
 
@@ -50,23 +50,21 @@ Bitdefender consistently scores 99-100% detection rates in independent lab tests
 ### Key features
 - **Advanced Threat Defense** — behavioral monitoring catches zero-day threats
 - **Ransomware Remediation** — backs up files before encryption, restores them if attack occurs
-- **Bitdefender VPN** — 200MB/day free (200MB); unlimited VPN requires upgrade
+- **Bitdefender VPN** — limited daily data on base plans; unlimited VPN on higher tiers
 - **Anti-tracker** — blocks online trackers in the browser
 - **Webcam and mic protection** — alerts when apps try to access camera or microphone
 - **Autopilot mode** — manages security automatically without interruptions
 
 ### Bitdefender pricing
-- **Antivirus Plus** — $29.99/yr (3 Windows devices)
-- **Internet Security** — $42.49/yr (3 devices, firewall + parental controls)
-- **Total Security** — $49.99/yr (5 devices, all platforms)
-- **Premium Security** — $79.99/yr (10 devices + unlimited VPN)
+
+Bitdefender offers Antivirus Plus, Internet Security, Total Security and Premium Security tiers — covering 1 to 10+ devices. For current plans and promotional rates, visit the [Bitdefender pricing page](https://www.bitdefender.com/solutions/).
 
 ### Bitdefender pros & cons
 **Pros:** Best detection rates tested, extremely light on resources, excellent ransomware protection, good value multi-device plans.
 
 **Cons:** VPN is limited on lower tiers, some advanced features require higher plans, interface can feel complex.
 
-[🛡️ Get Bitdefender →](#)
+[🛡️ Get Bitdefender →](https://www.bitdefender.com/solutions/)
 
 ---
 
@@ -79,21 +77,20 @@ Norton 360 is the most comprehensive consumer security suite — combining antiv
 - **Norton VPN** — unlimited VPN included on all plans (no daily cap)
 - **Password Manager** — full-featured, included at no extra cost
 - **Dark web monitoring** — scans for your personal info on dark web forums
-- **Cloud Backup** — 2GB-100GB secure cloud storage for Windows
+- **Cloud Backup** — secure cloud storage for Windows (capacity varies by plan)
 - **SafeCam** — alerts when unauthorized apps try to use your webcam
 - **Parental Controls** — included on Deluxe and above
 
 ### Norton 360 pricing
-- **Standard** — $29.99/yr (1 device)
-- **Deluxe** — $49.99/yr (5 devices + parental controls)
-- **Select** — $99.99/yr (10 devices + 100GB backup + LifeLock identity theft)
+
+Norton 360 offers Standard, Deluxe and Select plans, covering 1 to 10 devices. Higher tiers include identity theft protection with LifeLock. Note: first-year promotional prices differ from renewal rates. For current pricing, visit [Norton's pricing page](https://us.norton.com/products).
 
 ### Norton pros & cons
 **Pros:** Unlimited VPN included, best feature breadth, excellent identity theft protection, cloud backup, strong reputation.
 
 **Cons:** Heavier on system resources than Bitdefender, renewal prices increase significantly after first year.
 
-[🛡️ Get Norton 360 →](#)
+[🛡️ Get Norton 360 →](https://us.norton.com/products)
 
 ---
 
@@ -109,17 +106,15 @@ Malwarebytes takes a different approach — rather than replacing your existing 
 - **Scan scheduler** — set automatic weekly or daily scans
 
 ### Malwarebytes pricing
-- **Free** — on-demand scans only (no real-time protection)
-- **Premium** — $44.99/yr (1 device, real-time protection)
-- **Premium + Privacy** — $99.99/yr (adds VPN)
-- **Teams** — $119.97/yr (3 devices)
+
+Malwarebytes offers a Free tier (manual scans only), Premium, Premium + Privacy (with VPN), and a Teams plan. For current rates per device and plan, visit the [Malwarebytes pricing page](https://www.malwarebytes.com/pricing).
 
 ### Malwarebytes pros & cons
 **Pros:** Extremely lightweight, excellent at catching what others miss, Browser Guard is free and excellent, simple interface.
 
 **Cons:** Premium is pricey for a single device, no identity theft monitoring, no cloud backup.
 
-[🛡️ Get Malwarebytes →](#)
+[🛡️ Get Malwarebytes →](https://www.malwarebytes.com/)
 
 ---
 
@@ -166,7 +161,7 @@ Yes — Norton is one of the most trusted security companies with a 30+ year tra
 
 ---
 
-*Last updated: February 2026. Pricing based on first-year promotional rates. Renewal prices may be higher — always check the official site.*
+*Last updated: March 2026. Pricing varies — always check official sites for current plans and promotional rates.*
 
 <script type="application/ld+json">
 {

@@ -22,8 +22,8 @@ seo:
 |---|---|---|---|
 | **Best for** | Individuals & families | Teams + extras | Free / budget |
 | **Free plan** | ❌ (14-day trial) | ❌ (limited) | ✅ Generous |
-| **Paid from** | $2.99/mo | $4.99/mo | $1/mo |
-| **Family plan** | $4.99/mo (5 users) | $7.49/mo (10 users) | $3.33/mo (6 users) |
+| **Pricing** | [See current plans](https://1password.com/sign-up/) | [See current plans](https://www.dashlane.com/plans) | [See current plans](https://bitwarden.com/pricing/) |
+| **Family plan** | ✅ Up to 5 users | ✅ Up to 10 users | ✅ Up to 6 users |
 | **Open source** | ❌ | ❌ | ✅ |
 | **Built-in VPN** | ❌ | ✅ | ❌ |
 
@@ -48,17 +48,15 @@ The average person has 100+ online accounts. Reusing passwords is the #1 cause o
 - **Passkey support** — store and use passkeys alongside traditional passwords
 
 ### 1Password pricing
-- **Individual** — $2.99/mo (billed annually)
-- **Families** — $4.99/mo for up to 5 users
-- **Teams Starter** — $19.95/mo for up to 10 users
-- **Business** — $7.99/user/mo
+
+1Password offers Individual, Families, Teams and Business plans. For current rates and promotions, visit the [1Password pricing page](https://1password.com/sign-up/).
 
 ### 1Password pros & cons
 **Pros:** Best UI/UX, Travel Mode is unique, excellent family sharing, strong security model, great mobile apps.
 
 **Cons:** No free plan, slightly more expensive than competitors.
 
-[🔐 Try 1Password Free for 14 Days →](#)
+[🔐 Try 1Password Free for 14 Days →](https://1password.com/sign-up/)
 
 ---
 
@@ -74,16 +72,15 @@ Dashlane bundles a password manager with a built-in VPN and dark web monitoring 
 - **Password changer** — automatically updates passwords on supported sites
 
 ### Dashlane pricing
-- **Free** — 25 passwords, 1 device
-- **Premium** — $4.99/mo — unlimited passwords + VPN
-- **Friends & Family** — $7.49/mo for up to 10 users
+
+Dashlane offers Free, Premium, and Friends & Family plans. The free tier is limited to a small number of passwords and one device. For current rates, visit the [Dashlane pricing page](https://www.dashlane.com/plans).
 
 ### Dashlane pros & cons
 **Pros:** VPN included, excellent dark web monitoring, clean interface, strong phishing protection.
 
 **Cons:** Free plan is very limited, more expensive than 1Password and Bitwarden for individuals.
 
-[🔐 Try Dashlane Free →](#)
+[🔐 Try Dashlane Free →](https://www.dashlane.com/plans)
 
 ---
 
@@ -100,16 +97,15 @@ Bitwarden is the only fully open-source password manager on this list — its co
 - **Bitwarden Authenticator** — TOTP codes built-in (Premium)
 
 ### Bitwarden pricing
-- **Free** — unlimited passwords, unlimited devices
-- **Premium** — $10/year ($0.83/mo) — adds TOTP, file attachments, security reports
-- **Families** — $40/year for 6 users
+
+Bitwarden has a genuinely free tier (unlimited passwords, unlimited devices) and an affordable Premium plan that adds TOTP, file attachments and security reports. For current rates, visit the [Bitwarden pricing page](https://bitwarden.com/pricing/).
 
 ### Bitwarden pros & cons
 **Pros:** Best free plan available, open source, self-hosting option, extremely affordable premium, strong security.
 
 **Cons:** Interface less polished than 1Password, some features require Premium that competitors include for free.
 
-[🔐 Get Bitwarden Free →](#)
+[🔐 Get Bitwarden Free →](https://bitwarden.com/)
 
 ---
 
@@ -158,7 +154,7 @@ A password manager is far safer. Written passwords can be lost, stolen or seen b
 
 ---
 
-*Last updated: February 2026. Pricing based on annual plans. Check official sites for current promotions.*
+*Last updated: March 2026. Pricing varies — always check official sites for current plans and promotions.*
 
 <script type="application/ld+json">
 {

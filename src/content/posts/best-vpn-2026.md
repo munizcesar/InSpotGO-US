@@ -23,7 +23,7 @@ seo:
 | **Best for** | Overall | Value / devices | Streaming |
 | **Servers** | 6,400+ | 3,200+ | 3,000+ |
 | **Devices** | 10 | Unlimited | 8 |
-| **Price from** | $3.09/mo | $2.19/mo | $6.67/mo |
+| **Pricing** | [See current plans](https://nordvpn.com/pricing/) | [See current plans](https://surfshark.com/pricing) | [See current plans](https://www.expressvpn.com/order) |
 | **Money-back** | 30 days | 30 days | 30 days |
 | **No-logs audit** | ✅ | ✅ | ✅ |
 
@@ -54,16 +54,15 @@ NordVPN is consistently ranked as the best all-around VPN. It has the largest se
 - **Audited no-logs policy** — independently verified by PwC
 
 ### NordVPN pricing
-- **Basic** — from $3.09/mo (2-year plan)
-- **Plus** — from $3.99/mo — adds Threat Protection + Password Manager
-- **Ultimate** — from $5.99/mo — adds 1TB cloud storage
+
+NordVPN offers Basic, Plus and Ultimate plans on monthly, 1-year and 2-year billing cycles. The 2-year plan offers the best per-month rate. For current pricing and promotions, visit the [NordVPN pricing page](https://nordvpn.com/pricing/).
 
 ### NordVPN pros & cons
 **Pros:** Fastest speeds tested, huge server network, strong privacy track record, excellent apps on all platforms, 10 simultaneous connections.
 
 **Cons:** Slightly more expensive than Surfshark, no unlimited devices on base plan.
 
-[🛡️ Get NordVPN →](#)
+[🛡️ Get NordVPN →](https://nordvpn.com/)
 
 ---
 
@@ -79,16 +78,15 @@ Surfshark offers the best value in the VPN market — unlimited simultaneous con
 - **Audited no-logs policy**
 
 ### Surfshark pricing
-- **Starter** — from $2.19/mo (2-year + 4 months free)
-- **One** — from $2.69/mo — adds antivirus and data breach alerts
-- **One+** — from $4.29/mo — adds Alternative ID
+
+Surfshark offers Starter, One and One+ plans. The 2-year plan includes several bonus months free. For current promotions and rates, visit the [Surfshark pricing page](https://surfshark.com/pricing).
 
 ### Surfshark pros & cons
 **Pros:** Unlimited devices, cheapest reputable VPN, good speeds, strong privacy policy, excellent interface.
 
 **Cons:** Smaller server network than NordVPN, speeds slightly inconsistent on some servers.
 
-[🛡️ Get Surfshark →](#)
+[🛡️ Get Surfshark →](https://surfshark.com/)
 
 ---
 
@@ -104,16 +102,15 @@ ExpressVPN consistently unblocks the most streaming services and has the most re
 - **Audited no-logs policy**
 
 ### ExpressVPN pricing
-- **Monthly** — $12.95/mo
-- **6 months** — $9.99/mo
-- **Annual** — $6.67/mo + 4 months free
+
+ExpressVPN is available on monthly, 6-month and annual billing. The annual plan offers the lowest per-month cost and includes several bonus months. For current rates, visit the [ExpressVPN order page](https://www.expressvpn.com/order).
 
 ### ExpressVPN pros & cons
 **Pros:** Best streaming performance, reliable in restrictive countries (China, UAE), excellent router app, consistent speeds.
 
 **Cons:** Most expensive option, only 8 simultaneous connections, no ad blocker on base plan.
 
-[🛡️ Get ExpressVPN →](#)
+[🛡️ Get ExpressVPN →](https://www.expressvpn.com/)
 
 ---
 
@@ -168,7 +165,7 @@ ExpressVPN and NordVPN are the most reliable for Netflix. Both consistently unbl
 
 ---
 
-*Last updated: February 2026. Pricing based on 2-year plan rates. Always check provider websites for current promotions.*
+*Last updated: March 2026. Pricing varies by plan and promotion — always check provider websites for current rates.*
 
 <script type="application/ld+json">
 {
