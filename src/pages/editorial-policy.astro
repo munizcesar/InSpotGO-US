@@ -1,22 +1,129 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import { SITE_CONFIG } from '../config';
 ---
-<BaseLayout title="Editorial Policy — InSpotGO">
-  <Header />
-  <main class="container" style="padding:2rem 0;">
-    <article class="card">
-      <h1>Editorial Policy</h1>
-      <h2>How We Make Money</h2>
-      <p>We may earn affiliate commissions when you click or purchase through links on our site. This does not influence our editorial content.</p>
+
+<BaseLayout
+  title="Editorial Policy — InSpotGO"
+  description="How InSpotGO selects, researches, and publishes reviews. Our editorial standards, independence policy, and content methodology."
+>
+  <div class="container content-page">
+
+    <h1>Editorial Policy</h1>
+    <p class="lead">InSpotGO is committed to publishing honest, research-backed content that helps readers make confident decisions about tech products, software, and SaaS tools. This page explains how we work, how we make money, and how we keep those two things separate.</p>
+
+    <section>
       <h2>Editorial Independence</h2>
-      <p>Our editorial team maintains independence from commercial partners. Reviews and guides are created without outside influence.</p>
-      <h2>How We Evaluate Products</h2>
-      <p>We use hands-on testing, expert comparison, and market research to evaluate products and update recommendations.</p>
-      <h2>Corrections Policy</h2>
-      <p>If you find an error, please contact us so we can correct it promptly.</p>
-    </article>
-  </main>
-  <Footer />
+      <p>All content published on InSpotGO is created independently by our editorial team. Affiliate partnerships, advertising relationships, and commercial agreements have zero influence on which products we recommend, how we rate them, or what we write about them.</p>
+      <p>We do not accept payment for positive reviews. We do not guarantee favorable coverage in exchange for affiliate access. If a product has flaws, we write about them — regardless of whether we earn a commission from it.</p>
+    </section>
+
+    <section>
+      <h2>How We Select Topics</h2>
+      <p>Topics are chosen based on reader relevance, search demand, and the genuine usefulness of the content — not on commission rates or partner relationships. Our primary focus areas are:</p>
+      <ul>
+        <li>SaaS tools and software platforms with broad business applicability</li>
+        <li>Productivity, project management, and team collaboration tools</li>
+        <li>Tech products and accessories used in professional environments</li>
+        <li>Buying guides that help readers navigate complex decisions</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Our Research & Review Process</h2>
+      <p>Every piece of content on InSpotGO follows a structured methodology:</p>
+      <ol>
+        <li><strong>Primary research</strong> — We study official documentation, feature changelogs, and product announcements from the source.</li>
+        <li><strong>Hands-on evaluation</strong> — Where possible, we test tools directly through free trials, demos, or owned accounts to verify real-world behavior.</li>
+        <li><strong>User feedback analysis</strong> — We analyze verified user reviews across platforms (G2, Capterra, Trustpilot, Reddit) to surface patterns in real-world experience.</li>
+        <li><strong>Competitive context</strong> — We compare products against their closest alternatives to identify where each tool genuinely excels or falls short.</li>
+        <li><strong>Benefit-focused writing</strong> — We communicate findings in terms of practical impact — how a tool changes someone's workflow, saves time, or solves a specific problem.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Evergreen Content Standard</h2>
+      <p>InSpotGO publishes evergreen content — articles written to remain accurate and useful over time. We deliberately avoid including specific pricing in our reviews, as prices change frequently and outdated figures mislead readers.</p>
+      <p>When pricing is relevant context, we direct readers to the official product website for current information. This keeps our content honest and our recommendations durable.</p>
+    </section>
+
+    <section>
+      <h2>How We Make Money</h2>
+      <p>InSpotGO earns revenue through affiliate marketing. When a reader clicks a link on our site and subsequently signs up for or purchases a product, we may receive a commission from the vendor — at no additional cost to the reader.</p>
+      <p>Affiliate links are used across product reviews, comparison articles, and buying guides. Their presence does not indicate an endorsement beyond what is stated in the content itself. We participate in affiliate programs only for products we have independently reviewed and consider genuinely useful.</p>
+      <p>For full details on our affiliate relationships, see our <a href="/affiliate-disclosure">Affiliate Disclosure page</a>.</p>
+    </section>
+
+    <section>
+      <h2>Corrections & Updates</h2>
+      <p>We are committed to accuracy. If you identify an error, outdated information, or a factual inaccuracy in any of our content, please contact us at <a href="mailto:hello@inspotgo.com">hello@inspotgo.com</a>. We review all correction requests and update content promptly when errors are confirmed.</p>
+      <p>Articles are reviewed periodically to ensure continued accuracy as products evolve, features change, and the market shifts.</p>
+    </section>
+
+    <section>
+      <h2>Contact</h2>
+      <p>Questions about our editorial standards or content practices? Reach us at <a href="mailto:hello@inspotgo.com">hello@inspotgo.com</a>.</p>
+    </section>
+
+  </div>
 </BaseLayout>
+
+<style>
+  .content-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+  }
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+  .lead {
+    font-size: 1.15rem;
+    line-height: 1.75;
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--color-bg-alt);
+    border-left: 4px solid var(--color-primary);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  }
+  section {
+    margin: 2.5rem 0;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  section:last-child {
+    border-bottom: none;
+  }
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+  p {
+    margin-bottom: 1rem;
+    line-height: 1.75;
+    color: var(--color-text-light);
+  }
+  ul, ol {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+  li {
+    margin-bottom: 0.6rem;
+    line-height: 1.7;
+    color: var(--color-text-light);
+  }
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+  a:hover { text-decoration: underline; }
+  @media (max-width: 768px) {
+    h1 { font-size: 2rem; }
+  }
+</style>
