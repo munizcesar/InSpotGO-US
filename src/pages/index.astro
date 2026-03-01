@@ -37,9 +37,9 @@ const homepageSchema = [
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Tech Products', url: `${siteUrl}/tech` },
-      { '@type': 'ListItem', position: 2, name: 'SaaS Tools', url: `${siteUrl}/saas` },
-      { '@type': 'ListItem', position: 3, name: 'Software', url: `${siteUrl}/software` },
+      { '@type': 'ListItem', position: 1, name: 'SaaS Tools', url: `${siteUrl}/saas` },
+      { '@type': 'ListItem', position: 2, name: 'Software', url: `${siteUrl}/software` },
+      { '@type': 'ListItem', position: 3, name: 'Comparisons', url: `${siteUrl}/posts` },
       { '@type': 'ListItem', position: 4, name: 'Buying Guides', url: `${siteUrl}/guides` },
     ],
   },
@@ -58,7 +58,7 @@ const articles = sortedPosts.map((post) => {
   return {
     title: post.data.title,
     description: post.data.description,
-    category: post.data.category || 'Tech',
+    category: post.data.category || 'SaaS',
     image: post.data.cover || post.data.image || '/images/default-post.jpg',
     href: `/posts/${post.slug}`,
     date: date.getTime() > 0 ? date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '',
@@ -81,7 +81,7 @@ const articles = sortedPosts.map((post) => {
         </h1>
 
         <p class="hero-description">
-          Expert-tested reviews on tech, software, and SaaS tools — so you spend smarter and choose better, every time.
+          Independent reviews on software and SaaS tools — so professionals and business owners choose smarter, every time.
         </p>
 
         <div class="hero-cta">
@@ -120,11 +120,11 @@ const articles = sortedPosts.map((post) => {
   <section class="categories" id="categories">
     <div class="container">
       <h2 class="section-title">What We Review</h2>
-      <p class="section-subtitle">Professional analysis and buying guides to help you make informed decisions</p>
+      <p class="section-subtitle">Independent analysis and buying guides to help professionals and business owners make smarter software decisions</p>
       <div class="categories-grid">
-        <CategoryCard title={SITE_CONFIG.categories.tech.name} description={SITE_CONFIG.categories.tech.description} icon={SITE_CONFIG.categories.tech.icon} href="/tech" />
         <CategoryCard title={SITE_CONFIG.categories.saas.name} description={SITE_CONFIG.categories.saas.description} icon={SITE_CONFIG.categories.saas.icon} href="/saas" />
         <CategoryCard title={SITE_CONFIG.categories.software.name} description={SITE_CONFIG.categories.software.description} icon={SITE_CONFIG.categories.software.icon} href="/software" />
+        <CategoryCard title={SITE_CONFIG.categories.comparisons.name} description={SITE_CONFIG.categories.comparisons.description} icon={SITE_CONFIG.categories.comparisons.icon} href="/posts" />
         <CategoryCard title={SITE_CONFIG.categories.guides.name} description={SITE_CONFIG.categories.guides.description} icon={SITE_CONFIG.categories.guides.icon} href="/guides" />
       </div>
     </div>
@@ -137,23 +137,23 @@ const articles = sortedPosts.map((post) => {
       <div class="trust-grid">
         <div class="trust-item">
           <div class="trust-icon"><CheckCircle2 size={56} stroke-width={1.5} /></div>
-          <h3>Professional Analysis</h3>
-          <p>Evidence-based reviews following journalistic standards with benchmark testing and technical verification</p>
+          <h3>Independent Analysis</h3>
+          <p>Honest reviews following editorial standards — no sponsored content, no vendor influence</p>
         </div>
         <div class="trust-item">
           <div class="trust-icon"><Search size={56} stroke-width={1.5} /></div>
           <h3>Comprehensive Research</h3>
-          <p>Every review backed by extensive testing, specification analysis, and industry comparison</p>
+          <p>Every review backed by hands-on testing, feature analysis, and real user feedback</p>
         </div>
         <div class="trust-item">
           <div class="trust-icon"><Users size={56} stroke-width={1.5} /></div>
-          <h3>Reader-Focused</h3>
-          <p>Objective recommendations prioritizing reader needs — affiliate links never influence our picks</p>
+          <h3>Professional Focus</h3>
+          <p>Content built for professionals and business owners — not casual consumers</p>
         </div>
         <div class="trust-item">
           <div class="trust-icon"><RefreshCw size={56} stroke-width={1.5} /></div>
-          <h3>Regularly Updated</h3>
-          <p>Content refreshed with latest pricing, specifications, and market developments</p>
+          <h3>Evergreen Content</h3>
+          <p>Reviews written to stay relevant — benefit-focused, not tied to temporary pricing or promotions</p>
         </div>
       </div>
     </div>
@@ -163,22 +163,22 @@ const articles = sortedPosts.map((post) => {
   <section class="featured">
     <div class="container">
       <h2 class="section-title">Our Editorial Standards</h2>
-      <p class="section-subtitle">Professional tech journalism with transparent methodology and expert analysis</p>
+      <p class="section-subtitle">Independent SaaS and software journalism with transparent methodology</p>
       <div class="coming-soon-grid">
         <div class="coming-soon-card">
           <div class="card-icon"><Target size={48} stroke-width={1.5} /></div>
           <h3>In-Depth Reviews</h3>
-          <p>Detailed technical analysis with specifications, benchmarks, and real-world testing results</p>
+          <p>Detailed analysis of features, real-world use cases, and who each tool is actually built for</p>
         </div>
         <div class="coming-soon-card">
           <div class="card-icon"><BarChart3 size={48} stroke-width={1.5} /></div>
-          <h3>Comparison Guides</h3>
-          <p>Data-driven comparisons with performance metrics and feature analysis</p>
+          <h3>Head-to-Head Comparisons</h3>
+          <p>Side-by-side breakdowns of competing tools with clear, opinionated recommendations</p>
         </div>
         <div class="coming-soon-card">
           <div class="card-icon"><Lightbulb size={48} stroke-width={1.5} /></div>
-          <h3>Expert Insights</h3>
-          <p>Professional buying guides and technical tutorials from experienced reviewers</p>
+          <h3>Buying Guides</h3>
+          <p>Decision frameworks that match the right tool to your workflow, team size, and budget</p>
         </div>
       </div>
     </div>
@@ -187,8 +187,8 @@ const articles = sortedPosts.map((post) => {
   <!-- CTA -->
   <section class="cta-section">
     <div class="container">
-      <h2>Ready to Make Informed Decisions?</h2>
-      <p>Explore our professional reviews and analysis to find the perfect products</p>
+      <h2>Ready to Choose the Right Tool?</h2>
+      <p>Browse independent reviews and comparisons — no sponsored content, no fluff</p>
       <a href="#latest-news" class="btn btn-cta">Browse Latest Reviews &rarr;</a>
     </div>
   </section>
@@ -217,8 +217,6 @@ const articles = sortedPosts.map((post) => {
     margin: 0 auto;
     position: relative;
   }
-
-  /* Headline */
   .hero-headline {
     font-size: clamp(2.4rem, 6vw, 4rem);
     font-weight: 900;
@@ -233,7 +231,6 @@ const articles = sortedPosts.map((post) => {
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-
   .hero-description {
     font-size: 1.15rem;
     line-height: 1.7;
@@ -241,7 +238,6 @@ const articles = sortedPosts.map((post) => {
     max-width: 600px;
     margin: 0 auto 2.25rem;
   }
-
   .hero-cta {
     display: flex;
     gap: 1rem;
@@ -249,8 +245,6 @@ const articles = sortedPosts.map((post) => {
     flex-wrap: wrap;
     margin-bottom: 2.75rem;
   }
-
-  /* Social proof */
   .hero-proof {
     display: inline-flex;
     align-items: center;
@@ -264,8 +258,6 @@ const articles = sortedPosts.map((post) => {
   .proof-number { font-size: 1.1rem; font-weight: 800; color: white; line-height: 1; }
   .proof-label { font-size: 0.65rem; color: rgba(255,255,255,0.6); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 0.15rem; }
   .proof-divider { width: 1px; height: 28px; background: rgba(255,255,255,0.18); }
-
-  /* Buttons */
   .btn { display: inline-block; padding: 0.9rem 1.875rem; font-size: 1rem; font-weight: 600; text-decoration: none; border-radius: var(--radius-md); transition: all 0.2s ease; border: 2px solid transparent; }
   .btn-primary { background: var(--gradient-action); color: white; box-shadow: 0 4px 16px rgba(249,115,22,0.35); }
   .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(249,115,22,0.45); }
@@ -273,14 +265,10 @@ const articles = sortedPosts.map((post) => {
   .btn-outline:hover { background: rgba(255,255,255,0.12); border-color: white; }
   .btn-cta { background: white; color: var(--color-primary); font-size: 1.1rem; padding: 1.1rem 2.25rem; border-radius: var(--radius-lg); }
   .btn-cta:hover { background: #f7f7f7; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.2); }
-
-  /* Categories */
   .categories { background: var(--color-bg-alt); padding: 5rem 0; }
   .section-title { font-size: 2.25rem; font-weight: 800; color: var(--color-text); margin-bottom: 0.75rem; text-align: center; }
   .section-subtitle { font-size: 1.1rem; color: var(--color-text-light); max-width: 700px; margin: 0 auto 3rem; text-align: center; }
   .categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-top: 3rem; }
-
-  /* Trust */
   .trust { background: white; padding: 5rem 0; }
   .trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-top: 3rem; }
   .trust-item { text-align: center; padding: 2rem 1.5rem; background: var(--color-bg-alt); border-radius: var(--radius-lg); transition: all 0.2s; border: 1px solid var(--color-border); }
@@ -288,8 +276,6 @@ const articles = sortedPosts.map((post) => {
   .trust-icon { display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; background: var(--gradient-action); border-radius: var(--radius-full); margin: 0 auto 1.5rem; color: white; }
   .trust-item h3 { font-size: 1.2rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.75rem; }
   .trust-item p { font-size: 0.95rem; color: var(--color-text-light); line-height: 1.6; }
-
-  /* Editorial */
   .featured { background: var(--color-bg-alt); padding: 5rem 0; }
   .coming-soon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; margin-top: 3rem; }
   .coming-soon-card { background: white; border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 2.5rem 2rem; text-align: center; transition: all 0.2s; box-shadow: var(--shadow-sm); }
@@ -297,13 +283,9 @@ const articles = sortedPosts.map((post) => {
   .card-icon { display: inline-flex; align-items: center; justify-content: center; width: 72px; height: 72px; background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%); border-radius: var(--radius-lg); margin: 0 auto 1.5rem; color: white; }
   .coming-soon-card h3 { font-size: 1.35rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.875rem; }
   .coming-soon-card p { font-size: 0.975rem; color: var(--color-text-light); line-height: 1.65; }
-
-  /* CTA */
   .cta-section { background: var(--gradient-hero); padding: 5rem 0; text-align: center; color: white; }
   .cta-section h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; }
   .cta-section p { font-size: 1.2rem; margin-bottom: 2.5rem; opacity: 0.9; }
-
-  /* Responsive */
   @media (max-width: 768px) {
     .hero { padding: 3.5rem 0 3rem; }
     .hero-proof { flex-wrap: wrap; gap: 1rem; padding: 0.75rem 1.25rem; border-radius: 16px; }
