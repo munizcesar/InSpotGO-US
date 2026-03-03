@@ -204,6 +204,8 @@ const articles = sortedPosts.map((post) => {
     text-align: center;
     position: relative;
     overflow: hidden;
+    width: 100%;
+    max-width: 100vw;
   }
   .hero::before {
     content: '';
@@ -265,25 +267,25 @@ const articles = sortedPosts.map((post) => {
   .btn-outline:hover { background: rgba(255,255,255,0.12); border-color: white; }
   .btn-cta { background: white; color: var(--color-primary); font-size: 1.1rem; padding: 1.1rem 2.25rem; border-radius: var(--radius-lg); }
   .btn-cta:hover { background: #f7f7f7; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(0,0,0,0.2); }
-  .categories { background: var(--color-bg-alt); padding: 5rem 0; }
+  .categories { background: var(--color-bg-alt); padding: 5rem 0; width: 100%; max-width: 100vw; overflow: hidden; }
   .section-title { font-size: 2.25rem; font-weight: 800; color: var(--color-text); margin-bottom: 0.75rem; text-align: center; }
   .section-subtitle { font-size: 1.1rem; color: var(--color-text-light); max-width: 700px; margin: 0 auto 3rem; text-align: center; }
   .categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-top: 3rem; }
-  .trust { background: white; padding: 5rem 0; }
+  .trust { background: white; padding: 5rem 0; width: 100%; max-width: 100vw; overflow: hidden; }
   .trust-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; margin-top: 3rem; }
   .trust-item { text-align: center; padding: 2rem 1.5rem; background: var(--color-bg-alt); border-radius: var(--radius-lg); transition: all 0.2s; border: 1px solid var(--color-border); }
   .trust-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--color-primary-light); }
   .trust-icon { display: inline-flex; align-items: center; justify-content: center; width: 80px; height: 80px; background: var(--gradient-action); border-radius: var(--radius-full); margin: 0 auto 1.5rem; color: white; }
   .trust-item h3 { font-size: 1.2rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.75rem; }
   .trust-item p { font-size: 0.95rem; color: var(--color-text-light); line-height: 1.6; }
-  .featured { background: var(--color-bg-alt); padding: 5rem 0; }
+  .featured { background: var(--color-bg-alt); padding: 5rem 0; width: 100%; max-width: 100vw; overflow: hidden; }
   .coming-soon-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; margin-top: 3rem; }
   .coming-soon-card { background: white; border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 2.5rem 2rem; text-align: center; transition: all 0.2s; box-shadow: var(--shadow-sm); }
   .coming-soon-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-xl); border-color: var(--color-primary); }
   .card-icon { display: inline-flex; align-items: center; justify-content: center; width: 72px; height: 72px; background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%); border-radius: var(--radius-lg); margin: 0 auto 1.5rem; color: white; }
   .coming-soon-card h3 { font-size: 1.35rem; font-weight: 700; color: var(--color-text); margin-bottom: 0.875rem; }
   .coming-soon-card p { font-size: 0.975rem; color: var(--color-text-light); line-height: 1.65; }
-  .cta-section { background: var(--gradient-hero); padding: 5rem 0; text-align: center; color: white; }
+  .cta-section { background: var(--gradient-hero); padding: 5rem 0; text-align: center; color: white; width: 100%; max-width: 100vw; overflow: hidden; }
   .cta-section h2 { font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; }
   .cta-section p { font-size: 1.2rem; margin-bottom: 2.5rem; opacity: 0.9; }
   @media (max-width: 768px) {
