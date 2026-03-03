@@ -6,6 +6,12 @@ backend:
   auth_endpoint: api/auth
   app_id: Ov23liut527fMI71NRQR
 
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: drw9gzlgd
+    api_key: '946123924823294'
+
 media_folder: "public/images"
 public_folder: "/images"
 
@@ -23,7 +29,7 @@ collections:
       - {label: Category, name: category, widget: select, options: ["Tech", "SaaS", "Software", "Guides"]}
       - {label: Tags, name: tags, widget: list, required: false}
       - {label: Description, name: description, widget: text}
-      - {label: Cover Image, name: cover, widget: image, required: false, media_folder: "/public/images", public_folder: "/images"}
+      - {label: Cover Image, name: cover, widget: image, required: false}
       - {label: Read Time, name: readTime, widget: string, required: false, hint: "Ex: 5 min"}
       - {label: Featured, name: featured, widget: boolean, required: false, default: false}
       - {label: Draft, name: draft, widget: boolean, required: false, default: false}
