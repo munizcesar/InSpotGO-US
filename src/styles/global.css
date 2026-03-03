@@ -91,10 +91,6 @@
 html {
   height: 100%;
   scroll-behavior: smooth;
-  /* overflow-x: clip is stronger than hidden — it prevents touch-drag
-     horizontal scroll on mobile without creating a new stacking context */
-  overflow-x: clip;
-  overscroll-behavior-x: none;
   max-width: 100%;
 }
 
@@ -108,10 +104,16 @@ body {
   min-height: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: clip;
   max-width: 100%;
 }
 
+/* Aplicar overflow-x: clip apenas em mobile para evitar scroll horizontal */
+@media (max-width: 768px) {
+  html, body {
+    overflow-x: clip;
+    overscroll-behavior-x: none;
+  }
+}
 
 a {
   color: var(--color-primary);
