@@ -27,4 +27,22 @@ collections:
       - {label: Read Time, name: readTime, widget: string, required: false, hint: "Ex: 5 min"}
       - {label: Featured, name: featured, widget: boolean, required: false, default: false}
       - {label: Draft, name: draft, widget: boolean, required: false, default: false}
-      - {label: Body, name: body, widget: markdown}
+      - label: Body
+        name: body
+        widget: markdown
+        editor_components:
+          - image
+          - code-block
+        buttons:
+          - bold
+          - italic
+          - title
+          - bulleted-list
+          - numbered-list
+          - quote
+          - code
+          - link
+          - image
+        modes:
+          - rich_text
+          - raw
