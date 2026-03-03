@@ -22,7 +22,6 @@ interface Props {
 
 const { articles = [] } = Astro.props;
 
-// fetch latest posts from the content collection when no explicit articles are provided
 let fetchedArticles: Article[] = [];
 if (articles.length === 0) {
   const all = await getCollection('posts', ({ data }) => data.draft !== true);
@@ -32,7 +31,7 @@ if (articles.length === 0) {
     .sort((a, b) => {
       const da = raw(a.data) ? new Date(raw(a.data)!).getTime() : 0;
       const db = raw(b.data) ? new Date(raw(b.data)!).getTime() : 0;
-      return db - da; // newest first
+      return db - da;
     })
     .map((p) => {
       const d = raw(p.data) ? new Date(raw(p.data)!) : null;
@@ -50,7 +49,6 @@ if (articles.length === 0) {
   fetchedArticles = latestPosts;
 }
 
-// fallback to default mock data only if neither props nor fetched posts are available
 const defaultArticles: Article[] = [
   {
     title: "The Ultimate Guide to Choosing Your Next Laptop in 2026",
@@ -116,7 +114,6 @@ const allArticles =
     ? fetchedArticles
     : defaultArticles;
 
-// Featured = latest post (first in list); regular = next 5
 const featuredArticle = allArticles[0];
 const regularArticles = allArticles.slice(1, 6);
 
@@ -138,9 +135,7 @@ const categoryColors: Record<string, string> = {
     </div>
     
     <div class="news-layout">
-      <!-- Main Content -->
       <div class="news-main">
-        <!-- Featured Article -->
         <article class="featured-article">
           <a href={featuredArticle.href} class="featured-link">
             <div class="featured-image-wrapper">
@@ -173,7 +168,6 @@ const categoryColors: Record<string, string> = {
           </a>
         </article>
         
-        <!-- Regular Articles Grid -->
         <div class="articles-grid">
           {regularArticles.map((article) => (
             <article class="article-card">
@@ -207,7 +201,6 @@ const categoryColors: Record<string, string> = {
           ))}
         </div>
         
-        <!-- View All Button -->
         <div class="view-all-wrapper">
           <a href="/posts" class="btn-view-all">
             View All Articles
@@ -216,11 +209,9 @@ const categoryColors: Record<string, string> = {
         </div>
       </div>
       
-      <!-- Sidebar -->
       <aside class="news-sidebar">
         <WhatsHot />
         
-        <!-- Newsletter Widget (optional) -->
         {SITE_CONFIG.features.newsletter && (
         <div class="newsletter-widget">
           <h4>Stay Updated</h4>
@@ -243,7 +234,6 @@ const categoryColors: Record<string, string> = {
   </div>
 </section>
 
-<!-- client-side script to handle newsletter form -->
 <script type="module" client:load>
   const form = document.querySelector('.newsletter-form');
   if (form) {
@@ -259,7 +249,6 @@ const categoryColors: Record<string, string> = {
           body: JSON.stringify({ email }),
         });
         if (response.ok) {
-          // redirect to thank-you page or show success
           window.location.href = '/thank-you';
         } else {
           const data = await response.json();
@@ -277,9 +266,9 @@ const categoryColors: Record<string, string> = {
   .latest-news-section {
     background: var(--color-bg);
     padding: 4rem 0;
+    width: 100%;
   }
   
-  /* Section Header */
   .section-header {
     text-align: center;
     margin-bottom: 3rem;
@@ -299,12 +288,23 @@ const categoryColors: Record<string, string> = {
     margin: 0 auto;
   }
   
-  /* Layout */
+  /* Layout — min-width: 0 prevents grid children from overflowing */
   .news-layout {
     display: grid;
-    grid-template-columns: 1fr 360px;
+    grid-template-columns: minmax(0, 1fr) 320px;
     gap: 2.5rem;
     align-items: start;
+    width: 100%;
+  }
+
+  .news-main {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .news-sidebar {
+    min-width: 0;
+    width: 100%;
   }
   
   /* Featured Article */
@@ -330,7 +330,7 @@ const categoryColors: Record<string, string> = {
   
   .featured-image-wrapper {
     position: relative;
-    padding-top: 56.25%; /* 16:9 aspect ratio */
+    padding-top: 56.25%;
     overflow: hidden;
   }
   
@@ -400,7 +400,6 @@ const categoryColors: Record<string, string> = {
     gap: 0.375rem;
   }
   
-  /* Articles Grid */
   .articles-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -415,6 +414,7 @@ const categoryColors: Record<string, string> = {
     overflow: hidden;
     box-shadow: var(--shadow-sm);
     transition: all var(--transition-base);
+    min-width: 0;
   }
   
   .article-card:hover {
@@ -429,7 +429,7 @@ const categoryColors: Record<string, string> = {
   
   .article-image-wrapper {
     position: relative;
-    padding-top: 60%; /* 5:3 aspect ratio */
+    padding-top: 60%;
     overflow: hidden;
   }
   
@@ -501,7 +501,6 @@ const categoryColors: Record<string, string> = {
     color: var(--color-text-muted);
   }
   
-  /* View All Button */
   .view-all-wrapper {
     text-align: center;
   }
@@ -527,7 +526,6 @@ const categoryColors: Record<string, string> = {
     box-shadow: 0 8px 20px rgba(249, 115, 22, 0.4);
   }
   
-  /* Newsletter Widget */
   .newsletter-widget {
     background: var(--gradient-hero);
     border-radius: var(--radius-lg);
@@ -589,7 +587,6 @@ const categoryColors: Record<string, string> = {
     box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
   }
   
-  /* Responsive */
   @media (max-width: 1024px) {
     .news-layout {
       grid-template-columns: 1fr;
