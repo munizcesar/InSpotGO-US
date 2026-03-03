@@ -6,8 +6,10 @@ backend:
   auth_endpoint: api/auth
   app_id: Ov23liut527fMI71NRQR
 
-media_folder: public/images
-public_folder: /images
+media_folder: "public/images"
+public_folder: "/images"
+
+locale: en
 
 collections:
   - name: posts
@@ -19,7 +21,10 @@ collections:
       - {label: Title, name: title, widget: string}
       - {label: Date, name: date, widget: datetime}
       - {label: Category, name: category, widget: select, options: ["Tech", "SaaS", "Software", "Guides"]}
-      - {label: Tags, name: tags, widget: list}
+      - {label: Tags, name: tags, widget: list, required: false}
       - {label: Description, name: description, widget: text}
-      - {label: Cover, name: cover, widget: image}
+      - {label: Cover Image, name: cover, widget: image, required: false, media_folder: "/public/images", public_folder: "/images"}
+      - {label: Read Time, name: readTime, widget: string, required: false, hint: "Ex: 5 min"}
+      - {label: Featured, name: featured, widget: boolean, required: false, default: false}
+      - {label: Draft, name: draft, widget: boolean, required: false, default: false}
       - {label: Body, name: body, widget: markdown}
