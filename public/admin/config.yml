@@ -30,19 +30,25 @@ collections:
       - label: Body
         name: body
         widget: markdown
-        editor_components:
-          - image
-          - code-block
         buttons:
           - bold
           - italic
-          - title
+          - code
+          - link
+          - heading-one
+          - heading-two
+          - heading-three
           - bulleted-list
           - numbered-list
           - quote
-          - code
-          - link
           - image
+        editor_components:
+          - image
+          - code-block
+          - callout
+          - cta-button
+          - pros-cons
+          - youtube
         modes:
           - rich_text
           - raw
