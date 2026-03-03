@@ -104,15 +104,9 @@ body {
   min-height: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  max-width: 100%;
-}
-
-/* Aplicar overflow-x: clip apenas em mobile para evitar scroll horizontal */
-@media (max-width: 768px) {
-  html, body {
-    overflow-x: clip;
-    overscroll-behavior-x: none;
-  }
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
 }
 
 a {
@@ -396,12 +390,14 @@ button {
    ======================================== */
 
 .container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem 1.5rem;
 }
 
 .container-flex {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 1rem 1.5rem;
@@ -548,6 +544,7 @@ button {
   border-bottom: 1px solid var(--color-border);
   box-shadow: var(--shadow-sm);
   z-index: 50;
+  width: 100%;
 }
 
 .footer {
@@ -555,6 +552,7 @@ button {
   border-top: 1px solid var(--color-border);
   padding: 2rem 0;
   margin-top: 3rem;
+  width: 100%;
 }
 
 .footer-row {
