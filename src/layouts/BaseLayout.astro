@@ -98,8 +98,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         --font-mono: 'SF Mono', Monaco, 'Cascadia Code', monospace;
       }
       * { margin: 0; padding: 0; box-sizing: border-box; }
-      html { overflow-x: hidden; overscroll-behavior-x: none; }
-      body { font-family: var(--font-sans); line-height: 1.6; color: var(--color-text); background: var(--color-bg); overflow-x: hidden; }
+      html { overflow-x: clip; overscroll-behavior-x: none; max-width: 100%; }
+      body { font-family: var(--font-sans); line-height: 1.6; color: var(--color-text); background: var(--color-bg); overflow-x: clip; max-width: 100%; }
       .container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--spacing); }
     </style>
   </body>

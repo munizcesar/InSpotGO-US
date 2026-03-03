@@ -91,11 +91,11 @@
 html {
   height: 100%;
   scroll-behavior: smooth;
-  /* prevent the page from shifting horizontally on mobile and
-     stop users from dragging the viewport left/right to expose
-     off‑canvas elements like the navigation drawer */
-  overflow-x: hidden;
+  /* overflow-x: clip is stronger than hidden — it prevents touch-drag
+     horizontal scroll on mobile without creating a new stacking context */
+  overflow-x: clip;
   overscroll-behavior-x: none;
+  max-width: 100%;
 }
 
 body {
@@ -108,8 +108,8 @@ body {
   min-height: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* mirror overflow-x setting on html for extra safety */
-  overflow-x: hidden;
+  overflow-x: clip;
+  max-width: 100%;
 }
 
 
