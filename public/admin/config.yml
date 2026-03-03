@@ -47,7 +47,6 @@ collections:
           - bulleted-list
           - numbered-list
           - quote
-          - image
         editor_components:
           - image
           - code-block
