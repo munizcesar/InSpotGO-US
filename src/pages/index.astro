@@ -59,7 +59,7 @@ const articles = sortedPosts.map((post) => {
     title: post.data.title,
     description: post.data.description,
     category: post.data.category || 'SaaS',
-    image: post.data.cover || post.data.image || '/images/default-post.jpg',
+    image: post.data.cover || post.data.image || '/images/posts/default-post.jpg',
     href: `/posts/${post.slug}`,
     date: date.getTime() > 0 ? date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) : '',
     readTime: post.data.readTime || '5 min',
@@ -198,7 +198,9 @@ const articles = sortedPosts.map((post) => {
 <style>
   /* Hero */
   .hero {
-    background: var(--gradient-hero);
+    background:
+      linear-gradient(135deg, rgba(46,17,85,0.82) 0%, rgba(79,70,229,0.78) 100%),
+      url('/images/banners/hero-home.png') center/cover no-repeat;
     color: white;
     padding: 5rem 0 4.5rem;
     text-align: center;

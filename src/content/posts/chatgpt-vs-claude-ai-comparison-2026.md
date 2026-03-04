@@ -5,7 +5,7 @@ updated: 2026-02-28
 category: "Software"
 tags: ["AI", "chatgpt", "claude", "gemini", "artificial-intelligence", "productivity"]
 description: "Honest comparison of ChatGPT, Claude, and Gemini in 2026. Covers context window, coding, reasoning, pricing, and which one to pick for your actual use case."
-cover: "/images/ChatGeminiClaude.png"
+cover: "/images/posts/ChatGeminiClaude.png"
 author: "InSpotGO Editorial Team"
 readTime: "11 min"
 featured: true

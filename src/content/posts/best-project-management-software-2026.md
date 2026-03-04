@@ -4,7 +4,7 @@ date: 2026-02-11
 updated: 2026-03-01
 tags: ["project-management", "productivity", "collaboration", "software", "business"]
 description: "Buyer's guide to the best project management software — features, real-world fit, pros & cons, and recommendations for teams of all sizes."
-cover: "/images/project.png"
+cover: "/images/posts/project.png"
 author: "InSpotGO Editorial Team"
 readTime: "12 min"
 featured: true
