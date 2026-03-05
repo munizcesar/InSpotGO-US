@@ -68,7 +68,7 @@ const articles = sortedPosts.map((post) => {
 });
 ---
 
-<BaseLayout extraSchema={homepageSchema}>
+<BaseLayout extraSchema={homepageSchema} preloadHeroImage={true}>
 
   <!-- Hero Section -->
   <header class="hero">
@@ -198,9 +198,10 @@ const articles = sortedPosts.map((post) => {
 <style>
   /* Hero */
   .hero {
-    background:
+    background-color: #2e1155; /* instant fallback while image loads */
+    background-image:
       linear-gradient(135deg, rgba(46,17,85,0.82) 0%, rgba(79,70,229,0.78) 100%),
-      url('/images/banners/hero-home.png') center/cover no-repeat;
+      url('/images/banners/hero-home.webp') center/cover no-repeat;
     color: white;
     padding: 5rem 0 4.5rem;
     text-align: center;
