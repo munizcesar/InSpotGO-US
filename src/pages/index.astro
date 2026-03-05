@@ -72,6 +72,7 @@ const articles = sortedPosts.map((post) => {
 
   <!-- Hero Section -->
   <header class="hero">
+    <div class="hero-overlay"></div>
     <div class="container">
       <div class="hero-content">
 
@@ -198,10 +199,11 @@ const articles = sortedPosts.map((post) => {
 <style>
   /* Hero */
   .hero {
-    background-color: #2e1155; /* instant fallback while image loads */
-    background-image:
-      linear-gradient(135deg, rgba(46,17,85,0.82) 0%, rgba(79,70,229,0.78) 100%),
-      url('/images/banners/hero-home.webp') center/cover no-repeat;
+    background-color: #2e1155;
+    background-image: url('/images/banners/hero-home.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: white;
     padding: 5rem 0 4.5rem;
     text-align: center;
@@ -210,17 +212,27 @@ const articles = sortedPosts.map((post) => {
     width: 100%;
     max-width: 100vw;
   }
+  /* gradient overlay as a pseudo-element so it never blocks the image */
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(46,17,85,0.82) 0%, rgba(79,70,229,0.78) 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
   .hero::before {
     content: '';
     position: absolute;
     inset: 0;
     background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(249,115,22,0.12) 0%, transparent 70%);
     pointer-events: none;
+    z-index: 1;
   }
   .hero-content {
     max-width: 780px;
     margin: 0 auto;
     position: relative;
+    z-index: 2;
   }
   .hero-headline {
     font-size: clamp(2.4rem, 6vw, 4rem);
