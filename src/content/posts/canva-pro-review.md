@@ -7,7 +7,7 @@ date: 2026-03-01
 readTime: "7 min"
 featured: false
 draft: false
-cover: "/images/posts/canva-pro-review.png"
+cover: "/images/posts/canvapro.png"
 ---
 
 Canva has become the default design tool for non-designers — marketing teams, social media managers, entrepreneurs, and educators who need professional-looking visuals without a learning curve. Canva Pro adds a meaningful layer of features on top of the free tier. This review examines what Pro actually delivers and who should pay for it.
