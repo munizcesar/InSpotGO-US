@@ -5,10 +5,11 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "node scripts/generate-sitemap.js && astro build",
+    "build": "node scripts/generate-sitemap.js && node scripts/generate-search-index.mjs && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "sitemap": "node scripts/generate-sitemap.js"
+    "sitemap": "node scripts/generate-sitemap.js",
+    "search-index": "node scripts/generate-search-index.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.0.0",
