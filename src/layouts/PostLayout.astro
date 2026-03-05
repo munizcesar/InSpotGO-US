@@ -79,7 +79,7 @@ const getProductLink = (product) => {
     "@type": "Article",
     "headline": frontmatter.title,
     "description": frontmatter.description,
-    "image": getImageUrl(frontmatter.cover) || getImageUrl('/og-image.jpg'),
+    "image": getImageUrl(frontmatter.cover) || getImageUrl('/images/brand/og-image.png'),
     "datePublished": publishedDate,
     "dateModified": modifiedDate,
     "author": {
@@ -92,7 +92,7 @@ const getProductLink = (product) => {
       "name": SITE_CONFIG.name,
       "logo": {
         "@type": "ImageObject",
-        "url": getImageUrl('/logo.png')
+        "url": getImageUrl('/images/brand/logo.png')
       }
     },
     "mainEntityOfPage": {

@@ -7,6 +7,7 @@ date: 2026-03-01
 readTime: "9 min"
 featured: false
 draft: false
+cover: "/images/posts/clickup-review.png"
 ---
 
 ClickUp's tagline is "One app to replace them all." It's an ambitious claim — and unusually, ClickUp has the feature set to back it up. The question isn't whether ClickUp is powerful. It's whether that power is accessible enough to actually drive adoption across a real team.

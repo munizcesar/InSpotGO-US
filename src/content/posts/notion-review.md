@@ -7,6 +7,7 @@ date: 2026-03-01
 readTime: "8 min"
 featured: false
 draft: false
+cover: "/images/posts/notion-review.png"
 ---
 
 Notion positioned itself as the tool that would replace your wiki, your project manager, your note-taking app, and your database — all at once. Millions of teams took that bet. This review examines how well Notion actually delivers on that promise in 2025.

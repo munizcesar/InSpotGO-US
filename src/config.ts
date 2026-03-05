@@ -8,7 +8,7 @@ export const SITE_CONFIG = {
   title: 'InSpotGO - Spot the Best. Go Confident.',
   description: 'Discover the best software and SaaS tools. Expert reviews, comparisons, and buying guides to help professionals make confident decisions.',
   url: 'https://inspotgo.com',
-  ogImage: '/og-image.jpg',
+  ogImage: '/images/brand/og-image.png',
 
   // Branding
   slogan: 'Spot the Best. Go Confident.',
@@ -100,7 +100,7 @@ export const SITE_CONFIG = {
       publisher: {
         '@type': 'Organization',
         name: 'InSpotGO',
-        logo: '/logo.png',
+        logo: '/images/brand/logo.png',
       },
     },
   },
