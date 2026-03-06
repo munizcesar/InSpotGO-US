@@ -199,9 +199,11 @@ const articles = sortedPosts.map((post) => {
 <style>
   /* Hero */
   .hero {
-    background:
-      linear-gradient(135deg, rgba(30,17,80,0.82) 0%, rgba(46,17,85,0.78) 100%),
-      url('/images/banners/hero-home.webp') center/cover no-repeat;
+    background-color: #1e1150;
+    background-image: url('/images/banners/hero-home.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: white;
     padding: 5rem 0 4.5rem;
     text-align: center;
@@ -210,11 +212,11 @@ const articles = sortedPosts.map((post) => {
     width: 100%;
     max-width: 100vw;
   }
-  /* gradient overlay as a pseudo-element so it never blocks the image */
+  /* gradient overlay com opacidade reduzida para imagem mais nítida */
   .hero-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(30,17,80,0.82) 0%, rgba(46,17,85,0.78) 100%);
+    background: linear-gradient(135deg, rgba(30,17,80,0.55) 0%, rgba(46,17,85,0.50) 100%);
     pointer-events: none;
     z-index: 0;
   }
