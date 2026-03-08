@@ -6,6 +6,21 @@
 
 ---
 
+## 0. SITE IDENTITY — Read First
+
+| Property | Value |
+|---|---|
+| **Site name** | InSpotGO |
+| **Primary audience** | United States |
+| **Language** | American English (en-US) |
+| **Locale** | en_US |
+| **Content focus** | SaaS, software, productivity tools, AI, security |
+| **Monetization** | Affiliate programs (SaaS-first, recurring commissions) |
+| **Editorial standard** | Wirecutter / The Verge level — professional, evidence-based |
+| **Tone** | Authoritative, direct, helpful. Not casual, not hype. |
+
+---
+
 ## 1. FRONTMATTER — Required Fields
 
 Every post MUST start with this exact frontmatter block:
@@ -39,16 +54,158 @@ seo:
 
 ---
 
-## 2. EVERGREEN RULES — Non-Negotiable
+## 2. US SEO STANDARDS — Mandatory
+
+InSpotGO targets **Google US (google.com)**. All SEO decisions must be made with the American search market in mind.
+
+### 2.1 Keyword Language
+- Write in **American English** only: `color` not `colour`, `organize` not `organise`, `license` not `licence`
+- Use US-market terminology: `project management software` not `project management programme`
+- Use US intent signals in keywords: `best`, `top`, `review`, `vs`, `how to`, `for teams`, `for small business`
+
+### 2.2 Keyword Selection Rules
+- **Primary keyword**: 1 per post — in title, first paragraph, and at least one H2
+- **Secondary keywords**: 3–4 semantically related terms — used naturally in body
+- **No keyword stuffing**: density should feel natural to a native English reader
+- **No years in keywords** (evergreen rule)
+- **Buyer intent preferred**: keywords with commercial or transactional intent rank better for affiliate sites
+
+### 2.3 Title Tag Rules (for `title:` field)
+- Max 60 characters (Google US truncates at ~60ch on desktop)
+- Primary keyword near the beginning
+- No clickbait, no ALL CAPS, no excessive punctuation
+- Format patterns that work well:
+  - `Best [Category]: [Differentiator]`
+  - `[Tool A] vs [Tool B]: Which Is Right for You?`
+  - `How to Choose [Category]: The Complete Guide`
+  - `[Tool Name] Review: [Verdict in a few words]`
+
+### 2.4 Meta Description Rules (for `description:` field)
+- 140–160 characters (Google US displays ~155ch)
+- Include primary keyword naturally
+- Write as a value proposition, not a summary
+- End with an implicit or explicit call-to-action
+- No quotes, no special characters that break SERP display
+
+### 2.5 URL Slug Rules (filename)
+- All lowercase, hyphens only
+- 3–5 words ideal — include primary keyword
+- No stop words (a, the, for, of, in) unless essential for keyword match
+- No years
+
+```
+✅ best-password-manager.md
+✅ notion-vs-clickup.md
+✅ how-to-choose-crm-software.md
+❌ the-best-password-manager-for-2026.md
+❌ password_manager_review.md
+```
+
+### 2.6 Internal Linking Strategy
+- Every post must link to **at least 2 other posts** within the body (not just Related Articles)
+- Link with descriptive anchor text: `[our ClickUp review](/posts/clickup-review)` not `[click here](/posts/clickup-review)`
+- Prioritize linking to posts in the same category
+- Do not link to the same post more than once per article
+
+### 2.7 Heading Hierarchy
+- `H1` = title (set by frontmatter, do NOT add a # heading in the body)
+- `H2 (##)` = main sections
+- `H3 (###)` = subsections within H2
+- Never skip levels (no H4 without H3)
+- At least one H2 should contain the primary keyword
+
+---
+
+## 3. GEO — US Audience Targeting
+
+InSpotGO is a US-first publication. Every content decision must reflect the American reader.
+
+### 3.1 Currency & Pricing
+- Always reference **USD ($)** when currency is needed
+- Never show fixed prices — always link to official pricing pages
+- When comparing plans, use US pricing tiers only
+
+### 3.2 US Spellings — Required
+
+| ❌ UK/Other | ✅ US English |
+|---|---|
+| colour | color |
+| organise | organize |
+| licence (noun) | license |
+| programme | program |
+| whilst | while |
+| analyse | analyze |
+| centre | center |
+| travelling | traveling |
+| behaviour | behavior |
+
+### 3.3 US Date Format
+- In frontmatter: `YYYY-MM-DD` (ISO, for machine use)
+- In body text (if ever needed): `Month DD, YYYY` — e.g., `March 7, 2026`
+- Never use `DD/MM/YYYY` (British format)
+
+### 3.4 US Audience Assumptions
+- Readers are professionals, small business owners, entrepreneurs, and teams
+- They are familiar with SaaS subscription models
+- They compare tools on **features, integrations, support quality, and value** — not just price
+- They trust brands like Wirecutter, PCMag, G2, and TechRadar — match that tone
+- They respond to **social proof**: mention user counts, reviews, G2/Capterra scores where relevant
+
+### 3.5 US Legal & Compliance
+- **FTC Affiliate Disclosure** is required on every review/comparison post
+- Place this at the very top of the body, before the Bottom Line:
+
+```markdown
+> **Disclosure:** InSpotGO may earn a commission from affiliate links in this article at no extra cost to you. Our editorial opinions are independent.
+```
+
+- All affiliate links must use `rel="nofollow sponsored"` (handled by the theme, but verify)
+
+---
+
+## 4. GEO SCHEMA — Structured Data for US Market
+
+Every post already includes `FAQPage` JSON-LD. For **Review** posts, also add `SoftwareApplication` or `Product` schema. Example for a SaaS tool review:
+
+```html
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "[Tool Name]",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web, Windows, macOS, iOS, Android",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Free plan available"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.5",
+    "bestRating": "5",
+    "ratingCount": "1000"
+  }
+}
+</script>
+```
+
+> Only add this schema to **Review** posts where you can justify the rating with research.
+
+---
+
+## 5. EVERGREEN RULES — Non-Negotiable
 
 InSpotGO publishes **timeless content**. Every post must follow these rules:
 
-- ❌ **NO years in titles** — `"Best VPNs"` not `"Best VPNs 2026"`
-- ❌ **NO prices in the body** — link to the tool's official pricing page instead
+- ❌ **NO years in titles or slugs**
+- ❌ **NO fixed prices in the body** — link to official pricing pages
 - ❌ **NO "Last updated: [Month Year]"** in the footer
-- ❌ **NO "as of 2026"** or similar date anchors in the text
-- ✅ **YES to pricing page links** — `[See current plans](https://tool.com/pricing)`
-- ✅ **YES to footer disclaimer** — use this exact line at the end:
+- ❌ **NO "as of 2026"** or similar date anchors
+- ❌ **NO "currently"** without context that won't age poorly
+- ✅ **YES** — link to pricing pages: `[See current plans](https://tool.com/pricing)`
+- ✅ **YES** — footer disclaimer (exact text):
 
 ```
 *Feature availability and pricing change frequently — always verify on provider websites before purchasing.*
@@ -56,41 +213,38 @@ InSpotGO publishes **timeless content**. Every post must follow these rules:
 
 ---
 
-## 3. BODY STRUCTURE — Mandatory Order
-
-Every post MUST follow this section order:
+## 6. BODY STRUCTURE — Mandatory Order
 
 ```
-1. > **Bottom line:** blockquote   ← First element, always
-2. ---
-3. ## At a glance (table)          ← For comparisons/roundups. Skip for how-to guides.
-4. ---
-5. ## [Content sections...]        ← Core of the article
-6. ---
-7. ## Frequently Asked Questions   ← Min. 4 questions. Required.
-8. ---
-9. ## Related Articles             ← Min. 4 internal links. Required.
-10. ---
-11. *Footer disclaimer*            ← Evergreen disclaimer. Required.
-12. <script> JSON-LD FAQPage </script>  ← Schema markup. Required.
+1. > Disclosure blockquote         ← Reviews/Comparisons only
+2. > **Bottom line:** blockquote   ← Always first content element
+3. ---
+4. ## At a glance (table)          ← Comparisons/roundups. Skip for how-to guides.
+5. ---
+6. ## [Content sections...]        ← Core article content
+7. ---
+8. ## Frequently Asked Questions   ← Min. 4 questions. Required.
+9. ---
+10. ## Related Articles            ← Min. 4 internal links. Required.
+11. ---
+12. *Footer disclaimer*            ← Evergreen line. Required.
+13. <script> JSON-LD FAQPage </script>  ← Required.
+14. <script> JSON-LD SoftwareApp </script>  ← Reviews only.
 ```
 
 ---
 
-## 4. BOTTOM LINE BLOCKQUOTE
-
-The first element after the frontmatter. Always formatted exactly like this:
+## 7. BOTTOM LINE BLOCKQUOTE
 
 ```markdown
-> **Bottom line:** [One or two sentences summarizing the verdict or the value of reading this guide.]
+> **Bottom line:** [One or two sentences. Clear verdict. Written for a US professional audience.]
 ```
 
 ---
 
-## 5. RELATED ARTICLES — Exact Format
+## 8. RELATED ARTICLES — Exact Format
 
-Always placed **after FAQ** and **before the footer disclaimer**.
-Minimum 4 links. Maximum 6. Always link to existing posts only.
+Always after FAQ, before footer. Min 4, max 6. Existing posts only.
 
 ```markdown
 ## Related Articles
@@ -99,16 +253,14 @@ Minimum 4 links. Maximum 6. Always link to existing posts only.
 - 🔄 [Post Title Here](/posts/post-slug-here)
 - 🟢 [Post Title Here](/posts/post-slug-here)
 - 🔵 [Post Title Here](/posts/post-slug-here)
-- 🟡 [Post Title Here](/posts/post-slug-here)
 ```
 
-### Suggested emoji by category:
 | Emoji | Use for |
 |---|---|
 | 📊 | Roundups / Best-of lists |
 | 🔄 | Comparisons / X vs Y |
-| 🟢 | Reviews (positive/recommended) |
-| 🔵 | Reviews (neutral / informational) |
+| 🟢 | Reviews (recommended) |
+| 🔵 | Reviews (neutral/informational) |
 | 🟡 | Reviews (with caveats) |
 | 📖 | Buying Guides |
 | 🔐 | Security/Privacy tools |
@@ -116,25 +268,20 @@ Minimum 4 links. Maximum 6. Always link to existing posts only.
 
 ---
 
-## 6. FAQ SECTION — Exact Format
+## 9. FAQ SECTION
 
-Minimum 4 questions. Maximum 6. Each answer: 1–3 sentences.
+Min 4, max 6 questions. Answers: 1–3 sentences each. Write for US reader intent.
 
 ```markdown
 ## Frequently Asked Questions
 
-### [Question 1?]
-[Answer in 1–3 sentences.]
-
-### [Question 2?]
-[Answer in 1–3 sentences.]
+### [Question?]
+[Answer.]
 ```
 
 ---
 
-## 7. FAQ SCHEMA — JSON-LD (Required at end of every post)
-
-Copy this block and fill in with the FAQ content above:
+## 10. FAQ JSON-LD SCHEMA (Required on all posts)
 
 ```html
 <script type="application/ld+json">
@@ -142,10 +289,10 @@ Copy this block and fill in with the FAQ content above:
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {"@type": "Question", "name": "Question 1?", "acceptedAnswer": {"@type": "Answer", "text": "Answer 1."}},
-    {"@type": "Question", "name": "Question 2?", "acceptedAnswer": {"@type": "Answer", "text": "Answer 2."}},
-    {"@type": "Question", "name": "Question 3?", "acceptedAnswer": {"@type": "Answer", "text": "Answer 3."}},
-    {"@type": "Question", "name": "Question 4?", "acceptedAnswer": {"@type": "Answer", "text": "Answer 4."}}
+    {"@type": "Question", "name": "Q1?", "acceptedAnswer": {"@type": "Answer", "text": "A1."}},
+    {"@type": "Question", "name": "Q2?", "acceptedAnswer": {"@type": "Answer", "text": "A2."}},
+    {"@type": "Question", "name": "Q3?", "acceptedAnswer": {"@type": "Answer", "text": "A3."}},
+    {"@type": "Question", "name": "Q4?", "acceptedAnswer": {"@type": "Answer", "text": "A4."}}
   ]
 }
 </script>
@@ -153,49 +300,17 @@ Copy this block and fill in with the FAQ content above:
 
 ---
 
-## 8. CTA LINKS — Affiliate Link Format
-
-Use this format for all affiliate/tool CTAs inside the post body:
+## 11. CTA LINKS — Affiliate Format
 
 ```markdown
-[🚀 Try [Tool Name] Free →](https://tool.com/)
-[🛡️ Get [Tool Name] →](https://tool.com/)
-[📖 See [Tool Name] Plans →](https://tool.com/pricing)
+[🚀 Try [Tool] Free →](https://tool.com/)
+[🛡️ Get [Tool] →](https://tool.com/)
+[📖 See [Tool] Plans →](https://tool.com/pricing)
 ```
 
 ---
 
-## 9. FILENAME — Slug Convention
-
-- All lowercase
-- Hyphens only (no underscores)
-- No years in the filename
-- Descriptive and keyword-rich
-
-```
-✅ best-password-manager.md
-✅ how-to-choose-project-management-software.md
-✅ notion-vs-clickup-vs-monday.md
-❌ best-password-manager-2026.md
-❌ BestPasswordManager.md
-❌ post_1.md
-```
-
----
-
-## 10. COVER IMAGE
-
-- Path: `/images/posts/[post-slug].png`
-- Size: 1200 × 630px
-- Format: PNG or WebP
-- Style: No text, no people, professional editorial aesthetic
-- The filename must **exactly match** the `cover:` field in the frontmatter
-
----
-
-## 11. COMPLETE POST SKELETON
-
-Copy this skeleton when starting every new post:
+## 12. COMPLETE POST SKELETON
 
 ```markdown
 ---
@@ -212,7 +327,9 @@ seo:
   keywords: ""
 ---
 
-> **Bottom line:** 
+> **Disclosure:** InSpotGO may earn a commission from affiliate links in this article at no extra cost to you. Our editorial opinions are independent.
+
+> **Bottom line:**
 
 ---
 
@@ -275,33 +392,48 @@ seo:
 
 ---
 
-## 12. PRE-PUBLISH CHECKLIST
-
-Before committing any post, verify:
+## 13. PRE-PUBLISH CHECKLIST
 
 ```
+US SEO
+[ ] American English spelling throughout
+[ ] Primary keyword in title (first 60 chars)
+[ ] Primary keyword in first paragraph
+[ ] At least 1 H2 contains primary keyword
+[ ] Meta description 140-160 chars, no years
+[ ] Slug is 3-5 words, keyword-rich, no years
+[ ] 2+ internal contextual links in body text
+[ ] Anchor text is descriptive (not "click here")
+
+GEO / US AUDIENCE
+[ ] FTC Disclosure blockquote present (reviews/comparisons)
+[ ] Currency references use USD ($)
+[ ] No UK spellings (colour, organise, programme, etc.)
+[ ] Date format in body: Month DD, YYYY (if used)
+[ ] Tone matches Wirecutter/The Verge standard
+
 FRONTMATTER
 [ ] title has no year
 [ ] category is one of the 5 valid values
-[ ] description is 140-160 chars and evergreen
-[ ] cover path matches actual image filename
+[ ] description is 140-160 chars, evergreen
+[ ] cover path matches image filename
 [ ] seo.keywords has 4-5 terms, no years
 
 CONTENT
-[ ] Starts with > **Bottom line:** blockquote
-[ ] No prices in body — only links to pricing pages
-[ ] No dates in body text
+[ ] Starts with Bottom line: blockquote
+[ ] No fixed prices — only links to pricing pages
+[ ] No date anchors in body
 [ ] At least one comparison table
-[ ] Pro tips / blockquotes used for emphasis
+[ ] Pro tips / blockquotes for emphasis
 
-FAQ
-[ ] Minimum 4 questions
-[ ] FAQ JSON-LD schema at end of file
+SCHEMA
+[ ] FAQPage JSON-LD at end of file
+[ ] SoftwareApplication schema (Reviews only)
 
 RELATED ARTICLES
-[ ] Section present
-[ ] Minimum 4 internal links
-[ ] All linked slugs exist in src/content/posts/
+[ ] Section present after FAQ
+[ ] Min 4 internal links
+[ ] All slugs exist in src/content/posts/
 
 FOOTER
 [ ] Evergreen disclaimer line present
@@ -310,4 +442,4 @@ FOOTER
 ---
 
 *This document is the single source of truth for post standards at InSpotGO.
-When in doubt, refer back here before writing or committing.*
+Always read this file before creating or editing any post.*
