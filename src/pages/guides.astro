@@ -6,7 +6,7 @@ import WhatsHot from '../components/WhatsHot.astro';
 
 const allPosts = await getCollection('posts');
 const guidesPosts = allPosts
-  .filter(post => post.data.category === 'Buying Guides')
+  .filter(post => post.data.category === 'Guides')
   .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 ---
 
