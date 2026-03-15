@@ -25,6 +25,10 @@ import os
 import sys
 from pathlib import Path
 
+# Load .env variables (so GROQ_API_KEY from .env is available)
+from dotenv import load_dotenv
+load_dotenv()
+
 # ─── Configuracao ────────────────────────────────────────────────────────────
 GROQ_API_KEY = os.getenv("GROQ_API_KEY", "")
 OUTPUT_DIR   = Path("src/content/posts")
@@ -228,10 +232,45 @@ def generate_fallback_content(topic: str, niche: str) -> str:
            "Yes, but plan transitions to avoid losing data or momentum.\n"""
 
 
+def generate_with_google(topic: str, niche: str) -> str:
+    google_key = os.getenv("GOOGLE_API_KEY", "")
+    project_id = os.getenv("GOOGLE_PROJECT_ID", "")
+    location = os.getenv("GOOGLE_LOCATION", "us-central1")
+
+    if not google_key or not project_id:
+        print("⚠️  GOOGLE_API_KEY ou GOOGLE_PROJECT_ID nao configurados. Tentando Ollama...")
+        return generate_with_ollama(topic, niche)
+
+    try:
+        import requests
+
+        # Use API key if provided (simpler than OAuth for quick setup)
+        endpoint = (
+            f"https://{location}-aiplatform.googleapis.com/v1/projects/{project_id}/locations/{location}"
+            "/publishers/google/models/text-bison:generateText"
+        )
+        endpoint = f"{endpoint}?key={google_key}"
+
+        payload = {
+            "instances": [
+                {"content": build_user_prompt(topic, niche)}
+            ]
+        }
+        headers = {"Content-Type": "application/json"}
+
+        res = requests.post(endpoint, json=payload, headers=headers, timeout=120)
+        res.raise_for_status()
+        data = res.json()
+        return data["predictions"][0]["content"]
+    except Exception as e:
+        print(f"⚠️  Google Vertex AI falhou ({e}). Tentando Ollama...")
+        return generate_with_ollama(topic, niche)
+
+
 def generate_with_groq(topic: str, niche: str) -> str:
     if not GROQ_API_KEY:
-        print("⚠️  GROQ_API_KEY nao encontrada. Usando gerador local de fallback...")
-        return generate_fallback_content(topic, niche)
+        print("⚠️  GROQ_API_KEY nao encontrada. Tentando Google Vertex AI...")
+        return generate_with_google(topic, niche)
     try:
         from groq import Groq
         client = Groq(api_key=GROQ_API_KEY)
@@ -246,12 +285,8 @@ def generate_with_groq(topic: str, niche: str) -> str:
         )
         return response.choices[0].message.content
     except Exception as e:
-        print(f"⚠️  Groq falhou ({e}). Tentando Ollama...")
-        try:
-            return generate_with_ollama(topic, niche)
-        except SystemExit:
-            print("⚠️  Nenhum LLM disponível. Gerando conteúdo de fallback local.")
-            return generate_fallback_content(topic, niche)
+        print(f"⚠️  Groq falhou ({e}). Tentando Google Vertex AI...")
+        return generate_with_google(topic, niche)
 
 
 # ─── Geracao com Ollama local (fallback gratuito) ────────────────────────────
@@ -284,17 +319,41 @@ def main():
     parser = argparse.ArgumentParser(
         description="InSpotGO Content Engine — gera artigos evergreen para o mercado americano"
     )
-    parser.add_argument("--topic", required=True,
+    parser.add_argument("--topic",
                         help="Topico do artigo em ingles (ex: 'how to build better habits')")
-    parser.add_argument("--slug",  required=True,
+    parser.add_argument("--slug",
                         help="Slug da URL (ex: how-to-build-better-habits)")
     parser.add_argument("--niche", default="default",
                         choices=VALID_NICHES,
                         help="Nicho: saas | tools | productivity | finance | health | marketing | security | software")
+    parser.add_argument("--config",
+                        help="JSON file with array of {topic, slug, niche} objects to generate in batch")
     parser.add_argument("--llm",   default="groq",
                         choices=["groq", "ollama"],
                         help="LLM a usar (default: groq)")
     args = parser.parse_args()
+
+    if args.config:
+        # Batch mode: generate multiple articles from a JSON file
+        try:
+            config_data = json.loads(Path(args.config).read_text(encoding="utf-8"))
+        except Exception as e:
+            print(f"❌ Falha ao ler config: {e}")
+            sys.exit(1)
+        if not isinstance(config_data, list):
+            print("❌ Config file must be a JSON array of {topic, slug, niche} objects")
+            sys.exit(1)
+
+        for item in config_data:
+            if not all(k in item for k in ["topic", "slug", "niche"]):
+                print("❌ Each item must include topic, slug, and niche")
+                continue
+            run_generation(item["topic"], item["slug"], item["niche"], args.llm)
+        return
+
+    if not args.topic or not args.slug:
+        print("❌ Must provide --topic and --slug unless using --config")
+        sys.exit(1)
 
     print(f"\n🚀 InSpotGO Content Engine")
     print(f"   Topico : {args.topic}")
@@ -302,44 +361,56 @@ def main():
     print(f"   Nicho  : {args.niche}")
     print(f"   LLM    : {args.llm}\n")
 
-    # Verificar se o arquivo ja existe
-    output_file = OUTPUT_DIR / f"{args.slug}.md"
+    run_generation(args.topic, args.slug, args.niche, args.llm)
+
+
+def run_generation(topic: str, slug: str, niche: str, llm: str):
+    print(f"\n🚀 InSpotGO Content Engine")
+    print(f"   Topico : {topic}")
+    print(f"   Slug   : {slug}")
+    print(f"   Nicho  : {niche}")
+    print(f"   LLM    : {llm}\n")
+
+    output_file = OUTPUT_DIR / f"{slug}.md"
     if output_file.exists():
         confirm = input(f"⚠️  {output_file} ja existe. Sobrescrever? [s/N] ").strip().lower()
         if confirm != "s":
             print("   Cancelado.")
-            sys.exit(0)
+            return
 
     # 1. Gerar conteudo via LLM
     print("⏳ Gerando conteudo...")
-    raw = generate_with_groq(args.topic, args.niche) if args.llm == "groq" \
-          else generate_with_ollama(args.topic, args.niche)
+    # Prioritize Google Vertex AI (if configured), else fall back to Groq, then Ollama
+    if os.getenv("GOOGLE_API_KEY") and os.getenv("GOOGLE_PROJECT_ID"):
+        raw = generate_with_google(topic, niche)
+    else:
+        raw = generate_with_groq(topic, niche) if llm == "groq" else generate_with_ollama(topic, niche)
 
     # 2. Limpar conteudo datado
     clean = clean_stale_content(raw)
 
     # 3. Injetar links e CTAs
-    clean = inject_internal_links(clean, args.niche)
-    clean = inject_affiliate_cta(clean, args.niche)
+    clean = inject_internal_links(clean, niche)
+    clean = inject_affiliate_cta(clean, niche)
 
     # 4. Extrair description e gerar schema
     description = extract_description(clean)
-    faq_schema  = generate_faq_schema(clean, args.slug)
+    faq_schema = generate_faq_schema(clean, slug)
 
     # 5. Montar arquivo final
-    frontmatter = build_frontmatter(args.topic, args.slug, args.niche, description)
-    final       = f"{frontmatter}\n\n{clean}{faq_schema}\n"
+    frontmatter = build_frontmatter(topic, slug, niche, description)
+    final = f"{frontmatter}\n\n{clean}{faq_schema}\n"
 
     # 6. Salvar
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     output_file.write_text(final, encoding="utf-8")
 
     print(f"\n✅ Artigo salvo  : {output_file}")
-    print(f"🖼  Banner OG     : /og/{args.slug}.png  (gerado no astro build)")
+    print(f"🖼  Banner OG     : /og/{slug}.png  (gerado no astro build)")
     print(f"📝 Description   : {description[:80]}...")
     print(f"\n👉 Proximos passos:")
     print(f"   1. Revise o artigo em {output_file}")
-    print(f"   2. git add . && git commit -m 'content: add {args.slug}'")
+    print(f"   2. git add . && git commit -m 'content: add {slug}'")
     print(f"   3. git push  →  Cloudflare Pages faz o build + banner automaticamente\n")
 
 
