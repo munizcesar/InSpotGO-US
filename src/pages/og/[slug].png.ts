@@ -1,6 +1,7 @@
 // src/pages/og/[slug].png.ts
 // Banner engine — Satori + Resvg
-// Fontes Inter carregadas do node_modules/@fontsource/inter (sem fetch externo)
+// Fontes Inter .ttf carregadas do node_modules/fontsource-inter
+// (Satori exige .ttf ou .otf — não suporta .woff2)
 import type { APIRoute, GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import satori from "satori";
@@ -8,7 +9,7 @@ import { Resvg } from "@resvg/resvg-js";
 import fs from "node:fs";
 import path from "node:path";
 
-// ─── Paletas por nicho ──────────────────────────────────────────────────
+// ─── Paletas por nicho ─────────────────────────────────────────────────
 const PALETTES: Record<string, { accent: string; glow: string; badge: string }> = {
   saas:         { accent: "#6366F1", glow: "#4F46E5", badge: "⚡ SaaS" },
   tools:        { accent: "#6366F1", glow: "#4F46E5", badge: "🛠 Tools" },
@@ -21,7 +22,7 @@ const PALETTES: Record<string, { accent: string; glow: string; badge: string }> 
   default:      { accent: "#6366F1", glow: "#4F46E5", badge: "✦ InSpotGO" },
 };
 
-// ─── Carga de fontes do node_modules (instaladas via npm) ─────────────────
+// ─── Carga de fontes .ttf do node_modules ──────────────────────────────
 let _fontBlack:   Buffer | null = null;
 let _fontRegular: Buffer | null = null;
 
@@ -29,14 +30,14 @@ function getFonts(): { black: Buffer; regular: Buffer } {
   if (_fontBlack && _fontRegular) {
     return { black: _fontBlack, regular: _fontRegular };
   }
-  // @fontsource/inter instala os .ttf dentro de node_modules automaticamente
-  const base = path.resolve(process.cwd(), "node_modules", "@fontsource", "inter", "files");
-  _fontBlack   = fs.readFileSync(path.join(base, "inter-latin-900-normal.woff2"));
-  _fontRegular = fs.readFileSync(path.join(base, "inter-latin-400-normal.woff2"));
+  // fontsource-inter v4 inclui .ttf em node_modules/fontsource-inter/files/
+  const base = path.resolve(process.cwd(), "node_modules", "fontsource-inter", "files");
+  _fontBlack   = fs.readFileSync(path.join(base, "inter-latin-900-normal.ttf"));
+  _fontRegular = fs.readFileSync(path.join(base, "inter-latin-400-normal.ttf"));
   return { black: _fontBlack, regular: _fontRegular };
 }
 
-// ─── Static paths ───────────────────────────────────────────────────
+// ─── Static paths ──────────────────────────────────────────────────
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getCollection("posts");
   return posts.map((post) => ({
@@ -49,7 +50,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }));
 };
 
-// ─── Endpoint GET ──────────────────────────────────────────────────
+// ─── Endpoint GET ─────────────────────────────────────────────────
 export const GET: APIRoute = async ({ props }) => {
   const { title, description, category } = props as {
     title: string;
