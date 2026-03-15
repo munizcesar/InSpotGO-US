@@ -1,13 +1,11 @@
 // src/pages/og/[slug].png.ts
 // Banner engine — Satori + Resvg
-// Fontes Inter .ttf carregadas do node_modules/fontsource-inter
-// (Satori exige .ttf ou .otf — não suporta .woff2)
+// Fontes: Inter .woff via jsDelivr CDN
+// Satori suporta TTF, OTF e WOFF — mas NAO suporta WOFF2
 import type { APIRoute, GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import satori from "satori";
 import { Resvg } from "@resvg/resvg-js";
-import fs from "node:fs";
-import path from "node:path";
 
 // ─── Paletas por nicho ─────────────────────────────────────────────────
 const PALETTES: Record<string, { accent: string; glow: string; badge: string }> = {
@@ -22,18 +20,29 @@ const PALETTES: Record<string, { accent: string; glow: string; badge: string }> 
   default:      { accent: "#6366F1", glow: "#4F46E5", badge: "✦ InSpotGO" },
 };
 
-// ─── Carga de fontes .ttf do node_modules ──────────────────────────────
-let _fontBlack:   Buffer | null = null;
-let _fontRegular: Buffer | null = null;
+// ─── URLs .woff (jsDelivr CDN — funciona no CI do Cloudflare Pages) ────────
+// .woff = suportado pelo Satori | .woff2 = NAO suportado
+const FONT_URLS = {
+  black:   "https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.17/files/inter-latin-900-normal.woff",
+  regular: "https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.17/files/inter-latin-400-normal.woff",
+};
 
-function getFonts(): { black: Buffer; regular: Buffer } {
+let _fontBlack:   ArrayBuffer | null = null;
+let _fontRegular: ArrayBuffer | null = null;
+
+async function getFonts(): Promise<{ black: ArrayBuffer; regular: ArrayBuffer }> {
   if (_fontBlack && _fontRegular) {
     return { black: _fontBlack, regular: _fontRegular };
   }
-  // fontsource-inter v4 inclui .ttf em node_modules/fontsource-inter/files/
-  const base = path.resolve(process.cwd(), "node_modules", "fontsource-inter", "files");
-  _fontBlack   = fs.readFileSync(path.join(base, "inter-latin-900-normal.ttf"));
-  _fontRegular = fs.readFileSync(path.join(base, "inter-latin-400-normal.ttf"));
+  const [b, r] = await Promise.all([
+    fetch(FONT_URLS.black),
+    fetch(FONT_URLS.regular),
+  ]);
+  if (!b.ok || !r.ok) {
+    throw new Error(`[OG] Font fetch failed: black=${b.status} regular=${r.status}`);
+  }
+  _fontBlack   = await b.arrayBuffer();
+  _fontRegular = await r.arrayBuffer();
   return { black: _fontBlack, regular: _fontRegular };
 }
 
@@ -60,12 +69,12 @@ export const GET: APIRoute = async ({ props }) => {
 
   const palette = PALETTES[category] ?? PALETTES.default;
 
-  let fonts: { black: Buffer; regular: Buffer };
+  let fonts: { black: ArrayBuffer; regular: ArrayBuffer };
   try {
-    fonts = getFonts();
+    fonts = await getFonts();
   } catch (e) {
-    console.error("[OG] Font load error:", e);
-    return new Response("Font load failed", { status: 500 });
+    console.error("[OG] Font fetch error:", e);
+    return new Response("Font fetch failed", { status: 500 });
   }
 
   const safeTitle = title.length > 72 ? title.slice(0, 69) + "..." : title;
