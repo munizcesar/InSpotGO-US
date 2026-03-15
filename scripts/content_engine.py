@@ -199,10 +199,39 @@ draft: false
 
 
 # ─── Geracao com Groq API ────────────────────────────────────────────────────
+def generate_fallback_content(topic: str, niche: str) -> str:
+    """Generate a basic placeholder article when no LLM is available."""
+    return f"""# {topic}\n\n""" + \
+           "This article is a draft generated locally. Replace with final content when the content engine is connected to an LLM.\n\n" + \
+           "## What Is {topic.title()}\n\n" + \
+           "A brief explanation of what this topic is about.\n\n" + \
+           "## Why It Matters\n\n" + \
+           "Why readers should care about this topic.\n\n" + \
+           "## How It Works\n\n" + \
+           "An overview of how the process works.\n\n" + \
+           "[INTERNAL_LINK]\n\n" + \
+           "## How to Choose the Right Option\n\n" + \
+           "Guidance on selecting the right solution.\n\n" + \
+           "[AFFILIATE_CTA]\n\n" + \
+           "## Common Mistakes to Avoid\n\n" + \
+           "Common pitfalls and how to avoid them.\n\n" + \
+           "## Tips to Get the Most Out of It\n\n" + \
+           "Practical tips to maximize success.\n\n" + \
+           "### FAQ\n\n" + \
+           "#### What is the best way to start?\n\n" + \
+           "Start by defining your goals and evaluating options.\n\n" + \
+           "#### How long does it take to see results?\n\n" + \
+           "It depends on the pace of implementation and consistency.\n\n" + \
+           "#### Are there common tools I should consider?\n\n" + \
+           "Look for tools that fit your workflow and scale with you.\n\n" + \
+           "#### Can I switch tools later?\n\n" + \
+           "Yes, but plan transitions to avoid losing data or momentum.\n"""
+
+
 def generate_with_groq(topic: str, niche: str) -> str:
     if not GROQ_API_KEY:
-        print("⚠️  GROQ_API_KEY nao encontrada. Usando Ollama local...")
-        return generate_with_ollama(topic, niche)
+        print("⚠️  GROQ_API_KEY nao encontrada. Usando gerador local de fallback...")
+        return generate_fallback_content(topic, niche)
     try:
         from groq import Groq
         client = Groq(api_key=GROQ_API_KEY)
@@ -218,7 +247,11 @@ def generate_with_groq(topic: str, niche: str) -> str:
         return response.choices[0].message.content
     except Exception as e:
         print(f"⚠️  Groq falhou ({e}). Tentando Ollama...")
-        return generate_with_ollama(topic, niche)
+        try:
+            return generate_with_ollama(topic, niche)
+        except SystemExit:
+            print("⚠️  Nenhum LLM disponível. Gerando conteúdo de fallback local.")
+            return generate_fallback_content(topic, niche)
 
 
 # ─── Geracao com Ollama local (fallback gratuito) ────────────────────────────
