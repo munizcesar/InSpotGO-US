@@ -200,6 +200,8 @@ export const GET: APIRoute = async ({ props }) => {
               marginBottom: "20px",
               display: "flex",
               flexWrap: "wrap",
+              wordBreak: "break-word",
+              whiteSpace: "pre-wrap",
             },
             children: safeTitle,
           },
