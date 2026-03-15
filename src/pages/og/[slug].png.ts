@@ -1,13 +1,12 @@
 // src/pages/og/[slug].png.ts
-// Banner engine — Satori + Resvg — zero API, gerado no build
+// Banner engine — Satori + Resvg
+// Fontes carregadas via fetch do Google Fonts CDN (funciona no Cloudflare Pages CI)
 import type { APIRoute, GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import satori from "satori";
 import { Resvg } from "@resvg/resvg-js";
-import fs from "node:fs";
-import path from "node:path";
 
-// ─── Paletas por nicho (evergreen, sem referência temporal) ────────────────
+// ─── Paletas por nicho ────────────────────────────────────────────────────
 const PALETTES: Record<string, { accent: string; glow: string; badge: string }> = {
   saas:         { accent: "#6366F1", glow: "#4F46E5", badge: "⚡ SaaS" },
   tools:        { accent: "#6366F1", glow: "#4F46E5", badge: "🛠 Tools" },
@@ -20,16 +19,33 @@ const PALETTES: Record<string, { accent: string; glow: string; badge: string }> 
   default:      { accent: "#6366F1", glow: "#4F46E5", badge: "✦ InSpotGO" },
 };
 
-// ─── Carga de fontes (Inter baixada em /public/fonts/) ────────────────────
-function loadFont(filename: string): Buffer {
-  const fontPath = path.resolve(process.cwd(), "public", "fonts", filename);
-  if (!fs.existsSync(fontPath)) {
-    throw new Error(`Font not found: ${fontPath} — download Inter from https://fonts.google.com/specimen/Inter`);
+// ─── URLs das fontes Inter (Google Fonts CDN — sem necessidade de arquivos locais) ──
+const FONT_URLS = {
+  black:   "https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuDyfAZ9hiJ-Ek-_EeA.woff",
+  regular: "https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff",
+};
+
+// Cache em memória para reutilizar entre renders no mesmo processo de build
+let _fontBlack: ArrayBuffer | null = null;
+let _fontRegular: ArrayBuffer | null = null;
+
+async function getFonts(): Promise<{ black: ArrayBuffer; regular: ArrayBuffer }> {
+  if (_fontBlack && _fontRegular) {
+    return { black: _fontBlack, regular: _fontRegular };
   }
-  return fs.readFileSync(fontPath);
+  const [blackRes, regularRes] = await Promise.all([
+    fetch(FONT_URLS.black),
+    fetch(FONT_URLS.regular),
+  ]);
+  if (!blackRes.ok || !regularRes.ok) {
+    throw new Error(`[OG] Failed to fetch fonts: black=${blackRes.status} regular=${regularRes.status}`);
+  }
+  _fontBlack   = await blackRes.arrayBuffer();
+  _fontRegular = await regularRes.arrayBuffer();
+  return { black: _fontBlack, regular: _fontRegular };
 }
 
-// ─── Static paths (1 banner por post) ────────────────────────────────────
+// ─── Static paths (1 banner por post) ─────────────────────────────────────
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getCollection("posts");
   return posts.map((post) => ({
@@ -42,7 +58,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }));
 };
 
-// ─── Endpoint GET ────────────────────────────────────────────────────────
+// ─── Endpoint GET ──────────────────────────────────────────────────────────
 export const GET: APIRoute = async ({ props }) => {
   const { title, description, category } = props as {
     title: string;
@@ -52,21 +68,17 @@ export const GET: APIRoute = async ({ props }) => {
 
   const palette = PALETTES[category] ?? PALETTES.default;
 
-  let fontBold: Buffer;
-  let fontRegular: Buffer;
+  let fonts: { black: ArrayBuffer; regular: ArrayBuffer };
   try {
-    fontBold    = loadFont("Inter-Black.ttf");
-    fontRegular = loadFont("Inter-Regular.ttf");
+    fonts = await getFonts();
   } catch (e) {
-    console.error("[OG] Font load error:", e);
-    return new Response("Font files missing. See /public/fonts/README.md", { status: 500 });
+    console.error("[OG] Font fetch error:", e);
+    return new Response("Font fetch failed", { status: 500 });
   }
 
-  // Trunca título e descrição para caber no layout
   const safeTitle = title.length > 72 ? title.slice(0, 69) + "..." : title;
   const safeDesc  = description.length > 120 ? description.slice(0, 117) + "..." : description;
 
-  // Template do banner em objeto JSX compatível com Satori
   const template = {
     type: "div",
     props: {
@@ -83,7 +95,6 @@ export const GET: APIRoute = async ({ props }) => {
         fontFamily: "Inter",
       },
       children: [
-        // Glow radial de fundo
         {
           type: "div",
           props: {
@@ -98,7 +109,6 @@ export const GET: APIRoute = async ({ props }) => {
             },
           },
         },
-        // Segundo glow menor (profundidade)
         {
           type: "div",
           props: {
@@ -113,7 +123,6 @@ export const GET: APIRoute = async ({ props }) => {
             },
           },
         },
-        // Barra vertical de acento (esquerda)
         {
           type: "div",
           props: {
@@ -127,7 +136,6 @@ export const GET: APIRoute = async ({ props }) => {
             },
           },
         },
-        // Badge de nicho (topo esquerdo)
         {
           type: "div",
           props: {
@@ -148,7 +156,6 @@ export const GET: APIRoute = async ({ props }) => {
             children: palette.badge,
           },
         },
-        // Logo / branding topo direito
         {
           type: "div",
           props: {
@@ -179,7 +186,6 @@ export const GET: APIRoute = async ({ props }) => {
             ],
           },
         },
-        // Título principal
         {
           type: "div",
           props: {
@@ -197,7 +203,6 @@ export const GET: APIRoute = async ({ props }) => {
             children: safeTitle,
           },
         },
-        // Separador colorido
         {
           type: "div",
           props: {
@@ -210,7 +215,6 @@ export const GET: APIRoute = async ({ props }) => {
             },
           },
         },
-        // Descrição / subtítulo
         {
           type: "div",
           props: {
@@ -235,8 +239,8 @@ export const GET: APIRoute = async ({ props }) => {
       width: 1200,
       height: 630,
       fonts: [
-        { name: "Inter", data: fontBold,    weight: 900, style: "normal" },
-        { name: "Inter", data: fontRegular, weight: 400, style: "normal" },
+        { name: "Inter", data: fonts.black,   weight: 900, style: "normal" },
+        { name: "Inter", data: fonts.regular, weight: 400, style: "normal" },
       ],
     });
 
