@@ -4,7 +4,7 @@ date: 2026-03-14
 updated: 2026-03-14
 tags: ["marketing", "automation", "saas", "email", "crm", "growth"]
 description: "Find the best marketing automation software for SaaS growth — from email sequences to lead scoring, conversion funnels, and retention workflows." 
-cover: "/images/posts/saas-marketing.svg"
+cover: "/images/posts/saas-marketing.png"
 author: "InSpotGO Editorial Team"
 readTime: "11 min"
 featured: true
