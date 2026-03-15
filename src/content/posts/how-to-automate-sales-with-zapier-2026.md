@@ -4,7 +4,7 @@ date: 2026-03-14
 updated: 2026-03-14
 tags: ["automation", "zapier", "saas", "sales", "workflow", "productivity"]
 description: "Step-by-step Zapier workflow to automate SaaS sales: capture leads, sync them to CRM, trigger email sequences, and notify your team without writing code." 
-cover: "/images/posts/SaaS1.png"
+cover: "/images/posts/saas-zapier.svg"
 author: "InSpotGO Editorial Team"
 readTime: "10 min"
 featured: true
