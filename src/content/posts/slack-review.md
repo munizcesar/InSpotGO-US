@@ -7,7 +7,7 @@ date: 2026-03-15
 readTime: "8 min"
 featured: false
 draft: false
-cover: "/images/posts/slack-review.png"
+cover: "/og/slack-review.png"
 ---
 
 Slack transformed how teams communicate — replacing cluttered email threads with organized, searchable channels. But with rising prices and strong competition from Microsoft Teams and Discord, it's worth asking: is Slack still the best choice for team messaging in 2025?
