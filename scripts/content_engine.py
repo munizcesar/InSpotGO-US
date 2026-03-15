@@ -380,11 +380,13 @@ def run_generation(topic: str, slug: str, niche: str, llm: str):
 
     # 1. Gerar conteudo via LLM
     print("⏳ Gerando conteudo...")
-    # Prioritize Google Vertex AI (if configured), else fall back to Groq, then Ollama
-    if os.getenv("GOOGLE_API_KEY") and os.getenv("GOOGLE_PROJECT_ID"):
+    # Prefer Groq when available (overwrite is easier), then Google Vertex, then Ollama
+    if GROQ_API_KEY:
+        raw = generate_with_groq(topic, niche)
+    elif os.getenv("GOOGLE_API_KEY") and os.getenv("GOOGLE_PROJECT_ID"):
         raw = generate_with_google(topic, niche)
     else:
-        raw = generate_with_groq(topic, niche) if llm == "groq" else generate_with_ollama(topic, niche)
+        raw = generate_with_ollama(topic, niche)
 
     # 2. Limpar conteudo datado
     clean = clean_stale_content(raw)
