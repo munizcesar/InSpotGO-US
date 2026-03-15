@@ -1,7 +1,7 @@
 ---
 title: "how to use Obsidian for knowledge management and productivity"
 description: ""
-category: "productivity"
+category: "software"
 cover: "/og/obsidian-knowledge-management-productivity-guide.png"
 ogImage: "/og/obsidian-knowledge-management-productivity-guide.png"
 featured: false
