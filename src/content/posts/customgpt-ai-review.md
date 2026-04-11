@@ -4,7 +4,7 @@ date: 2026-04-10
 updated: 2026-04-10
 tags: ["ai", "saas", "chatbot", "no-code", "customer-service"]
 description: "CustomGPT.ai lets businesses build AI chatbots trained on their own content. We analyze features, pricing, use cases, and who it's actually built for."
-cover: "/images/banners/customgpt/customgpt-large-336x280.png"
+cover: "/images/banners/customgpt/customgpt-leaderboard2-728x90.png"
 author: "InSpotGO Editorial Team"
 readTime: "10 min"
 featured: true
