@@ -7,11 +7,7 @@ import WhatsHot from '../components/WhatsHot.astro';
 const allPosts = await getCollection('posts');
 const saasPosts = allPosts
   .filter(post => post.data.category === 'SaaS')
-  .sort((a, b) => {
-    const da = a.data.date ? new Date(a.data.date).getTime() : 0;
-    const db = b.data.date ? new Date(b.data.date).getTime() : 0;
-    return db - da;
-  });
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
 ---
 
 <BaseLayout title="SaaS Reviews | InSpotGO" description="Expert analysis of SaaS platforms, cloud software, and business tools for productivity, project management, and collaboration.">
@@ -34,7 +30,7 @@ const saasPosts = allPosts
     <div class="container category-two-col">
       <div class="posts-grid">
         {saasPosts.map((post) => {
-          const date = post.data.date ? new Date(post.data.date) : null;
+          const date = new Date(post.data.date);
           return (
             <article class="post-card">
               <a href={`/posts/${post.slug}`} class="post-link">
@@ -46,7 +42,7 @@ const saasPosts = allPosts
                   <h2 class="post-title">{post.data.title}</h2>
                   <p class="post-description">{post.data.description}</p>
                   <div class="post-meta">
-                    {date && <span class="post-date">{date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>}
+                    <span class="post-date">{date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                     {post.data.readTime && <span class="post-read-time">{post.data.readTime}</span>}
                   </div>
                 </div>
