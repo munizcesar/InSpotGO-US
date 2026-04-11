@@ -42,6 +42,9 @@ const getProductLink = (product) => {
   const query = encodeURIComponent(product.title);
   return `https://www.amazon.com/s?k=${query}&tag=inspotgous-20`;
 };
+
+// Sidebar affiliate banner — change per post via frontmatter.sidebarBanner or use default
+const sidebarBanner = frontmatter.sidebarBanner || null;
 ---
 
 <BaseLayout
@@ -172,6 +175,22 @@ const getProductLink = (product) => {
           <h4 class="toc-title">📋 Table of Contents</h4>
           <nav class="toc-nav" id="toc-nav"></nav>
         </div>
+
+        <!-- Sidebar Affiliate Banner -->
+        {sidebarBanner && (
+          <div class="sidebar-banner-widget">
+            <a href={sidebarBanner.link} target="_blank" rel="nofollow noopener sponsored">
+              <img
+                src={sidebarBanner.image}
+                alt={sidebarBanner.alt || 'Sponsored'}
+                width={sidebarBanner.width || 160}
+                height={sidebarBanner.height || 600}
+                loading="lazy"
+                class="sidebar-banner-img"
+              />
+            </a>
+          </div>
+        )}
       </aside>
 
     </div>
@@ -283,16 +302,21 @@ const getProductLink = (product) => {
     min-width: 0;
   }
 
-  /* Hero */
+  /* Hero — contains image at natural proportions without stretching */
   .post-hero {
     width: 100%;
-    aspect-ratio: 16/9;
+    max-height: 480px;
     overflow: hidden;
+    background: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .post-cover {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    max-height: 480px;
+    object-fit: contain;
     display: block;
   }
 
@@ -517,7 +541,7 @@ const getProductLink = (product) => {
   .post-content :global(tr:last-child td) { border-bottom: none; }
   .post-content :global(tr:nth-child(even) td) { background: #f8f9ff; }
 
-  /* Callout Boxes (:::tip etc) */
+  /* Callout Boxes */
   .post-content :global(.callout),
   .post-content :global(blockquote.tip),
   .post-content :global(blockquote.warning),
@@ -617,6 +641,9 @@ const getProductLink = (product) => {
     position: sticky;
     top: 90px;
     min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
   }
 
   /* TOC */
@@ -667,10 +694,32 @@ const getProductLink = (product) => {
     border-left-color: var(--color-primary);
   }
 
+  /* Sidebar Banner Widget */
+  .sidebar-banner-widget {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .sidebar-banner-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    transition: opacity 0.2s, box-shadow 0.2s;
+  }
+
+  .sidebar-banner-img:hover {
+    opacity: 0.92;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.14);
+  }
+
   /* Responsive */
   @media (max-width: 1024px) {
     .post-grid { grid-template-columns: 1fr; }
     .post-sidebar { position: static; }
+    .sidebar-banner-widget { display: none; }
   }
 
   @media (max-width: 768px) {
