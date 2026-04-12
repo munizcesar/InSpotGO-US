@@ -4,32 +4,32 @@
 ---
 
 <div class="newsletter-widget">
-  <h4>Fique por Dentro</h4>
-  <p>Receba os melhores reviews direto no seu e-mail</p>
+  <h4>Stay in the Loop</h4>
+  <p>Get the best reviews delivered straight to your inbox</p>
 
   <form class="newsletter-form" id="newsletter-form-us">
     <input
       type="email"
-      placeholder="Seu e-mail"
+      placeholder="Your email"
       class="newsletter-input"
       id="newsletter-email-us"
       required
       autocomplete="email"
     />
     <button type="submit" class="newsletter-button" id="newsletter-btn-us">
-      <span class="btn-text">Assinar</span>
-      <span class="btn-loading" hidden>Enviando...</span>
+      <span class="btn-text">Subscribe</span>
+      <span class="btn-loading" hidden>Sending...</span>
     </button>
   </form>
 
   <div class="newsletter-success" id="newsletter-success-us" hidden>
     <span class="success-icon">✅</span>
-    <p>Assinatura realizada com sucesso!</p>
+    <p>You are subscribed! Thank you.</p>
   </div>
 
   <div class="newsletter-error" id="newsletter-error-us" hidden>
     <span class="error-icon">⚠️</span>
-    <p id="newsletter-error-msg-us">Algo deu errado. Tente novamente.</p>
+    <p id="newsletter-error-msg-us">Something went wrong. Please try again.</p>
   </div>
 </div>
 
@@ -65,14 +65,14 @@
         if (form) form.hidden = true;
         if (successEl) successEl.hidden = false;
       } else {
-        if (errorMsg) errorMsg.textContent = data.error || 'Algo deu errado. Tente novamente.';
+        if (errorMsg) errorMsg.textContent = data.error || 'Something went wrong. Please try again.';
         if (errorEl) errorEl.hidden = false;
         if (btn) btn.disabled = false;
         if (btnText) btnText.hidden = false;
         if (btnLoading) btnLoading.hidden = true;
       }
     } catch {
-      if (errorMsg) errorMsg.textContent = 'Erro de conexao. Tente novamente.';
+      if (errorMsg) errorMsg.textContent = 'Connection error. Please try again.';
       if (errorEl) errorEl.hidden = false;
       if (btn) btn.disabled = false;
       if (btnText) btnText.hidden = false;
