@@ -17,6 +17,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const resendApiKey = process.env.RESEND_API_KEY;
+    const newsletterRecipient = process.env.NEWSLETTER_TO_EMAIL || 'cesarmuniz0816@gmail.com';
     if (!resendApiKey) {
       console.log(`[Newsletter Subscription] ${email} - ${new Date().toISOString()}`);
       return new Response(JSON.stringify({ success: true, message: 'Subscription received (dev mode)' }), {
@@ -35,7 +36,7 @@ export const POST: APIRoute = async ({ request }) => {
       },
       body: JSON.stringify({
         from: 'InSpotGO <onboarding@resend.dev>',
-        to: ['inspotgo@gmail.com'],
+        to: [newsletterRecipient],
         subject: `New Newsletter Subscription: ${email}`,
         html: `
           <h2>New Newsletter Subscription</h2>

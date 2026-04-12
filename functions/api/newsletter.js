@@ -17,6 +17,7 @@ export async function onRequestPost(context) {
     }
 
     const resendApiKey = env.RESEND_API_KEY;
+    const newsletterRecipient = env.NEWSLETTER_TO_EMAIL || 'cesarmuniz0816@gmail.com';
     
     if (!resendApiKey) {
       return new Response(
@@ -33,7 +34,7 @@ export async function onRequestPost(context) {
       },
       body: JSON.stringify({
         from: 'InSpotGO <onboarding@resend.dev>',
-        to: ['inspotgo@gmail.com'],
+        to: [newsletterRecipient],
         subject: `New Newsletter Subscription: ${email}`,
         html: `<h2>New Newsletter Subscription</h2><p><strong>Email:</strong> ${email}</p><p><strong>Date:</strong> ${new Date().toLocaleString('en-US', { timeZone: 'America/Sao_Paulo' })}</p><p><strong>Source:</strong> inspotgo.com Newsletter Widget</p>`,
         text: `New Newsletter Subscription\n\nEmail: ${email}\nDate: ${new Date().toLocaleString()}\nSource: inspotgo.com`,

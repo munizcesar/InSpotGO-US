@@ -4,33 +4,32 @@
 ---
 
 <div class="newsletter-widget">
-  <div class="newsletter-icon">✉️</div>
-  <h4>Stay in the Loop</h4>
-  <p>Get the best reviews delivered straight to your inbox</p>
+  <h4>Fique por Dentro</h4>
+  <p>Receba os melhores reviews direto no seu e-mail</p>
 
   <form class="newsletter-form" id="newsletter-form-us">
     <input
       type="email"
-      placeholder="Your email"
+      placeholder="Seu e-mail"
       class="newsletter-input"
       id="newsletter-email-us"
       required
       autocomplete="email"
     />
     <button type="submit" class="newsletter-button" id="newsletter-btn-us">
-      <span class="btn-text">Subscribe</span>
-      <span class="btn-loading" hidden>Sending…</span>
+      <span class="btn-text">Assinar</span>
+      <span class="btn-loading" hidden>Enviando...</span>
     </button>
   </form>
 
   <div class="newsletter-success" id="newsletter-success-us" hidden>
     <span class="success-icon">✅</span>
-    <p>You’re subscribed! Thank you.</p>
+    <p>Assinatura realizada com sucesso!</p>
   </div>
 
   <div class="newsletter-error" id="newsletter-error-us" hidden>
     <span class="error-icon">⚠️</span>
-    <p id="newsletter-error-msg-us">Something went wrong. Please try again.</p>
+    <p id="newsletter-error-msg-us">Algo deu errado. Tente novamente.</p>
   </div>
 </div>
 
@@ -66,14 +65,14 @@
         if (form) form.hidden = true;
         if (successEl) successEl.hidden = false;
       } else {
-        if (errorMsg) errorMsg.textContent = data.error || 'Something went wrong. Please try again.';
+        if (errorMsg) errorMsg.textContent = data.error || 'Algo deu errado. Tente novamente.';
         if (errorEl) errorEl.hidden = false;
         if (btn) btn.disabled = false;
         if (btnText) btnText.hidden = false;
         if (btnLoading) btnLoading.hidden = true;
       }
     } catch {
-      if (errorMsg) errorMsg.textContent = 'Connection error. Please try again.';
+      if (errorMsg) errorMsg.textContent = 'Erro de conexao. Tente novamente.';
       if (errorEl) errorEl.hidden = false;
       if (btn) btn.disabled = false;
       if (btnText) btnText.hidden = false;
@@ -84,29 +83,25 @@
 
 <style>
   .newsletter-widget {
-    background: var(--gradient-hero, linear-gradient(135deg, #5b21b6, #7c3aed));
-    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, #3b1f8a 0%, #4a23a3 100%);
+    border-radius: 14px;
     padding: 1.5rem;
     color: white;
     margin-top: 2rem;
-    text-align: center;
-  }
-
-  .newsletter-icon {
-    font-size: 1.75rem;
-    margin-bottom: 0.5rem;
+    box-shadow: 0 14px 36px rgba(46, 17, 85, 0.25);
   }
 
   .newsletter-widget h4 {
-    font-size: 1.2rem;
+    font-size: 2rem;
     font-weight: 700;
-    margin: 0 0 0.4rem 0;
+    line-height: 1.1;
+    margin: 0 0 0.65rem 0;
   }
 
   .newsletter-widget p {
-    font-size: 0.875rem;
-    margin: 0 0 1.25rem 0;
-    opacity: 0.92;
+    font-size: 1rem;
+    margin: 0 0 1.2rem 0;
+    opacity: 0.95;
     max-width: 100%;
   }
 
@@ -117,38 +112,38 @@
   }
 
   .newsletter-input {
-    padding: 0.75rem 1rem;
-    border: 2px solid rgba(255, 255, 255, 0.35);
-    border-radius: var(--radius-md);
-    background: rgba(255, 255, 255, 0.15);
-    color: white;
-    font-size: 0.9rem;
+    padding: 0.78rem 0.95rem;
+    border: none;
+    border-radius: 9px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #1f2937;
+    font-size: 1rem;
     transition: border-color 0.2s, background 0.2s;
   }
 
-  .newsletter-input::placeholder { color: rgba(255, 255, 255, 0.65); }
+  .newsletter-input::placeholder { color: #6b7280; }
 
   .newsletter-input:focus {
     outline: none;
-    border-color: white;
-    background: rgba(255, 255, 255, 0.22);
+    background: white;
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4);
   }
 
   .newsletter-button {
-    padding: 0.75rem;
+    padding: 0.78rem;
     background: white;
-    color: #5b21b6;
+    color: #2f1b7a;
     border: none;
-    border-radius: var(--radius-md);
+    border-radius: 9px;
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     cursor: pointer;
     transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s;
   }
 
   .newsletter-button:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 4px 14px rgba(255, 255, 255, 0.35);
+    box-shadow: 0 6px 18px rgba(255, 255, 255, 0.32);
   }
 
   .newsletter-button:disabled { opacity: 0.7; cursor: not-allowed; }
@@ -158,13 +153,13 @@
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    padding: 1rem 0;
+    padding: 0.75rem 0;
   }
 
   .success-icon { font-size: 2rem; }
 
   .newsletter-success p {
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: 600;
     margin: 0;
     opacity: 1;
@@ -174,8 +169,8 @@
     display: flex;
     align-items: center;
     gap: 0.4rem;
-    background: rgba(255,255,255,0.15);
-    border-radius: var(--radius-sm);
+    background: rgba(255,255,255,0.16);
+    border-radius: 8px;
     padding: 0.5rem 0.75rem;
     margin-top: 0.5rem;
   }
@@ -187,5 +182,19 @@
     color: #ffe4e4;
     text-align: left;
     max-width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    .newsletter-widget {
+      padding: 1.25rem;
+    }
+
+    .newsletter-widget h4 {
+      font-size: 1.7rem;
+    }
+
+    .newsletter-widget p {
+      font-size: 0.95rem;
+    }
   }
 </style>
